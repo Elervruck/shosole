@@ -3,7 +3,7 @@
 */
 
 // Constante para establecer la ruta del servidor.
-const SERVER_URL = 'http://localhost/shosole/shosole/api/';
+const SERVER_URL = 'http://localhost/shosole/api/';
 
 /*
 *   Función para mostrar un mensaje de confirmación. Requiere la librería sweetalert para funcionar.
@@ -39,11 +39,11 @@ function sweetAlert(type, text, timer, url = null) {
     // Se compara el tipo de mensaje a mostrar.
     switch (type) {
         case 1:
-            title = 'Éxito';
+            title = 'Bien hecho';
             icon = 'success';
             break;
         case 2:
-            title = 'Error';
+            title = 'Ocurrío un error';
             icon = 'error';
             break;
         case 3:
@@ -59,7 +59,7 @@ function sweetAlert(type, text, timer, url = null) {
         Swal.fire({
             toast: true,
             position: 'bottom-end',
-            timer: 2000,
+            timer: 4000,
             timerProgressBar: true,
             title: title,
             text: text,
@@ -78,7 +78,7 @@ function sweetAlert(type, text, timer, url = null) {
         Swal.fire({
             toast: true,
             position: 'bottom-end',
-            timer: 5000,
+            timer: 4000,
             timerProgressBar: true,
             title: title,
             text: text,

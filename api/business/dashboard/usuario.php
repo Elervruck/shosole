@@ -39,10 +39,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-                case 'read':
+            case 'read':
                 if ($result['dataset'] = $producto->readCategoria()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -94,7 +94,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-                case 'readAllCargo':
+            case 'readAllCargo':
                 if ($result['dataset'] = $usuario->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -117,7 +117,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-                case 'create':
+            case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombres($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
@@ -149,7 +149,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-                case 'update':
+            case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -168,7 +168,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'delete':
+            case 'delete':
                 if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
                 } elseif (!$usuario->setId($_POST['id_usuario'])) {
@@ -182,13 +182,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'readAllGenero':
-                    if ($result['dataset'] = $usuario->readAllGenero()) {
-                        $result['status'] = 1;
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
+            case 'readAllGenero':
+                if ($result['dataset'] = $usuario->readAllGenero()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
@@ -200,10 +200,16 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
                 } else {
-                    $result['exception'] = 'Debe crear un usuario para comenzar';
+                    $result['exception'] = 'Parece que no tienes un usuario, empezemos a crearlo';
                 }
                 break;
-            
+            case 'readAllGenero':
+                if ($result['dataset'] = $usuario->readAllGenero()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombres($_POST['usuario_primer'])) {
@@ -226,10 +232,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!$usuario->setCargo(1)) {
                     $result['exception'] = 'Cargo incorrecto';
-                } elseif (!is_uploaded_file($_FILES['im_primer']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$usuario->setImagen($_FILES['im_primer'])) {
-                    $result['exception'] = Validator::getFileError();
+                } elseif (is_uploaded_file($_FILES['im_primer']['tmp_name'])) {
+                    if (!$usuario->setImagen($_FILES['im_primer'])) {
+                        $result['exception'] = Validator::getFileError();
+                    }
                 } elseif ($usuario->createRow()) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['im_primer'], $usuario->getRutaImagen(), $usuario->getImagen())) {

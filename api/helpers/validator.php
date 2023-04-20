@@ -79,7 +79,7 @@ class Validator
         } elseif ($width > $maxWidth || $height > $maxHeigth) {
             self::$fileError = 'La dimensión de la imagen es incorrecta';
             return false;
-        } elseif ($type == 2 || $type == 3) {
+        } elseif ($type == 2 || $type == 3 || $type ==4)  {
             // Se obtiene la extensión del archivo y se convierte a minúsculas.
             $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
             // Se establece un nombre único para el archivo.
