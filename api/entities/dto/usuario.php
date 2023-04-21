@@ -167,4 +167,13 @@ class Usuario extends UsuarioQueries
     {
         return $this->ruta_imagen;
     }
+    public function getCargo(){
+
+        return $this->id_cargo;
+    }
+
+    public function getEstado(){
+
+        return $this->id_estado;
+    }
 }
