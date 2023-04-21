@@ -46,11 +46,12 @@ a {
 
 .buscador_usuario button {
   background-color: #4e0f8b;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #ffffff;
 }
 
 .buscador_usuario button:hover {
-  color: #ffffff;
+  color: #4e0f8b;
 }
 
 .Datos {
@@ -189,4 +190,46 @@ table {
 
 section {
   margin-top: 20px;
+}
+
+
+
+.search-container input[type=search] {
+  flex: 1;
+  border: none;
+  outline: none;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-container input[type=search] {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px 40px 10px 20px;
+  font-size: 16px;
+  color: #555;
+  box-shadow: 0 0 10px rgba(153, 0, 255, 0.5);
+  outline: none;
+}
+
+.search-container input[type=search]:focus {
+  box-shadow: 0 0 10px rgba(153, 0, 255, 1);
+}
+
+
+
+.search-container input[type=search]:focus +::before {
+  border-color: #4E0F8B;
+}
+
+
+.filter {
+  margin-left: 20px;
+  cursor: pointer;
+  color: #4E0F8B;
 }
