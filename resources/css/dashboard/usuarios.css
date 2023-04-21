@@ -249,35 +249,14 @@ section {
 }
 
 input{
-  width: 10%;
-  height: 60px;
-  padding: 10px;
-  font-size: 18px;
-  border: none;
+  font-size: 16px;
+  width: 200px;
   border-bottom: 2px solid #4e0f8b;
   background: transparent;
-  outline: none;
+  outline:invert;
 }
 
 label{
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 18px;
   color: #4E0F8B;
-  transition: all 0.2 ease-in-out;
-  pointer-events: none;
 }
-
-input:focus + label, input:not(:placeholder-shown) + label {
-  top: -30px;
-  left: 0;
-  font-size: 14px;
-  color: aqua;
-}
-
-input:focus{
-  border-color: gold;
-}
-
 
