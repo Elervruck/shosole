@@ -26,9 +26,10 @@
         </nav>
     </header>
     <main>
+        
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3 mb-3 title">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3 mb-3 title color-tittle">
                     <h1>Usuarios</h1>
                 </div>
 
@@ -64,54 +65,63 @@
                 </div>
             </div>
         </div>
-        <!-- Large modal -->
-        <div id="crear-usuario" class="modal fade bd-example-modal-lg" data-bs-backdrop="static" tabindex="-1" role="dialog"
+        <!-- Contenido modal -->
+        <div id="crear-usuario" class="modal  fade bd-example-modal-lg" data-bs-backdrop="static" tabindex="-1" role="dialog"
             aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal-title"></h5>
+                        <h5 class="modal-title color-tittle" id="modal-title"></h5>
                     </div>
                     <form method="post" id="save-form">
                         <input class="invisible" type="number" id="id" name="id">
-                        <div class="mb-3">
+                        <div class="mb-3 text-color row ">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" name="nombre-u" id="nombre-u">
+                            <input type="text" class="imput-per" name="nombre-u" id="nombre-u">
                         </div>
-                        <div class="form-group">
+                        <br>
+                        <div class="row">
                             <label>Apellidos</label>
-                            <input type="text" class="form-control" name="apellidos-u" id="apellidos-u">
+                            <input type="text" class="" name="apellidos-u" id="apellidos-u">
                         </div>
-                        <div class="form-group">
+                        <br>
+                        <div class="row">
                             <label>Correo electrónico</label>
-                            <input type="email" class="form-control" name="correo-u" id="correo-u">
+                            <input type="email" class="" name="correo-u" id="correo-u">
                         </div>
-                        <div class="form-group">
+                        <br>
+                        <div class="row">
                             <label>Alias</label>
-                            <input type="text" class="form-control" name="alias-u" id="alias-u">
+                            <input type="text" class="" name="alias-u" id="alias-u">
                         </div>
-                        <div class="form-group">
+                        <br>
+                        <br>
+                        <div class="row">
                             <label>Contraseña</label>
-                            <input type="password" class="form-control" name="contra-u" id="contra-u">
+                            <input type="password" class="" name="contra-u" id="contra-u">
                         </div>
-                        <div class="mb-3">
+                        <br>
+                        <div class="row tan-select">
                             <label class="form-label">Género</label>
-                            <select class="form-select tm" id="genero" name="genero" required>
+                            <select class="format-cmb" id="genero" name="genero" required>
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <br>
+                        <div class="row">
                             <label class="form-label">Cargo</label>
-                            <select class="form-select" id="cargo-u" name="cargo-u" required>
+                            <select class="format-cmb" id="cargo-u" name="cargo-u" required>
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <br>
+                        <div class="row">
                             <label class="form-label">Estado</label>
-                            <select class="form-select" id="estado-u" name="estado-u" required>
+                            <select class="format-cmb" id="estado-u" name="estado-u" required>
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <br>
+                        <div class="row">
                             <label for="formFile" class="form-label">Ingresar imagen</label>
-                            <input class="form-control" type="file" accept="image/*" name="im_usu" id="im_usu">
+                            <input class="" type="file" accept="image/*" name="im_usu" id="im_usu">
                         </div>
                         <button type="submit" class="btn btn-primary">Crear usuario</button>
                     </form>
