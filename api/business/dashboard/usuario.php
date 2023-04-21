@@ -187,7 +187,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif ($usuario->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario modificado correctamente';
+                    $result['message'] = 'Usuario actualizado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
