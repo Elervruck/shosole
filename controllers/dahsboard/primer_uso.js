@@ -36,7 +36,6 @@ SIGNUP_FORM.addEventListener('submit', async (event) => {
         sweetAlert(1, JSON.message, true, 'index.html');
     }else{
         sweetAlert(2, JSON.exception , true);
-
     }
 });
 
