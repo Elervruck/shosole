@@ -1,22 +1,219 @@
+--------TABLAS--------
+create table estado_usuarios(
+	id_estado_usuario serial primary key not null,
+	estado_usuario character varying(30) not null
+);
+---Si--
+create table cargos(
+	id_cargo serial primary key not null,
+	cargo character varying(50) not null
+);
+
+create table generos(
+	id_genero serial primary key not null,
+	genero character varying (30) not null
+);
+
+create table estado_clientes(
+    id_estado_cliente serial primary key not null,
+    estado_cliente character varying (30) not null
+);
+---Si--
+create table usuarios(
+	id_usuario serial primary key not null,
+	nombre_usuario character varying(150) not null,
+	apellido_usuario character varying(150) not null,
+	correo_usuario character varying (100) unique not null,
+	alias_usuario character varying(50) unique not null,
+	clave_usuario character varying(150) not null,
+	id_genero integer not null,
+	id_cargo integer not null,
+	id_estado_usuario integer not null,
+	foto_usuario character varying(100) null,
+	intentos smallint null,
+	fecha_bloqueo timestamp without time zone null,
+	fecha_desbloqueo timestamp without time zone null
+);
+---Si--
+
+create table modelos(
+	id_modelo serial primary key not null,
+	modelo character varying(50) not null,
+	id_marca integer not null
+);
+
+---Si--
+create table marcas(
+	id_marca serial primary key not null,
+	marca character varying(50) not null,
+	imagen_marca character varying(50) not null
+);
+
+create table condicion_productos(
+	id_condicion_producto serial primary key not null,
+	condicion_producto character varying(25) not null
+);
+---Si--
+create table productos(
+	id_producto serial primary key not null,
+	nombre_producto character varying (150) not null,
+	descripcion_producto character varying(300) not null,
+	imagen_producto character varying(50) not null,
+	estado_producto character varying (50) not null,
+	id_usuario integer not null,
+	id_modelo integer not null,
+	id_condicion_producto integer not null
+);
+
+---ALfredo---
+---Si---
+create table clientes(
+	id_cliente serial primary key not null,
+	nombre_cliente character varying (100) not null,
+	apellido_cliente character varying (150) not null,
+	dui_cliente character varying (10) unique not null,
+	correo_cliente character varying (100) unique not null,
+	telefono_cliente character varying (9) unique not null,
+	nacimiento_cliente date not null,
+	direccion_cliente character varying (200) not null,
+	clave_cliente character varying (100) not null,
+	id_estado_cliente integer not null,
+	id_genero integer not null,
+	usuario character varying (100) not null
+);
+
+---Barahona---
+---Si--
+create table pedidos(
+	id_pedido serial primary key not null,
+	estado_pedido character varying (50) not null,
+	fecha_pedido date not null,
+	direccion_pedido character varying (250) not null,
+	id_cliente integer not null
+);
+
+create table detalle_pedidos(
+	id_detalle_pedido serial primary key not null,
+	id_producto integer not null,
+	id_pedido integer not null,
+	cantidad_producto int not null,
+	precio_producto numeric(7,2) not null
+);
+---Si--
+create table valoraciones(
+	id_valoracion serial primary key not null,
+	calificacion_producto integer not null,
+	id_detalle_pedido integer not null,
+	comentario_producto character varying (500) null,
+	fecha_comentario timestamp without time zone null,
+	estado_comentario boolean not null
+);
+--------TABLAS--------
+																																																																										
+
+--------LLAVES FORANEAS--------
+ALTER TABLE usuarios
+ADD CONSTRAINT fk_estado_usuario
+FOREIGN KEY (id_estado_usuario)
+REFERENCES estado_usuarios(id_estado_usuario);
+
+ALTER TABLE usuarios
+ADD CONSTRAINT fk_cargo_usuario
+FOREIGN KEY (id_cargo)
+REFERENCES cargos(id_cargo);
+
+ALTER TABLE usuarios
+ADD CONSTRAINT fk_genero_usuarios
+FOREIGN KEY (id_genero)
+REFERENCES generos(id_genero);
+
+ALTER TABLE productos
+ADD CONSTRAINT fk_usuario_producto
+FOREIGN KEY (id_usuario)
+REFERENCES usuarios(id_usuario);
+
+ALTER TABLE modelos
+ADD CONSTRAINT fk_marca_modelo
+FOREIGN KEY (id_marca)
+REFERENCES marcas(id_marca);
+
+ALTER TABLE productos
+ADD CONSTRAINT fk_modelo_producto
+FOREIGN KEY (id_modelo)
+REFERENCES modelos(id_modelo);
+
+ALTER TABLE detalle_pedidos
+ADD CONSTRAINT fk_producto_detalle
+FOREIGN KEY (id_producto)
+REFERENCES productos(id_producto);
+
+ALTER TABLE productos
+ADD CONSTRAINT fk_condicion_producto
+FOREIGN KEY (id_condicion_producto)
+REFERENCES condicion_productos(id_condicion_producto);
+
+ALTER TABLE clientes
+ADD CONSTRAINT fk_genero_cliente
+FOREIGN KEY (id_genero)
+REFERENCES generos(id_genero);  
+
+ALTER TABLE clientes
+ADD CONSTRAINT fk_estado_cliente
+FOREIGN KEY (id_estado_cliente)
+REFERENCES estado_clientes(id_estado_cliente);
+
+ALTER TABLE pedidos
+ADD CONSTRAINT fk_cliente_pedido
+FOREIGN KEY (id_cliente)
+REFERENCES clientes(id_cliente);
+
+ALTER TABLE detalle_pedidos
+ADD CONSTRAINT fk_pedido_detalle
+FOREIGN KEY (id_pedido)
+REFERENCES pedidos(id_pedido);
+
+ALTER TABLE valoraciones
+ADD CONSTRAINT fk_detalle_valoracione
+FOREIGN KEY (id_detalle_pedido)
+REFERENCES detalle_pedidos(id_detalle_pedido);
+--------LLAVES FORANEAS--------
+
+
+-----Consultas------
+select * from estado_usuarios
+select * from cargos
+select * from generos
+select * from estado_clientes
+select * from usuarios
+select * from modelos
+select * from marcas
+select * from condicion_productos
+select * from productos
+select * from clientes
+select * from pedidos
+select * from detalle_pedidos
+select * from valoraciones
+-----Consultas------
+
 ----COMANDOS DML INSERT----
 insert into estado_usuarios(id_estado_usuario, estado_usuario)
 values (default, 'Activo'),
        (default, 'Inactivo'),
-       (default, 'Eliminado')
+       (default, 'Eliminado');
 	
 insert into cargos(id_cargo, cargo)
 values (default, 'Administrador'),
-       (default, 'Root')	
+       (default, 'Root');	
 	   
 insert into generos(id_genero, genero)
 values (default, 'Masculino'),
-       (default, 'Femenino')
+       (default, 'Femenino');
      
 
 insert into estado_clientes(id_estado_cliente, estado_cliente)
 values (default, 'Activo'),
        (default, 'Inactivo'),
-       (default, 'Eliminado')
+       (default, 'Eliminado');
        
 insert into marcas (id_marca, marca, imagen_marca)
 values (default, 'Sony','Sony.jpg'),
@@ -28,12 +225,12 @@ values (default, 'Sony','Sony.jpg'),
         (default, 'Bandai','Bandai.jpg'),
         (default, 'Mattel','Mattel.jpg'),
         (default, 'Tectoy','Tectoy.jpg'),
-        (default, 'Nokia','Nokia.jpg')
+        (default, 'Nokia','Nokia.jpg');
        
 insert into condicion_productos (id_condicion_producto, condicion_producto)
 values (default, 'Nuevo'),
          (default, 'Usado'),
-         (default, 'Recondicionado')
+         (default, 'Recondicionado');
 
 
 insert into usuarios (id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, id_genero, id_cargo, id_estado_usuario, intentos)
@@ -46,7 +243,7 @@ values (default, 'Christian Sebastián', 'Ellerbrock Barahona', '20210089@ricald
        (default, 'Camila Gabriela', 'García Vasquéz', '20210574@ricaldone.edu.sv', 'CamGarcía', 'Gabriela20_21', 2, 2, 2, 3),
 	   (default,'Daniel Stanley', 'Carranza Miguel', 'daniel_carranza@ricaldone.edu.sv', 'DCarranza', 'Stanley20_23', 1, 1, 1, 3),
 	   (default,'Dayana Fiorella', 'Pérez Mejía', 'dayana_perez@ricaldone.edu.sv', 'FiorellaD', 'Dayana/6543', 2, 1, 2, 3),
-	   (default,'Allan Fernando', 'Cárcamo Martínez', 'allan_carcamo@ricaldone.edu.sv', 'AMartinez', 'AllanFernan/20', 1, 2, 2, 3)
+	   (default,'Allan Fernando', 'Cárcamo Martínez', 'allan_carcamo@ricaldone.edu.sv', 'AMartinez', 'AllanFernan/20', 1, 2, 2, 3);
 	   
 	   
 insert into modelos (id_modelo, modelo, id_marca)
@@ -59,7 +256,7 @@ values ( default, 'PlayStation_4',1),
         ( default, 'WonderSwan',7),
         ( default, 'Intellivision','8'),
         ( default, ' Mega Drive',9),
-        ( default, 'N-Gage',10)
+        ( default, 'N-Gage',10);
 		
 	
 insert into productos (id_producto, nombre_producto, descripcion_producto, imagen_producto, estado_producto, id_usuario, id_modelo, id_condicion_producto)
@@ -72,7 +269,7 @@ values (default, 'Play4', 'es la cuarta videoconsola del modelo PlayStation. Es 
         (default, 'WonderSwan','WonderSwan Color, una consola de juegos portátil japonesa lanzada a fines de 2000. WonderSwan Color fue la continuación del WonderSwan monocromático original de Bandai que se lanzó el año anterior. La nueva computadora de mano ahora podía mostrarse','WonderSwan.jpg','true', 7, 7, 1),
         (default, 'Intellivision','La Intellivision fue desarrollada por Mattel Electronics, una subsidiaria formada expresamente para el desarrollo de juegos electrónicos. La consola fue probada en Fresno, California, en 1979 con un total de cuatro juegos disponibles,','Intellivision.jpg','true', 8, 8, 1 ),
         (default, 'Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 9, 9, 1),
-        (default, 'N-Gage','En 2003, Nokia ingresó en el mercado de las consolas de juegos lanzando el terminal portátil N-Gage, ofreciendo Reproductor MP3 y radio FM integrados, reproducción de vídeo, así como telefonía móvil, juego multijugador','N-Gage.jpg','true', 10, 10, 1)
+        (default, 'N-Gage','En 2003, Nokia ingresó en el mercado de las consolas de juegos lanzando el terminal portátil N-Gage, ofreciendo Reproductor MP3 y radio FM integrados, reproducción de vídeo, así como telefonía móvil, juego multijugador','N-Gage.jpg','true', 10, 10, 1);
 
 insert into clientes (id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, id_estado_cliente,id_genero, usuario)
 values (default,'Eduardo Alfonso','Barahona Vasquez','06850497-1','eduardobarahoa973@gamil.com','78682132','2005/03/02','San Ramon de los altos','messiesgrande', 1, 1, 'barahona753'),
@@ -84,7 +281,7 @@ values (default,'Eduardo Alfonso','Barahona Vasquez','06850497-1','eduardobaraho
 		(default,'Santiado Cristian','Carabajal Martinez','23450958-3','Matinezzz@gamil.com','53632131','2003/04/12','Porticos de buenos aires','12984132', 1, 1, 'Santi_323'),
 		(default,'Sergui Alberto ','Flamenco Castillo','43298052-2','Flamencoser@gamil.com','23424325','2002/04/01','colonia los angeles','3133214', 1, 1, 'Sergui_223'),
 		(default,'Sean Roberto','Durán Hernandez','24350987-3','Robertomaldonado@gamil.com','23433523','2003/04/06','Urbanisacion los proceres','432524', 1, 1, 'Roberto503'),
-		(default,'Gustavo Jorge','Merino Flores','09883214-2','FloresDuran@gamil.com','32526575','2004/05/02','Avenida Bernal','245343526', 1, 1, 'Gustavo_777')
+		(default,'Gustavo Jorge','Merino Flores','09883214-2','FloresDuran@gamil.com','32526575','2004/05/02','Avenida Bernal','245343526', 1, 1, 'Gustavo_777');
 		
 insert into pedidos(id_pedido, estado_pedido, fecha_pedido, direccion_pedido, id_cliente)
 values (default, 'true', '2023/03/12','San Vicente', 1),
@@ -96,7 +293,7 @@ values (default, 'true', '2023/03/12','San Vicente', 1),
 		(default, 'true', '2023/03/04','Santa elena', 7),
 		(default, 'true', '2023/03/07','San Marcos', 8),
 		(default, 'true', '2023/03/22','Soyapango', 9),
-		(default, 'true', '2023/03/20','Apopa', 10)
+		(default, 'true', '2023/03/20','Apopa', 10);
 		
 insert into detalle_pedidos (id_detalle_pedido, id_producto, id_pedido, cantidad_producto, precio_producto)
 values  (default,  1, 1, 1, 499.99 ),
@@ -118,7 +315,7 @@ values  (default,  1, 1, 1, 499.99 ),
 		(default, 8, 4, 4, 700.23),
 		(default, 6, 2, 1, 800.19),
 		(default, 9, 8, 2, 600.21),
-		(default, 7, 4, 4, 346.21)
+		(default, 7, 4, 4, 346.21);
 
 insert into valoraciones (id_valoracion, calificacion_producto, id_detalle_pedido, comentario_producto, fecha_comentario, estado_comentario)
 values (default, 5, 1, 'No sirve la consola', '2023/03/21', 'true'),
@@ -130,7 +327,7 @@ values (default, 5, 1, 'No sirve la consola', '2023/03/21', 'true'),
 		(default, 8, 7, 'si sirve', '2023/03/24', 'true'),
 		(default, 9, 8, 'si sirve', '2023/03/27', 'true'),
 		(default, 5, 9, 'No sirve la consola', '2023/03/20', 'true'),
-		(default, 1, 10, 'No sirve la consola', '2023/03/17', 'true')
+		(default, 1, 10, 'No sirve la consola', '2023/03/17', 'true');
 ----COMANDOS DML INSERT----
 
 		 
