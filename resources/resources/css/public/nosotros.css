@@ -1,0 +1,364 @@
+* {
+    margin: 0%;
+}
+
+header {
+    height: 50px;
+    background-color: #4E0F8B;
+    position: fixed;
+    width: 100%;
+}
+
+nav {
+    height: 50px;
+    display: flex;
+}
+
+ul {
+    padding-left: 10%;
+    list-style: none;
+    display: flex;
+    column-gap: 50px;
+}
+
+a{
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+.izquierda {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Logo-nav {
+    height: 40px;
+    width: 50px;
+}
+
+.derecha{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.buscador{
+    height: 50%;
+    width: 50%;
+    border-radius: 30px;
+    border: none;
+}
+
+.foto-perfil{
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+
+
+.container-fluid {
+    height: 100vh;
+    background-color: #E4E1E6;
+    width: 100%;
+}
+
+
+
+.container-fluid {
+    display: grid;
+    background-color: #E4E1E6;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    column-gap: 15%;
+}
+
+.mision {
+    height: 65%;
+    width: 30%;
+    background-color: #B8B7B7;
+    margin-top: 150px;
+    border-radius: 20px;
+}
+
+.vision {
+    height: 65%;
+    width: 30%;
+    background-color: #B8B7B7;
+    margin-top: 150px;
+    border-radius: 20px;
+}
+
+p {
+    font-size: 20px
+}
+
+.encabezado {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+h1 {
+    margin-top: 10px;
+}
+
+.texto-mision,
+.texto-vision {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 250px;
+    width: 400px;
+}
+
+.vision-img {
+    height: 200px;
+    width: 200px;
+}
+
+
+
+@media (min-width:360px) and (max-width:767px) {
+    .container-fluid {
+        display: grid !important;
+        background-color: #E4E1E6;
+        height: 140vh;
+        grid-template-columns: 1fr !important;
+        column-gap: 15%;
+    }
+
+    header {
+        height: 30px;
+    }
+
+    nav {
+        height: 30px;
+        display: flex;
+    }
+
+    .nav {
+        display: flex;
+    }
+
+    ul {
+        column-gap: 6px;
+    }
+
+    a {
+        color: #FFFFFF !important;
+        text-decoration: none;
+        font-size: 9px;
+        padding: 0% !important;
+    }
+
+    .izquierda {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .Logo-nav {
+        height: 20px;
+        width: 20px;
+    }
+
+    .derecha {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .buscador {
+        height: 15px;
+        width: 50%;
+        border-radius: 30px;
+        border: none;
+    }
+
+    .foto-perfil {
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: gray;
+    }
+
+    .mision {
+        height: 390px;
+        width: auto;
+        background-color: #B8B7B7;
+        margin-top: 50px;
+        border-radius: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }
+
+    .vision {
+        height: 390px;
+        width: auto;
+        background-color: #B8B7B7;
+        margin-top: 20px;
+        border-radius: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    p {
+        font-size: 20px
+    }
+
+    .encabezado {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    h1 {
+        margin-top: 10px;
+    }
+
+    .texto-mision,
+    .texto-vision {
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        height: 170px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagen {
+        height: 40%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        height: 140px;
+        width: 160px;
+    }
+
+    .vision-img {
+        height: 120px;
+        width: 120px;
+    }
+
+}
+
+@media (min-width:768px) and (max-width:1279px) {
+    .container-fluid {
+        display: grid !important;
+        background-color: #E4E1E6;
+        height: 80vh;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 15%;
+    }
+
+    ul {
+        padding-left: 5%;
+        list-style: none;
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .mision {
+        height: 600px;
+        width: auto;
+        background-color: #B8B7B7;
+        margin-top: 100px;
+        border-radius: 20px;
+        margin-left: 30px;
+
+    }
+
+    .vision {
+        height: 600px;
+        width: auto;
+        background-color: #B8B7B7;
+        margin-top: 100px;
+        border-radius: 20px;
+        margin-right: 30px;
+    }
+
+    p {
+        font-size: 20px
+    }
+
+    .encabezado {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    h1 {
+        margin-top: 10px;
+    }
+
+    .texto-mision,
+    .texto-vision {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        height: 170px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagen {
+        height: 40%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        height: 200px;
+        width: 300px;
+    }
+
+    .vision-img {
+        height: 180px;
+        width: 180px;
+    }
+}
