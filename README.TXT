@@ -18,3 +18,4 @@ Cuando de vaya a descargar el proyecto hacer lo siguiente para que sirva la cone
 - Eliminar las plecas del archivo config.php
 - Agregar la contraseña respectiva de su dispositivo a config.php
 - Cuanto termine todo los cambios de que vaya ha hacer, antes de subir los cambios al repositorio, *BORRAR LA CONTRASEÑA Y VOLVER A PONER LAS PLECAS en config.php
+

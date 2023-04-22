@@ -79,7 +79,7 @@ class Database
         // Se compara el código del error para establecer un error personalizado.
         switch ($code) {
             case '7':
-                self::$error = 'Hubo un problema para conectar con el servidor';
+                //self::$error = 'Hubo un problema para conectar con el servidor';
                 break;
             case '42703':
                 self::$error = 'El nombre de un campo desconocido';
