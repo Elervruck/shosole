@@ -1,10 +1,10 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/genero_queries.php');
+require_once('../../entities/dao/clientes_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class Clientes extends GeneroQueries
+class Clientes extends ClientesQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
