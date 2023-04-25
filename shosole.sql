@@ -23,7 +23,7 @@ create table usuarios(
 	id_usuario serial primary key not null,
 	nombre_usuario character varying(150) not null,
 	apellido_usuario character varying(150) not null,
-	correo_usuario character varying (100) unique not null,
+	correo_usuario character varying(100) unique not null,
 	alias_usuario character varying(50) unique not null,
 	clave_usuario character varying(150) not null,
 	id_genero integer not null,
@@ -65,7 +65,6 @@ create table productos(
 	id_condicion_producto integer not null
 );
 
----ALfredo---
 ---Si---
 create table clientes(
 	id_cliente serial primary key not null,
@@ -79,10 +78,10 @@ create table clientes(
 	clave_cliente character varying (100) not null,
 	id_estado_cliente integer not null,
 	id_genero integer not null,
-	usuario character varying (100) not null
+	foto_cliente character varying(100) null,
+	usuario_cliente character varying (100) not null
 );
 
----Barahona---
 ---Si--
 create table pedidos(
 	id_pedido serial primary key not null,
@@ -108,8 +107,7 @@ create table valoraciones(
 	fecha_comentario timestamp without time zone null,
 	estado_comentario boolean not null
 );
---------TABLAS--------
-																																																																										
+--------TABLAS--------																																																																										
 
 --------LLAVES FORANEAS--------
 ALTER TABLE usuarios
