@@ -59,7 +59,7 @@ create table productos(
 	nombre_producto character varying (150) not null,
 	descripcion_producto character varying(300) not null,
 	imagen_producto character varying(50) not null,
-	estado_producto character varying (50) not null,
+	estado_producto boolean not null,
 	id_usuario integer not null,
 	id_modelo integer not null,
 	id_condicion_producto integer not null
