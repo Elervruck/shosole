@@ -36,6 +36,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
+                /*
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
@@ -48,17 +49,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                */
             case 'readOne':
-                if (!$cargo->setId($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
+                if (!$cargo->setId($_POST['id_cargo'])) {
+                    $result['exception'] = 'Cargo incorrecto';
                 } elseif ($result['dataset'] = $cargo->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Usuario inexistente';
+                    $result['exception'] = 'Cargo inexistente';
                 }
                 break;
+
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$cargo->setId($_POST[''])) {
@@ -78,22 +81,21 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
-                    $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$cargo->setId($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$cargo->readOne()) {
-                    $result['exception'] = 'Usuario inexistente';
+            
+                case 'delete':
+                if (!$cargo->setId($_POST['id_cargo'])) {
+                    $result['exception'] = 'Cargo incorrecto';
+                } elseif (!$data = $cargo->readOne()) {
+                    $result['exception'] = 'Cargo inexistente';
                 } elseif ($cargo->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario eliminado correctamente';
+                        $result['message'] = 'Cargo eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             default:
-                $result['exception'] = 'Acción no disponible fuera de la sesión';
+                $result['exception'] = 'No hay datos registrados';
         }
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

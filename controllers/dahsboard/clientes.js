@@ -90,7 +90,7 @@ async function fillTable(form = null) {
     
                     
                      <td>
-                     <a onclick="openUpdate(${row.id_usuario})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                     <a onclick="openUpdate(${row.id_cliente})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         <a onclick="openDelete(${row.id_cliente })" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">

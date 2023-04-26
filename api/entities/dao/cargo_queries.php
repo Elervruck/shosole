@@ -41,12 +41,9 @@ class CargoQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario, id_genero, id_cargo, id_estado_usuario
-                FROM usuarios
-                INNER JOIN estado_usuarios USING(id_estado_usuario)
-                INNER JOIN cargos  USING (id_cargo)
-                INNER JOIN generos  USING (id_genero) 
-                WHERE id_usuario = ?';
+        $sql = 'SELECT id_cargo, cargo
+                FROM cargos 
+                WHERE id_cargo = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -62,8 +59,8 @@ class CargoQueries
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM usuarios
-                WHERE id_usuario = ?';
+        $sql = 'DELETE FROM cargos
+                WHERE id_cargo = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
