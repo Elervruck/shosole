@@ -46,7 +46,7 @@ create table modelos(
 create table marcas(
 	id_marca serial primary key not null,
 	marca character varying(50) not null,
-	imagen_marca character varying(50) not null
+	imagen_marca character varying(500) not null
 );
 
 create table condicion_productos(
@@ -58,7 +58,7 @@ create table productos(
 	id_producto serial primary key not null,
 	nombre_producto character varying (150) not null,
 	descripcion_producto character varying(300) not null,
-	imagen_producto character varying(50) not null,
+	imagen_producto character varying(500) not null,
 	estado_producto boolean not null,
 	id_usuario integer not null,
 	id_modelo integer not null,
