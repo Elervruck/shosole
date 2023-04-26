@@ -79,26 +79,30 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Correo incorrecto';
             } elseif (!$cliente->setDui($_POST['dui-c'])) {
                 $result['exception'] = 'Alias incorrecto';
-            } elseif (!$cliente->setCorreo($_POST['contra-u'])) {
-                $result['exception'] = Validator::getPasswordError();
-            } elseif (!isset($_POST['genero'])) {
+            } elseif (!$cliente->setCorreo($_POST['correo-c'])) {
+                $result['exception'] = 'Correo incorrecto';
+            } elseif (!isset($_POST['genero-c'])) {
                 $result['exception'] = 'Seleccione un género';
             } elseif (!$cliente->setGenero($_POST['genero'])) {
                 $result['exception'] = 'Género incorrecto';
-            } elseif (!$cliente->setEstado(1)) {
+            } elseif (!$usuario->setClave($_POST['contra-u'])) {
+                $result['exception'] = Validator::getPasswordError();
+            } elseif (!$usuario->setNacimiento($_POST['nacimiento-u'])) {
+                $result['exception'] = 'Nacimiento incorrecto';
+            } elseif (!$cliente->setEstadoCliente(1)) {
                 $result['exception'] = 'Estado incorrecto';
-            } elseif (!$cliente->setCargo(1)) {
-                $result['exception'] = 'Cargo incorrecto';
+            } elseif (!$cliente->setDireccion(1)) {
+                $result['exception'] = 'Dirección incorrecto';
             } elseif (is_uploaded_file($_FILES['im_usu']['tmp_name'])) {
                 if (!$cliente->setImagen($_FILES['im_usu'])) {
                     $result['exception'] = Validator::getFileError();
                 }
             } elseif ($cliente->createRow()) {
                 $result['status'] = 1;
-                if (Validator::saveFile($_FILES['im_usu'], $cliente->getRutaImagen(), $cliente->getImagen())) {
-                    $result['message'] = 'Usuario creado correctamente';
+                if (Validator::saveFile($_FILES['im_cli'], $cliente->getRutaImagen(), $cliente->getImagen())) {
+                    $result['message'] = 'Cliente creado correctamente';
                 } else {
-                    $result['message'] = 'Usuario creado, pero no se guardó la imagen';
+                    $result['message'] = 'Cliente creado, pero no se guardó la imagen';
                 }
             } else {
                 $result['exception'] = Database::getException();

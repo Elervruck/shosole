@@ -36,7 +36,7 @@ class Clientes extends ClientesQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->nombre_cliente = $value;
             return true;
         } else {
@@ -46,7 +46,7 @@ class Clientes extends ClientesQueries
 
     public function setApellido($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->apellido_cliente = $value;
             return true;
         } else {
