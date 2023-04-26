@@ -82,7 +82,7 @@ class Database
                 //self::$error = 'Hubo un problema para conectar con el servidor';
                 break;
             case '42703':
-                self::$error = 'El nombre de un campo desconocido';
+                //self::$error = 'El nombre de un campo desconocido';
                 break;
             case '23505':
                 //self::$error = 'Violación de unicidad';

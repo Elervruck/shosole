@@ -9,7 +9,7 @@ const SERVER_URL = 'http://localhost/shosole/api/';
 *   Función para mostrar un mensaje de confirmación. Requiere la librería sweetalert para funcionar.
 *   Retorno: resultado de la promesa.
 */
-function confirmAction() {
+function confirmAction(messagesa) {
     return Swal.fire({
         title: 'Cerrar Sesión',
         text: '¿Está seguro de cerrar la sesión?',

@@ -36,7 +36,7 @@ class ClientesQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_usuario, dui_cliente, correo_cliente, telefono_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, foto_cliente, usuario_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, foto_cliente, usuario_cliente, nacimiento_cliente
         FROM clientes
         INNER JOIN estado_clientes USING(id_estado_cliente)
         INNER JOIN generos  USING (id_genero)';
@@ -66,8 +66,8 @@ class ClientesQueries
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM usuarios
-                WHERE id_usuario = ?';
+        $sql = 'DELETE FROM clientes
+                WHERE id_cliente = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }

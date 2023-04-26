@@ -78,7 +78,7 @@ create table clientes(
 	clave_cliente character varying (100) not null,
 	id_estado_cliente integer not null,
 	id_genero integer not null,
-	foto_cliente character varying(100) null,
+	foto_cliente character varying(500) null,
 	usuario_cliente character varying (100) not null
 );
 
@@ -269,8 +269,8 @@ values (default, 'Play4', 'es la cuarta videoconsola del modelo PlayStation. Es 
         (default, 'Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 9, 9, 1),
         (default, 'N-Gage','En 2003, Nokia ingresó en el mercado de las consolas de juegos lanzando el terminal portátil N-Gage, ofreciendo Reproductor MP3 y radio FM integrados, reproducción de vídeo, así como telefonía móvil, juego multijugador','N-Gage.jpg','true', 10, 10, 1);
 
-insert into clientes (id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, id_estado_cliente,id_genero, usuario)
-values (default,'Eduardo Alfonso','Barahona Vasquez','06850497-1','eduardobarahoa973@gamil.com','78682132','2005/03/02','San Ramon de los altos','messiesgrande', 1, 1, 'barahona753'),
+	insert into clientes (id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, id_estado_cliente,id_genero, usuario)
+	values (default,'Eduardo Alfonso','Barahona Vasquez','06850497-1','eduardobarahoa973@gamil.com','78682132','2005/03/02','San Ramon de los altos','messiesgrande', 1, 1, 'barahona753'),
 		(default,'Luis Alfredo','Castillo Monterrosa','06850497-2','l.alfredo37009@gmail.com','70614882','2004/11/09','San Marcos','12345', 1, 1, 'Alfrediño2024'),
 		(default,'David Andres','Flores Valles','06850497-3','david05messisex@ricaldone.edu.sv','78682252','2002/05/01','Mejicanos','452342', 1, 1, 'David05'),
 		(default,'Guillermo José','Barahona Hernandez','48930258-9','Guiellermo3023@gamil.com','712819834','2002/05/02','Los planes de Renderos','563565', 1, 1, 'Guillero_34'),

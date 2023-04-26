@@ -6,7 +6,7 @@ require_once('../../helpers/database.php');
 class UsuarioQueries
 {
     /*
-    *   Métodos para gestionar la cuenta del usuario.
+    *   Métodos para gestionar la cuenta del usuario. password_verify
     */
     public function checkUser($alias)
     {
@@ -26,8 +26,7 @@ class UsuarioQueries
         $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if (password_verify($password, $data['clave_usuario'])) {
-            return true;
+        if (password_verify($password, $data['clave_usuario'])) {            return true;
         } else {
             return false;
         }

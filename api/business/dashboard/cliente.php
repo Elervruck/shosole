@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/cliente.php');
+require_once('../../entities/dto/clientes.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -31,7 +31,7 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay ningún dato registrado';
                 }
                 break;
                
@@ -69,7 +69,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'create':
+            /*case 'create':
             $_POST = Validator::validateForm($_POST);
             if (!$cliente->setNombre($_POST['nombre-c'])) {
                 $result['exception'] = 'Nombres incorrectos';
@@ -97,9 +97,9 @@ if (isset($_GET['action'])) {
                 if (!$cliente->setImagen($_FILES['im_usu'])) {
                     $result['exception'] = Validator::getFileError();
                 }
-            } elseif ($cliente->createRow()) {
+             } elseif ($cliente->createRow()) {
                 $result['status'] = 1;
-                if (Validator::saveFile($_FILES['im_cli'], $cliente->getRutaImagen(), $cliente->getImagen())) {
+                if (Validator::saveFile($_FILES['im_cli'], $cliente->getRutaImagen(), $cliente->())) {
                     $result['message'] = 'Cliente creado correctamente';
                 } else {
                     $result['message'] = 'Cliente creado, pero no se guardó la imagen';
@@ -108,6 +108,7 @@ if (isset($_GET['action'])) {
                 $result['exception'] = Database::getException();
             }
             break;
+            
             case 'readOne':
                 if (!$cliente->setId($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -137,28 +138,21 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = Database::getException();
                 }
+                */
                 break;
-            case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
-                    $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$cliente->setId($_POST['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$cliente->readOne()) {
-                    $result['exception'] = 'Usuario inexistente';
+                case 'delete':
+                if (!$cliente->setId($_POST['id_cliente'])) {
+                    $result['exception'] = 'Cliente incorrecto';
+                } elseif (!$data = $cliente->readOne()) {
+                    $result['exception'] = 'Cliente inexistente';
                 } elseif ($cliente->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario eliminado correctamente';
-                } else {
+                        $result['message'] = 'Cliente eliminado correctamente';
+                } else{
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'readAllGenero':
-                if ($result['dataset'] = $cliente->readAllGenero()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+                
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
