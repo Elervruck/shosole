@@ -16,7 +16,7 @@ class Database
             self::$connection = new PDO('pgsql:host=' . SERVER . ';dbname=' . DATABASE . ';port=5432', USERNAME, PASSWORD);
             //Prueba para verificar si la conexión a la base de datos tuvo exitos.
             //print('Conectado');
-            // Se prepara la sentencia SQL.
+            // Se prepara la se//ntencia SQL.
             self::$statement = self::$connection->prepare($query);
             // Se ejecuta la sentencia preparada y se retorna el resultado.
             return self::$statement->execute($values);
@@ -85,7 +85,7 @@ class Database
                 self::$error = 'El nombre de un campo desconocido';
                 break;
             case '23505':
-                self::$error = 'Violación de unicidad';
+                //self::$error = 'Violación de unicidad';
                 break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
