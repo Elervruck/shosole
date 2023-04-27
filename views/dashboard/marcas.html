@@ -71,31 +71,29 @@
             </div>
         </div>
         <!-- Contenido modal de clientes-->
-        <!-- Modal -->
         <div class="modal modal-dialog modal-dialog-centered fade" id="crear-marca" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title color-tittle" id="staticBackdropLabel">Marcas</h5>
+                        <h5 class="modal-title color-tittle" id="modal-title"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="row g-3">
+                        <form method="post" id="save-marca" class="row g-3">
                             <input class="invisible" type="number" id="id" name="id">
                             <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">Nombre</label>
-                                <input type="textex" class="form-control" name="nombre-c" id="nombre-c"">
+                                <label for="inputEmail4" class="form-label">Nombre de la marca</label>
+                                <input type="textex" class="form-control" name="nombre-m" id="nombre-m">
                             </div>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Ingresar imagen</label>
-                                <input class="form-control" type="file" accept="image/*" name="im_cli" id="im_cli">
+                                <input class="form-control" type="file" accept="image/*" name="im_m" id="im_m">
                             </div>
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar campos</button>
-                        <button type="button" class="btn btn-primary">Crear Marca</button>
+                        <button type="submit" class="btn btn-primary">Crear Marca</button>
                     </form>
                     </div>
                 </div>
@@ -115,7 +113,7 @@
 <script type="text/javascript" src="../../resources/js/sweetalert2.all.min.js "></script>
 <script src="../../controllers/dahsboard/account.js"></script>
 <script src="../../controllers/components.js"></script>
-<script src="../../controllers/dahsboard/marcas.js"></script>
+<script src="../../controllers/dahsboard/marca.js"></script>
 
 
 </html>

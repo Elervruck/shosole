@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
                 break;
             
             case 'readAllEstado':
-                if ($result['dataset'] = $cliente->readAllEstado()) {
+                if ($result['dataset'] = $cliente->readAllEstadoCliente()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
@@ -56,6 +56,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+
+                case 'readAllGenero':
+                if ($result['dataset'] = $cliente->readAllGenero()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -69,7 +78,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            /*case 'create':
+            case 'create':
             $_POST = Validator::validateForm($_POST);
             if (!$cliente->setNombre($_POST['nombre-c'])) {
                 $result['exception'] = 'Nombres incorrectos';
@@ -83,32 +92,29 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Correo incorrecto';
             } elseif (!isset($_POST['genero-c'])) {
                 $result['exception'] = 'Seleccione un género';
-            } elseif (!$cliente->setGenero($_POST['genero'])) {
+            } elseif (!$cliente->setGenero($_POST['genero-c'])) {
                 $result['exception'] = 'Género incorrecto';
-            } elseif (!$usuario->setClave($_POST['contra-u'])) {
+            } elseif (!$usuario->setClave($_POST['contra-c'])) {
                 $result['exception'] = Validator::getPasswordError();
             } elseif (!$usuario->setNacimiento($_POST['nacimiento-u'])) {
                 $result['exception'] = 'Nacimiento incorrecto';
             } elseif (!$cliente->setEstadoCliente(1)) {
                 $result['exception'] = 'Estado incorrecto';
             } elseif (!$cliente->setDireccion(1)) {
-                $result['exception'] = 'Dirección incorrecto';
+                $result['exception'] = 'Dirección incorrecta';
             } elseif (is_uploaded_file($_FILES['im_usu']['tmp_name'])) {
                 if (!$cliente->setImagen($_FILES['im_usu'])) {
                     $result['exception'] = Validator::getFileError();
-                }
-             } elseif ($cliente->createRow()) {
+             }elseif ($cliente->createRow()) {
                 $result['status'] = 1;
-                if (Validator::saveFile($_FILES['im_cli'], $cliente->getRutaImagen(), $cliente->())) {
-                    $result['message'] = 'Cliente creado correctamente';
+                if (Validator::saveFile($_FILES['im'], $cliente->getRutaImagen(), $cliente->getFoto())) {
+                    $result['message'] = 'Cliente ha sido creada correctamente';
                 } else {
-                    $result['message'] = 'Cliente creado, pero no se guardó la imagen';
+                    $result['message'] = 'Cliente ha sido creada, pero no se guardó la imagen';
                 }
-            } else {
-                $result['exception'] = Database::getException();
             }
             break;
-            
+        }
             case 'readOne':
                 if (!$cliente->setId($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -138,7 +144,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = Database::getException();
                 }
-                */
+                
                 break;
                 case 'delete':
                 if (!$cliente->setId($_POST['id_cliente'])) {
@@ -156,74 +162,16 @@ if (isset($_GET['action'])) {
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
-    } else {
+    
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
-        switch ($_GET['action']) {
-            case 'readUsers':
-                if ($cliente->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Debe autenticarse para ingresar';
-                } else {
-                    $result['exception'] = 'Parece que no tienes un usuario, empezemos a crearlo';
-                }
-                break;
-            case 'readAllGenero':
-                if ($result['dataset'] = $cliente->readAllGenero()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            case 'signup':
-                $_POST = Validator::validateForm($_POST);
-                if (!$cliente->setNombres($_POST['usuario_primer'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cliente->setApellidos($_POST['apellido_primer'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$cliente->setCorreo($_POST['e_primer'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->setAlias($_POST['ali_primer'])) {
-                    $result['exception'] = 'Alias incorrecto';
-                } elseif (!$cliente->setClave($_POST['contra_primer'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } elseif ($_POST['rescon_primer'] != $_POST['contra_primer']) {
-                    $result['exception'] = 'Claves diferentes';
-                } elseif (!isset($_POST['genero'])) {
-                    $result['exception'] = 'Seleccione un género';
-                } elseif (!$cliente->setGenero($_POST['genero'])) {
-                    $result['exception'] = 'Género incorrecto';
-                } elseif (!$cliente->setEstado(1)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif (!$cliente->setCargo(1)) {
-                    $result['exception'] = 'Cargo incorrecto';
-                } elseif ($cliente->createRow()) {
-                    $result['status'] = 1;
-                    if (is_uploaded_file($_FILES['im_primer']['tmp_name'])) {
-                        if ($cliente->setImagen($_FILES['im_primer'])) {
-                            if (Validator::saveFile($_FILES['im_primer'], $cliente->getRutaImagen(), $cliente->getImagen())) {
-                                $result['message'] = 'Usuario creado correctamente con foto';
-                            } else {
-                                $result['message'] = 'Usuario creado, pero no se guardó la foto';
-                            }
-                        } else {
-                            $result['exception'] = Validator::getFileError();
-                        }
-                    } else {
-                        $result['message'] = 'Usuario creado correctamente sin foto';
-                    }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-
-            default:
-                $result['exception'] = 'Acción no disponible fuera de la sesión';
-        }
-    }
+        
+           
+    
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('content-type: application/json; charset=utf-8');
     // Se imprime el resultado en formato JSON y se retorna al controlador.
     print(json_encode($result));
 } else {
     print(json_encode('Recurso no disponible'));
+}
 }

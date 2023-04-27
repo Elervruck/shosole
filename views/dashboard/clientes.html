@@ -81,11 +81,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Crear clientes</h5>
+                        <h5 class="modal-title" id="modal-title"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="row g-3">
+                        <form method="post" class="row g-3" id="save-form">
+                            <input class="invisible" type="number" id="id" name="id">
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Nombre</label>
                                 <input type="textex" class="form-control" name="nombre-c" id="nombre-c"">
@@ -96,11 +97,11 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label">Usuario</label>
-                                <input type="textex" class="form-control" name="usuario-c" id="usuario-c">
+                                <input type="text" class="form-control" name="usuario-c" id="usuario-c">
                             </div>
                             <div class=" col-md-6">
                                 <label for="inputPassword4" class="form-label">Dui</label>
-                                <input type="email" class="form-control" name="dui-c" id="dui-c">
+                                <input type="text" class="form-control" name="dui-c" id="dui-c">
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPassword4" class="form-label">Teléfono</label>
@@ -108,11 +109,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPassword4" class="form-label">Nacimiento</label>
-                                <input type="date" class="form-control" name="nacimiento-u" id="nacimiento-u">
+                                <input type="date" class="form-control" name="nacimiento-c" id="nacimiento-c">
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPassword4" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="inputPassword4">
+                                <input type="password" class="form-control" id="contra-c" name="contra-c">
                             </div>
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label">Correo electróncio</label>
@@ -136,12 +137,13 @@
                                 <label for="formFile" class="form-label">Ingresar imagen</label>
                                 <input class="form-control" type="file" accept="image/*" name="im_cli" id="im_cli">
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar campos</button>
+                                <button type="submit" class="btn btn-primary">Crear clientes</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar campos</button>
-                        <button type="button" class="btn btn-primary">Crear clientes</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -8,8 +8,9 @@ class Validator
     private static $passwordError = null;
     private static $fileError = null;
     private static $fileName = null;
-
-
+    private static $usuario = null;
+    public static $maximoIntentos = 3;
+    public static $intentosActuales = 0;
     /*
     *   Método para obtener el error al validar una contraseña.
     */
@@ -105,6 +106,57 @@ class Validator
         }
     }
 
+    public static function validateAttempts($usuario, $contrasenia) {
+        if ($usuario == "nombredeusuario" && $contrasenia == "contrasenia") {
+            // Si los datos son correctos, resetear el contador de intentos a cero
+            self::$intentosActuales = 0;
+            return true;
+          } else {
+            // Si los datos son incorrectos, incrementar el contador de intentos
+            self::$intentosActuales++;
+            // Comprobar si se han excedido los intentos permitidos
+            if (self::$intentosActuales >= self::$maximoIntentos) {
+              return false;
+            } else {
+              return true;
+            }
+        } 
+    } 
+    
+    
+/*
+    public static function validateAttempts2($usuario, $contrasenia) {
+        // Iniciar o reanudar la sesión
+        session_start();
+    
+        // Comprobar si existe la variable de sesión "intentos"
+        if (!isset($_SESSION['intentos'])) {
+            // Si no existe, inicializarla a cero
+            $_SESSION['intentos'] = 0;
+        }
+    
+        // Incrementar el contador de intentos
+        $_SESSION['intentos']++;
+    
+        // Comprobar si se han excedido los intentos permitidos
+        if ($_SESSION['intentos'] >= self::$maximoIntentos) {
+            // Si se han excedido, destruir la sesión y bloquear el inicio de sesión
+            session_destroy();
+            return false;
+        }
+    
+        // Verificar las credenciales del usuario
+        if ($usuario == "nombredeusuario" && $contrasenia == "contrasenia") {
+            // Si las credenciales son correctas, resetear el contador de intentos a cero
+            $_SESSION['intentos'] = 0;
+            return true;
+        } else {
+            // Si las credenciales son incorrectas, devolver false
+            return false;
+        }
+    }
+    
+
     /*
     *   Método para validar un dato booleano.
     *   Parámetros: $value (dato a validar).
@@ -118,7 +170,8 @@ class Validator
             return false;
         }
     }
-
+          
+        
     /*
     *   Método para validar una cadena de texto (letras, digitos, espacios en blanco y signos de puntuación).
     *   Parámetros: $value (dato a validar), $minimum (longitud mínima) y $maximum (longitud máxima).

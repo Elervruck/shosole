@@ -10,7 +10,7 @@ const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-usuario'))
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-const CARGO_API = 'business/dashboard/cargo.php';
+const CGO_API = 'business/dashboard/cargo.php';
 
 // Constante tipo objeto para establecer las opciones del componente Modal.
 const OPTIONS = {
@@ -83,6 +83,7 @@ async function fillTable(form = null) {
                     <td>${row.alias_usuario}</td>
                     <td>${row.genero}</td>
                     <td>${row.cargo}</td>
+                    <td>${row.correo_usuario}</td>
                     <td>${row.estado_usuario}</td>
                     <td><img src="${SERVER_URL}images/usuario/${row.foto_usuario}" class="materialboxed" height="100"></td>                    
                         
@@ -118,9 +119,9 @@ function openCreate() {
     MODAL_TITLE.textContent = 'Crear Usuario';
 
     // cargar cmb
-    fillSelect(CARGO_API, 'readAll', 'cargo-u', 'Seleccione un cargo');
-    fillSelect(USUARIO_API, 'readAllGenero', 'genero', 'Seleccione un género');
-    fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Seleccione un estado');
+    fillSelect(CGO_API, 'readAll', 'cargo-u', 'Elija un cargo');
+    fillSelect(USUARIO_API, 'readAllGenero', 'genero-u', 'Elija un género');
+    fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Elija un estado');
 
 }
 

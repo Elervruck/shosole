@@ -1,12 +1,12 @@
 // Constante para completar la ruta de la API.
 const MARCA_API = 'business/dashboard/marca.php';
 // Constante para establecer el formulario de buscar.
-/*const SEARCH_FORM = document.getElementById('search-form');
+const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
-const SAVE_FORM = document.getElementById('save-form');
+const SAVE_FORM = document.getElementById('save-marca');
 // Constante para establecer el título de la modal.
 const MODAL_TITLE = document.getElementById('modal-title');
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-usuario'));
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-marca'));
 // Constantes para establecer el contenido de la tabla.*/
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
-
+*/
 // Método manejador de eventos para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -41,14 +41,13 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const JSON = await dataFetch(MARCA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         SAVE_MODAL.hide();
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -77,9 +76,9 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.marca}</td>
-                    <td><img src="${SERVER_URL}images/marca/${row.imagen_marca}" class="materialboxed" height="100"></td>                                     
+                    <td><img src="${SERVER_URL}images/marcas/${row.imagen_marca}" class="materialboxed" height="100"></td>                                     
                      <td>
-                     <a onclick="openUpdate(${row.id_marca  })" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                     <a onclick="openUpdate(${row.id_marca})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         <a onclick="openDelete(${row.id_marca })" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
@@ -102,25 +101,23 @@ async function fillTable(form = null) {
 *   Función para preparar el formulario al momento de insertar un registro.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
-
+*/
 
 function openCreate() {
 
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear Usuario';
-
+    MODAL_TITLE.textContent = 'Crear Marca';
+    SAVE_MODAL.show();
+    SAVE_FORM.reset();
     // cargar cmb
-    fillSelect(CARGO_API, 'readAll', 'cargo-u', 'Seleccione un cargo');
-    fillSelect(USUARIO_API, 'readAllGenero', 'genero', 'Seleccione un género');
-    fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Seleccione un estado');
-
+    
 }
 
-/
-*   Función asíncrona para preparar el formulario al momento de actualizar un registro.
+/*
+  Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
-*
+/*
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
@@ -157,14 +154,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el cargo de forma permanente?');
+    const RESPONSE = await confirmAction('¿Estás seguro que quieres eliminar la marca de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_cargo', id);
+        FORM.append('id_marca', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(CARGO_API, 'delete', FORM);
+        const JSON = await dataFetch(MARCA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

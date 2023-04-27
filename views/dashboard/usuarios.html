@@ -52,8 +52,9 @@
                                 <th scope="col">Nombres</th>
                                 <th scope="col">Apellidos</th>
                                 <th scope="col">Alias</th>
-                                <th scope="col">Genero</th>
+                                <th scope="col">Género</th>
                                 <th scope="col">Cargo</th>
+                                <th scope="col">Correo Electrónico</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Foto</th>
                                 <th scope="col">Acciones</th>
@@ -66,68 +67,65 @@
             </div>
         </div>
         <!-- Contenido modal -->
-        <div id="crear-usuario" class="modal  fade bd-example-modal-lg input-group input-group-sm mb-3" data-bs-backdrop="static" tabindex="-1" role="dialog"
-            aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title color-tittle" id="modal-title"></h5>
-                    </div>
-                    <form method="post" id="save-form">
+        <div class="modal fade" id="crear-usuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> 
+                    <form method="post" class="row g-3" id="save-form">
                         <input class="invisible" type="number" id="id" name="id">
-                        <div class="mb-3 text-color row ">
-                            <label>Marca</label>
-                            <input type="text" class="imput-per" name="nombre-u" id="nombre-u">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombre-u" id="nombre-u"">
                         </div>
-                        <br>
-                        <div class="row">
-                            <label>Apellidos</label>
-                            <input type="text" class="" name="apellidos-u" id="apellidos-u">
+                        <div class=" col-md-6">
+                            <label for="inputPassword4" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" name="apellidos-u" id="apellidos-u">
                         </div>
-                        <br>
-                        <div class="row">
-                            <label>Correo electrónico</label>
-                            <input type="email" class="" name="correo-u" id="correo-u">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Alias</label>
+                            <input type="text" class="form-control" name="alias-u" id="alias-u">
                         </div>
-                        <br>
-                        <div class="">
-                            <label>Alias</label>
-                            <input type="text" class="" name="alias-u" id="alias-u">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" name="clave-u" id="clave-u">
                         </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <label>Contraseña</label>
-                            <input type="password" class="" name="contra-u" id="contra-u">
+                        <div class="col-md-12">
+                            <label for="inputPassword4" class="form-label">Correo electróncio</label>
+                            <input type="email" class="form-control" name="correo-u" id="correo-u">
                         </div>
-                        <br>
-                        <div class="row tan-select">
-                            <label class="form-label">Género</label>
-                            <select class="format-cmb" id="genero" name="genero" required>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Género</label>
+                            <select id="genero-u" name="genero-u" class="form-select">
                             </select>
                         </div>
-                        <br>
-                        <div class="row">
-                            <label class="form-label">Cargo</label>
-                            <select class="format-cmb" id="cargo-u" name="cargo-u" required>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Estado</label>
+                            <select id="estado-u" id="estado-u" name="estado-u" class="form-select">
                             </select>
                         </div>
-                        <br>
-                        <div class="row">
-                            <label class="form-label">Estado</label>
-                            <select class="format-cmb" id="estado-u" name="estado-u" required>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Cargo</label>
+                            <select id="cargo-u" name="cargo-u" class="form-select">
                             </select>
                         </div>
-                        <br>
-                        <div class="row">
+                        <div class="mb-3">
                             <label for="formFile" class="form-label">Ingresar imagen</label>
-                            <input class="" type="file" accept="image/*" name="im_usu" id="im_usu">
+                            <input class="form-control" type="file" accept="image/*" name="im_u" id="im_u">
                         </div>
-                        <button type="submit" class="btn btn-primary">Crear usuario</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar campos</button>
+                            <button type="submit" class="btn btn-primary">Crear clientes</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
     </main>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"

@@ -94,16 +94,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'readAllCargo':
-                if ($result['dataset'] = $usuario->readAllCargo()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
             case 'readAllEstado':
                 if ($result['dataset'] = $usuario->readAllEstado()) {
                     $result['status'] = 1;
@@ -128,40 +118,40 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'create':
-            $_POST = Validator::validateForm($_POST);
-            if (!$usuario->setNombres($_POST['nombre-u'])) {
-                $result['exception'] = 'Nombres incorrectos';
-            } elseif (!$usuario->setApellidos($_POST['apellidos-u'])) {
-                $result['exception'] = 'Apellidos incorrectos';
-            } elseif (!$usuario->setCorreo($_POST['correo-u'])) {
-                $result['exception'] = 'Correo incorrecto';
-            } elseif (!$usuario->setAlias($_POST['alias-u'])) {
-                $result['exception'] = 'Alias incorrecto';
-            } elseif (!$usuario->setClave($_POST['contra-u'])) {
-                $result['exception'] = Validator::getPasswordError();
-            } elseif (!isset($_POST['genero'])) {
-                $result['exception'] = 'Seleccione un género';
-            } elseif (!$usuario->setGenero($_POST['genero'])) {
-                $result['exception'] = 'Género incorrecto';
-            } elseif (!$usuario->setEstado(1)) {
-                $result['exception'] = 'Estado incorrecto';
-            } elseif (!$usuario->setCargo(1)) {
-                $result['exception'] = 'Cargo incorrecto';
-            } elseif (is_uploaded_file($_FILES['im_usu']['tmp_name'])) {
-                if (!$usuario->setImagen($_FILES['im_usu'])) {
-                    $result['exception'] = Validator::getFileError();
-                }
-            } elseif ($usuario->createRow()) {
-                $result['status'] = 1;
-                if (Validator::saveFile($_FILES['im_usu'], $usuario->getRutaImagen(), $usuario->getImagen())) {
-                    $result['message'] = 'Usuario creado correctamente';
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->setNombres($_POST['nombre-u'])) {
+                    $result['exception'] = 'Nombres incorrectos';
+                } elseif (!$usuario->setApellidos($_POST['apellidos-u'])) {
+                    $result['exception'] = 'Apellidos incorrectos';
+                } elseif (!$usuario->setCorreo($_POST['correo-u'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } elseif (!$usuario->setAlias($_POST['alias-u'])) {
+                    $result['exception'] = 'Alias incorrecto';
+                } elseif (!$usuario->setClave($_POST['clave-u'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif (!isset($_POST['genero-u'])) {
+                    $result['exception'] = 'Seleccione un género';
+                } elseif (!$usuario->setGenero($_POST['genero-u'])) {
+                    $result['exception'] = 'Género incorrecto';
+                } elseif (!$usuario->setEstado($_POST['estado-u'])) {
+                    $result['exception'] = 'Estado es incorrecto';
+                } elseif (!$usuario->setCargo($_POST['cargo-u'])) {
+                    $result['exception'] = 'Cargo incorrecto';
+                /* } elseif (is_uploaded_file($_FILES['im_usu']['tmp_name'])) {
+                    if (!$usuario->setImagen($_FILES['im_usu'])) {
+                        $result['exception'] = Validator::getFileError();
+                    }*/
+                } elseif ($usuario->createRow()) {
+                    $result['status'] = 1;
+                    if (Validator::saveFile($_FILES['im_usu'], $usuario->getRutaImagen(), $usuario->getImagen())) {
+                        $result['message'] = 'Usuario creado correctamente';
+                    } else {
+                        $result['message'] = 'Usuario creado, pero no se guardó la imagen';
+                    }
                 } else {
-                    $result['message'] = 'Usuario creado, pero no se guardó la imagen';
+                    $result['exception'] = Database::getException();
                 }
-            } else {
-                $result['exception'] = Database::getException();
-            }
-            break;
+                break;
             case 'readOne':
                 if (!$usuario->setId($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -206,7 +196,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'readAllGenero':
+                case 'readAllGenero':
                 if ($result['dataset'] = $usuario->readAllGenero()) {
                     $result['status'] = 1;
                 } else {
@@ -227,7 +217,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Parece que no tienes un usuario, empezemos a crearlo';
                 }
                 break;
-            case 'readAllGenero':
+                case 'readAllGenero':
                 if ($result['dataset'] = $usuario->readAllGenero()) {
                     $result['status'] = 1;
                 } else {

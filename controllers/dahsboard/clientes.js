@@ -1,12 +1,12 @@
 // Constante para completar la ruta de la API.
 const CLIENTE_API = 'business/dashboard/cliente.php';
 // Constante para establecer el formulario de buscar.
-/*const SEARCH_FORM = document.getElementById('search-form');
+const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
 // Constante para establecer el título de la modal.
 const MODAL_TITLE = document.getElementById('modal-title');
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-usuario'));
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-cliente'));
 // Constantes para establecer el contenido de la tabla.*/
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
 });
-
+/*
 // Método manejador de eventos para cuando se envía el formulario de buscar.
-/*SEARCH_FORM.addEventListener('submit', (event) => {
+SEARCH_FORM.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
-
+*/
 // Método manejador de eventos para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -41,7 +41,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const JSON = await dataFetch(CLIENTE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         SAVE_MODAL.hide();
@@ -85,7 +85,7 @@ async function fillTable(form = null) {
                     <td>${row.direccion_cliente}</td>
                     <td>${row.estado_cliente}</td>
                     <td>${row.genero}</td>
-                    <td><img src="${SERVER_URL}images/usuario/${row.foto_cliente}" class="materialboxed" height="100"></td>                    
+                    <td><img src="${SERVER_URL}images/clientes/${row.foto_cliente}" class="materialboxed" height="100"></td>                    
                     <td>${row.usuario_cliente}</td>
     
                     
@@ -114,24 +114,24 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 
-
+*/
 function openCreate() {
 
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear Usuario';
+    MODAL_TITLE.textContent = 'Crear Cliente';
 
     // cargar cmb
-    fillSelect(CARGO_API, 'readAll', 'cargo-u', 'Seleccione un cargo');
-    fillSelect(USUARIO_API, 'readAllGenero', 'genero', 'Seleccione un género');
-    fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Seleccione un estado');
+    fillSelect(CLIENTE_API, 'readAllGenero', 'genero-c', 'Seleccione un género');
+    fillSelect(CLIENTE_API, 'readAllEstado', 'estado-u', 'Seleccione un estado');
 
 }
 
-/
+/*
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
-*
+*/
+/*
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
@@ -160,7 +160,7 @@ async function openUpdate(id) {
         sweetAlert(2, JSON.exception, false);
     }
 }
-*
+/*
 
 *   Función asíncrona para eliminar un registro.
 *   Parámetros: id (identificador del registro seleccionado).

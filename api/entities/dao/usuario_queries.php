@@ -86,13 +86,7 @@ class UsuarioQueries
         return Database::getRows($sql);
     }
 
-    public function readAllCargo()
-    {
-        $sql = 'SELECT id_cargo, cargo
-        FROM cargos
-        ORDER BY id_cargo';
-        return Database::getRows($sql);
-    }
+    
 
     public function readAllEstado()
     {
@@ -104,7 +98,7 @@ class UsuarioQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario
         FROM usuarios
         INNER JOIN estado_usuarios USING(id_estado_usuario)
         INNER JOIN cargos  USING (id_cargo)
@@ -115,7 +109,7 @@ class UsuarioQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario, id_genero, id_cargo, id_estado_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario, id_genero, id_cargo, id_estado_usuario
                 FROM usuarios
                 INNER JOIN estado_usuarios USING(id_estado_usuario)
                 INNER JOIN cargos  USING (id_cargo)

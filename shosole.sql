@@ -113,67 +113,67 @@ create table valoraciones(
 ALTER TABLE usuarios
 ADD CONSTRAINT fk_estado_usuario
 FOREIGN KEY (id_estado_usuario)
-REFERENCES estado_usuarios(id_estado_usuario);
+REFERENCES estado_usuarios(id_estado_usuario) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios
 ADD CONSTRAINT fk_cargo_usuario
 FOREIGN KEY (id_cargo)
-REFERENCES cargos(id_cargo);
+REFERENCES cargos(id_cargo) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios
 ADD CONSTRAINT fk_genero_usuarios
 FOREIGN KEY (id_genero)
-REFERENCES generos(id_genero);
+REFERENCES generos(id_genero) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE productos
 ADD CONSTRAINT fk_usuario_producto
 FOREIGN KEY (id_usuario)
-REFERENCES usuarios(id_usuario);
+REFERENCES usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE modelos
 ADD CONSTRAINT fk_marca_modelo
 FOREIGN KEY (id_marca)
-REFERENCES marcas(id_marca);
+REFERENCES marcas(id_marca) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE productos
 ADD CONSTRAINT fk_modelo_producto
 FOREIGN KEY (id_modelo)
-REFERENCES modelos(id_modelo);
+REFERENCES modelos(id_modelo) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE detalle_pedidos
 ADD CONSTRAINT fk_producto_detalle
 FOREIGN KEY (id_producto)
-REFERENCES productos(id_producto);
+REFERENCES productos(id_producto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE productos
 ADD CONSTRAINT fk_condicion_producto
 FOREIGN KEY (id_condicion_producto)
-REFERENCES condicion_productos(id_condicion_producto);
+REFERENCES condicion_productos(id_condicion_producto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE clientes
 ADD CONSTRAINT fk_genero_cliente
 FOREIGN KEY (id_genero)
-REFERENCES generos(id_genero);  
+REFERENCES generos(id_genero) ON DELETE CASCADE ON UPDATE CASCADE;  
 
 ALTER TABLE clientes
 ADD CONSTRAINT fk_estado_cliente
 FOREIGN KEY (id_estado_cliente)
-REFERENCES estado_clientes(id_estado_cliente);
+REFERENCES estado_clientes(id_estado_cliente) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE pedidos
 ADD CONSTRAINT fk_cliente_pedido
 FOREIGN KEY (id_cliente)
-REFERENCES clientes(id_cliente);
+REFERENCES clientes(id_cliente) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE detalle_pedidos
 ADD CONSTRAINT fk_pedido_detalle
 FOREIGN KEY (id_pedido)
-REFERENCES pedidos(id_pedido);
+REFERENCES pedidos(id_pedido) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE valoraciones
 ADD CONSTRAINT fk_detalle_valoracione
 FOREIGN KEY (id_detalle_pedido)
-REFERENCES detalle_pedidos(id_detalle_pedido);
+REFERENCES detalle_pedidos(id_detalle_pedido) ON DELETE CASCADE ON UPDATE CASCADE;
 --------LLAVES FORANEAS--------
 
 
@@ -269,7 +269,7 @@ values (default, 'Play4', 'es la cuarta videoconsola del modelo PlayStation. Es 
         (default, 'Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 9, 9, 1),
         (default, 'N-Gage','En 2003, Nokia ingresó en el mercado de las consolas de juegos lanzando el terminal portátil N-Gage, ofreciendo Reproductor MP3 y radio FM integrados, reproducción de vídeo, así como telefonía móvil, juego multijugador','N-Gage.jpg','true', 10, 10, 1);
 
-	insert into clientes (id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, id_estado_cliente,id_genero, usuario)
+	insert into clientes (id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, id_estado_cliente,id_genero, usuario_cliente)
 	values (default,'Eduardo Alfonso','Barahona Vasquez','06850497-1','eduardobarahoa973@gamil.com','78682132','2005/03/02','San Ramon de los altos','messiesgrande', 1, 1, 'barahona753'),
 		(default,'Luis Alfredo','Castillo Monterrosa','06850497-2','l.alfredo37009@gmail.com','70614882','2004/11/09','San Marcos','12345', 1, 1, 'Alfrediño2024'),
 		(default,'David Andres','Flores Valles','06850497-3','david05messisex@ricaldone.edu.sv','78682252','2002/05/01','Mejicanos','452342', 1, 1, 'David05'),
@@ -460,7 +460,7 @@ select * from detalle_pedidos
 	select * from valoraciones 
 	where fecha_comentario 
 	between '2023/03/12' and '2023/03/17'
-	
+
 	select * from pedidos
 	where fecha_pedido
 	between '2023/03/07' and '2023/03/19'

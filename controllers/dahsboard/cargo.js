@@ -1,12 +1,12 @@
 // Constante para completar la ruta de la API.
 const CARGO_API = 'business/dashboard/cargo.php';
 // Constante para establecer el formulario de buscar.
-/*const SEARCH_FORM = document.getElementById('search-form');
+const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
 const SAVE_FORM = document.getElementById('save-form');
 // Constante para establecer el título de la modal.
 const MODAL_TITLE = document.getElementById('modal-title');
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-usuario'));
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-cargo'));
 // Constantes para establecer el contenido de la tabla.*/
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
@@ -101,25 +101,20 @@ async function fillTable(form = null) {
 *   Función para preparar el formulario al momento de insertar un registro.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
-
+*/
 
 function openCreate() {
 
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear Usuario';
-
-    // cargar cmb
-    fillSelect(CARGO_API, 'readAll', 'cargo-u', 'Seleccione un cargo');
-    fillSelect(USUARIO_API, 'readAllGenero', 'genero', 'Seleccione un género');
-    fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Seleccione un estado');
-
+    MODAL_TITLE.textContent = 'Crear Cargo';
 }
-
+/*
 /
 *   Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 *
+
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();

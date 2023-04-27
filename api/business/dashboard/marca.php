@@ -36,20 +36,28 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
-                /*
+                
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$marca->setCargo($_POST['ca'])) {
-                    $result['exception'] = 'Nombres incorrectos';
+                if (!$marca->setMarca($_POST['nombre-m'])) {
+                    $result['exception'] = 'Marca incorrectos';
+                } elseif (!is_uploaded_file($_FILES['im_m']['tmp_name'])) {
+                    $result['exception'] = 'Seleccione una imagen';
+                } elseif (!$marca->setImagen($_FILES['im_m'])) {
+                    $result['exception'] = Validator::getFileError();            
                 } elseif ($marca->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario creado correctamente';
+                    if (Validator::saveFile($_FILES['im_m'], $marca->getRutaImagen(), $marca->getImagen())) {
+                        $result['message'] = 'La marca ha sido creada correctamente';
+                    } else {
+                        $result['message'] = 'La marca ha sido creada, pero no se guardó la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                */
+                
             case 'readOne':
                 if (!$marca->setId($_POST['id_cargo'])) {
                     $result['exception'] = 'Cargo incorrecto';
@@ -89,7 +97,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Marca inexistente';
                 } elseif ($marca->deleteRow()) {
                     $result['status'] = 1;
-                        $result['message'] = 'Marca eliminado correctamente';
+                        $result['message'] = 'La marca eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

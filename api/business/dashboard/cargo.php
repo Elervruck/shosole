@@ -36,20 +36,20 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
-                /*
+                
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$cargo->setCargo($_POST['ca'])) {
-                    $result['exception'] = 'Nombres incorrectos';
+                if (!$cargo->setCargo($_POST['cargo-c'])) {
+                    $result['exception'] = 'Cargo incorrecto';
                 } elseif ($cargo->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario creado correctamente';
+                    $result['message'] = 'Cargo creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                */
+                
             case 'readOne':
                 if (!$cargo->setId($_POST['id_cargo'])) {
                     $result['exception'] = 'Cargo incorrecto';
