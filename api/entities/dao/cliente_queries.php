@@ -40,7 +40,6 @@ class ClientesQueries
         FROM clientes
         INNER JOIN estado_clientes USING(id_estado_cliente)
         INNER JOIN generos  USING (id_genero)';
-
         return Database::getRows($sql);
     }
 

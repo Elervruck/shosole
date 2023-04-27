@@ -61,20 +61,13 @@ function sweetAlert(type, text, timer, url = null) {
             position: 'bottom-end',
             timer: 4000,
             timerProgressBar: true,
-            /*imageUrl: '../resources/img/hongo_mario.jpg',
-            imageWidth: 220,
-            imageHeight: 220,
-            imageAlt: 'Custom image',*/
             title: title,
             text: text,
             icon: icon,
             color: '#4E0F8B',
             background: '#ffffff',
             showConfirmButton: false,
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: true,
-            topKeydownPropagation: false
+            allowEscapeKey: false
         }).then(function () {
             location.href = url
         });
@@ -90,10 +83,7 @@ function sweetAlert(type, text, timer, url = null) {
             color: '#ffffff',
             background: '#4E0F8B',
             showConfirmButton: false,
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: true,
-            topKeydownPropagation: false
+            allowEscapeKey: false
         });
     }
 }

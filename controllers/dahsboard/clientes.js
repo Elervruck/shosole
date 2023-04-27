@@ -47,8 +47,6 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         SAVE_MODAL.hide();
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
-        // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {

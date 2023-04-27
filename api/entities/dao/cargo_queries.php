@@ -25,9 +25,9 @@ class CargoQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, foto_usuario, id_cargo, id_genero, id_estado_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombres_usuario, $this->apellidos_usuario, $this->correo_usuario, $this->alias_usuario, $this->clave_usuario, $this->foto_usuario, $this->id_cargo, $this->id_genero, $this->id_estado);
+        $sql = 'INSERT INTO cargos(cargo)
+                VALUES(?)';
+        $params = array($this->cargo);
         return Database::executeRow($sql, $params);
     }
 

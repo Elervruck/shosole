@@ -94,7 +94,7 @@ class Database
                 //self::$error = 'Violación de llave foránea';
                 break;
             default:
-                self::$error = $message;
+                //self::$error = $message;
         }
     }
 

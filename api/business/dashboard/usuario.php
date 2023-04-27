@@ -137,16 +137,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Estado es incorrecto';
                 } elseif (!$usuario->setCargo($_POST['cargo-u'])) {
                     $result['exception'] = 'Cargo incorrecto';
-                /* } elseif (is_uploaded_file($_FILES['im_usu']['tmp_name'])) {
-                    if (!$usuario->setImagen($_FILES['im_usu'])) {
-                        $result['exception'] = Validator::getFileError();
-                    }*/
                 } elseif ($usuario->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['im_usu'], $usuario->getRutaImagen(), $usuario->getImagen())) {
-                        $result['message'] = 'Usuario creado correctamente';
+                    if (is_uploaded_file($_FILES['im_u']['tmp_name'])) {
+                        if ($usuario->setImagen($_FILES['im_u'])) {
+                            if (Validator::saveFile($_FILES['im_u'], $usuario->getRutaImagen(), $usuario->getImagen())) {
+                                $result['message'] = 'Usuario creado correctamente';
+                            } else {
+                                $result['message'] = 'Usuario creado, pero no se guardó la imagen';
+                            }
+                        } else {
+                            $result['exception'] = Validator::getFileError();
+                        }
                     } else {
-                        $result['message'] = 'Usuario creado, pero no se guardó la imagen';
+                        $result['message'] = 'Usuario creado correctamente sin foto';
                     }
                 } else {
                     $result['exception'] = Database::getException();

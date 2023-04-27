@@ -128,7 +128,7 @@ class Clientes extends ClientesQueries
     public function setEstadoCliente($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->clave_cliente = $value;
+            $this->id_estado_cliente = $value;
             return true;
         } else {
             return false;
