@@ -17,12 +17,12 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $marca->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . 'registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay datos registrados';
-                }
+                } 
                 break;
             case 'search':
                 $_POST = Validator::validateForm($_POST);

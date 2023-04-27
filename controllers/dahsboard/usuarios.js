@@ -116,8 +116,7 @@ async function fillTable(form = null) {
 function openCreate() {
 
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear Usuario';
-
+;
     // cargar cmb
     fillSelect(CGO_API, 'readAll', 'cargo-u', 'Elija un cargo');
     fillSelect(USUARIO_API, 'readAllGenero', 'genero-u', 'Elija un género');

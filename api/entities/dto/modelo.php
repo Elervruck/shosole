@@ -9,6 +9,8 @@ class Cargo extends ModeloQueries
     // Declaración de atributos (propiedades).
     protected $id = null;
     protected $modelo = null;
+    protected $id_marca = null;
+
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
@@ -31,6 +33,16 @@ class Cargo extends ModeloQueries
             return false;
         }
     }
+
+    public function setMarca($value)
+    {
+        if (Validator::validateAlvalidateNaturalNumberhabetic($value)) {
+            $this->id_marca = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -41,7 +53,12 @@ class Cargo extends ModeloQueries
 
     public function getCargo()
     {
-        return $this->cargo;
+        return $this->modelo;
+    }
+
+    public function getCargo()
+    {
+        return $this->id_marca;
     }
 
    }
