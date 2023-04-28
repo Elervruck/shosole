@@ -139,11 +139,7 @@ async function openUpdate(id) {
         SAVE_MODAL.show();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar usuario';
-        // Se deshabilitan los campos necesarios.
-        /*document.getElementById('alias').disabled = true;
-        document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;*/
-        // Se inicializan los campos del formulario.
+        
         document.getElementById('id').value = JSON.dataset.id_usuario;
         document.getElementById('nombre-u').value = JSON.dataset.nombre_usuario;
         document.getElementById('apellidos-u').value = JSON.dataset.apellido_usuario;

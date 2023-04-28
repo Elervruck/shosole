@@ -45,7 +45,7 @@ class ClientesQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, id_estado_cliente, id_genero
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, id_estado_cliente, id_genero, usuario_cliente, foto_cliente
                 FROM clientes
                 INNER JOIN estado_clientes USING(id_estado_cliente)
                 INNER JOIN generos  USING (id_genero) 
@@ -58,9 +58,9 @@ class ClientesQueries
     {
         ($this->foto_cliente) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->foto_cliente = $current_image;
         $sql = 'UPDATE clientes 
-                SET foto_cliente = ?, nombre_cliente = ?, apellido_cliente =?, dui_cliente =?, correo_cliente =?, telefono_cliente =?, nacimiento_cliente =?, direccion_cliente =?, clave_cliente =?, id_estado_cliente =?, id_genero =?, foto_cliente =?, usuario_cliente =?
+                SET foto_cliente = ?, nombre_cliente = ?, apellido_cliente =?, dui_cliente =?, correo_cliente =?, telefono_cliente =?, nacimiento_cliente =?, direccion_cliente =?, clave_cliente =?, id_estado_cliente =?, id_genero =?, usuario_cliente =?
                 WHERE id_cliente = ?';
-        $params = array($this->foto_cliente, $this->nombre_cliente, $this->apellido_cliente, , $this->dui_cliente, , $this->correo_cliente, , $this->telefono_cliente, , $this->nacimiento_cliente, , $this->clave_cliente, $this->id_estado_cliente, , $this->id_genero, , $this->usuario_cliente,  $this->id);
+        $params = array($this->foto_cliente, $this->nombre_cliente, $this->apellido_cliente, $this->dui_cliente, $this->correo_cliente, $this->telefono_cliente, $this->nacimiento_cliente, $this->direccion_cliente, $this->clave_cliente, $this->id_estado_cliente, $this->id_genero, $this->usuario_cliente, $this->id);
         return Database::executeRow($sql, $params);
     }
 

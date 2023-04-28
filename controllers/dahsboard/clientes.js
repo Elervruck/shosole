@@ -10,6 +10,7 @@ const SAVE_MODAL = new bootstrap.Modal(document.getElementById('crear-cliente'))
 // Constantes para establecer el contenido de la tabla.*/
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
+
 // Constante tipo objeto para establecer las opciones del componente Modal.
 const OPTIONS = {
     dismissible: false
@@ -129,31 +130,36 @@ function openCreate() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-/*
+
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_usuario', id);
+    FORM.append('id_cliente', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
+    const JSON = await dataFetch(CLIENTE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.shaw();
+        SAVE_MODAL.show();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar usuario';
-        // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
-        document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
+        document.getElementById('id').value = JSON.dataset.id_cliente;
+        document.getElementById('nombre-c').value = JSON.dataset.nombre_cliente;
+        document.getElementById('apellidos-c').value = JSON.dataset.apellido_cliente;
+        document.getElementById('correo-c').value = JSON.dataset.correo_cliente;
+        document.getElementById('usuario-c').value = JSON.dataset.usuario_cliente;
+        document.getElementById('dui-c').value = JSON.dataset.dui_cliente;
+        document.getElementById('telefono-c').value = JSON.dataset.telefono_cliente;
+        document.getElementById('nacimiento-c').value = JSON.dataset.nacimiento_cliente;
+        document.getElementById('direccion-c').value = JSON.dataset.direccion_cliente;
+        document.getElementById('contra-c').value = JSON.dataset.clave_cliente;
+
+        //Se manda a traer la información de la tabla a los controles
+        fillSelect (CLIENTE_API, 'readAllEstado', 'estado-c', JSON.dataset.estado_cliente);
+        fillSelect (CLIENTE_API, 'readAllGenero', 'genero-c', JSON.dataset.genero);
+        document.getElementById('im_cli').required = false;
+
     } else {
         sweetAlert(2, JSON.exception, false);
     }
