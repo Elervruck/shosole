@@ -119,12 +119,14 @@ class UsuarioQueries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow()
+        public function updateRow($current_image)
     {
+        ($this->foto_usuario) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->foto_usuario = $current_image;
+    
         $sql = 'UPDATE usuarios 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+        SET foto_usuario = ?, nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?, alias_usuario = ?, clave_usuario = ?, id_genero = ?, id_cargo = ?, id_estado_usuario = ? 
+        WHERE id_usuario = ?';
+        $params = array($this->foto_usuario, $this->nombres_usuario, $this->apellidos_usuario, $this->correo_usuario, $this->alias_usuario, $this->clave_usuario, $this->id_genero, $this->id_cargo, $this->id_estado, $this->id);
         return Database::executeRow($sql, $params);
     }
 

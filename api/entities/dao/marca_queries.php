@@ -48,12 +48,13 @@ class MarcaQueries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow()
+    public function updateRow($current_image)
     {
-        $sql = 'UPDATE usuarios 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+        ($this->imagen_marca) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->imagen_marca = $current_image;
+        $sql = 'UPDATE marcas 
+                SET imagen_marca = ?, marca = ? 
+                WHERE id_marca = ?';
+        $params = array($this->imagen_marca, $this->marca, $this->id);
         return Database::executeRow($sql, $params);
     }
 

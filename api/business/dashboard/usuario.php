@@ -167,21 +167,44 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-            case 'update':
+                case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_POST['id'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->readOne()) {
+                    $result['exception'] = 'Usuario incorrecta';
+                } elseif (!$data = $usuario->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$usuario->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                } elseif (!$usuario->setNombres($_POST['nombre-u'])) {
+                    $result['exception'] = 'Hubo un error en el usuario';
+                } elseif (!$usuario->setApellidos($_POST['apellidos-u'])) {
+                    $result['exception'] = 'Apellido incorrecto';
+                } elseif (!$usuario->setAlias($_POST['alias-u'])) {
+                    $result['exception'] = 'Alias incorrecto';
+                } elseif (!$usuario->setClave($_POST['clave-u'])) {
+                    $result['exception'] = 'Clave incorrecta';
+                } elseif (!$usuario->setCorreo($_POST['correo-u'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif ($usuario->updateRow()) {
+                } elseif (!$usuario->setGenero($_POST['genero-u'])) {
+                    $result['exception'] = 'Género incorrecto';
+                } elseif (!$usuario->setEstado($_POST['estado-u'])) {
+                    $result['exception'] = 'Estado incorrecto';
+                } elseif (!$usuario->setCargo($_POST['cargo-u'])) {
+                    $result['exception'] = 'Cargo incorrecto';           
+                } elseif (!is_uploaded_file($_FILES['im_u']['tmp_name'])) {
+                    if ($usuario->updateRow($data['foto_usuario'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Usuario modificado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                } elseif (!$usuario->setImagen($_FILES['im_u'])) {
+                    $result['exception'] = Validator::getFileError();
+                } elseif ($usuario->updateRow($data['foto_usuario'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario actualizado correctamente';
+                    if (Validator::saveFile($_FILES['im_u'], $usuario->getRutaImagen(), $usuario->getImagen())) {
+                        $result['message'] = 'Usuario modificado correctamente';
+                    } else {
+                        $result['message'] = 'Usuario modificado pero no se guardó la imagen';
+                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }

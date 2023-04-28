@@ -44,7 +44,6 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(USUARIO_API, action, FORM);
-    console.log(JSON)
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         SAVE_MODAL.hide();
@@ -115,7 +114,7 @@ async function fillTable(form = null) {
 function openCreate() {
 
     // Se asigna título a la caja de diálogo.
-;
+    MODAL_TITLE.textContent = 'Crear usuario';
     // cargar cmb
     fillSelect(CGO_API, 'readAll', 'cargo-u', 'Elija un cargo');
     fillSelect(USUARIO_API, 'readAllGenero', 'genero-u', 'Elija un género');
@@ -137,21 +136,26 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.shaw();
+        SAVE_MODAL.show();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar usuario';
         // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
+        /*document.getElementById('alias').disabled = true;
         document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;
+        document.getElementById('confirmar').disabled = true;*/
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
+        document.getElementById('nombre-u').value = JSON.dataset.nombre_usuario;
+        document.getElementById('apellidos-u').value = JSON.dataset.apellido_usuario;
+        document.getElementById('correo-u').value = JSON.dataset.correo_usuario;
+        document.getElementById('alias-u').value = JSON.dataset.alias_usuario;
+        //Se manda a traer la información de la tabla a los controles
+        fillSelect(CGO_API, 'readAll', 'cargo-u', JSON.dataset.cargo);
+        fillSelect (USUARIO_API, 'readAllGenero', 'genero-u', JSON.dataset.genero);
+        fillSelect (USUARIO_API, 'readAllEstado', 'estado-u', JSON.dataset.estado_usuario);
+        document.getElementById('im_u').required = false;
+
+
     } else {
         sweetAlert(2, JSON.exception, false);
     }

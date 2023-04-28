@@ -13,11 +13,13 @@ function confirmAction(message) {
     return Swal.fire({
         title: 'Advertencia',
         text: message,
-        color: '#3d112c',
-        imageUrl: '../resources/img/logo_login.png',
+        icon:
+        icon = 'warning',
+        backdrop: 'static',
+        /*imageUrl: '../resources/img/logo_login.png',
         imageWidth: 220,
         imageHeight: 220,
-        imageAlt: 'Custom image',
+        imageAlt: 'Custom image',*/
         confirmButtonText: 'Si',
         confirmButtonColor: '#4E0F8B',
         showCancelButton: true,
