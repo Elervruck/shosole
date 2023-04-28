@@ -76,10 +76,10 @@ async function fillTable(form = null) {
                 <tr>
                     <td>${row.cargo}</td>                 
                      <td>
-                     <a onclick="openUpdate(${row.id_cargo  })" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                     <a onclick="openUpdate(${row.id_cargo})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </a>
-                        <a onclick="openDelete(${row.id_cargo })" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
+                        <a onclick="openDelete(${row.id_cargo})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
                             <i class="material-icons">delete</i>
                             
                         </a>
@@ -112,37 +112,29 @@ function openCreate() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 *
-
+*/
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_usuario', id);
+    FORM.append('id_cargo', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
+    const JSON = await dataFetch(CARGO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.shaw();
+        SAVE_MODAL.show();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar usuario';
-        // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
-        document.getElementById('clave').disabled = true;
-        document.getElementById('confirmar').disabled = true;
+        MODAL_TITLE.textContent = 'Actualizar cargo';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
+        document.getElementById('id').value = JSON.dataset.id_cargo;
+        document.getElementById('cargo-c').value = JSON.dataset.cargo;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
     }
 }
-*
 
+/*
 *   Función asíncrona para eliminar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.

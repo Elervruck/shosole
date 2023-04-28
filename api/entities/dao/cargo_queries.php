@@ -50,10 +50,10 @@ class CargoQueries
 
     public function updateRow()
     {
-        $sql = 'UPDATE usuarios 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+        $sql = 'UPDATE cargos 
+                SET    cargo = ?
+                WHERE id_cargo = ?';
+        $params = array($this->cargo, $this->id);
         return Database::executeRow($sql, $params);
     }
 

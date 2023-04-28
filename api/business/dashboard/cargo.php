@@ -64,19 +64,15 @@ if (isset($_GET['action'])) {
 
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$cargo->setId($_POST[''])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$cargo->readOne()) {
-                    $result['exception'] = 'Usuario inexistente';
-                } elseif (!$cargo->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cargo->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$cargo->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                if (!$cargo->setId($_POST['id'])) {
+                    $result['exception'] = 'Cargo incorrecto';
+                } elseif (!$data = $cargo->readOne()) {
+                    $result['exception'] = 'Cargo inexistente';
+                } elseif (!$cargo->setCargo($_POST['cargo-c'])) {
+                    $result['exception'] = 'Cargo incorrecto';
                 } elseif ($cargo->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario modificado correctamente';
+                    $result['message'] = 'Cargo modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
