@@ -51,12 +51,12 @@ class Cargo extends ModeloQueries
         return $this->id;
     }
 
-    public function getCargo()
+    public function getModelo()
     {
         return $this->modelo;
     }
 
-    public function getCargo()
+    public function getMarca()
     {
         return $this->id_marca;
     }

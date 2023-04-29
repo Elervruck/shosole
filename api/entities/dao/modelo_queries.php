@@ -3,20 +3,10 @@ require_once('../../helpers/database.php');
 
 class ModeloQueries
 {
-    /*public function searchRows($value)
-    {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE apellidos_usuario ILIKE ? OR nombres_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
-        $params = array("%$value%", "%$value%");
-        return Database::getRows($sql, $params);
-    }*/
-
     public function createRow()
     {
         $sql = 'INSERT INTO modelos(modelo, id_marca)
-                VALUES(?, ?,';
+                VALUES(?, ?)';
         $params = array($this->modelo, $this->id_marca);
         return Database::executeRow($sql, $params);
     }
