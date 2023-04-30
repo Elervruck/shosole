@@ -26,13 +26,13 @@ if (isset($_GET['action'])) {
 
             case 'readOne':
                 if (!$modelo->setId($_POST['id_modelo'])) {
-                    $result['exception'] = 'Cargo incorrecto';
+                    $result['exception'] = 'Modelo incorrecto';
                 } elseif ($result['dataset'] = $modelo->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Cargo inexistente';
+                    $result['exception'] = 'Modelo inexistente';
                 }
                 break;
 
@@ -53,17 +53,18 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'delete':
-                if(!$modelo->setId($_POST['id_modelo'])) {
-                    $result['exception'] = 'Modelo incorrecto';
-                } elseif($data = $modelo->readOne()) {
-                    $result['exception'] = 'Modelo inexistente';
-                } elseif($modelo->deleteRow()) {
+                if (!$modelo->setId($_POST['id_modelo'])) {
+                    $result['exception'] = 'Categoría incorrecta';
+                } elseif (!$data = $modelo->readOne()) {
+                    $result['exception'] = 'Categoría inexistente';
+                } elseif ($modelo->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'El modelo eliminado correctamente';
-                } else{
+                    $result['message'] = 'El modelo eliminada correctamente';
+                } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            
             default:
                 $result['exception'] = 'No hay datos registrados';
         }
