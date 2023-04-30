@@ -6,11 +6,18 @@ class ModeloQueries
     public function createRow()
     {
         $sql = 'INSERT INTO modelos(modelo, id_marca)
-                VALUES(?, ?)';
+                VALUES(?,?)';
         $params = array($this->modelo, $this->id_marca);
         return Database::executeRow($sql, $params);
     }
 
+    public function readMarca()
+    {
+        $sql = 'SELECT id_marca, marca
+        FROM marcas
+        ORDER BY id_marca';
+        return Database::getRows($sql);
+    }
 
     public function readAll()
     {
@@ -41,7 +48,7 @@ class ModeloQueries
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM modeos
+        $sql = 'DELETE FROM modelos
                 WHERE id_modelo = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);

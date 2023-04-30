@@ -4,7 +4,7 @@ require_once('../../entities/dao/modelo_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class Cargo extends ModeloQueries
+class Modelo extends ModeloQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
@@ -36,7 +36,7 @@ class Cargo extends ModeloQueries
 
     public function setMarca($value)
     {
-        if (Validator::validateAlvalidateNaturalNumberhabetic($value)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->id_marca = $value;
             return true;
         } else {

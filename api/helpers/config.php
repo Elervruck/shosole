@@ -3,6 +3,5 @@
 define('SERVER','localhost');
 define('DATABASE','shosole');
 define('USERNAME','postgres');
-//define('PASSWORD','');
-
+//('PASSWORD','');
 ?>

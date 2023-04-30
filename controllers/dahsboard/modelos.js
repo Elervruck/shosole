@@ -1,5 +1,6 @@
 // Constante para completar la ruta de la API.
 const MODELO_API = 'business/dashboard/modelo.php';
+const MARCA_API = 'business/dashboard/marca.php'
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -86,19 +87,20 @@ async function fillTable(form = null) {
 function openCreate() {
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear Maodelo';
-
+    SAVE_MODAL.show();
+    SAVE_FORM.reset();
     // cargar cmb
-    fillSelect(MARCA_API, 'readAll', 'nombre-marca', 'elija una marca')
+    fillSelect(MARCA_API, 'readAll', 'marca-m', 'elija una marca')
 }
 
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Estás seguro que quieres eliminar la marca de forma permanente?');
+    const RESPONSE = await confirmAction('¿Estás seguro que quieres eliminar el modelo de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_marca', id);
+        FORM.append('id_modelo', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(MODELO_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
