@@ -51,6 +51,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            
+                case 'update':
+                    $_POST = Validator::validateForm($_POST);
+                    if (!$modelo->setId($_POST['id'])) {
+                        $result['exception'] = 'Modelo incorrecto'; 
+                    } elseif (!$data = $modelo->readOne()) {
+                        $result['exception'] = 'Modelo inexistente';
+                    } elseif (!$modelo->setModelo($_POST['nombre-m'])) {
+                        $result['exception'] = 'Modelo incorrecto';
+                    } elseif (!$modelo->setMarca($_POST['marca-m'])) {
+                        $result['exception'] = 'Marca incorrecta';
+                    } elseif (!$modelo->updateRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Modelo modificado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
 
             case 'delete':
                 if (!$modelo->setId($_POST['id_modelo'])) {
