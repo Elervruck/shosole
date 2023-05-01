@@ -64,6 +64,10 @@ class Validator
         }
     }
 
+
+ 
+
+
     /*
     *   Método para validar un archivo de imagen.
     *   Parámetros: $file (archivo de un formulario), $maxWidth (ancho máximo para la imagen) y $maxHeigth (alto máximo para la imagen).
@@ -122,6 +126,9 @@ class Validator
             }
         } 
     } 
+
+
+
     
     
 /*
@@ -300,6 +307,25 @@ class Validator
             return false;
         }
     }
+
+    /*
+ *  Método para validar la fecha de nacimiento de un cliente.
+ *  Parámetros: $date (fecha de nacimiento a validar).
+ *  Retorno: booleano (true si la fecha es válida y no está en el futuro, false en caso contrario).
+ */
+public static function validateDateOfBirth($date)
+{
+    // Se convierte la fecha a un objeto DateTime utilizando el formato 'm-d-Y' (mes-día-año).
+    $dateOfBirth = DateTime::createFromFormat('m-d-Y', $date);
+    
+    // Se verifica que la fecha sea válida y no esté en el futuro.
+    if ($dateOfBirth && $dateOfBirth <= new DateTime()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
     /*
     *   Método para validar un archivo al momento de subirlo al servidor.
