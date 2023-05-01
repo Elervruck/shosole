@@ -141,6 +141,13 @@ h3{
     border: 1px solid black;
 }
 
+.graficaImagen_linea, .graficaImagen_barra, .calendarioimg, .maya, .listaTareas, .pedidos, .logoDash{
+    width: 100%;
+    height: 100%;
+}
+
+
+
 .grafica-circular {
     height: 100%;
     width: 32%;
@@ -384,6 +391,69 @@ p {
         padding: 0% !important;
     }
 
+    .numeros {
+        margin-top: 15px;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .Baneados{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #F15A59;
+    }
+    
+    .Nuevos{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #C9DBB2;
+    }
+    
+    .Vendidos{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #A5C0DD;
+    }
+    
+    .Agregados{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #F3E99F;
+    }
+    
+    .icon{
+        height: 100%;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .info_dash{
+        height: 100%;
+        width: 70%;
+    }
+    
+    h3{
+        margin-top: 10px;
+        font-size: 7px;
+        text-align: center;
+    }
+    
+    .cantidad{
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    .icon-dash{
+        font-size: 20px;
+    }
+
     .izquierda {
         width: 50%;
         height: 100%;
@@ -494,9 +564,14 @@ p {
     .site-footer {
         margin-top: 40px;
     }
+
+    .graficaImagen_linea, .graficaImagen_barra, .calendarioimg, .maya, .listaTareas, .pedidos, .logoDash{
+        width: 100%;
+        height: 100%;
+    }
 }
 
-@media (min-width:768px) and (max-width:1279px) {
+@media (min-width:768px) and (max-width:1280px) {
     header {
         height: 30px;
     }
@@ -532,6 +607,70 @@ p {
         height: 20px;
         width: 20px;
     }
+
+    .numeros {
+        margin-top: 15px;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .Baneados{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #F15A59;
+    }
+    
+    .Nuevos{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #C9DBB2;
+    }
+    
+    .Vendidos{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #A5C0DD;
+    }
+    
+    .Agregados{
+        display: flex;
+        height: 100%;
+        width: 24%;
+        background-color: #F3E99F;
+    }
+    
+    .icon{
+        height: 100%;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .info_dash{
+        height: 100%;
+        width: 70%;
+    }
+    
+    h3{
+        margin-top: 10px;
+        font-size: 10px;
+        text-align: center;
+    }
+    
+    .cantidad{
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .icon-dash{
+        font-size: 25px;
+    }
+
 
     .derecha {
         width: 50%;
@@ -626,18 +765,27 @@ p {
         background-color: #4E0F8B;
         width: 50%;
         height: 100%;
-        
-        border-radius: 20px;
         border: 1px solid black;
     }
 
     .site-footer {
         margin-top: 40px;
     }
+
+    .graficaImagen_linea, .graficaImagen_barra, .calendarioimg, .maya, .listaTareas, .pedidos, .logoDash{
+        width: 100%;
+        height: 100%;
+    }
 }
 
 
 @media (min-width:1600px) {
+
+    .graficaImagen_linea, .graficaImagen_barra, .calendarioimg, .maya, .listaTareas, .pedidos, .logoDash{
+        width: 100%;
+        height: 100%;
+    }
+
     .container-fluid {
         margin-top: 0px;
     }
