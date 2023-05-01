@@ -1,7 +1,3 @@
-body {
-    background: #E4E1E6;
-}
-
 header {
     height: 50px;
     background-color: #4E0F8B;
@@ -35,44 +31,97 @@ a {
     margin: 0%;
 }
 
-.datos {
+.datos{
     background: #4E0F8B;
     margin-top: 5% !important;
-    height: 630px;
-    border-radius: 20px;
+    height: 640px;
 }
 
 .lateral-izquierdo {
-    background: #fff;
-    height: 630px;
+    height: 640px;
     border-radius: 20px;
-    margin-top: 22% !important;
-    background-color: #E4E1E6;
-    padding: 0%;
-
+    margin-top: 21% !important;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .crud-Usuario {
     background: #4E0F8B;
-    height: 48%;
-    border-radius: 20px;
+    height: 50% !important;
     border: 1px solid black;
 }
 
 .crud-productos {
     background: #4E0F8B;
-    height: 48%;
-    border-radius: 20px;
-    margin-top: 0%;
+    height: 50% !important;
     border: 1px solid black;
 }
 
 .numeros {
     margin-top: 15px;
     height: 100px;
-    border: 1px solid black;
-    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.Baneados{
+    display: flex;
+    height: 100%;
+    width: 24%;
+    background-color: #F15A59;
+}
+
+.Nuevos{
+    display: flex;
+    height: 100%;
+    width: 24%;
+    background-color: #C9DBB2;
+}
+
+.Vendidos{
+    display: flex;
+    height: 100%;
+    width: 24%;
+    background-color: #A5C0DD;
+}
+
+.Agregados{
+    display: flex;
+    height: 100%;
+    width: 24%;
+    background-color: #F3E99F;
+}
+
+.icon{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info_dash{
+    height: 100%;
+    width: 70%;
+}
+
+h3{
+    margin-top: 10px;
+    font-size: 19px;
+    text-align: center;
+}
+
+.cantidad{
+    font-size: 70px;
+    text-align: center;
+}
+
+.icon-dash{
+    font-size: 60px;
+}
+
 
 .graficas {
     margin-top: 20px;
@@ -86,23 +135,19 @@ a {
 
 .grafica-linea {
     height: 100%;
-    width: 60%;
+    width: 65%;
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 15px;
 }
 
 .grafica-circular {
     height: 100%;
-    width: 35%;
+    width: 32%;
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 15px;
 }
-
-
 
 .tareas-linea {
     margin-top: 20px;
@@ -119,33 +164,30 @@ p {
 
 .tareas {
     height: 190px;
-    width: 30%;
+    width: 32%;
     margin-left: 5px;
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 15px;
 
 }
 
 .espacio {
     height: 190px;
-    width: 30%;
+    width: 32%;
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 15px;
 
 }
 
 .calendario {
     height: 190px;
-    width: 30%;
+    width: 32%;
     margin-right: 5px;
     display: flex;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 15px;
 }
 
 
@@ -155,6 +197,7 @@ p {
     font-size: 15px;
     line-height: 24px;
     color: #737373;
+    margin-top: 50px;
 }
 
 .site-footer hr {
@@ -380,6 +423,7 @@ p {
     .datos {
         width: 100%;
         height: 450px;
+        margin-top: 50px !important;
     }
 
     .graficas {
@@ -433,18 +477,16 @@ p {
 
     .crud-de-usuarios {
         background-color: #4E0F8B;
-        width: 45%;
-        height: 80%;
-        margin-left: 10px;
+        width: 50%;
+        height: 100%;
         border-radius: 20px;
         border: 1px solid black;
     }
 
     .crud-de-productos {
         background-color: #4E0F8B;
-        width: 45%;
-        height: 80%;
-        margin-right: 10px;
+        width: 50%;
+        height: 100%;
         border-radius: 20px;
         border: 1px solid black;
     }
@@ -455,20 +497,152 @@ p {
 }
 
 @media (min-width:768px) and (max-width:1279px) {
-    .container-fluid {
-        margin-top: 50px;
+    header {
+        height: 30px;
+    }
+
+    nav {
+        height: 70px;
+        display: flex;
+    }
+
+    .nav {
+        display: flex;
+    }
+
+    ul {
+        column-gap: 10px;
     }
 
     a {
-        font-size: 12px;
+        color: #FFFFFF !important;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 0% !important;
+    }
+
+    .izquierda {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .Logo-nav {
+        height: 20px;
+        width: 20px;
+    }
+
+    .derecha {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .buscador {
+        height: 15px;
+        width: 50%;
+        border-radius: 30px;
+        border: none;
+    }
+
+    .foto-perfil {
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: gray;
+    }
+
+    .datos {
+        width: 100%;
+        height: 450px;
+        margin-top: 120px !important;
+    }
+
+    .graficas {
+        height: 120px;
+        column-gap: 10px;
+    }
+
+    .grafica-linea {
+        height: 100%;
+        width: 60%;
+    }
+
+    .grafica-circular {
+        width: 40%;
+        height: 100%;
+    }
+
+    .lateral-izquierdo {
+        display: none;
+        margin-top: 80px !important;
+    }
+
+    .tareas-linea {
+        height: 150px;
+    }
+
+    .tareas {
+        height: 100%;
+    }
+
+    .espacio {
+        height: 100%;
+    }
+
+    .calendario {
+        height: 100%;
+    }
+
+    .col-12 {
+        padding: 0%;
+    }
+
+    .acciones-crud {
+        margin-top: 40px;
+        height: 200px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 10px;
+    }
+
+    .crud-de-usuarios {
+        background-color: #4E0F8B;
+        width: 50%;
+        height: 100%;
+        
+        border-radius: 20px;
+        border: 1px solid black;
+    }
+
+    .crud-de-productos {
+        background-color: #4E0F8B;
+        width: 50%;
+        height: 100%;
+        
+        border-radius: 20px;
+        border: 1px solid black;
+    }
+
+    .site-footer {
+        margin-top: 40px;
     }
 }
 
 
 @media (min-width:1600px) {
-
     .container-fluid {
         margin-top: 0px;
+    }
+    nav{
+        height: 60px;
     }
 
     .datos {
