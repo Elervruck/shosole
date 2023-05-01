@@ -103,6 +103,9 @@ async function openUpdate(id)  {
 
         SAVE_MODAL.show();
 
+        SAVE_FORM.reset();
+
+
         MODAL_TITLE.textContent = 'Actualizar modelo';
         document.getElementById('id').value = JSON.dataset.id_modelo;
         document.getElementById('nombre-m').value = JSON.dataset.modelo;
