@@ -40,9 +40,9 @@ class ModeloQueries
     public function updateRow()
     {
         $sql = 'UPDATE modelos 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+                SET modelo = ?, id_marca = ?
+                WHERE id_modelo = ?';
+        $params = array($this->modelo, $this->id_marca, $this->id);
         return Database::executeRow($sql, $params);
     }
 

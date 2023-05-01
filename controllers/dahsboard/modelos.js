@@ -93,6 +93,27 @@ function openCreate() {
     fillSelect(MARCA_API, 'readAll', 'marca-m', 'elija una marca')
 }
 
+
+async function openUpdate(id)  {
+    const FORM = new FormData();
+    FORM.append('id_modelo', id);
+    const JSON = await dataFetch(MODELO_API, 'readOne', FORM);
+
+    if (JSON.status) {
+
+        SAVE_MODAL.show();
+
+        MODAL_TITLE.textContent = 'Actualizar modelo';
+        document.getElementById('id').value = JSON.dataset.id_modelo;
+        document.getElementById('nombre-m').value = JSON.dataset.modelo;
+        fillSelect(MARCA_API, 'readAll', 'marca-m', JSON.dataset.id_marca);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+}
+
+
+
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Estás seguro que quieres eliminar el modelo de forma permanente?');
