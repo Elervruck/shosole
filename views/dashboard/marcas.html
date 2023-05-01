@@ -42,10 +42,14 @@
                 <div
                     class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 buscador_modelo mb-3 search-container">
                     <form class="d-flex" id="search-form">
-                        <input type="search" placeholder="Buscar">
+                        <input type="search" placeholder="Buscar" name="search" id="search">
                         <span class="filter"><i class="fa fa-filter"></i></span>
+                        
+                            <button type="submit" class="btn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
                     </form>
-                    <!-- Button trigger modal -->
+                    <!-- Botón para cargar el modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crear-marca"
                         onclick="openCreate()">
                         Agregar marca
