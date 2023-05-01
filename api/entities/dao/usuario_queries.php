@@ -6,8 +6,11 @@ require_once('../../helpers/database.php');
 class UsuarioQueries
 {
     /*
-    *   Métodos para gestionar la cuenta del usuario. password_verify
+    *  Métodos para gestionar la cuenta del usuario. password_verify
     */
+
+    
+
     public function checkUser($alias)
     {
         $sql = 'SELECT id_usuario FROM usuarios WHERE alias_usuario = ?';
@@ -62,11 +65,13 @@ class UsuarioQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, genero, cargo, estado_usuario, foto_usuario
                 FROM usuarios
-                WHERE apellidos_usuario ILIKE ? OR nombres_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
-        $params = array("%$value%", "%$value%");
+                INNER JOIN estado_usuarios USING(id_estado_usuario)
+                INNER JOIN cargos  USING (id_cargo)
+                INNER JOIN generos  USING (id_genero)
+                WHERE nombre_usuario ILIKE ? OR apellido_usuario ILIKE ? OR correo_usuario ILIKE ? OR alias_usuario ILIKE ? OR genero ILIKE ? OR cargo ILIKE ? OR estado_usuario ILIKE ?';
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

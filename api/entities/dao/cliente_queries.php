@@ -1,13 +1,24 @@
 <?php
 require_once('../../helpers/database.php');
 /*
-*	Clase para manejar el acceso a datos de la entidad USUARIO.
+*	Clase para manejar el acceso a datos de la entidad CLIENTE.
 */
 class ClientesQueries
 {
     /*
-    *   Métodos para gestionar la cuenta del usuario.
+    *   Métodos para gestionar la cuenta del clientes.
     */
+
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, foto_cliente, usuario_cliente
+                FROM clientes
+                INNER JOIN estado_clientes USING(id_estado_cliente)
+                INNER JOIN generos  USING (id_genero)
+                WHERE nombre_cliente ILIKE ? OR apellido_cliente ILIKE ? OR dui_cliente ILIKE ? OR correo_cliente ILIKE ? OR telefono_cliente ILIKE ? OR nacimiento_cliente::text ILIKE ? OR usuario_cliente ILIKE ? OR estado_cliente ILIKE ? OR genero ILIKE ?';
+        $params = array("%$value%" , "%$value%" , "%$value%" , "%$value%" ,  "%$value%" , "%$value%" , "%$value%" , "%$value%" , "%$value%");
+        return Database::getRows($sql, $params);
+    }
 
     public function createRow()
     {

@@ -85,7 +85,7 @@ create table clientes(
 ---Si--
 create table pedidos(
 	id_pedido serial primary key not null,
-	estado_pedido character varying (50) not null,
+	estado_pedido boolean not null,
 	fecha_pedido date not null,
 	direccion_pedido character varying (250) not null,
 	id_cliente integer not null

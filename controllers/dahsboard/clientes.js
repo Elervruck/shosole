@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
 });
-/*
+
 // Método manejador de eventos para cuando se envía el formulario de buscar.
 SEARCH_FORM.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -32,7 +32,7 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
-*/
+
 // Método manejador de eventos para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -121,7 +121,7 @@ function openCreate() {
 
     // cargar cmb
     fillSelect(CLIENTE_API, 'readAllGenero', 'genero-c', 'Seleccione un género');
-    fillSelect(CLIENTE_API, 'readAllEstado', 'estado-u', 'Seleccione un estado');
+    fillSelect(CLIENTE_API, 'readAllEstado', 'estado-c', 'Seleccione un estado');
 
 }
 

@@ -15,11 +15,11 @@ class CargoQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE apellidos_usuario ILIKE ? OR nombres_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
-        $params = array("%$value%", "%$value%");
+        $sql = 'SELECT id_cargo, cargo
+                FROM cargos
+                WHERE cargo ILIKE ? 
+                ORDER BY cargo';
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
