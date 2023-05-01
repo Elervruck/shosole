@@ -97,6 +97,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif (!$cliente->setNacimiento($_POST['nacimiento-c'])) {
                     $result['exception'] = 'Nacimiento incorrecto';
+                
                 } elseif (!$cliente->setEstadoCliente(1)) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!$cliente->setDireccion(1)) {
