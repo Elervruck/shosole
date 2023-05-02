@@ -1,6 +1,6 @@
 // Constante para completar la ruta de la API.
 const MODELO_API = 'business/dashboard/modelo.php';
-const MARCA_API = 'business/dashboard/marca.php'
+const MAC_API = 'business/dashboard/marca.php'
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -86,7 +86,7 @@ async function fillTable(form = null) {
 
 function openCreate() {
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear Maodelo';
+    MODAL_TITLE.textContent = 'Crear Modelo';
     SAVE_MODAL.show();
     SAVE_FORM.reset();
     // cargar cmb
@@ -109,7 +109,8 @@ async function openUpdate(id)  {
         MODAL_TITLE.textContent = 'Actualizar modelo';
         document.getElementById('id').value = JSON.dataset.id_modelo;
         document.getElementById('nombre-m').value = JSON.dataset.modelo;
-        fillSelect(MARCA_API, 'readAll', 'marca-m', JSON.dataset.id_marca);
+        //Se manda a traer la información de la tabla a los controles
+        fillSelect(MAC_API, 'readAll', 'marca-m', JSON.dataset.marca);
     } else {
         sweetAlert(2, JSON.exception, false);
     }

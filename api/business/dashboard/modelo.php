@@ -69,7 +69,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = Database::getException();
                     }
                     break;
-
+                    
             case 'delete':
                 if (!$modelo->setId($_POST['id_modelo'])) {
                     $result['exception'] = 'Categoría incorrecta';

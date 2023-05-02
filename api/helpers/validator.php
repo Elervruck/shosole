@@ -308,7 +308,7 @@ class Validator
         }
     }
 
-    /*
+/*
  *  Método para validar la fecha de nacimiento de un cliente.
  *  Parámetros: $date (fecha de nacimiento a validar).
  *  Retorno: booleano (true si la fecha es válida y no está en el futuro, false en caso contrario).
@@ -330,7 +330,7 @@ public static function validateDateOfBirth($date)
     /*
     *   Método para validar un archivo al momento de subirlo al servidor.
     *   Parámetros: $file (archivo), $path (ruta del archivo) y $name (nombre del archivo).
-    *   Retorno: booleano (true si el archivo fue subido al servidor o false en caso contrario).
+    *   Retorno: booleano (true si el cliente no existe, devolver verdadero o false si el resultado de la consulta tiene al menos un registro).
     */
     public static function saveFile($file, $path, $name)
     {

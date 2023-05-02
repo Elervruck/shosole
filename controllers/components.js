@@ -16,10 +16,6 @@ function confirmAction(message) {
         icon:
         icon = 'warning',
         backdrop: 'static',
-        /*imageUrl: '../resources/img/logo_login.png',
-        imageWidth: 220,
-        imageHeight: 220,
-        imageAlt: 'Custom image',*/
         confirmButtonText: 'Si',
         confirmButtonColor: '#4E0F8B',
         showCancelButton: true,
