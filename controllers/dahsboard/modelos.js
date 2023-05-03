@@ -98,14 +98,9 @@ async function openUpdate(id)  {
     const FORM = new FormData();
     FORM.append('id_modelo', id);
     const JSON = await dataFetch(MODELO_API, 'readOne', FORM);
-
     if (JSON.status) {
-
         SAVE_MODAL.show();
-
         SAVE_FORM.reset();
-
-
         MODAL_TITLE.textContent = 'Actualizar modelo';
         document.getElementById('id').value = JSON.dataset.id_modelo;
         document.getElementById('nombre-m').value = JSON.dataset.modelo;

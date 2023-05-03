@@ -62,7 +62,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Modelo incorrecto';
                     } elseif (!$modelo->setMarca($_POST['marca-m'])) {
                         $result['exception'] = 'Seleccione una marca';
-                    } elseif (!$modelo->updateRow()) {
+                    } elseif ($modelo->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Modelo modificado correctamente';
                     } else {
