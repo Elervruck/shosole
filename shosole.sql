@@ -95,8 +95,8 @@ create table detalle_pedidos(
 	id_detalle_pedido serial primary key not null,
 	id_producto integer not null,
 	id_pedido integer not null,
-	cantidad_producto int not null,
-	precio_producto numeric(7,2) not null
+	cantidad_producto int not null check(cantidad_producto >=0),
+	precio_producto numeric(7,2) not null check(precio_producto > 0.0)
 );
 ---Si--
 create table valoraciones(
