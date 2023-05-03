@@ -110,7 +110,7 @@ async function openUpdate(id)  {
         document.getElementById('id').value = JSON.dataset.id_modelo;
         document.getElementById('nombre-m').value = JSON.dataset.modelo;
         //Se manda a traer la información de la tabla a los controles
-        fillSelect(MAC_API, 'readAll', 'marca-m', JSON.dataset.marca);
+        fillSelect(MAC_API, 'readAll', 'marca-m','Elije una marca', JSON.dataset.id_marca);
     } else {
         sweetAlert(2, JSON.exception, false);
     }

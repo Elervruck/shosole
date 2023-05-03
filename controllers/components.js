@@ -13,8 +13,7 @@ function confirmAction(message) {
     return Swal.fire({
         title: 'Advertencia',
         text: message,
-        icon:
-        icon = 'warning',
+        icon: 'warning',
         backdrop: 'static',
         confirmButtonText: 'Si',
         confirmButtonColor: '#4E0F8B',
@@ -25,6 +24,12 @@ function confirmAction(message) {
         allowEscapeKey: false,
         allowEnterKey: true,
         stopKeydownPropagation: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            return true;
+        }  else{
+            return false;
+        } 
     })
 }
 

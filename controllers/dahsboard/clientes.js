@@ -72,7 +72,15 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+            let imagen = '';
+
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            if(row.foto_cliente!=null){
+                imagen = `<td><img src="${SERVER_URL}images/clientes/${row.foto_cliente}" class="materialboxed" height="100"></td>`                    
+ 
+             }else{
+                imagen = `<td><img src="../../resources/img/imagen_predeterminada.png" class="materialboxed" height="100"></td>`                    
+             }
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.nombre_cliente}</td>
@@ -84,10 +92,9 @@ async function fillTable(form = null) {
                     <td>${row.direccion_cliente}</td>
                     <td>${row.estado_cliente}</td>
                     <td>${row.genero}</td>
-                    <td><img src="${SERVER_URL}images/clientes/${row.foto_cliente}" class="materialboxed" height="100"></td>                    
-                    <td>${row.usuario_cliente}</td>
-    
-                    
+                        ${imagen}
+                        <td>${row.usuario_cliente}</td>
+
                      <td>
                      <a onclick="openUpdate(${row.id_cliente})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
@@ -156,8 +163,8 @@ async function openUpdate(id) {
         document.getElementById('contra-c').value = JSON.dataset.clave_cliente;
 
         //Se manda a traer la información de la tabla a los controles
-        fillSelect (CLIENTE_API, 'readAllEstado', 'estado-c', JSON.dataset.estado_cliente);
-        fillSelect (CLIENTE_API, 'readAllGenero', 'genero-c', JSON.dataset.genero);
+        fillSelect (CLIENTE_API, 'readAllEstado', 'estado-c','Elije un estado', JSON.dataset.id_estado_cliente);
+        fillSelect (CLIENTE_API, 'readAllGenero', 'genero-c','Elije un género' ,JSON.dataset.id_genero);
         document.getElementById('im_cli').required = false;
 
     } else {

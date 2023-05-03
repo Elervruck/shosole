@@ -147,7 +147,7 @@ class Clientes extends ClientesQueries
 
     public function setUsuario($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->usuario_cliente = $value;
             return true;
         } else {

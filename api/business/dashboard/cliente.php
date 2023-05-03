@@ -14,7 +14,6 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-
             case 'readProfile':
                 if ($result['dataset'] = $cliente->readProfile()) {
                     $result['status'] = 1;
@@ -82,7 +81,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$cliente->setApellido($_POST['apellidos-c'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$cliente->setUsuario($_POST['usuario-c'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$cliente->setDui($_POST['dui-c'])) {
                     $result['exception'] = 'Dui incorrecto';
                 } elseif (!$cliente->setCorreo($_POST['correo-c'])) {

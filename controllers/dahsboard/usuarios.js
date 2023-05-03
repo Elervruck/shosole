@@ -73,7 +73,14 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+            let imagen = '';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            if(row.foto_usuario!=null){
+               imagen = `<td><img src="${SERVER_URL}images/usuario/${row.foto_usuario}" class="materialboxed" height="100"></td>`                    
+
+            }else{
+               imagen = `<td><img src="../../resources/img/imagen_predeterminada.png" class="materialboxed" height="100"></td>`                    
+            }
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.nombre_usuario}</td>
@@ -83,9 +90,8 @@ async function fillTable(form = null) {
                     <td>${row.cargo}</td>
                     <td>${row.correo_usuario}</td>
                     <td>${row.estado_usuario}</td>
-                    <td><img src="${SERVER_URL}images/usuario/${row.foto_usuario}" class="materialboxed" height="100"></td>                    
-                        
-                    
+                        ${imagen}
+
                      <td>
                      <a onclick="openUpdate(${row.id_usuario})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
@@ -146,9 +152,9 @@ async function openUpdate(id) {
         document.getElementById('correo-u').value = JSON.dataset.correo_usuario;
         document.getElementById('alias-u').value = JSON.dataset.alias_usuario;
         //Se manda a traer la información de la tabla a los controles
-        fillSelect(CGO_API, 'readAll', 'cargo-u', JSON.dataset.cargo);
-        fillSelect (USUARIO_API, 'readAllGenero', 'genero-u', JSON.dataset.genero);
-        fillSelect (USUARIO_API, 'readAllEstado', 'estado-u', JSON.dataset.estado_usuario);
+        fillSelect(CGO_API, 'readAll', 'cargo-u','Elija un cargo', JSON.dataset.id_cargo);
+        fillSelect (USUARIO_API, 'readAllGenero', 'genero-u','Elija un género', JSON.dataset.id_genero);
+        fillSelect (USUARIO_API, 'readAllEstado', 'estado-u', 'Elija un estado', JSON.dataset.id_estado_usuario);
         document.getElementById('im_u').required = false;
 
 

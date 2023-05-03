@@ -1,3 +1,5 @@
+
+
 .input-container {
   position: relative;
   display: flex;
@@ -56,8 +58,6 @@
   border: none;
 }
 
-
-
 main {
     height: auto;
     width: auto;
@@ -93,24 +93,24 @@ main {
     text-align: center;
   }
   
-  .buscador_modelo {
+  .buscador_usuario {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
   }
   
-  .buscador_modelo form {
+  .buscador_usuario form {
     width: 350px;
   }
   
-  .buscador_modelo button {
+  .buscador_usuario button {
     background-color: #4e0f8b;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #ffffff;
   }
   
-  .buscador_modelo button:hover {
+  .buscador_usuario button:hover {
     color: #4e0f8b;
   }
   
@@ -196,6 +196,9 @@ main {
     margin-bottom: 20px;
   }
   
+  .form-select {
+    background-color: #4E0F8B !important;
+  }
   
   select {
     color: #fff !important;

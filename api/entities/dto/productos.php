@@ -2,122 +2,162 @@
 require_once('../../helpers/validator.php');
 require_once('../../entities/dao/productos_queries.php');
 
-class Productos extends ProductoQueries{
-
+class Producto extends ProductoQueries
+{
     protected $id = null;
-    protected $nombre_Producto = null;
-    protected $descripcion_producto = null;
-    protected $imagen_producto = null;
-    protected $estado_producto = null;
-    protected $id_usuario = null;
-    protected $id_modelo = null,
-    protected $id_condicion_producto = null;
-    protected $ruta_imagen = '../../images/usuario/';
+    protected $idvalo = null;
+    protected $nombrep = null;
+    protected $imgp = null;
+    protected $descripp = null;
+    protected $modelo = null;
+    protected $estadop = null;
+    protected $condicion = null;
+    protected $usuario = null;
+    
+    protected $ruta = '../../images/productos/';
 
 
-    public function setId($value){
-        if(Validator::validatorNaturalNumbber($value)){
+    public function setId($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
             $this->id = $value;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
+    public function setIdValo($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->idvalo = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setNombre($value)
+    {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
+            $this->nombrep = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setImagen($file)
+    {
+        if (Validator::validateImageFile($file, 500, 500)) {
+            $this->imgp = Validator::getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDescripcion($value)
+    {
+        if (Validator::validateString($value, 1, 250)) {
+            $this->descripp = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstadoProductos($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->estadop = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     
-    public function setNombre($value){
-        if(Validator::validateAlphabetic($value, 1, 50)){
-            $this->nombre_Producto = $value;
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function setDescripcion($value){
-        if(Validator::validateAlphabetic($value, 1, 50)){
-            $this->descripcion_producto = $value;
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function setImagen($value){
-        if(Validator::validateImageFile($value, 1000, 1000)){
-            $this->imagen_producto = Validator::getFileName();
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function setEstado($value){
-        if(Validator::validateAlphabetic($value, 1, 50)){
-            $this->estado_producto = $value;
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function setUsuario($value){
+    public function setModelo($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_usuario = $value;
+            $this->modelo = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public function setModelo($value){
+    public function setCondicion($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_modelo = $value;
+            $this->condicion = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public function setCondicion($value){
+    public function setUsuario($value)
+    {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_condicion_producto = $value;
+            $this->usuario = $value;
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public function getId(){
+
+
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getNombre(){
-        return $this->nombre_Producto;
+    public function getIdValo()
+    {
+        return $this->idvalo;
     }
 
-    public function getDescripcion(){
-        return $this->descripcion_producto; 
+
+    public function getNombre()
+    {
+        return $this->nombrep;
     }
 
-    public function getImagen(){
-        return $this->imagen_producto;
+    public function getImagen()
+    {
+        return $this->imgp;
     }
 
-    public function getEstado(){
-        return $this->estado_producto;
+
+    public function getDescripcion()
+    {
+        return $this->descripp;
     }
 
-    public function getUsuario(){
-        return $this->id_usuario;
+    public function getModelo()
+    {
+        return $this->modelo;
     }
 
-    public function getModelo(){
-        return $this->id_modelo;
+    public function getEstado()
+    {
+        return $this->estadop;
     }
 
-    public function getCondicion(){
-        return $this->id_condicion_producto;
+    public function getCondicion()
+    {
+        return $this->condicion;
     }
 
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
 }

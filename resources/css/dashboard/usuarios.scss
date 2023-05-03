@@ -56,7 +56,6 @@
   border: none;
 }
 
-
 main {
   height: auto;
   width: auto;
@@ -240,13 +239,6 @@ table {
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   text-align: center;
-  width: 100vh;
-
-}
-
-.table-striped{
-  overflow-y: scroll;
-  overflow-x: scroll;
 }
 
 .table img {
@@ -326,10 +318,3 @@ label{
   color: #4E0F8B;
 }
 
-@media (min-width:768px) and (max-width:1279px) {
-  
-.table-striped{
-  overflow-y: scroll;
-  overflow-x: scroll;
-}
-}

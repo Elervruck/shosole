@@ -104,7 +104,7 @@ create table valoraciones(
 	calificacion_producto integer not null,
 	id_detalle_pedido integer not null,
 	comentario_producto character varying (500) null,
-	fecha_comentario timestamp without time zone null,
+	fecha_comentario date null,
 	estado_comentario boolean not null
 );
 --------TABLAS--------																																																																										
