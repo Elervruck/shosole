@@ -24,72 +24,58 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            //     case 'readOne':
-            //         if (!$condicion->setId($_POST['id_talla'])) {
-            //             $result['exception'] = 'Categoría incorrecta';
-            //         } elseif ($result['dataset'] = $condicion->readOne()) {
-            //             $result['status'] = 1;
-            //         } elseif (Database::getException()) {
-            //             $result['exception'] = Database::getException();
-            //         } else {
-            //             $result['exception'] = 'Categoría inexistente';
-            //         }
-            //     break;
+            case 'readOne':
+                if (!$condicion->setId($_POST['id'])) {
+                    $result['exception'] = 'Modelo incorrecto';
+                } elseif ($result['dataset'] = $condicion->readOne()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Condicion inexistente';
+                }
+                break;
 
-            // case 'search':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if ($_POST['search'] == '') {
-            //         $result['exception'] = 'Ingrese un valor para buscar';
-            //     } elseif ($result['dataset'] = $condicion->searchRows($_POST['search'])) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'No hay coincidencias';
-            //     }
-            //     break;
-
-            // case 'create':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$condicion->setTalla($_POST['talla'])) {
-            //         $result['exception'] = 'Talla incorrecta';
-            //     } elseif ($condicion->createRow()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Talla creada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-
-            // case 'update':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$condicion->setId($_POST['id'])) {
-            //         $result['exception'] = 'id de talla incorrecta';
-            //     } elseif (!$data = $condicion->readOne()) {
-            //         $result['exception'] = 'talla inexistente';
-            //     } elseif (!$condicion->setTalla($_POST['talla'])) {
-            //         $result['exception'] = 'talla incorrecto';
-            //     } elseif ($condicion->updateRow()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Talla modificada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            // break;
-
-            // case 'delete':
-            //     if (!$condicion->setId($_POST['id_talla'])) {
-            //         $result['exception'] = 'Talla incorrecta';
-            //     } elseif (!$data = $condicion->readOne()) {
-            //         $result['exception'] = 'talla inexistente';
-            //     } elseif ($condicion->deleteRow()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Talla eliminada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
+            case 'create':
+                $_POST = Validator::validateForm($_POST);
+                if (!$condicion->setCondicion_producto($_POST['condicion'])) {
+                    $result['exception'] = 'Condicion incorrecta';
+                } elseif ($condicion->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Condicion creado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            
+            case 'delete':
+                if (!$condicion->setId($_POST['id'])) {
+                    $result['exception'] = 'Condicion incorrecta';
+                } elseif (!$data = $condicion->readOne()) {
+                    $result['exception'] = 'Condicion inexistente';
+                } elseif ($condicion->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'La Condicion eliminada correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            
+             case 'update':
+                    $_POST = Validator::validateForm($_POST);
+                    if (!$condicion->setId($_POST['id'])) {
+                        $result['exception'] = 'Condicion incorrecto'; 
+                    } elseif (!$data = $condicion->readOne()) {
+                        $result['exception'] = 'Condicion inexistente';
+                    } elseif (!$condicion->setCondicion_producto($_POST['condicion'])) {
+                        $result['exception'] = 'Condicion incorrecto';
+                    }  elseif ($condicion->updateRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Condicion modificada correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

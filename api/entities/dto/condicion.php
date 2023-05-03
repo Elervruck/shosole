@@ -6,7 +6,7 @@ class Condicion extends CondicionUsuarioQueries
 
 {
     protected $id = null;
-    protected $condicionp = null;
+    protected $condicion_producto = null;
 
     public function setId($value)
     {
@@ -18,10 +18,10 @@ class Condicion extends CondicionUsuarioQueries
         }
     }
 
-    public function setCondicion($value)
+    public function setCondicion_producto($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->condicionp = $value;
+            $this->condicion_producto = $value;
             return true;
         } else {
             return false;
@@ -33,9 +33,9 @@ class Condicion extends CondicionUsuarioQueries
         return $this->id;
     }
 
-    public function getCondicion()
+    public function getCondicion_producto()
     {
-        return $this->condicionp;
+        return $this->condicion_producto;
     }
 
 }
