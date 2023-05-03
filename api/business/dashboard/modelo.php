@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-
+                
             case 'readOne':
                 if (!$modelo->setId($_POST['id_modelo'])) {
                     $result['exception'] = 'Modelo incorrecto';
@@ -33,6 +33,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'Modelo inexistente';
+                }
+                break;
+                
+            case 'search':
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['exception'] == 'Ingrese un valor para buscar';
+                } elseif ($result['dataset'] = $modelo->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen' . count($result['dataset']) . 'coincidencias';
+                } elseif (Database::getException()) {
+                    $result['exception'] = databaseL::getException();
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
                 }
                 break;
 

@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+SEARCH_FORM.addEventListener('submit', (event) => {
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SEARCH_FORM);
+    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+    fillTable(FORM);
+}) 
+
 // Método manejador de eventos para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
@@ -90,7 +98,7 @@ function openCreate() {
     SAVE_MODAL.show();
     SAVE_FORM.reset();
     // cargar cmb
-    fillSelect(MARCA_API, 'readAll', 'marca-m', 'elija una marca')
+    fillSelect(MAC_API, 'readAll', 'marca-m', 'elija una marca')
 }
 
 

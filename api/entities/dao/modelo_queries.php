@@ -3,6 +3,17 @@ require_once('../../helpers/database.php');
 
 class ModeloQueries
 {
+
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_modelo, modelo, id_marca
+                FROM modelos
+                WHERE modelo ILIKE ?
+                ORDER BY modelo';
+        $params =  array("%$value%");
+        return Database::getRows($sql, $params);
+    }
+
     public function createRow()
     {
         $sql = 'INSERT INTO modelos(modelo, id_marca)
