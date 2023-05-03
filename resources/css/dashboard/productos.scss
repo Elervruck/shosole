@@ -252,7 +252,14 @@ main {
     margin-top: 20px;
   }
   
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
   
+  .table {
+    width: 100%;
+  }
   
   .search-container input[type=search] {
     flex: 1;
