@@ -36,6 +36,20 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+             case 'search':
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['search'] == '') {
+                    $result['exception'] == 'Ingrese una condicion para buscar';
+                } elseif ($result['dataset'] = $condicion->searchRows($_POST['search'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen' . count($result['dataset']) . 'coincidencias';
+                } elseif (Database::getException()) {
+                    $result['exception'] = databaseL::getException();
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
+
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$condicion->setCondicion_producto($_POST['condicion'])) {
