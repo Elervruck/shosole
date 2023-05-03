@@ -150,8 +150,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Teléfono incorrecta';
                 } elseif (!$cliente->setNacimiento($_POST['nacimiento-c'])) {
                     $result['exception'] = 'Nacimiento incorrecto';
-                } elseif (!$cliente->setClave($_POST['contra-c'])) {
-                    $result['exception'] = 'Contraseña incorrecto';
                 } elseif (!$cliente->setCorreo($_POST['correo-c'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$cliente->setDireccion($_POST['direccion-c'])) {

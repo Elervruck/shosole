@@ -149,7 +149,9 @@ async function openUpdate(id) {
         // Se abre la caja de diálogo que contiene el formulario.
         SAVE_MODAL.show();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar usuario';
+        MODAL_TITLE.textContent = 'Actualizar cliente';
+        // Se deshabilitan los campos necesarios.
+        document.getElementById('contra-c').disabled = true;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_cliente;
         document.getElementById('nombre-c').value = JSON.dataset.nombre_cliente;
@@ -160,7 +162,6 @@ async function openUpdate(id) {
         document.getElementById('telefono-c').value = JSON.dataset.telefono_cliente;
         document.getElementById('nacimiento-c').value = JSON.dataset.nacimiento_cliente;
         document.getElementById('direccion-c').value = JSON.dataset.direccion_cliente;
-        document.getElementById('contra-c').value = JSON.dataset.clave_cliente;
 
         //Se manda a traer la información de la tabla a los controles
         fillSelect (CLIENTE_API, 'readAllEstado', 'estado-c','Elije un estado', JSON.dataset.id_estado_cliente);
