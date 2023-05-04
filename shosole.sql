@@ -6,7 +6,7 @@ create table estado_usuarios(
 ---Si--
 create table cargos(
 	id_cargo serial primary key not null,
-	cargo character varying(50) not null
+	cargo character varying(50) unique not null
 );
 
 create table generos(
@@ -16,7 +16,7 @@ create table generos(
 
 create table estado_clientes(
     id_estado_cliente serial primary key not null,
-    estado_cliente character varying (30) not null
+    estado_cliente character unique varying (30) not null
 );
 ---Si--
 create table usuarios(
@@ -106,7 +106,7 @@ create table detalle_pedidos(
 	id_detalle_pedido serial primary key not null,
 	id_producto integer not null,
 	id_pedido integer not null,
-	cantidad_producto int not null check(cantidad_producto >=0),
+	cantidad_producto int not null check(cantidad_producto > 0),
 	precio_total numeric(7,2) not null check(precio_total > 0.0)
 );
 ---Si--
