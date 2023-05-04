@@ -7,7 +7,7 @@ class ProductoQueries
     
     public function searchRows($value)
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, correo_usuario, modelo, condicion_producto, estado_producto
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, correo_usuario, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)
@@ -20,7 +20,7 @@ class ProductoQueries
     
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, correo_usuario, modelo, condicion_producto, estado_producto
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, correo_usuario, modelo, condicion_producto, estado_producto,existencia_producto, precio_producto
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)
@@ -62,7 +62,7 @@ class ProductoQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, nombre_usuario, modelo, condicion_producto, estado_producto
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, nombre_usuario, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)
@@ -75,9 +75,9 @@ class ProductoQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(imagen_producto, nombre_producto, descripcion_producto, id_usuario, id_modelo, id_condicion_producto, estado_producto)
-            VALUES (?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->imgp, $this->nombrep, $this->descripp, $this->usuario, $this->modelo, $this->condicion, $this->estadop);
+        $sql = 'INSERT INTO productos(imagen_producto, nombre_producto, descripcion_producto, id_usuario, id_modelo, id_condicion_producto, estado_producto,existencia_producto, precio_producto)
+            VALUES (?, ?, ?, ?, ?, ?, ? ,? ,?)';
+        $params = array($this->imgp, $this->nombrep, $this->descripp, $this->usuario, $this->modelo, $this->condicion, $this->estadop, $this->existencia_producto,$this->precio_producto );
         return Database::executeRow($sql, $params);
     }
 
@@ -96,9 +96,9 @@ class ProductoQueries
         ($this->imgp) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imgp = $current_image;
 
         $sql = 'UPDATE productos
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, estado_producto = ?, id_usuario = ?, id_modelo = ?, id_condicion_producto = ?
+                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, estado_producto = ?, id_usuario = ?, id_modelo = ?, id_condicion_producto = ?, existencia_producto =?, precio_producto = ?
                 WHERE id_producto = ?';
-        $params = array($this->imgp, $this->nombrep, $this->descripp, $this->estadop, $this->usuario, $this->modelo, $this->condicion, $this->id);
+        $params = array($this->imgp, $this->nombrep, $this->descripp, $this->estadop, $this->usuario, $this->modelo, $this->condicion,$this->existencia_producto,$this->precio_producto, $this->id);
         return Database::executeRow($sql, $params);
     }
 

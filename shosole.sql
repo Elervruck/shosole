@@ -62,6 +62,8 @@ create table productos(
 	estado_producto boolean not null,
 	id_usuario integer not null,
 	id_modelo integer not null,
+	precio_producto numeric(7,2) not null check(precio_producto > 0.0),
+	existencia_producto integer check(existencia_producto >=0),
 	id_condicion_producto integer not null
 );
 
@@ -82,6 +84,15 @@ create table clientes(
 	usuario_cliente character varying (100) not null
 );
 
+create table inventario_productos(
+	id_inventario_producto serial primary key not null,
+	cantidad integer not null,
+	precio integer not null,
+	fecha timestamp not null,
+	id_usuario integer not null,
+	id_producto integer not null
+);
+
 ---Si--
 create table pedidos(
 	id_pedido serial primary key not null,
@@ -96,7 +107,7 @@ create table detalle_pedidos(
 	id_producto integer not null,
 	id_pedido integer not null,
 	cantidad_producto int not null check(cantidad_producto >=0),
-	precio_producto numeric(7,2) not null check(precio_producto > 0.0)
+	precio_total numeric(7,2) not null check(precio_total > 0.0)
 );
 ---Si--
 create table valoraciones(
@@ -119,6 +130,16 @@ ALTER TABLE usuarios
 ADD CONSTRAINT fk_cargo_usuario
 FOREIGN KEY (id_cargo)
 REFERENCES cargos(id_cargo) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE inventario_productos
+ADD CONSTRAINT fk_inventario_usuario
+FOREIGN KEY (id_producto)
+REFERENCES productos(id_producto) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE inventario_productos
+ADD CONSTRAINT fk_inventario_producto
+FOREIGN KEY (id_inventario_producto)
+REFERENCES inventario_productos(id_inventario_producto) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE usuarios
 ADD CONSTRAINT fk_genero_usuarios
@@ -232,12 +253,12 @@ values (default, 'Nuevo'),
 
 
 insert into usuarios (id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, id_genero, id_cargo, id_estado_usuario, intentos)
-values (default, 'Christian Sebastián', 'Ellerbrock Barahona', '20210089@ricaldone.edu.sv', 'EllerBarah025', 'Eller20_23', 1, 1, 1, 3 ),
+values 
        (default,'Luis Alfredo', 'Castillo Monterroza', '20210482@ricaldone.edu.sv', 'LuAlfredo482','LuiMonte45', 1, 2, 2, 3),
-       (default, 'Eduardo Alfonso', 'Barahona Vasquéz', '20210451@ricaldone.edu.sv', 'EduBaraho065', 'VasAlfonso02', 1, 3, 3, 3),
+       (default, 'Eduardo Alfonso', 'Barahona Vasquéz', '20210451@ricaldone.edu.sv', 'EduBaraho065', 'VasAlfonso02', 1, 2, 3, 3),
        (default, 'Melissa Arely', 'Sandoval  Muñoz', '20210678@ricaldone.edu.sv', 'MelSandoval', 'SandoArely08', 2, 2, 1, 3),
        (default, 'Keila Raquel', 'Cáceres García', '20210228@ricaldone.edu.sv', 'KeiRaq013', 'RaquelGar534', 2, 2, 1, 3),
-       (default, 'Gabriel Guillermo', 'Aparicio García', '20190211@ricaldone.edu.sv', 'GAparicio89', 'Apagabri62', 1, 3, 2, 3),
+       (default, 'Gabriel Guillermo', 'Aparicio García', '20190211@ricaldone.edu.sv', 'GAparicio89', 'Apagabri62', 1, 1, 2, 3),
        (default, 'Camila Gabriela', 'García Vasquéz', '20210574@ricaldone.edu.sv', 'CamGarcía', 'Gabriela20_21', 2, 2, 2, 3),
 	   (default,'Daniel Stanley', 'Carranza Miguel', 'daniel_carranza@ricaldone.edu.sv', 'DCarranza', 'Stanley20_23', 1, 1, 1, 3),
 	   (default,'Dayana Fiorella', 'Pérez Mejía', 'dayana_perez@ricaldone.edu.sv', 'FiorellaD', 'Dayana/6543', 2, 1, 2, 3),
@@ -257,17 +278,17 @@ values ( default, 'PlayStation_4',1),
         ( default, 'N-Gage',10);
 		
 	
-insert into productos (id_producto, nombre_producto, descripcion_producto, imagen_producto, estado_producto, id_usuario, id_modelo, id_condicion_producto)
-values (default, 'Play4', 'es la cuarta videoconsola del modelo PlayStation. Es la segunda consola de Sony en ser diseñada por Lucmanwar y forma parte de las videoconsolas de octava generación. Fue anunciada oficialmente el 20 de febrero de 2013 en el evento PlayStation Meeting 2013','Play.jpg','true', 1, 1, 1 ),
-        (default, 'Nintendo 64','Nintendo 64 es la cuarta videoconsola de sobremesa descontinuada producida por Nintendo, desarrollada para suceder a la Super Nintendo. Fue la primera consola concebida para dar el salto del 2D al 3D. Compitió en el mercado de la quinta generación con Saturn de Sega y PlayStation','Nintendo.jpg','true', 2, 2, 1 ),
-        (default, 'Xbox 360','Xbox 360 es la segunda videoconsola de sobremesa de la marca Xbox producida por Microsoft. Fue desarrollada en colaboración con IBM y ATI (AMD) y lanzada en América del Sur, América del Norte, Japón, Europa y Australia entre 2005 y 2006. Su servicio Xbox Live (el cual es de pago','Xbox360.jpg','true', 3, 3, 1),
-        (default, 'Sega Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 4, 4, 1 ),
-        (default, 'Atari 2600','La Atari 2600 es una videoconsola lanzada al mercado en 1977 bajo el nombre de Atari VCS (Video Computer System), convirtiéndose en el primer sistema de videojuegos en tener gran éxito, e hizo popular los cartuchos intercambiables.','Atari200.jpg','true', 5, 5, 1 ),
-        (default, 'Dendy','Esta pieza de arte es elegante y seductora gracias a su acertada mezcla de colores y texturas. Los trazos verdes presentan un aspecto aterciopelado gracias a sus bordes difuminados, extendidos sobre una sólida estructura de elementos blancos y negros.','Dendy.jpg','true', 6, 6, 1),
-        (default, 'WonderSwan','WonderSwan Color, una consola de juegos portátil japonesa lanzada a fines de 2000. WonderSwan Color fue la continuación del WonderSwan monocromático original de Bandai que se lanzó el año anterior. La nueva computadora de mano ahora podía mostrarse','WonderSwan.jpg','true', 7, 7, 1),
-        (default, 'Intellivision','La Intellivision fue desarrollada por Mattel Electronics, una subsidiaria formada expresamente para el desarrollo de juegos electrónicos. La consola fue probada en Fresno, California, en 1979 con un total de cuatro juegos disponibles,','Intellivision.jpg','true', 8, 8, 1 ),
-        (default, 'Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 9, 9, 1),
-        (default, 'N-Gage','En 2003, Nokia ingresó en el mercado de las consolas de juegos lanzando el terminal portátil N-Gage, ofreciendo Reproductor MP3 y radio FM integrados, reproducción de vídeo, así como telefonía móvil, juego multijugador','N-Gage.jpg','true', 10, 10, 1);
+insert into productos (id_producto, nombre_producto, descripcion_producto, imagen_producto, estado_producto, id_usuario, id_modelo,precio_producto,existencia_producto ,id_condicion_producto)
+values (default, 'Play4', 'es la cuarta videoconsola del modelo PlayStation. Es la segunda consola de Sony en ser diseñada por Lucmanwar y forma parte de las videoconsolas de octava generación. Fue anunciada oficialmente el 20 de febrero de 2013 en el evento PlayStation Meeting 2013','Play.jpg','true', 1, 1, 599.99,10, 1 ),
+        (default, 'Nintendo 64','Nintendo 64 es la cuarta videoconsola de sobremesa descontinuada producida por Nintendo, desarrollada para suceder a la Super Nintendo. Fue la primera consola concebida para dar el salto del 2D al 3D. Compitió en el mercado de la quinta generación con Saturn de Sega y PlayStation','Nintendo.jpg','true', 2, 2, 599.99,10, 1 ),
+        (default, 'Xbox 360','Xbox 360 es la segunda videoconsola de sobremesa de la marca Xbox producida por Microsoft. Fue desarrollada en colaboración con IBM y ATI (AMD) y lanzada en América del Sur, América del Norte, Japón, Europa y Australia entre 2005 y 2006. Su servicio Xbox Live (el cual es de pago','Xbox360.jpg','true', 3, 3, 599.99,10, 1),
+        (default, 'Sega Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 4, 4,  599.99,10, 1 ),
+        (default, 'Atari 2600','La Atari 2600 es una videoconsola lanzada al mercado en 1977 bajo el nombre de Atari VCS (Video Computer System), convirtiéndose en el primer sistema de videojuegos en tener gran éxito, e hizo popular los cartuchos intercambiables.','Atari200.jpg','true', 5, 5, 599.99,10, 1 ),
+        (default, 'Dendy','Esta pieza de arte es elegante y seductora gracias a su acertada mezcla de colores y texturas. Los trazos verdes presentan un aspecto aterciopelado gracias a sus bordes difuminados, extendidos sobre una sólida estructura de elementos blancos y negros.','Dendy.jpg','true', 6, 6, 599.99,10,1),
+        (default, 'WonderSwan','WonderSwan Color, una consola de juegos portátil japonesa lanzada a fines de 2000. WonderSwan Color fue la continuación del WonderSwan monocromático original de Bandai que se lanzó el año anterior. La nueva computadora de mano ahora podía mostrarse','WonderSwan.jpg','true', 7, 7, 599.99,10, 1),
+        (default, 'Intellivision','La Intellivision fue desarrollada por Mattel Electronics, una subsidiaria formada expresamente para el desarrollo de juegos electrónicos. La consola fue probada en Fresno, California, en 1979 con un total de cuatro juegos disponibles,','Intellivision.jpg','true', 8, 8,599.99,10, 1 ),
+        (default, 'Mega Drive','Mega Drive, conocida en diversos territorios de América como Genesis, es una videoconsola de sobremesa de 16 bits desarrollada por Sega Enterprises, Ltd. Mega Drive fue la tercera consola de Sega y la sucesora de la Master System.','MegaDrive.jpg','true', 9, 9, 599.99,10, 1),
+        (default, 'N-Gage','En 2003, Nokia ingresó en el mercado de las consolas de juegos lanzando el terminal portátil N-Gage, ofreciendo Reproductor MP3 y radio FM integrados, reproducción de vídeo, así como telefonía móvil, juego multijugador','N-Gage.jpg','true', 10, 10, 599.99,10 ,1);
 
 	insert into clientes (id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, id_estado_cliente,id_genero, usuario_cliente)
 	values (default,'Eduardo Alfonso','Barahona Vasquez','06850497-1','eduardobarahoa973@gamil.com','78682132','2005/03/02','San Ramon de los altos','messiesgrande', 1, 1, 'barahona753'),

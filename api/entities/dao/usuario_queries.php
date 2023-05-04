@@ -9,7 +9,7 @@ class UsuarioQueries
     *  Métodos para gestionar la cuenta del usuario. password_verify
     */
 
-    
+
 
     public function checkUser($alias)
     {
@@ -29,7 +29,8 @@ class UsuarioQueries
         $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if (password_verify($password, $data['clave_usuario'])) {            return true;
+        if (password_verify($password, $data['clave_usuario'])) {
+            return true;
         } else {
             return false;
         }
@@ -91,7 +92,7 @@ class UsuarioQueries
         return Database::getRows($sql);
     }
 
-    
+
 
     public function readAllEstado()
     {
@@ -124,10 +125,10 @@ class UsuarioQueries
         return Database::getRow($sql, $params);
     }
 
-        public function updateRow($current_image)
+    public function updateRow($current_image)
     {
         ($this->foto_usuario) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->foto_usuario = $current_image;
-    
+
         $sql = 'UPDATE usuarios 
         SET foto_usuario = ?, nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?, alias_usuario = ?, clave_usuario = ?, id_genero = ?, id_cargo = ?, id_estado_usuario = ? 
         WHERE id_usuario = ?';
@@ -141,5 +142,19 @@ class UsuarioQueries
                 WHERE id_usuario = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+    //Seleccionar el pirmer usuario y que por ende no pueda eliminarlo
+    public function firstuser()
+    {
+        $sql = 'SELECT id_usuario
+                FROM usuarios
+                ORDER BY id_usuario ASC LIMIT 1';
+        $params = null;
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['id_usuario'];
+            return true;
+        } else {
+            return false;
+        }
     }
 }

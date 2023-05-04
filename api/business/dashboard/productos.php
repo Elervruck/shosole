@@ -92,6 +92,12 @@ if (isset($_GET['action'])) {
 
                     } elseif (!$producto->setEstadoProductos(isset($_POST['estado']) ? 1 : 0)) {
                         $result['exception'] = 'Estado incorrecto';
+                        
+                    } elseif (!$producto->setExistencia($_POST['existencia'])) {
+                        $result['exception'] = 'Existecia incorrecta';
+                        
+                    } elseif (!$producto->setPrecio($_POST['precio'])) {
+                        $result['exception'] = 'Precio incorrecta';
 
                     } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                         $result['exception'] = 'Seleccione una imagen';
@@ -122,6 +128,12 @@ if (isset($_GET['action'])) {
 
                         } elseif (!$producto->setNombre($_POST['nombre'])) {
                             $result['exception'] = 'Nombre incorrecto';
+
+                        } elseif (!$producto->setExistencia($_POST['existencia'])) {
+                            $result['exception'] = 'Existecia incorrecta';
+                            
+                        } elseif (!$producto->setPrecio($_POST['precio'])) {
+                            $result['exception'] = 'Precio incorrecta';
 
                         } elseif (!$producto->setDescripcion($_POST['descripcion'])) {
                             $result['exception'] = 'Descripción incorrecta';

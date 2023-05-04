@@ -13,7 +13,9 @@ class Producto extends ProductoQueries
     protected $estadop = null;
     protected $condicion = null;
     protected $usuario = null;
-    
+    protected $existencia_producto = null;
+    protected $precio_producto = null;
+
     protected $ruta = '../../images/productos/';
 
 
@@ -107,6 +109,26 @@ class Producto extends ProductoQueries
         }
     }
 
+    public function setExistencia($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->existencia_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setPrecio($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->precio_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
     public function getId()
@@ -119,6 +141,15 @@ class Producto extends ProductoQueries
         return $this->idvalo;
     }
 
+    public function getExistencia()
+    {
+        return $this->existencia_producto;
+    }
+
+    public function getPrecio()
+    {
+        return $this->precio_producto;
+    }
 
     public function getNombre()
     {

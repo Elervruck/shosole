@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['alias_usuario'])) {
+                if (isset($_SESSION['id_usuario'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['alias_usuario'];
                 } else {
@@ -167,7 +167,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-                case 'update':
+            case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecta';
@@ -188,7 +188,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$usuario->setEstado($_POST['estado-u'])) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!$usuario->setCargo($_POST['cargo-u'])) {
-                    $result['exception'] = 'Cargo incorrecto';           
+                    $result['exception'] = 'Cargo incorrecto';
                 } elseif (!is_uploaded_file($_FILES['im_u']['tmp_name'])) {
                     if ($usuario->updateRow($data['foto_usuario'])) {
                         $result['status'] = 1;
@@ -212,6 +212,10 @@ if (isset($_GET['action'])) {
             case 'delete':
                 if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
+                } elseif (!$usuario->firstuser()) {
+                    $result['exception'] = 'No se puede obtener el primer usuario';
+                } elseif ($usuario->getId() == $_POST['id_usuario']) {
+                    $result['exception'] = 'No puedes eliminar el primer usuario';
                 } elseif (!$usuario->setId($_POST['id_usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$usuario->readOne()) {
@@ -223,7 +227,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'readAllGenero':
+            case 'readAllGenero':
                 if ($result['dataset'] = $usuario->readAllGenero()) {
                     $result['status'] = 1;
                 } else {
@@ -244,7 +248,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Parece que no tienes un usuario, empezemos a crearlo';
                 }
                 break;
-                case 'readAllGenero':
+            case 'readAllGenero':
                 if ($result['dataset'] = $usuario->readAllGenero()) {
                     $result['status'] = 1;
                 } else {

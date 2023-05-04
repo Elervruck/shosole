@@ -90,12 +90,13 @@ async function fillTable(form = null) {
             <tr>
 
                 <td><img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="materialboxed" height="100"></td>
-
                 <td>${row.nombre_producto}</td>
                 <td>${row.descripcion_producto}</td>
                 <td>${row.modelo}</td>
                 <td>${row.condicion_producto}</td>
                 <td><i class="material-icons">${icon}</i></td>
+                <td>${row.existencia_producto}</td>
+                <td>${row.precio_producto}</td>
                 <td>${row.correo_usuario}</td>
                 <td>
 
@@ -164,6 +165,8 @@ async function openUpdate(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_producto;
         document.getElementById('nombre').value = JSON.dataset.nombre_producto;
+        document.getElementById('existencia').value = JSON.dataset.existencia_producto;
+        document.getElementById('precio').value = JSON.dataset.precio_producto;
         document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
         fillSelect(USUARIOP_API, 'readAll', 'usuario','Elija un usuario', JSON.dataset.id_usuario);
         fillSelect(CONDICION_API, 'readAll', 'condicion', 'Elije una condición', JSON.dataset.id_condicion_producto);
