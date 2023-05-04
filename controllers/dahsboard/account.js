@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="marcas.html">Marcas</a></li>
+                <li><a href="cargos.html">Cargos</a></li>
                 <li><a href="modelos.html">Modelos</a></li>
                 <li><a href="condicion.html">Condicion</a></li>
                 <li><a href="clientes.html">Clientes</a></li>

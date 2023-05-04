@@ -16,7 +16,7 @@ create table generos(
 
 create table estado_clientes(
     id_estado_cliente serial primary key not null,
-    estado_cliente character unique varying (30) not null
+    estado_cliente character varying (30) unique not null
 );
 ---Si--
 create table usuarios(
@@ -314,7 +314,7 @@ values (default, 'true', '2023/03/12','San Vicente', 1),
 		(default, 'true', '2023/03/22','Soyapango', 9),
 		(default, 'true', '2023/03/20','Apopa', 10);
 		
-insert into detalle_pedidos (id_detalle_pedido, id_producto, id_pedido, cantidad_producto, precio_producto)
+insert into detalle_pedidos (id_detalle_pedido, id_producto, id_pedido, cantidad_producto, precio_total)
 values  (default,  1, 1, 1, 499.99 ),
 		(default, 2, 3, 2, 300.99 ),
         (default,  3, 2, 1,200.50 ),
