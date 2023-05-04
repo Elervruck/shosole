@@ -42,13 +42,13 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$inventario->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';  
-                } elseif (!$cliente->setPrecio($_POST['precio'])) {
+                } elseif (!$inventario->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$cliente->setFecha($_POST['nacimiento-i'])) {
+                } elseif (!$inventario->setFecha($_POST['nacimiento-i'])) {
                     $result['exception'] = 'Nacimiento incorrecto';
-                } elseif (!$cliente->setUsuario($_POST['usuario-i'])) {
+                } elseif (!$inventario->setUsuario($_POST['usuario-i'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$cliente->setProducto($_POST['productos'])) {
+                } elseif (!$inventario->setProducto($_POST['productos'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif ($inventario->createRow()) {
                     $result['status'] = 1;
@@ -63,26 +63,26 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Inventario incorrecto'; 
                     } elseif (!$data = $inventario->readOne()) {
                         $result['exception'] = 'Inventario inexistente';
-                    } elseif (!$cliente->setPrecio($_POST['precio'])) {
-                        $result['exception'] = 'Cantidad incorrecta';  
-                    } elseif (!$cliente->setPrecio($_POST['precio'])) {
-                        $result['exception'] = 'Precio incorrecto';
-                    } elseif (!$cliente->setFecha($_POST['nacimiento-i'])) {
+                    } elseif (!$inventario->setPrecio($_POST['precio'])) {
+                        $result['exception'] = 'Precio incorrecto';  
+                    } elseif (!$inventario->setCantidad($_POST['cantidad'])) {
+                        $result['exception'] = 'Cantidad incorrecto';
+                    } elseif (!$inventario->setFecha($_POST['nacimiento-i'])) {
                         $result['exception'] = 'Nacimiento incorrecto';
-                    } elseif (!$cliente->setUsuario($_POST['usuario-i'])) {
+                    } elseif (!$inventario->setUsuario($_POST['usuario-i'])) {
                         $result['exception'] = 'Usuario incorrecto';
-                    } elseif (!$cliente->setProducto($_POST['productos'])) {
+                    } elseif (!$inventario->setProducto($_POST['productos'])) {
                         $result['exception'] = 'Producto incorrecto';
                     }  elseif ($inventario->updateRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Condicion modificada correctamente';
+                        $result['message'] = 'Inventario modificada correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
                     break;
                 
             case 'readOne':
-                if (!$inventario->setId($_POST['id'])) {
+                if (!$inventario->setId($_POST['id_inventario_producto'])) {
                     $result['exception'] = 'Inventario incorrecto';
                 } elseif ($result['dataset'] = $inventario->readOne()) {
                     $result['status'] = 1;

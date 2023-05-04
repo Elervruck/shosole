@@ -42,7 +42,7 @@
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crear-inventario"
                         onclick="openCreate()">
-                        Agregar modelo
+                        Agregar inventario
                     </button>
                 </div>
             </div>
@@ -77,10 +77,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" id="save-modelo" class="row g-3">
+                        <form method="post" id="save-form" class="row g-3">
                             <input class="invisible" type="number" id="id" name="id">
                             <div class="col-md-4">
-                                <label for="" class="form-label">Precio</label>
+                                <label for="" class="form-label">Precio($)</label>
                                 <input type="number" step=".01" min="0" class="form-control" id="precio" required name="precio"
                                 placeholder="">
                             </div>
@@ -90,7 +90,7 @@
                                 placeholder="">
                             </div>
                             <div class="col-md-4">
-                                <label for="inputPassword4" class="form-label">Nacimiento</label>
+                                <label for="inputPassword4" class="form-label">Fecha</label>
                                 <input type="date" class="form-control" name="nacimiento-i" id="nacimiento-i"required>
                             </div>
                             <div class="col-md-5">
@@ -124,8 +124,9 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script type="text/javascript" src="../../resources/js/sweetalert2.all.min.js "></script>
+<script src="../../controllers/dahsboard/account.js"></script>
 <script src="../../controllers/components.js"></script>
-<script src="../../controllers/dahsboard/modelos.js"></script>
+<script src="../../controllers/dahsboard/inventario.js"></script>
 
 
 </html>

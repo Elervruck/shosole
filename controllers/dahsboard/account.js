@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
-                let menu = `
+            let menu = `
             <ul class="lista-admins">
+                <li><a href="inventarios.html">Inventarios</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="marcas.html">Marcas</a></li>
@@ -28,11 +29,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <li><a href="pedidos.html">Pedidos</a></li>
             </ul>
                 `;
-                document.querySelector('nav').innerHTML = menu;
+            document.querySelector('nav').innerHTML = menu;
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
     } else {
-        
+
     }
 });

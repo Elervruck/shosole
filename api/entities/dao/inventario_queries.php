@@ -15,7 +15,7 @@ class InventarioQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_cargo, cargo
+        $sql = 'SELECT  cargo
                 FROM cargos
                 WHERE cargo ILIKE ? 
                 ORDER BY cargo';
@@ -34,11 +34,10 @@ class InventarioQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_inventario_producto, cantidad, precio, fecha, id_usuario, id_producto
+        $sql = 'SELECT id_inventario_producto, cantidad, precio, fecha, nombre_usuario, nombre_producto
         FROM inventario_productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN productos USING(id_producto)';
-
         return Database::getRows($sql);
     }
 
@@ -46,12 +45,35 @@ class InventarioQueries
     {
         $sql = 'SELECT id_inventario_producto, cantidad, precio, fecha, id_usuario, id_producto
                 FROM inventario_productos 
-                WHERE inventario_productos = ?';
+                WHERE id_inventario_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
-    
+    public function readUsuario()
+    {
+        $sql = 'SELECT id_usuario, nombre_usuario
+        FROM usuarios
+        ORDER BY id_usuario';
+        return Database::getRows($sql);
+    }
+    	
+    public function readProducto()
+    {
+        $sql = 'SELECT id_producto, nombre_producto
+        FROM productos
+        ORDER BY id_producto';
+        return Database::getRows($sql);
+    }
+
+    public function updateRow()
+    {
+        $sql = 'UPDATE inventario_productos 
+                SET cantidad = ?, precio = ?, fecha = ?, id_usuario = ?, id_producto = ?
+                WHERE id_inventario_producto = ?';
+        $params = array($this->cantidad, $this->precio, $this->fecha, $this->id_usuario, $this->id_producto, $this->id);
+        return Database::executeRow($sql, $params);
+    }    
 
     public function deleteRow()
     {
