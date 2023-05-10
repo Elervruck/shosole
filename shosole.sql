@@ -6,7 +6,7 @@ create table estado_usuarios(
 ---Si--
 create table cargos(
 	id_cargo serial primary key not null,
-	cargo character varying(50) not null
+	cargo character varying(50) unique not null
 );
 
 create table generos(
@@ -16,7 +16,7 @@ create table generos(
 
 create table estado_clientes(
     id_estado_cliente serial primary key not null,
-    estado_cliente character varying (30) not null
+    estado_cliente character varying (30) unique not null
 );
 ---Si--
 create table usuarios(
@@ -106,7 +106,7 @@ create table detalle_pedidos(
 	id_detalle_pedido serial primary key not null,
 	id_producto integer not null,
 	id_pedido integer not null,
-	cantidad_producto int not null check(cantidad_producto >=0),
+	cantidad_producto int not null check(cantidad_producto > 0),
 	precio_total numeric(7,2) not null check(precio_total > 0.0)
 );
 ---Si--
@@ -314,7 +314,7 @@ values (default, 'true', '2023/03/12','San Vicente', 1),
 		(default, 'true', '2023/03/22','Soyapango', 9),
 		(default, 'true', '2023/03/20','Apopa', 10);
 		
-insert into detalle_pedidos (id_detalle_pedido, id_producto, id_pedido, cantidad_producto, precio_producto)
+insert into detalle_pedidos (id_detalle_pedido, id_producto, id_pedido, cantidad_producto, precio_total)
 values  (default,  1, 1, 1, 499.99 ),
 		(default, 2, 3, 2, 300.99 ),
         (default,  3, 2, 1,200.50 ),
