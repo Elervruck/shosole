@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/pedidos_queries.php');
+require_once('../../entities/dashboard/dao/pedidos_queries.php');
 
 class Pedido extends PedidoQueries
 {

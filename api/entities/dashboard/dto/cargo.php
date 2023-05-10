@@ -1,16 +1,14 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/modelo_queries.php');
+require_once('../../entities/dashboard/dao/cargo_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class Modelo extends ModeloQueries
+class Cargo extends CargoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $modelo = null;
-    protected $id_marca = null;
-
+    protected $cargo = null;
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
@@ -24,20 +22,10 @@ class Modelo extends ModeloQueries
         }
     }
 
-    public function setModelo($value)
+    public function setCargo($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->modelo = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setMarca($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->id_marca = $value;
+            $this->cargo = $value;
             return true;
         } else {
             return false;
@@ -51,14 +39,9 @@ class Modelo extends ModeloQueries
         return $this->id;
     }
 
-    public function getModelo()
+    public function getCargo()
     {
-        return $this->modelo;
-    }
-
-    public function getMarca()
-    {
-        return $this->id_marca;
+        return $this->cargo;
     }
 
    }

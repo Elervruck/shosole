@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/cliente_queries.php');
+require_once('../../entities/dashboard/dao/cliente_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
@@ -20,7 +20,7 @@ class Clientes extends ClientesQueries
     protected $id_genero = null;
     protected $foto_cliente = null;
     protected $usuario_cliente = null;
-    protected $ruta_imagen = '../../images/clientes/';
+    protected $ruta_imagen = '../../../images/clientes/';
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */

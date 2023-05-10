@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/productos_queries.php');
+require_once('../../entities/dashboard/dao/productos_queries.php');
 
 class Producto extends ProductoQueries
 {
@@ -16,7 +16,7 @@ class Producto extends ProductoQueries
     protected $existencia_producto = null;
     protected $precio_producto = null;
 
-    protected $ruta = '../../images/productos/';
+    protected $ruta = '../../../images/productos/';
 
 
     public function setId($value)

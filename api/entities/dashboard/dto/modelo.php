@@ -1,16 +1,16 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/marca_queries.php');
+require_once('../../entities/dashboard/dao/modelo_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class Marca extends MarcaQueries
+class Modelo extends ModeloQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $marca = null;
-    protected $imagen_marca = null;
-    protected $ruta_imagen = '../../images/marcas/';
+    protected $modelo = null;
+    protected $id_marca = null;
+
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
@@ -24,20 +24,20 @@ class Marca extends MarcaQueries
         }
     }
 
-    public function setMarca($value)
+    public function setModelo($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->marca = $value;
+        if (Validator::validateAlphabetic($value, 1, 50)) {
+            $this->modelo = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setImagen($value)
+    public function setMarca($value)
     {
-        if (Validator::validateImageFile($value, 1000, 1000)) {
-            $this->imagen_marca = Validator::getFileName();
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_marca = $value;
             return true;
         } else {
             return false;
@@ -51,17 +51,14 @@ class Marca extends MarcaQueries
         return $this->id;
     }
 
-    public function getMarcas()
+    public function getModelo()
     {
-        return $this->marca;
-    }
-    public function getImagen()
-    {
-        return $this->imagen_marca;
+        return $this->modelo;
     }
 
-    public function getRutaImagen()
+    public function getMarca()
     {
-        return $this->ruta_imagen;
+        return $this->id_marca;
     }
+
    }

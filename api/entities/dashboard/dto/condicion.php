@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/condicion_queries.php');
+require_once('../../entities/dashboard/dao/condicion_queries.php');
 
 class Condicion extends CondicionUsuarioQueries
 
