@@ -3,7 +3,7 @@ create table estado_usuarios(
 	id_estado_usuario serial primary key not null,
 	estado_usuario character varying(30) not null
 );
----Si--
+---Si--	
 create table cargos(
 	id_cargo serial primary key not null,
 	cargo character varying(50) unique not null
