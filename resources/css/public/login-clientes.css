@@ -56,24 +56,79 @@ input{
     width: 60% !important;
 }
 
-.iniciarSesion{
+.opcionesDeIniciar{
     height: 40%;
+    display: flex;
+    display: grid;
+}
+
+.iniciarSesion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+
+.Registrase{
+    margin-top: 10px;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-button{
+.btnIniciar{
     height: 40px;
-    width: 40%;
+    width: 70%;
     border-radius: 15px;
     background-color: #4E0F8B;
     color: #FFFFFF;
 }
 
+.btnRegistrarse{
+    height: 40px;
+    width: 70%;
+    border-radius: 15px;
+    background-color: #130323;
+    color: #FFFFFF;
+}
+
+
+
+
+
 .Infor{
     width: 50%;
     height: 90vh;
-    background-color: #4E0F8B;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formRegistro{
+    height: 70%;
+    width: 60%;
+}
+
+.usuario, .contrasenia{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.opcionesDeRegistro{
+    height: 40%;
+    display: flex;
+    display: grid;
+}
+
+.RegistrarSesion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
 }
 
 footer{
