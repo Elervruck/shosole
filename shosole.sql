@@ -11,13 +11,10 @@ create table cargos(
 
 create table generos(
 	id_genero serial primary key not null,
-	genero character varying (30) not null
+	genero character varying (30) not null //cambiar los datos ('crear tipos de datos en PgAdmin 4')
 );
 
-create table estado_clientes(
-    id_estado_cliente serial primary key not null,
-    estado_cliente character varying (30) unique not null
-);
+
 ---Si--
 create table usuarios(
 	id_usuario serial primary key not null,
@@ -26,9 +23,9 @@ create table usuarios(
 	correo_usuario character varying(100) unique not null,
 	alias_usuario character varying(50) unique not null,
 	clave_usuario character varying(150) not null,
-	id_genero integer not null,
+	id_genero integer not null, //cambiar los datos ('crear tipos de datos en PgAdmin 4')
 	id_cargo integer not null,
-	id_estado_usuario integer not null,
+	id_estado_usuario integer not null, //cambiar los datos ('crear tipos de datos en PgAdmin 4')
 	foto_usuario character varying(100) null,
 	intentos smallint null,
 	fecha_bloqueo timestamp without time zone null,
@@ -78,7 +75,7 @@ create table clientes(
 	nacimiento_cliente date not null,
 	direccion_cliente character varying (200) not null,
 	clave_cliente character varying (100) not null,
-	id_estado_cliente integer not null,
+	estado_cliente integer not null, //cambiar los datos ('crear tipos de datos en PgAdmin 4')
 	id_genero integer not null,
 	foto_cliente character varying(500) null,
 	usuario_cliente character varying (100) not null

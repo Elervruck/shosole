@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/cliente.php');
+require_once('../../entities/dto/clientes.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -70,6 +70,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
                 } elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Teléfono incorrecto';
+                } elseif (!$cliente->setEstadoCliente('Activo')) {
+                    $result['exception'] = 'Estado incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
@@ -83,9 +85,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                if (!$cliente->checkUser($_POST['usuario'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->getEstado()) {
+                if (!$cliente->checkUser($_POST['usuario-cliente'])) {
+                    $result['exception'] = 'el usuario es incorrecto';
+                } elseif (!$cliente->getEstado()=='Activo') {
                     $result['exception'] = 'La cuenta ha sido desactivada';
                 } elseif ($cliente->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;

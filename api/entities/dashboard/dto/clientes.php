@@ -16,7 +16,7 @@ class Clientes extends ClientesQueries
     protected $nacimiento_cliente = null;
     protected $direccion_cliente = null;
     protected $clave_cliente = null;
-    protected $id_estado_cliente = null;
+    protected $estado_cliente = null;
     protected $id_genero = null;
     protected $foto_cliente = null;
     protected $usuario_cliente = null;
@@ -36,7 +36,7 @@ class Clientes extends ClientesQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->nombre_cliente = $value;
             return true;
         } else {
@@ -46,7 +46,7 @@ class Clientes extends ClientesQueries
 
     public function setApellido($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->apellido_cliente = $value;
             return true;
         } else {
@@ -127,8 +127,8 @@ class Clientes extends ClientesQueries
 
     public function setEstadoCliente($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->id_estado_cliente = $value;
+        if (Validator::validateAlphabetic($value, 1, 10)) {
+            $this->estado_cliente = $value;
             return true;
         } else {
             return false;
@@ -207,7 +207,7 @@ class Clientes extends ClientesQueries
 
    public function getEstadoCliente()
    {
-       return $this->id_estado_cliente;
+       return $this->estado_cliente;
    }
 
    public function getGenero()
