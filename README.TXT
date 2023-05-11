@@ -19,3 +19,15 @@ Cuando de vaya a descargar el proyecto hacer lo siguiente para que sirva la cone
 - Agregar la contraseña respectiva de su dispositivo a config.php
 - Cuanto termine todo los cambios de que vaya ha hacer, antes de subir los cambios al repositorio, *BORRAR LA CONTRASEÑA Y VOLVER A PONER LAS PLECAS en config.php
 
+Por cada comentario personalizado debe crear
+primero el comentario
+
+<!--COMENTARIO PERSONALIZADO--!>
+
+y luego poner la acción que está realizando
+
+
+
+
+
+
