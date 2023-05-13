@@ -3,5 +3,5 @@
 define('SERVER','localhost');
 define('DATABASE','shosole');
 define('USERNAME','postgres');
-define('PASSWORD','');
+define('PASSWORD','stuka.v8');
 ?>
