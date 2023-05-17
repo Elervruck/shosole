@@ -17,10 +17,9 @@ class Clientes extends ClientesQueries
     protected $direccion_cliente = null;
     protected $clave_cliente = null;
     protected $estado_cliente = null;
-    protected $id_genero = null;
+    protected $genero_clientes = null;
     protected $foto_cliente = null;
     protected $usuario_cliente = null;
-    protected $ruta_imagen = '../../../images/clientes/';
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
@@ -154,6 +153,7 @@ class Clientes extends ClientesQueries
             return false;
         }
     }
+
     
 
    

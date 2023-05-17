@@ -56,10 +56,8 @@ class ClientesQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, id_estado_cliente, id_genero, usuario_cliente, foto_cliente
-                FROM clientes
-                INNER JOIN estado_clientes USING(id_estado_cliente)
-                INNER JOIN generos  USING (id_genero) 
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estados_cliente, genero_clientes, usuario_cliente, foto_cliente
+                FROM clientes 
                 WHERE id_cliente = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
