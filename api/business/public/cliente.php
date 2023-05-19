@@ -6,7 +6,7 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $cliente = new Cliente;
+    $cliente = new Clientes;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
@@ -15,11 +15,11 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['correo_cliente'])) {
+                if (isset($_SESSION['usuario'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['correo_cliente'];
+                    $result['username'] = $_SESSION['usuario'];
                 } else {
-                    $result['exception'] = 'Correo de usuario indefinido';
+                    $result['exception'] = 'El usuario es indefinido';
                 }
                 break;
             case 'logOut':
@@ -85,15 +85,14 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                if (!$cliente->checkUser($_POST['usuario-cliente'])) {
-                    $result['exception'] = 'el usuario es incorrecto';
+                if (!$cliente->checkUser($_POST['usuario'])) {
+                    $result['exception'] = 'El usuario es incorrecto';
                 } elseif (!$cliente->getEstado()=='Activo') {
-                    $result['exception'] = 'La cuenta ha sido desactivada';
-                } elseif ($cliente->checkPassword($_POST['clave'])) {
+                    $result['exception'] = 'La cuenta que has querido ingresar esta desactivada o inactiva';
+                } elseif ($cliente->checkPassword($_POST['contraseña'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $cliente->getId();
-                    $_SESSION['correo_cliente'] = $cliente->getCorreo();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

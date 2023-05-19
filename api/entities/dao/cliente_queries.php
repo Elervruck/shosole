@@ -9,6 +9,32 @@ class ClientesQueries
     *   Métodos para gestionar la cuenta del clientes.
     */
 
+    public function checkUser($usuario_cliente)
+    {
+        $sql = 'SELECT id_cliente, estado_cliente FROM clientes WHERE usuario_cliente = ?';
+        $params = array($usuario_cliente);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['id_cliente'];
+            $this->estado_cliente = $data['estado_cliente'];
+            $this->usuario_cliente = $usuario_cliente;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        if (password_verify($password, $data['clave_usuario'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function searchRows($value)
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, foto_cliente, usuario_cliente
@@ -47,9 +73,8 @@ class ClientesQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, foto_cliente, usuario_cliente, nacimiento_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, direccion_cliente, clave_cliente, estado_cliente, genero_clientes, foto_cliente, usuario_cliente, nacimiento_cliente
         FROM clientes
-        INNER JOIN estado_clientes USING(id_estado_cliente)
         INNER JOIN generos  USING (id_genero)';
         return Database::getRows($sql);
     }
@@ -58,7 +83,6 @@ class ClientesQueries
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, id_estado_cliente, id_genero, usuario_cliente, foto_cliente
                 FROM clientes
-                INNER JOIN estado_clientes USING(id_estado_cliente)
                 INNER JOIN generos  USING (id_genero) 
                 WHERE id_cliente = ?';
         $params = array($this->id);

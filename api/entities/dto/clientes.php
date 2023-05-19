@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dashboard/dao/cliente_queries.php');
+require_once('../../entities/dao/cliente_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
@@ -17,7 +17,7 @@ class Clientes extends ClientesQueries
     protected $direccion_cliente = null;
     protected $clave_cliente = null;
     protected $estado_cliente = null;
-    protected $id_genero = null;
+    protected $genero_cliente = null;
     protected $foto_cliente = null;
     protected $usuario_cliente = null;
     protected $ruta_imagen = '../../../images/clientes/';
@@ -137,7 +137,7 @@ class Clientes extends ClientesQueries
 
     public function setGenero($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1,10)) {
             $this->id_genero = $value;
             return true;
         } else {
@@ -217,7 +217,7 @@ class Clientes extends ClientesQueries
 
    public function getUsuario(){
 
-    return $this->id_estado_cliente;
+    return $this->usuario_cliente;
 }
 
    public function getFoto(){
@@ -227,7 +227,7 @@ class Clientes extends ClientesQueries
 
     public function getEstado(){
 
-        return $this->id_estado_cliente;
+        return $this->estado_cliente;
     }
 
    public function getRutaImagen()

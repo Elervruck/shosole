@@ -18,62 +18,30 @@
     </header>
     <main>
         <section class="Login">
-            <div class="form">
+            <div class="form" md-6>
                 <h2>Login</h2>
-                <form action="">
-                    <div class="datos" id="Login">
-                        <div class="mb-3 user" id="user">
-                            <label for="exampleInputEmail1" class="form-label lbluser">Usuario</label>
-                            <input type="text" class="form-control" name="usuario-cliente" id="usuario-cliente"aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3 contra">
-                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control"  name="contraseña-cliente" id="contraseña-cliente">
-                        </div>
+                <form class="form" method="post" id="session-form">
+                    <div class="title">Bienvenido,<br><span>Inicia sesión para continuar</span></div>
+                    <input type="text" placeholder="Usuario" name="usuario" id="usuario"  class="input">
+                    <input type="password" placeholder="Contraseña" name="contraseña" id="contraseña" class="input">
+                    <div class="login-with">
+                      
                     </div>
-                    <div class="opcionesDeIniciar">
-                        <div class="iniciarSesion">
-                            <button class="btnIniciar">Iniciar sesion</button>
-                        </div>
-                        <div class="Registrase">
-                            <button class="btnRegistrarse" onclick="ocultar()">No tienes cuenta, Registrate</button>
-                        </div>
-                    </div>
-                </form>
+                    <button class="button-confirm">Ingresar</button>
+                  </form>
             </div>
         </section>
-        <section class="Infor">
-            <div class="formRegistro">
-                <h2>Registro</h2>
-                <form class="registroForm" action="">
-                    <div class="datosRegistro" id="Login">
-                        <div class="mb-3 usuario" id="user">
-                            <label for="exampleInputEmail1" class="form-label lbluser">Usuario</label>
-                            <input type="text" class="form-control" name="usuario-cliente" id="usuario-cliente"aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3 contrasenia">
-                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control"  name="contraseña-cliente" id="contraseña-cliente">
-                        </div>
-                    </div>
-                    <div class="opcionesDeRegistro">
-                        <div class="RegistrarSesion">
-                            <button class="btnIniciar">Iniciar sesion</button>
-                        </div>
-                        <div class="Registrase">
-                            <button class="btnRegistrarse" onclick="ocultar()">No tienes cuenta, Registrate</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
+        
     </main>
+    <br>
     <footer>
 
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+        <script src="../../controllers/components.js"></script>
+        <script src="../../controllers/public/account.js"></script>
     <script src="../../controllers/public/login.js"></script>
 </body>
 
