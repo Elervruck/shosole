@@ -1,48 +1,87 @@
-<!doctype html>
-<html lang="es">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login | Shosole</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../resources/css/public/login-clientes.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Shosole </title>
+  <link rel="stylesheet" href="../../resources/css/public/login.css" />
+  <script src="https://kit.fontawesome.com/7b39153ed3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
+  <div class="container" id="container">
 
-        </nav>
-    </header>
-    <main>
-        <section class="Login">
-            <div class="form" md-6>
-                <h2>Login</h2>
-                <form class="form" method="post" id="session-form">
-                    <div class="title">Bienvenido,<br><span>Inicia sesión para continuar</span></div>
-                    <input type="text" placeholder="Usuario" name="usuario" id="usuario"  class="input">
-                    <input type="password" placeholder="Contraseña" name="contraseña" id="contraseña" class="input">
-                    <div class="login-with">
-                      
-                    </div>
-                    <button class="button-confirm">Ingresar</button>
-                  </form>
-            </div>
-        </section>
-        
-    </main>
-    <br>
-    <footer>
+    <!-- sign Up form section start-->
+    <div class="form sign_up">
+      <form action="#">
+        <!-- heading -->
+        <h1>Create An Account</h1>
+        <!-- social media icons -->
+        <!-- <div class="social-container">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-google"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div> -->
+        <span>use email for registration</span>
+        <!-- input fields start -->
+        <input type="text" placeholder="Nombres">
+        <input type="text" placeholder="Apellidos">
+        <input type="text" placeholder="Usuario">
+        <input type="date" placeholder="Fecha de nacimiento">
+        <input type="email" placeholder="Correo">
+        <input type="password" placeholder="Contraseña">
+        <button>Crear cuenta</button>
+        <!-- input fields end -->
+      </form>
+    </div>
+    <!-- sign Up form section end-->
 
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-        <script src="../../controllers/components.js"></script>
-        <script src="../../controllers/public/account.js"></script>
-    <script src="../../controllers/public/login.js"></script>
+    <!-- sign in form section start-->
+    <div class="form sign_in">
+      <form action="#" method="post" id="session-form">
+        <!-- heading -->
+        <h1>Iniciar Sesión</h1>
+        <!-- social media icons -->
+        <!-- <div class="social-container">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-google"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div> -->
+        <span>Inicia sesión con tu cuenta <3</span>
+        <!-- input fields start -->
+        <input type="text" name="usuario" id="usuario" placeholder="Usuario">
+        <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
+        <span>¿Olvídastes tu  <span class="forgot">contraseña?</span></span>
+        <button>Inicia sesión</button>  
+        <!-- input fields end -->
+      </form>
+    </div>
+    <!-- sign in form section end-->
+
+    <!-- overlay section start-->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-pannel overlay-left">
+          <h1>¿Ya tienes una cuenta?</h1>
+          <p>Vamos a iniciar sesión</p>
+          <button id="signIn" class="overBtn">Vamos</button>
+        </div>
+        <div class="overlay-pannel overlay-right">
+          <h1>¿No tienes una cuenta?</h1>
+          <p>Empecemos a crear tu cuenta</p>
+          <button id="signUp" class="overBtn">Empecemos</button>
+        </div>
+      </div>
+    </div>
+    <!-- overlay section start-->
+  </div>
+  <script src="../../resources/js/sweetalert2.all.min.js"></script>
+  <script src="../../controllers/components.js"></script>
+  <script src="../../controllers/public/account.js"></script>
+  <script src="../../controllers/public/login.js"></script>
+  
+
 </body>
 
 </html>

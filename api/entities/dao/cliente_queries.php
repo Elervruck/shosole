@@ -25,14 +25,19 @@ class ClientesQueries
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
+        $sql = 'SELECT clave_cliente FROM clientes WHERE id_cliente = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if (password_verify($password, $data['clave_usuario'])) {
+        if ($password==$data['clave_cliente']) {
             return true;
         } else {
             return false;
         }
+        /*if (password_verify($password, $data['clave_cliente'])) {
+            return true;
+        } else {
+            return false;
+        }*/
     }
 
     public function searchRows($value)

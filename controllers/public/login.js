@@ -1,5 +1,23 @@
 // Constante para establecer el formulario de iniciar sesión.
 const SESSION_FORM = document.getElementById('session-form');
+//Codigo personalizado
+
+//Permite el cambio de formulario de primer uso a login
+
+const signUpBUtton = document.getElementById("signUp");
+const signInBUtton = document.getElementById("signIn");
+const container = document.getElementById("container");
+
+// Switch entre el login y el primer uso
+
+signUpBUtton.addEventListener("click", () => {
+  container.classList.add("right-panel-active");
+});
+
+signInBUtton.addEventListener("click", () => [
+  container.classList.remove("right-panel-active")
+]);
+
 
 // Método manejador de eventos para cuando se envía el formulario de iniciar sesión.
 SESSION_FORM.addEventListener('submit', async (event) => {
