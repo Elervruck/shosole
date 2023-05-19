@@ -18,21 +18,21 @@
                 <img class="Logo-nav" src="../../resources/img/logo_sin_name.png" alt="">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../dashboard/main.html">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="main.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../public/nosotros.html">Nosotros</a>
+                        <a class="nav-link" href="nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../dashboard/productos.html">Productos</a>
+                        <a class="nav-link" href="productos.html">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../public/carrito.html">Carrito</a>
+                        <a class="nav-link" href="carrito.html">Carrito</a>
                     </li>
                 </ul>
             </div>
             <div class="derecha">
-                <input class="buscador" type="text">
+
                 <div class="foto-perfil">
 
                 </div>
@@ -42,128 +42,122 @@
 
     <div class="container-fluid">
         <main>
-            <section class="section">
-                <div class="producto-play2">
-                    <div class="imagen-play2">
-                        <img class="play-2img" src="../../resources/img/pla2.webp" alt="">
+            <section class="contenedor">
+                <!-- Contenedor de elementos -->
+                <div class="contenedor-items">
+                    <div class="item">
+                        <span class="titulo-item">Play Station 1</span>
+                        <img src="../../resources/img/ps3-removebg-preview.png" alt="" class="img-item">
+                        <span class="precio-item">$15.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
                     </div>
-                    <div class="precio-play2">
-                        <div class="nombre-play2">
-                            <p class="p-play2">PlayStation2 (reaconicionada)</p>
-                        </div>
-                        <div class="precio">
-                            <p class="text-precio">$47.53</p>
-                        </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/englishrose.png" alt="" class="img-item">
+                        <span class="precio-item">$25.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
                     </div>
-                    <div class="cantidad-play2">
-                        <div class="cantidad">
-                            <h2>Cantidad</h2>
-                        </div>
-                        <div class="input-cantidad">
-                            <input type="text">
-                        </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/knocknap.png" alt="" class="img-item">
+                        <span class="precio-item">$35.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
                     </div>
-                    <div class="acciones-play2">
-                        <div class="acciones">
-                            <input class="input-accion eliminar"  type="text" placeholder="Eliminar">
-                            <input class="input-accion comprar" type="text" placeholder="Comprar">
-                        </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/lanight.png" alt="" class="img-item">
+                        <span class="precio-item">$18.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
+                    </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/silverall.png" alt="" class="img-item">
+                        <span class="precio-item">$32.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
+                    </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/skinglam.png" alt="" class="img-item">
+                        <span class="precio-item">$18.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
+                    </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/" alt="" class="img-item">
+                        <span class="precio-item">$54.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
+                    </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="" alt="" class="img-item">
+                        <span class="precio-item">$32.000</span>
+                        <button class="boton-item">Agregar al Carrito</button>
+                    </div>
+                    <div class="item">
+                        <span class="titulo-item">Play Station</span>
+                        <img src="img/middlesteel.png" alt="" class="img-item">
+                        <span class="precio-item">$42.800</span>
+                        <button class="boton-item">Agregar al Carrito</button>
                     </div>
                 </div>
-                <div class="producto-xbox">
-                    <div class="imagen-xbox">
-                        <img class="xbox-img" src="../../resources/img/xbox.webp" alt="">
+                <!-- Carrito de Compras -->
+                <div class="carrito" id="carrito">
+                    <div class="header-carrito">
+                        <h2>Tu Carrito</h2>
                     </div>
-                    <div class="precio-xbox">
-                        <div class="nombre-xbox">
-                            <p class="p-xbox">Xbox360 (usado)</p>
+        
+                    <div class="carrito-items">
+                        <!-- 
+                        <div class="carrito-item">
+                            <img src="img/boxengasse.png" width="80px" alt="">
+                            <div class="carrito-item-detalles">
+                                <span class="carrito-item-titulo">Box Engasse</span>
+                                <div class="selector-cantidad">
+                                    <i class="fa-solid fa-minus restar-cantidad"></i>
+                                    <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                                    <i class="fa-solid fa-plus sumar-cantidad"></i>
+                                </div>
+                                <span class="carrito-item-precio">$15.000,00</span>
+                            </div>
+                           <span class="btn-eliminar">
+                                <i class="fa-solid fa-trash"></i>
+                           </span>
                         </div>
-                        <div class="precio">
-                            <p class="text-precio">$197.99</p>
+                        <div class="carrito-item">
+                            <img src="img/skinglam.png" width="80px" alt="">
+                            <div class="carrito-item-detalles">
+                                <span class="carrito-item-titulo">Skin Glam</span>
+                                <div class="selector-cantidad">
+                                    <i class="fa-solid fa-minus restar-cantidad"></i>
+                                    <input type="text" value="3" class="carrito-item-cantidad" disabled>
+                                    <i class="fa-solid fa-plus sumar-cantidad"></i>
+                                </div>
+                                <span class="carrito-item-precio">$18.000,00</span>
+                            </div>
+                           <button class="btn-eliminar">
+                                <i class="fa-solid fa-trash"></i>
+                           </button>
                         </div>
+                         -->
                     </div>
-                    <div class="cantidad-xbox">
-                        <div class="cantidad">
-                            <h2>Cantidad</h2>
+                    <div class="carrito-total">
+                        <div class="fila">
+                            <strong>Tu Total</strong>
+                            <span class="carrito-precio-total">
+                                $120.000,00
+                            </span>
                         </div>
-                        <div class="input-cantidad">
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="acciones-xbox">
-                        <div class="acciones">
-                            <input class="input-accion eliminar"  type="text" placeholder="Eliminar">
-                            <input class="input-accion comprar"  type="text" placeholder="Comprar">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="producto-gameboy">
-                    <div class="imagen-gameboy">
-                        <img class="gameboy-img" src="../../resources/img/gameboy.jpg" alt="">
-                    </div>
-                    <div class="precio-gameboy">
-                        <div class="nombre-gameboy">
-                            <p class="p-gameboy">Game boy-Advance</p>
-                        </div>
-                        <div class="precio">
-                            <p class="text-precio">$197.99</p>
-                        </div>
-                    </div>
-                    <div class="cantidad-gameboy">
-                        <div class="cantidad">
-                            <h2>Cantidad</h2>
-                        </div>
-                        <div class="input-cantidad">
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="acciones-gameboy">
-                        <div class="acciones">
-                            <input class="input-accion eliminar"  type="text" placeholder="Eliminar">
-                            <input class="input-accion comprar"  type="text" placeholder="Comprar">
-                        </div>
+                        <button class="btn-pagar">Pagar<i class="fa-solid fa-bag-shopping"></i> </button>
                     </div>
                 </div>
             </section>
         </main>
-        <aside class="aside">
-            <div class="relacionados">
-                <div class="texto">
-                    <h1 class="Productos-texto">Productos Relacionado</h1>
-                </div>
-                <div class="consolas-relacionadas">
-                    <div class="play relacionado">
-                        <div class="imagen">
-                            <img src="../../resources/img/play5.avif" alt="">
-                        </div>
-                        <div class="nombre-consola">
-                            <p>PlayStation5</p>
-                        </div>
-                    </div>
-                    <div class="nintendo relacionado">
-                        <div class="imagen">
-                            <img src="../../resources/img/gameboy.jpg" alt="">
-                        </div>
-                        <div class="nombre-consola">
-                            <p>Gameboy micro</p>
-                        </div>
-                    </div>
-                    <div class="xbox relacionado">
-                        <div class="imagen">
-                            <img src="../../resources/img/xbox.webp" alt="">
-                        </div>
-                        <div class="nombre-consola">
-                            <p>Xbox series X</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+        <script src="../../controllers/public/carrito.js"></script>
 </body>
 
 </html>

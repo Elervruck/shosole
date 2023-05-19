@@ -1,18 +1,29 @@
 /*
+<<<<<<< HEAD
 *   Controlador es de uso general en las páginas web del sitio público.
+=======
+*   Controlador de uso general en las páginas web del sitio privado.
+>>>>>>> f6cdd49608db2e841e77f3db7e2b938677b30a67
 *   Sirve para manejar las plantillas del encabezado y pie del documento.
 */
 
 // Constante para completar la ruta de la API.
+<<<<<<< HEAD
 const USER_API = 'business/public/cliente.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 /*const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
+=======
+const USER_API = 'business/public/usuario.php';
+
+
+>>>>>>> f6cdd49608db2e841e77f3db7e2b938677b30a67
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USER_API, 'getUser');
+<<<<<<< HEAD
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
         HEADER.innerHTML = `
@@ -127,3 +138,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se inicializa el efecto Parallax.
     M.Parallax.init(document.querySelectorAll('.parallax'));
 });*/
+=======
+    // Se verifica si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
+    if (JSON.session) {
+        // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            let menu = `
+            <ul class="lista-admins">
+                <li><a href="inventarios.html">Inventarios</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="marcas.html">Marcas</a></li>
+                <li><a href="cargos.html">Cargos</a></li>
+                <li><a href="modelos.html">Modelos</a></li>
+                <li><a href="condicion.html">Condicion</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="pedidos.html">Pedidos</a></li>
+            </ul>
+                `;
+            document.querySelector('nav').innerHTML = menu;
+        } else {
+            sweetAlert(3, JSON.exception, false, 'index.html');
+        }
+    } else {
+
+    }
+});
+>>>>>>> f6cdd49608db2e841e77f3db7e2b938677b30a67
