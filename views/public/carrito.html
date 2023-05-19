@@ -1,163 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shosole | Carrito </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../resources/css/public/carrito.css">
 </head>
+<body>
 
-<body>  
-    <header>
-        <nav>
-            <div class="izquierda">
-                <img class="Logo-nav" src="../../resources/img/logo_sin_name.png" alt="">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="main.html">Inicio</a>
+    <div class="wrapper">
+        <header class="header-mobile">
+            <h1 class="logo">Shosole</h1>
+            <button class="open-menu" id="open-menu">
+                <i class="bi bi-list"></i>
+            </button>
+        </header>
+        <aside>
+            <button class="close-menu" id="close-menu">
+                <i class="bi bi-x"></i>
+            </button>
+            <header>
+                <h1 class="logo">Shosole</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a class="boton-menu boton-volver" href="./main.html">
+                            <i class="bi bi-arrow-return-left"></i> Seguir comprando
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="productos.html">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="carrito.html">Carrito</a>
+                    <li>
+                        <a class="boton-menu boton-carrito active" href="./carrito.html">
+                            <i class="bi bi-cart-fill"></i> Carrito
+                        </a>
                     </li>
                 </ul>
-            </div>
-            <div class="derecha">
-
-                <div class="foto-perfil">
-
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <div class="container-fluid">
+            </nav>
+            <footer>
+                <p class="texto-footer">Proyecto | Tienda Online</p>
+            </footer>
+        </aside>
         <main>
-            <section class="contenedor">
-                <!-- Contenedor de elementos -->
-                <div class="contenedor-items">
-                    <div class="item">
-                        <span class="titulo-item">Play Station 1</span>
-                        <img src="../../resources/img/ps3-removebg-preview.png" alt="" class="img-item">
-                        <span class="precio-item">$15.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/englishrose.png" alt="" class="img-item">
-                        <span class="precio-item">$25.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/knocknap.png" alt="" class="img-item">
-                        <span class="precio-item">$35.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/lanight.png" alt="" class="img-item">
-                        <span class="precio-item">$18.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/silverall.png" alt="" class="img-item">
-                        <span class="precio-item">$32.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/skinglam.png" alt="" class="img-item">
-                        <span class="precio-item">$18.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/" alt="" class="img-item">
-                        <span class="precio-item">$54.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="" alt="" class="img-item">
-                        <span class="precio-item">$32.000</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                    <div class="item">
-                        <span class="titulo-item">Play Station</span>
-                        <img src="img/middlesteel.png" alt="" class="img-item">
-                        <span class="precio-item">$42.800</span>
-                        <button class="boton-item">Agregar al Carrito</button>
-                    </div>
-                </div>
-                <!-- Carrito de Compras -->
-                <div class="carrito" id="carrito">
-                    <div class="header-carrito">
-                        <h2>Tu Carrito</h2>
-                    </div>
-        
-                    <div class="carrito-items">
-                        <!-- 
-                        <div class="carrito-item">
-                            <img src="img/boxengasse.png" width="80px" alt="">
-                            <div class="carrito-item-detalles">
-                                <span class="carrito-item-titulo">Box Engasse</span>
-                                <div class="selector-cantidad">
-                                    <i class="fa-solid fa-minus restar-cantidad"></i>
-                                    <input type="text" value="1" class="carrito-item-cantidad" disabled>
-                                    <i class="fa-solid fa-plus sumar-cantidad"></i>
-                                </div>
-                                <span class="carrito-item-precio">$15.000,00</span>
-                            </div>
-                           <span class="btn-eliminar">
-                                <i class="fa-solid fa-trash"></i>
-                           </span>
-                        </div>
-                        <div class="carrito-item">
-                            <img src="img/skinglam.png" width="80px" alt="">
-                            <div class="carrito-item-detalles">
-                                <span class="carrito-item-titulo">Skin Glam</span>
-                                <div class="selector-cantidad">
-                                    <i class="fa-solid fa-minus restar-cantidad"></i>
-                                    <input type="text" value="3" class="carrito-item-cantidad" disabled>
-                                    <i class="fa-solid fa-plus sumar-cantidad"></i>
-                                </div>
-                                <span class="carrito-item-precio">$18.000,00</span>
-                            </div>
-                           <button class="btn-eliminar">
-                                <i class="fa-solid fa-trash"></i>
-                           </button>
-                        </div>
-                         -->
-                    </div>
-                    <div class="carrito-total">
-                        <div class="fila">
-                            <strong>Tu Total</strong>
-                            <span class="carrito-precio-total">
-                                $120.000,00
-                            </span>
-                        </div>
-                        <button class="btn-pagar">Pagar<i class="fa-solid fa-bag-shopping"></i> </button>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-        <script src="../../controllers/public/carrito.js"></script>
-</body>
+            <h2 class="titulo-principal">Carrito</h2>
+            <div class="contenedor-carrito">
+                <p id="carrito-vacio" class="carrito-vacio">Tu carrito está vacío. <i class="bi bi-emoji-frown"></i></p>
 
+                <div id="carrito-productos" class="carrito-productos disabled">
+                    <!-- Esto se va a completar con el JS -->
+                </div>
+
+                <div id="carrito-acciones" class="carrito-acciones disabled">
+                    <div class="carrito-acciones-izquierda">
+                        <button id="carrito-acciones-vaciar" class="carrito-acciones-vaciar">Vaciar carrito</button>
+                    </div>
+                    <div class="carrito-acciones-derecha">
+                        <div class="carrito-acciones-total">
+                            <p>Total:</p>
+                            <p id="total">$3000</p>
+                        </div>
+                        <button id="carrito-acciones-comprar" class="carrito-acciones-comprar">Comprar ahora</button>
+                    </div>
+                </div>
+
+                <p id="carrito-comprado" class="carrito-comprado disabled">Muchas gracias por tu compra. <i class="bi bi-emoji-laughing"></i></p>
+
+            </div>
+        </main>
+    </div>
+        <script src="../../controllers/public/menu.js"></script>
+</body>
 </html>

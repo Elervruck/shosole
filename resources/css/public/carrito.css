@@ -1,873 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
-.container-fluid {
-    height: 120vh;
-    background-color: #E4E1E6;
-    display: grid;
-    display: flex;
-    column-gap: 10px;
+:root {
+    --clr-main: #381ca4;
+    --clr-main-light: #563aca;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-red: #961818;
 }
 
-header {
-    height: 50px;
-    background-color: #4E0F8B;
-    position: fixed;
-    width: 100%;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Titillium+Web:wght@200;300;400;600;700&display=swap');
-*{
+* {
     margin: 0;
-    padding:0;
-    font-family: 'Open Sans';
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
 }
 
-header h1{
-    text-align: center;
-    font-size: 35px;
-    /* background-color: #000; */
-    color: #fff;
-    padding: 30px 0;
-}
-.contenedor{
-    max-width: 1200px;
-    padding: 10px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    /* oculto lo que queda fuera del .contenedor */
-}
-/* SECCION CONTENEDOR DE ITEMS */
-.contenedor .contenedor-items{
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    grid-gap:30px;
-    grid-row-gap: 30px;
-    /* width: 60%; */
-    width: 100%;
-    transition: .3s;
-}
-.contenedor .contenedor-items .item{
-    max-width: 200px;
-    margin: auto;
-    border: 1px solid #666;
-    border-radius: 10px;
-    padding: 20px;
-    transition: .3s;
-}
-.contenedor .contenedor-items .item .img-item{
-    width: 100%;
-}
-.contenedor .contenedor-items .item:hover{
-    box-shadow: 0 0 10px #666;
-    scale: 1.05;
-}
-.contenedor .contenedor-items .item .titulo-item{
-    display: block;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-.contenedor .contenedor-items .item .precio-item{
-    display: block;
-    text-align: center;
-    font-weight: bold;
-    font-size: 22px;
+h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
+    margin: 0;
+    padding: 0;
 }
 
-.contenedor .contenedor-items .item .boton-item{
-    display: block;
-    margin: 10px auto;
-    border: none;
-    background-color: #4E0F8B;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-/* seccion carrito */
-.carrito{
-    border: 1px solid #666;
-    width: 35%;
-    margin-top: 30px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: auto;
-    position: sticky !important;
-    top: 0;
-    transition: .3s;
-    /* Estilos para ocultar */
-    margin-right: -100%;
-    opacity: 0;
-}
-.carrito .header-carrito{
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 30px 0;
-}
-.carrito .carrito-item{
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
-    position: relative;
-    border-bottom: 1px solid #666;
-    padding: 20px;
-}
-.carrito .carrito-item img{
-    margin-right: 20px;
-}
-.carrito .carrito-item .carrito-item-titulo{
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-.carrito .carrito-item .selector-cantidad{
-    display: inline-block;
-    margin-right: 25px;
-}
-.carrito .carrito-item .carrito-item-cantidad{
-    border: none;
-    font-size: 18px;
-    background-color: transparent;
-    display: inline-block;
-    width:30px;
-    padding: 5px;
-    text-align: center;
-}
-.carrito .carrito-item .selector-cantidad i{
-    font-size: 18px;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #000;
-    cursor: pointer;
-}
-.carrito .carrito-item .carrito-item-precio{
-    font-weight: bold;
-    display: inline-block;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-.carrito .carrito-item .btn-eliminar{
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    color: #000;
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #000;
-    cursor: pointer;
-    display: block;
-    background: transparent;
-    z-index: 20;
-}
-.carrito .carrito-item .btn-eliminar i{
-    pointer-events: none;
+ul {
+    list-style-type: none;
 }
 
-.carrito-total{
-    background-color: #f3f3f3;
-    padding: 30px;
-}
-.carrito-total .fila{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.carrito-total .btn-pagar{
-    display: block;
-    width: 100%;
-    border: none;
-    background: #000;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: .3s;
-}
-.carrito-total .btn-pagar:hover{
-    scale: 1.05;
-}
-
-/* SECCION RESPONSIVE */
-@media screen and (max-width: 850px) {
-    .contenedor {
-      display: block;
-    }
-    .contenedor-items{
-        width: 100% !important;
-    }
-    .carrito{
-        width: 100%;
-    }
-  }
-
-
-nav{
-    height: 50px;
-    display: flex;
-}
-
-a{
-    color: #FFFFFF !important;
+a {
     text-decoration: none;
 }
 
-.izquierda{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.Logo-nav{
-    height: 40px;
-    width: 50px;
-}
-
-.derecha{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-}
-
-.buscador{
-    width: 50%;
-    height: auto;
-    border-radius: 30px;
-    border: none;
-}
-
-.foto-perfil{
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: gray;
-}
-
-main {
-    height: auto;
-    width: auto;
-}
-
-main {
-    width: 70%;
-    height: 80%;
-    border-radius: 30px;
-    background-color: #B7A0CE;
-    margin-top: 100px;
-}
-
-section {
-    width: auto;
-    height: 100%;
-    border-radius: 30px;
-}
-
-.producto-play2 {
-    margin-top: 6%;
-    width: 90%;
-    height: 20%;
-    margin-left: 5%;
-    display: flex;
-    border: 1px solid black;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.producto-xbox {
-    margin-left: 5%;
-    margin-top: 2%;
-    width: 90%;
-    height: 20%;
-    display: flex;
-    border: 1px solid black;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.play-2img,
-.xbox-img,
-.gameboy-img {
-    height: 100%;
-    width: 100%;
-}
-
-.producto-gameboy {
-    margin-left: 5%;
-    margin-top: 2%;
-    width: 90%;
-    height: 20%;
-    display: flex;
-    border: 1px solid black;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.imagen-play2,
-.imagen-xbox,
-.imagen-gameboy {
-    width: 20%;
-    height: 100%;
-    background-color: #B7A0CE;
-    border: 1px solid black;
-}
-
-.precio-play2,
-.precio-xbox,
-.precio-gameboy {
-    height: 100%;
-    width: 40%;
-}
-
-.cantidad-play2,
-.cantidad-xbox,
-.cantidad-gameboy {
-    height: 100%;
-    width: 20%;
-    padding-left: 10px;
-}
-
-.acciones-play2,
-.acciones-xbox,
-.acciones-gameboy {
-    height: 100%;
-    width: 20%;
-}
-
-.nombre-play2,
-.nombre-xbox,
-.nombre-gameboy {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.precio {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    align-items: end;
-}
-
-.text-precio {
-    color: blue;
-}
-
-.acciones {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cantidad {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.input-cantidad {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.input-accion {
-    height: 20%;
-    width: 80%;
-    column-gap: 10px;
-    text-align: center;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-input {
-    border-radius: 20px;
-    border: none;
-    height: 30%;
-    width: 60%;
-}
-
-.comprar {
-    background-color: rgb(165, 197, 163);
-}
-
-.eliminar {
-    background-color: rgb(215, 164, 164);
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: var(--clr-main);
 }
 
 aside {
-    width: 30%;
-    height: 80%;
-    margin-bottom: 10px;
-    margin-top: 100px;
-    background-color: #B7A0CE;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
-}
-
-.relacionados {
-    width: 100%;
-    height: 100%;
-}
-
-.texto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-}
-
-.Productos-texto {
-    font-size: 25px;
-}
-
-.consolas-relacionadas {
-    height: 90%;
+    padding: 2rem;
+    padding-right: 0;
+    color: var(--clr-white);
+    position: sticky;
+    top: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.relacionado {
-    background-color: #4E0F8B;
-    width: 200px;
-    height: 180px;
-    border: 1px solid black;
-    margin-top: 20px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
+.logo {
+    font-weight: 400;
+    font-size: 1.3rem;
 }
 
-.imagen {
-    height: 120px;
-    width: 100%;
+.menu {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
 }
 
-.nombre-consola {
-    width: 100%;
+.boton-menu {
+    background-color: transparent;
+    border: 0;
+    color: var(--clr-white);
+    cursor: pointer;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    padding: 1rem;
+    font-size: .85rem;
+    width: 100%;
 }
 
-img {
-    height: 80px;
-    width: 100px;
+.boton-menu.active {
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    position: relative;
 }
 
-p {
-    color: #fff;
+.boton-menu.active::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    bottom: 100%;
+    right: 0;
+    background-color: transparent;
+    border-bottom-right-radius: .5rem;
+    box-shadow: 0 1rem 0 var(--clr-white);
+}
+
+.boton-menu.active::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    top: 100%;
+    right: 0;
+    background-color: transparent;
+    border-top-right-radius: .5rem;
+    box-shadow: 0 -1rem 0 var(--clr-white);
+}
+
+.boton-menu > i.bi-hand-index-thumb-fill,
+.boton-menu > i.bi-hand-index-thumb {
+    transform: rotateZ(90deg);
+}
+
+.boton-carrito {
+    margin-top: 2rem;
+}
+
+.numerito {
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+    padding: .15rem .25rem;
+    border-radius: .25rem;
+}
+
+.boton-carrito.active .numerito {
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+}
+
+.texto-footer {
+    color: var(--clr-main-light);
+    font-size: .85rem;
+}
+
+main {
+    background-color: var(--clr-white);
+    margin: 1rem;
+    margin-left: 0;
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.titulo-principal {
+    color: var(--clr-main);
+    margin-bottom: 2rem;
+}
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.producto-imagen {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+.producto-detalles {
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+    padding: .5rem;
+    border-radius: 1rem;
+    margin-top: -2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.producto-titulo {
+    font-size: 1rem;
+}
+
+.producto-agregar {
+    border: 0;
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+    padding: .4rem;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 2px solid var(--clr-white);
+    transition: background-color .2s, color .2s;
+}
+
+.producto-agregar:hover {
+    background-color: var(--clr-main);
+    color: var(--clr-white);
 }
 
 
+/** CARRITO **/
 
-@media (min-width:360px) and (max-width:767px) {
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 1fr;
-        height: 150vh;
-        row-gap: 20px;
+.contenedor-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.carrito-vacio,
+.carrito-comprado {
+    color: var(--clr-main);
+}
+
+.carrito-productos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.carrito-producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--clr-gray);
+    color: var(--clr-main);
+    padding: .5rem;
+    padding-right: 1.5rem;
+    border-radius: 1rem;
+}
+
+.carrito-producto-imagen {
+    width: 4rem;
+    border-radius: 1rem;
+}
+
+.carrito-producto small {
+    font-size: .75rem;
+}
+
+.carrito-producto-eliminar {
+    border: 0;
+    background-color: transparent;
+    color: var(--clr-red);
+    cursor: pointer;
+}
+
+.carrito-acciones {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito-acciones-vaciar {
+    border: 0;
+    background-color: var(--clr-gray);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: var(--clr-main);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.carrito-acciones-derecha {
+    display: flex;
+}
+
+.carrito-acciones-total {
+    display: flex;
+    background-color: var(--clr-gray);
+    padding: 1rem;
+    color: var(--clr-main);
+    text-transform: uppercase;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    gap: 1rem;
+}
+
+.carrito-acciones-comprar {
+    border: 0;
+    background-color: var(--clr-main);
+    padding: 1rem;
+    color: var(--clr-white);
+    text-transform: uppercase;
+    cursor: pointer;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.header-mobile {
+    display: none;
+}
+
+.close-menu {
+    display: none;
+}
+
+.disabled {
+    display: none;
+}
+
+/*** MEDIA QUERIES ***/
+
+@media screen and (max-width: 850px) {
+    .contenedor-productos {
+        grid-template-columns: 1fr 1fr 1fr;
     }
-    header {
-        height: 30px;
+}
+
+@media screen and (max-width: 675px) {
+    .contenedor-productos {
+        grid-template-columns: 1fr 1fr;
     }
-    
-    nav{
-        height: 30px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .wrapper {
+        min-height: 100vh;
         display: flex;
-    }
-    
-    .nav{
-        display: flex;
-    }
-
-    ul{
-        column-gap: 6px;
-    }
-
-    a{
-        color: #FFFFFF !important;
-        text-decoration: none;
-        font-size: 9px;
-        padding: 0% !important;
-    }
-    
-    .izquierda{
-        width: 50%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
-    
-    .Logo-nav{
-        height: 20px;
-        width: 20px;
-    }
-    
-    .derecha{
-        width: 50%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: end;
-    }
-    
-    
-    .foto-perfil{
-        margin-left: 10px;
-        margin-right: 10px;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background-color: gray;
-    }
-
-    .input-accion {
-        font-size: 5px;
-        width: 40%;
-    }
-
-    main {
-        height: 80vh;
-        width: 100%;
-        margin-top: 10%;
-    }
-
-    section {
-        height: 100%;
-        width: 100%;
-        border: 5px solid black;
-    }
-
-    .producto-play2 {
-        margin-top: 6%;
-        width: 90%;
-        height: 10%;
-        margin-left: 5%;
-        border-radius: 20px;
-
-    }
-
-    .producto-xbox {
-        margin-left: 5%;
-        margin-top: 2%;
-        width: 90%;
-        height: 10%;
-        border-radius: 20px;
-    }
-
-    .producto-gameboy {
-        margin-left: 5%;
-        margin-top: 2%;
-        width: 90%;
-        height: 10%;
-        border-radius: 20px;
-    }
-
-    .imagen-play2,
-    .imagen-xbox,
-    .imagen-gameboy {
-        width: 20%;
-        height: 100%;
-        background-color: #B7A0CE;
-        border: 1px solid black;
-        border-radius: 10px;
-
-    }
-
-    .precio-play2,
-    .precio-xbox,
-    .precio-gameboy {
-        height: 80%;
-        width: 40%;
-    }
-
-
-    .p-play2,
-    .p-xbox,
-    .p-gameboy {
-        font-size: 7px;
-    }
-
-    .play-2img,
-    .xbox-img,
-    .gameboy-img {
-        height: 90%;
-        width: 100%;
+        flex-direction: column;
     }
 
     aside {
-        width: 100%;
-        height: 30vh;
-        margin-top: 50px;
-        border: 5px solid black;
+        position: fixed;
+        z-index: 9;
+        background-color: var(--clr-main);
+        left: 0;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .75);
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: .2s;
     }
 
-    .consolas-relacionadas {
-        height: 50%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        column-gap: 5px;
+    .aside-visible {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
     }
 
-    .relacionado {
-        width: 90px;
-        height: 90px;
-        border: 1px solid black;
-        margin-top: 10px;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border-top-right-radius: 10px;
-        border-top-left-radius: 10px;
+    .boton-menu.active::before,
+    .boton-menu.active::after {
+        display: none;
     }
-
-    .texto {
-        margin-bottom: 20px;
-    }
-
-    .imagen {
-        height: 50px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    img {
-        height: 100%;
-        width: 100%;
-        border-radius: 20px;
-
-    }
-
-    h2 {
-        font-size: 10px;
-    }
-
-    p {
-        margin-top: 10px;
-        font-size: 10px;
-    }
-}
-
-@media (min-width:768px) and (max-width:1279px) {
-    .container-fluid {
-        display: grid;
-        grid-template-columns: 1fr;
-        height: 150vh;
-    }
-    a{
-        font-size: 12px;
-    }
-
 
     main {
-        height: 80vh;
-        width: 100%;
-        margin-top: 10%;
+        margin: 1rem;
+        margin-top: 0;
+        padding: 2rem;
     }
 
-    section {
-        height: 100%;
-        width: 100%;
-        border: 5px solid black;
+    .contenedor-productos {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .producto-play2 {
-        margin-top: 6%;
-        width: 90%;
-        height: 15%;
-        margin-left: 5%;
-        border-radius: 20px;
-    }
-
-    .producto-xbox {
-        margin-left: 5%;
-        margin-top: 2%;
-        width: 90%;
-        height: 15%;
-        border-radius: 20px;
-    }
-
-    .producto-gameboy {
-        margin-left: 5%;
-        margin-top: 2%;
-        width: 90%;
-        height: 15%;
-        border-radius: 20px;
-    }
-
-    .play-2img,
-    .xbox-img,
-    .gameboy-img {
-        height: 100%;
-        width: 100%;
-        border-radius: 20px;
-
-    }
-
-
-    aside {
-        width: 100%;
-        height: 40vh;
-        margin-top: 50px;
-        border: 5px solid black;
-    }
-
-    .relacionados {
-        width: 100%;
-        height: 100%;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-    }
-
-    .texto {
+    .header-mobile {
+        padding: 1rem;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        height: 60px;
-
     }
 
-    .Productos-texto {
-        font-size: 25px;
+    .header-mobile .logo {
+        color: var(--clr-gray);
     }
 
-    .consolas-relacionadas {
-        height: 50%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        column-gap: 20px;
+    .open-menu, .close-menu {
+        background-color: transparent;
+        color: var(--clr-gray);
+        border: 0;
+        font-size: 2rem;
+        cursor: pointer;
     }
 
-    .relacionado {
-        background-color: #4E0F8B;
-        width: 200px;
-        height: 180px;
-        border: 1px solid black;
-        margin-top: 20px;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
+    .close-menu {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
 
-    .imagen {
-        height: 120px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 20px;
-
+    .carrito-producto {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: .5rem;
     }
 
-    .nombre-consola {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+    .carrito-producto-subtotal {
+        display: none;
     }
 
-    img {
-        height: 80px;
-        width: 100px;
-        border-radius: 20px;
+    .carrito-acciones {
+        flex-wrap: wrap;
+        row-gap: 1rem;
     }
+    
 
-    p {
-        color: #fff;
-    }
 }
 
 
-@media (min-width:1280px)and (max-width:1800px) {
-    .relacionado {
-        background-color: #4E0F8B;
-        width: 250px;
-        height: 180px;
-        border: 1px solid black;
-        margin-top: 20px;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-    }
 
-    .imagen {
-        height: 120px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .precio-play2, .precio-xbox, .precio-gameboy{
-        padding-left: 10px;
-    }
-}
-
-
-@media (min-width:1801px) and (max-width:1920px) {
-    .relacionado {
-        background-color: #4E0F8B;
-        width: 300px;
-        height: 180px;
-        border: 1px solid black;
-        margin-top: 20px;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-    }
-
-    .imagen {
-        height: 120px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .precio-play2, .precio-xbox, .precio-gameboy{
-        padding-left: 10px;
+@media screen and (max-width: 400px) {
+    .contenedor-productos {
+        grid-template-columns: 1fr;
     }
 }
