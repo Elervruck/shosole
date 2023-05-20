@@ -1,278 +1,69 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/public/productos.css">
     <title>Hello, world!</title>
-
 </head>
 
 <body>
     <header>
-        <nav>
-            <div class="izquierda">
-                <img class="Logo-nav" src="../../resources/img/logo_sin_name.png" alt="">
-                <ul class="nav-ul">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../dashboard/main.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../public/nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../dashboard/productos.html">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../public/carrito.html">Carrito</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="derecha">
-                <input class="buscador" type="text">
-                <div class="foto-perfil">
-
+        <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i><strong>Shosole</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="#">Offers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase" href="#">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase" href="#">Catalog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase" href="#">About</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto d-flex ">
+                        <li>
+                            <a href="">
+                                <img src="../../resources/img/carrito-de-compras.png" alt="" height="30"
+                                    alt="Black and White Portrait of a Man" loading="lazy">
+                            </a>
+                            <a href="">
+                                <img src="../../resources/img/hongo_mario.jpg" alt="" class="rounded-circle ms-4"
+                                    height="30" alt="Black and White Portrait of a Man" loading="lazy">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
-        <main>
-            <section class="filtros">
+    <main class="">
+        <section class="products min-vh-84 w-75 bg-danger">
+            <h1>Productos</h1>
+        </section>
+        <section class="filters w-25 bg-success">
+            <h1>Filtros</h1>
+        </section>
+    </main>
+    <footer class="bg-dark">
 
-                <div class="filtro1">
-                    <div class="marca">
-                        <p class="nombre-filtro">Sony</p>
-                    </div>
-                    <div class="filtro-sony">
-                        <p class="filtrado">Sony</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                    <div class="filtro-Xbox">
-                        <p class="filtrado">Xbox</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                    <div class="filtro-Nintendo">
-                        <p class="filtrado">Nintendo</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                </div>
-
-                <div class="filtro2">
-                    <div class="precio">
-                        <P class="nombre-filtro">Precio</P>
-                    </div>
-                    <div class="filtro-300">
-                        <p class="filtrado">$300</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                    <div class="filtro-400">
-                        <p class="filtrado">$400</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                    <div class="filtro-500">
-                        <p class="filtrado">$500</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                </div>
-                <div class="filtro3">
-                    <div class="condicion">
-                        <p class="nombre-filtro">Condicion</p>
-                    </div>
-                    <div class="filtro-nuevo">
-                        <p class="filtrado">Nuevo</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                    <div class="filtro-usado">
-                        <p class="filtrado">usado</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                    <div class="filtro-reacondicioando">
-                        <p class="filtrado">reacondicioando</p>
-                        <input type="checkbox" name="" id="">
-                    </div>
-                </div>
-            </section>
-            <section class="productos">
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>PlayStation 1</h3>
-                        <p>$300.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>PlayStation 2</h3>
-                        <p>$250.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>PlayStation 3s</h3>
-                        <p>$300.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>PlayStation 4</h3>
-                        <p>$400.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>PlayStation 5</h3>
-                        <p>$600.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>Xbox 360</h3>
-                        <p>$250.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>Xbox One</h3>
-                        <p>$350.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="imagen">
-                        <img src="../../resources/img/play5.avif" alt="">
-                    </div>
-                    <div class="nombre-precio">
-                        <h3>Xbox Series X</h3>
-                        <p>$550.00</p>
-                    </div>
-                    <div class="acciones">
-                        <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-    <aside class="ofertas">
-        <div class="titulo-ofertas">
-            <h1>Ofertas</h1>
-        </div>
-        <div class="producto-ofertas">
-            <div class="card-oferta">
-                <div class="imagen">
-                    <img src="../../resources/img/play5.avif" alt="">
-                </div>
-                <div class="nombre-precio-oferta">
-                    <h3>Xbox Series X</h3>
-                    <p>$550.00</p>
-                </div>
-                <div class="accion-oferta">
-                    <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-oferta">
-                <div class="imagen">
-                    <img src="../../resources/img/play5.avif" alt="">
-                </div>
-                <div class="nombre-precio-oferta">
-                    <h3>Xbox Series X</h3>
-                    <p>$550.00</p>
-                </div>
-                <div class="accion-oferta">
-                    <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-oferta">
-                <div class="imagen">
-                    <img src="../../resources/img/play5.avif" alt="">
-                </div>
-                <div class="nombre-precio-oferta">
-                    <h3>Xbox Series X</h3>
-                    <p>$550.00</p>
-                </div>
-                <div class="accion-oferta">
-                    <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-oferta">
-                <div class="imagen">
-                    <img src="../../resources/img/play5.avif" alt="">
-                </div>
-                <div class="nombre-precio-oferta">
-                    <h3>Xbox Series X</h3>
-                    <p>$550.00</p>
-                </div>
-                <div class="accion-oferta">
-                    <a class="agregar-carrito" href="../public/detalle-producto.html">Añadir al carrito</a>
-                </div>
-            </div>
-        </div>
-    </aside>
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <h6>About</h6>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 links">
-                    <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        </div>
-        <hr>
-        </div>
     </footer>
-
-    <script src="https://kit.fontawesome.com/9049a2fb5d.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

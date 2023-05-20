@@ -11,7 +11,7 @@ body {
   place-items: center;
   font-family: "Nunito", sans-serif;
   height: 100vh;
-  background-color: black;
+  background-color: #563aca;
 }
 /* headings */
 h1 {
