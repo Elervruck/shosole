@@ -8,11 +8,16 @@ main {
     display: flex;
 }   
 
+.filters-mobile {
+  display: none;
+}
+
 .products{ 
   display: flex;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;  
+  align-content:flex-start;
+  justify-content: center;
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #E4E1E6;
@@ -27,8 +32,8 @@ footer {
 }
 
 .card {
- width: 190px;
- height: 254px;
+ width: 175px;
+ height: 350px;
  padding: .8em;
  background: #f5f5f5;
  position: relative;
@@ -37,8 +42,8 @@ footer {
 }
 
 .card-img {
- background-color: #ffcaa6;
- height: 40%;
+ background-color: #D9D9D9;
+ height: 70%;
  width: 100%;
  border-radius: .5rem;
  transition: .3s ease;
@@ -114,12 +119,40 @@ a {
     }
   }
 
-  @media screen and (max-width:412){
-     nav{
-      height: !important;  
-    }
+  @media screen and (max-width:420px){
     main{
-      height: 84vh;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .card {
+      width: 170px;
+    }
+    .filters-mobile{
+      display: block;
+      height: 22h;
+    }
+    .filt-mobile{
+      width: 100% !important;
+    }
+    .filters{
+      display: none;
+    }
+    .input-search, .search-fill{
+      background-color: #b7a0ce28 !important;
+    }
+    .rango, .select-marcas{
+      width: 47%;
+      background-color: #b7a0ce28 !important;
+    }
+    .btn-search{
+      background-color: #4E0F8B;
+      color: #ffff;
+    }
+    .products{
+      width: 100% !important;
+    }
+    .price{
+      width: 50%;
     }
   }
 

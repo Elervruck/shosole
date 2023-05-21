@@ -12,15 +12,17 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-light p-3 shadow-sm h-auto">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2 "></i><strong class="text-light">Shosole</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2 "></i><strong
+                    class="text-light">Shosole</strong></a>
+            <button class="navbar-toggler color-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto ">
                     <li class="nav-item">
-                        <a class="nav-link mx-2 text-uppercase active text-light" aria-current="page" href="#">Offers</a>
+                        <a class="nav-link mx-2 text-uppercase active text-light" aria-current="page"
+                            href="#">Offers</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-2 text-uppercase text-light" href="#">Products</a>
@@ -38,7 +40,7 @@
                 <ul class="navbar-nav ms-auto d-flex ">
                     <li>
                         <a href="carrito.html">
-                            <img src="../../resources/img/carrito-de-compras (1).png"" height="30"
+                            <img src="../../resources/img/carrito-de-compras (1).png"" height=" 30"
                                 alt="Black and White Portrait of a Man" loading="lazy">
                         </a>
                         <a href="">
@@ -51,34 +53,37 @@
         </div>
     </nav>
     <main class="">
+        <section class="filters-mobile w-100">
+            <div class="input-group search-fill p-2 ">
+                <input type="text" class="form-control input-search" placeholder="Busca una consola"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-search" type="button">Buscar</button>
+                </div>
+            </div>
+            <div class="input-group filter-group filt-mobile price p-1">
+                <div class="rango  d-flex flex-column align-items-center m-1">
+                    <label for="customRange1" class="form-label text-center lblRango w-100">Rango de precio</label>
+                    <input type="range" class="form-range w-75" id="customRange1">
+                </div>
+                <div class="select-marcas d-flex justify-content-center align-items-center m-1">
+                    <select class="form-select h-75 w-75 rounded" id="inputGroupSelect04" aria-label="Example select with button addon">
+                        <option selected>Marcas</option>
+                        <option value="1">Sony</option>
+                        <option value="2">Microsoft</option>
+                        <option value="3">Nintendo</option>
+                      </select>
+                </div>
+            </div>
+        </section>
+
         <section class="products min-vh-84 w-75">
 
-            <div class="card g-col-6">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
 
             <div class="card g-col-4">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -100,9 +105,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
+            <div class="card g-col-">
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -124,9 +130,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -148,9 +155,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -172,57 +180,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -244,9 +205,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -268,57 +230,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -340,9 +255,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -364,57 +280,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -436,9 +305,10 @@
                     </div>
                 </div>
             </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -460,57 +330,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card g-col-4">
-                <div class="card-img"></div>
-                <div class="card-info">
-                    <p class="text-title">Product title </p>
-                    <p class="text-body">Product description and details</p>
-                </div>
-                <div class="card-footer">
-                    <span class="text-title">$499.49</span>
-                    <div class="card-button">
-                        <svg class="svg-icon" viewBox="0 0 20 20">
-                            <path
-                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
-                            </path>
-                            <path
-                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
-                            </path>
-                            <path
-                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
             <div class="card g-col-6">
-                <div class="card-img"></div>
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
                 <div class="card-info">
                     <p class="text-title">Product title </p>
                     <p class="text-body">Product description and details</p>
@@ -532,7 +355,81 @@
                     </div>
                 </div>
             </div>
-
+            <div class="card g-col-6">
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
+                <div class="card-info">
+                    <p class="text-title">Product title </p>
+                    <p class="text-body">Product description and details</p>
+                </div>
+                <div class="card-footer">
+                    <span class="text-title">$499.49</span>
+                    <div class="card-button">
+                        <svg class="svg-icon" viewBox="0 0 20 20">
+                            <path
+                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
+                            </path>
+                            <path
+                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
+                            </path>
+                            <path
+                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card g-col-6">
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
+                <div class="card-info">
+                    <p class="text-title">Product title </p>
+                    <p class="text-body">Product description and details</p>
+                </div>
+                <div class="card-footer">
+                    <span class="text-title">$499.49</span>
+                    <div class="card-button">
+                        <svg class="svg-icon" viewBox="0 0 20 20">
+                            <path
+                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
+                            </path>
+                            <path
+                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
+                            </path>
+                            <path
+                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card g-col-6">
+                <div class="card-img">
+                    <img src="../../resources/img/ps4-removebg-preview.png" alt="" class="w-100 h-100">
+                </div>
+                <div class="card-info">
+                    <p class="text-title">Product title </p>
+                    <p class="text-body">Product description and details</p>
+                </div>
+                <div class="card-footer">
+                    <span class="text-title">$499.49</span>
+                    <div class="card-button">
+                        <svg class="svg-icon" viewBox="0 0 20 20">
+                            <path
+                                d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
+                            </path>
+                            <path
+                                d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
+                            </path>
+                            <path
+                                d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="filters w-25">
             <h1>Filtros</h1>
