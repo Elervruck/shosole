@@ -1,0 +1,52 @@
+
+
+main {
+    height: auto  !important;
+    min-height: 80vh;
+    margin: 0% !important;
+    background-color: #c5b7d3;
+
+}   
+
+.pedido{
+    background-color: #f2ebf8;
+
+}
+
+.conatiner-pedidos {
+    justify-content: center;
+    align-items: center !important;
+}
+
+.pedidos-carts{
+    height: 90% !important;
+}
+
+.pedidos-carts::-webkit-scrollbar {
+    width: 0px;
+}
+
+.pedidos-carts::-webkit-scrollbar-thumb {
+    background-color: #4E0F8B;
+}
+
+footer {
+    height: 13vh;
+}
+
+a {
+    font-size:14px;
+    font-weight:700
+  }
+  .superNav {
+    font-size:13px;
+  }
+  .form-control {
+    outline:none !important;
+    box-shadow: none !important;
+  }
+  @media screen and (max-width:540px){
+    .centerOnMobile {
+      text-align:center
+    }
+  }
