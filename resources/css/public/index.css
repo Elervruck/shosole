@@ -2,6 +2,8 @@ header{
     height: 5vh;
 }
 
+
+
 main {
     height: auto  !important;
     min-height: 85vh;
@@ -11,9 +13,10 @@ section{
     
 }
 
-footer {
-    height: 10vh;
-}
+
+  footer {
+      height: 10vh;
+  }
 
 a {
     font-size:14px;
