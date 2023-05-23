@@ -23,8 +23,8 @@ class ProductoQueries
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, correo_usuario, modelo, condicion_producto, estado_producto,existencia_producto, precio_producto
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
-        INNER JOIN modelos USING(id_modelo)
-        INNER JOIN condicion_productos USING(id_condicion_producto)';
+        INNER JOIN modelos USING(id_modelo)';
+        
         return Database::getRows($sql);
     }
 
