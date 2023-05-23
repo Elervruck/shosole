@@ -14,23 +14,25 @@
 
     <!-- sign Up form section start-->
     <div class="form sign_up">
-      <form action="#">
+      <form method="post" id="first-use" autocomplete="off">
         <!-- heading -->
-        <h1>Create An Account</h1>
+        <h1>Crea una cuenta</h1>
         <!-- social media icons -->
         <!-- <div class="social-container">
           <a href="#"><i class="fa-brands fa-facebook"></i></a>
           <a href="#"><i class="fa-brands fa-google"></i></a>
           <a href="#"><i class="fa-brands fa-github"></i></a>
         </div> -->
-        <span>use email for registration</span>
         <!-- input fields start -->
-        <input type="text" placeholder="Nombres">
-        <input type="text" placeholder="Apellidos">
-        <input type="text" placeholder="Usuario">
-        <input type="date" placeholder="Fecha de nacimiento">
-        <input type="email" placeholder="Correo">
-        <input type="password" placeholder="Contraseña">
+        <input type="text" placeholder="Nombres" name="nombres" id="nombres">
+        <input type="text" placeholder="Apellidos" name="apellidos" id="apellidos">
+        <input type="text" placeholder="Usuario" name="usu" id="usu">
+        <input type="text" placeholder="Teléfono" name="telefono" id="telefono">
+        <input type="text" placeholder="Dui" name="dui" id="dui">
+        <input type="date" placeholder="Fecha de nacimiento" id="nacimiento" name="nacimiento">
+        <input type="email" placeholder="Correo" name="correo" id="correo">
+        <input type="password" placeholder="Contraseña" name="clave" id="clave">
+
         <button>Crear cuenta</button>
         <!-- input fields end -->
       </form>
@@ -48,13 +50,13 @@
           <a href="#"><i class="fa-brands fa-google"></i></a>
           <a href="#"><i class="fa-brands fa-github"></i></a>
         </div> -->
-        <span>Inicia sesión con tu cuenta <3</span>
-        <!-- input fields start -->
-        <input type="text" name="usuario" id="usuario" placeholder="Usuario">
-        <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
-        <span>¿Olvídastes tu  <span class="forgot">contraseña?</span></span>
-        <button>Inicia sesión</button>  
-        <!-- input fields end -->
+        <span>Inicia sesión con tu cuenta <3< /span>
+            <!-- input fields start -->
+            <input type="text" name="usuario" id="usuario" placeholder="Usuario">
+            <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
+            <span>¿Olvídastes tu <span class="forgot">contraseña?</span></span>
+            <button>Inicia sesión</button>
+            <!-- input fields end -->
       </form>
     </div>
     <!-- sign in form section end-->
@@ -80,7 +82,7 @@
   <script src="../../controllers/components.js"></script>
   <script src="../../controllers/public/account.js"></script>
   <script src="../../controllers/public/login.js"></script>
-  
+
 
 </body>
 
