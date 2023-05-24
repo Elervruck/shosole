@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dashboard/dao/productos_queries.php');
+require_once('../../entities/dao/productos_queries.php');
 
 class Producto extends ProductoQueries
 {

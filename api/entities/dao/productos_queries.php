@@ -28,6 +28,16 @@ class ProductoQueries
         return Database::getRows($sql);
     }
 
+    public function readAllProductos()
+    {
+        $sql = "SELECT id_producto, nombre_producto,condicion_producto, imagen_producto, estado_producto
+        FROM productos
+        WHERE estado_producto = 'true'";
+
+        return Database::getRows($sql);
+
+
+    }
     
 
     public function readAllValoracion()

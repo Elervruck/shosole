@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         `;
     // Se agrega el componente Parallax antes de la etiqueta footer.
-    FOOTER.insertAdjacentHTML('beforebegin', PARALLAX);
     // Se establece el pie del encabezado.
     FOOTER.innerHTML = `
         <div class="container">
