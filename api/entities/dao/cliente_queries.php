@@ -28,16 +28,11 @@ class ClientesQueries
         $sql = 'SELECT clave_cliente FROM clientes WHERE id_cliente = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if ($password==$data['clave_cliente']) {
+        if (password_verify($password, $data['clave_cliente'])) {
             return true;
         } else {
             return false;
         }
-        /*if (password_verify($password, $data['clave_cliente'])) {
-            return true;
-        } else {
-            return false;
-        }*/
     }
 
     public function searchRows($value)
@@ -57,6 +52,15 @@ class ClientesQueries
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->dui_cliente, $this->correo_cliente, $this->telefono_cliente, $this->nacimiento_cliente, $this->direccion_cliente, $this->clave_cliente, $this->estado_cliente, $this->id_genero, $this->foto_cliente, $this->usuario_cliente);
         return Database::executeRow($sql, $params);
+    }
+
+    public function crearCuenta(){
+        $sql = "INSERT INTO  clientes(nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente,clave_cliente, usuario_cliente, estado_cliente)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, 'Activo')";
+        
+        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->dui_cliente, $this->correo_cliente, $this->telefono_cliente, $this->nacimiento_cliente, $this->clave_cliente, $this->usuario_cliente );
+        return Database::executeRow($sql, $params);
+
     }
 
     public function readAllGenero()

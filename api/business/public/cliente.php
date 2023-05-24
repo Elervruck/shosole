@@ -53,30 +53,26 @@ if (isset($_GET['action'])) {
                 $response = file_get_contents($url, false, $context);
                 $captcha = json_decode($response, true);
 
-                if (!$captcha['success']) {
-                    $result['recaptcha'] = 1;
-                    $result['exception'] = 'No eres humano';
-                } elseif (!$cliente->setNombres($_POST['nombres'])) {
+                // if (!$captcha['success']) {
+                //     $result['recaptcha'] = 1;
+                //     $result['exception'] = 'No eres humano';
+                 if (!$cliente->setNombre($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
+                } elseif (!$cliente->setUsuario($_POST['usu'])) {
+                    $result['exception'] = 'Usuario incorrectos';
+                } elseif (!$cliente->setApellido($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$cliente->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Dirección incorrecta';
                 } elseif (!$cliente->setDUI($_POST['dui'])) {
                     $result['exception'] = 'DUI incorrecto';
                 } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
                 } elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Teléfono incorrecto';
-                } elseif (!$cliente->setEstadoCliente('Activo')) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
-                    $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($cliente->createRow()) {
+                } elseif ($cliente->crearCuenta()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cuenta registrada correctamente';
                 } else {
