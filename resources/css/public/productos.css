@@ -4,31 +4,25 @@ nav{
 
 main {
     height: auto  !important;
-    min-height: 84vh;
-    display: flex;
+    min-height: 80vh;
 }   
 
-.filters-mobile {
-  display: none;
-}
-
-.products{ 
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-content:flex-start;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #E4E1E6;
-}
-
 .filters{
-  background-color: #D9D9D9;
+  background-color: brown !important;
+  height: 10vh;
+  width: 100%;
+}
+
+.product{
+  min-height: 70vh;
 }
 
 footer {
     height: 10vh;
+}
+
+.card-product{
+  margin: 15px;
 }
 
 .card {
@@ -116,43 +110,6 @@ a {
   @media screen and (max-width:540px){
     .centerOnMobile {
       text-align:center
-    }
-  }
-
-  @media screen and (max-width:420px){
-    main{
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-    .card {
-      width: 170px;
-    }
-    .filters-mobile{
-      display: block;
-      height: 22h;
-    }
-    .filt-mobile{
-      width: 100% !important;
-    }
-    .filters{
-      display: none;
-    }
-    .input-search, .search-fill{
-      background-color: #b7a0ce28 !important;
-    }
-    .rango, .select-marcas{
-      width: 47%;
-      background-color: #b7a0ce28 !important;
-    }
-    .btn-search{
-      background-color: #4E0F8B;
-      color: #ffff;
-    }
-    .products{
-      width: 100% !important;
-    }
-    .price{
-      width: 50%;
     }
   }
 
