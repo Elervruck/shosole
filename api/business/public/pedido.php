@@ -29,6 +29,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            // Se compara la acción de leer la orden del cliente
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';
@@ -41,6 +42,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+            // Se compara la acción de actualizar la orden del cliente
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
@@ -54,6 +56,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al modificar la cantidad';
                 }
                 break;
+            // Se compara la acción de eliminar el detalle si el cliente lo hace
             case 'deleteDetail':
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';

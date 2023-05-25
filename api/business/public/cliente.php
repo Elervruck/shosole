@@ -34,9 +34,8 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
     } else {
-        // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
         switch ($_GET['action']) {
-
+            // Se compara si el cliente no tiene una cuenta
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
                 $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
@@ -80,7 +79,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                
+                // Se compara las credenciales del cliente para ingresar
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$cliente->checkUser($_POST['usuario'])) {

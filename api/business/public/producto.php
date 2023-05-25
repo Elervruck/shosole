@@ -19,6 +19,7 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen productos para mostrar';
             }
             break;
+        //Se compara si hay existencia de los productos
         case 'readAll':
             if (!$producto->setId($_POST['id_producto'])) {
                 $result['exception'] = 'Producto incorrecto';
