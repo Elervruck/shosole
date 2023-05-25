@@ -93,7 +93,7 @@ class Database
             case '23503':
                 //self::$error = 'Violación de llave foránea';
                 break;
-                case '23514':
+            case '23514':
                 self::$error = 'No puedes poner un dato de esa manera';
                 break;
             default:
