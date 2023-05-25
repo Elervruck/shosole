@@ -94,7 +94,7 @@ class Database
                 //self::$error = 'Violación de llave foránea';
                 break;
             case '23514':
-                self::$error = 'No puedes poner un dato de esa manera';
+                self::$error = 'Debes de poner un número mayor a 0';
                 break;
             default:
                 //self::$error = $message;

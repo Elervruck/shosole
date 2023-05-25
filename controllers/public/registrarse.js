@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         //Método para buscar y llenar un SELECT
         sweetAlert(4, JSON.exception, true);
     }
+    // Constante tipo objeto para obtener la fecha y hora actual.
+    const TODAY = new Date();
+    // Se declara e inicializa una variable para guardar el día en formato de 2 dígitos.
+    let day = ('0' + TODAY.getDate()).slice(-2);
+    // Se declara e inicializa una variable para guardar el mes en formato de 2 dígitos.
+    var month = ('0' + (TODAY.getMonth() + 1)).slice(-2);
+    // Se declara e inicializa una variable para guardar el año con la mayoría de edad.
+    let year = TODAY.getFullYear() - 18;
+    // Se declara e inicializa una variable para establecer el formato de la fecha.
+    let date = `${year}-${month}-${day}`;
+    // Se asigna la fecha como valor máximo en el campo del formulario.
+    document.getElementById('nacimiento').max = date;
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
