@@ -30,7 +30,7 @@ class ProductoQueries
 
     public function readAllProductos()
     {
-        $sql = "SELECT id_producto, nombre_producto,condicion_producto, imagen_producto, estado_producto
+        $sql = "SELECT id_producto, nombre_producto,condicion_producto, imagen_producto, estado_producto, precio_producto
         FROM productos
         WHERE estado_producto = 'true'";
 
