@@ -9,7 +9,7 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
-        case 'readProductos':
+        case 'readAllProductos':
             
             if ($result['dataset'] = $producto->readAllProductos()) {
                 $result['status'] = 1;
