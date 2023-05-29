@@ -31,8 +31,56 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Producto inexistente';
             }
             break;
-        default:
-            $result['exception'] = 'Acción no disponible';
+        
+            //Se compara si hay existencia de un registro
+        case 'readOne':
+        if (!$producto->setId($_POST['id_producto'])) {
+            $result['exception'] = 'Producto incorrecto';
+        } elseif ($result['dataset'] = $producto->readOne()) {
+            $result['status'] = 1;
+        } elseif (Database::getException()) {
+            $result['exception'] = Database::getException();
+        } else {
+            $result['exception'] = 'Producto inexistente';
+        }
+        break;
+        //Se compara si hay existencia de un registro
+        case 'readOne':
+        if (!$producto->setId($_POST['id_producto'])) {
+            $result['exception'] = 'Producto incorrecto';
+        } elseif ($result['dataset'] = $producto->readOne()) {
+            $result['status'] = 1;
+        } elseif (Database::getException()) {
+            $result['exception'] = Database::getException();
+        } else {
+            $result['exception'] = 'Producto inexistente';
+        }
+        break;//Se compara si hay existencia de un registro
+        case 'readOne':
+        if (!$producto->setId($_POST['id_producto'])) {
+            $result['exception'] = 'Producto incorrecto';
+        } elseif ($result['dataset'] = $producto->readOne()) {
+            $result['status'] = 1;
+        } elseif (Database::getException()) {
+            $result['exception'] = Database::getException();
+        } else {
+            $result['exception'] = 'Producto inexistente';
+        }
+        break;
+        //Se compara si hay existencia de un registro
+        case 'readOneDel':
+        if (!$producto->setId($_POST['id_producto'])) {
+            $result['exception'] = 'Producto incorrecto';
+        } elseif ($result['dataset'] = $producto->readOneDel()) {
+            $result['status'] = 1;
+        } elseif (Database::getException()) {
+            $result['exception'] = Database::getException();
+        } else {
+            $result['exception'] = 'Producto inexistente';
+        }
+        break;
+    default:
+        $result['exception'] = 'Acción no disponible';
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('content-type: application/json; charset=utf-8');

@@ -14,7 +14,8 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light h-100 shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i> <strong>Shosole</strong></a>
+                <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i>
+                    <strong>Shosole</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -23,7 +24,8 @@
                 <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto ">
                         <li class="nav-item">
-                            <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="index.html">Inicio</a>
+                            <a class="nav-link mx-2 text-uppercase active" aria-current="page"
+                                href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-2 text-uppercase" href="productos.html">Productos</a>
@@ -52,33 +54,46 @@
         </nav>
     </header>
     <main class="w-100 h-auto row d-flex justify-content-center">
-        <div class="container container-pedidos w-75 d-flex align-items-center">
+        <div class="container  container-pedidos w-75 d-flex align-items-center" id="condetalle">
             <div class="detalleProducto w-100">
                 <div class="headerDetalleProducto w-100 d-flex align-items-center justify-content-center">
-                    <h2 id="nombreProducto">Nombre de la consola</h2>
+                    <h2 id="nombreproducto">Nombre de la consola</h2>
                 </div>
                 <div class="bodyDetalleProducto d-flex">
                     <div class="imagenProducto w-50 h-100 d-flex align-items-center justify-content-center">
-                        <div class="contenedorImagenProducto w-75 h-75 d-flex justify-content-center align-items-center">
-                            <img src="../../resources/img/xbox_360-removebg-preview.png" alt="" class="w-75 h-75">
+                        <div
+                            class="contenedorImagenProducto w-75 h-75 d-flex justify-content-center align-items-center">
+                            <img src="../../resources/img/xbox_360-removebg-preview.png" id="imagen" alt=""
+                                class="w-75 h-75">
                         </div>
                     </div>
                     <div class="detalle w-50 h-100 d-flex align-items-center justify-content-center">
                         <div class="detalleProductoInfo w-100 h-75 ">
                             <div class="calificacionProducto w-100 d-flex align-items-center">
                                 <div class="stars h-50 ">
-                                    <p>Aca van las estrellas uwu </p>
+                                    <p id="condicion">Nuevo</p>
+                                    <p id="precio_pro">$1000</p>
+
                                 </div>
                             </div>
-                            <div class="carritoProduto w-50 d-flex align-items-center">
-                                <input type="number" class="w-25 h-50 text-center" placeholder="Cantidad">
-                                <button class="agregarCarrito w-75 h-50">
-                                    agregar al carrito
-                                </button>
-                            
-                            </div>
+                            <form id="shopping">
+                                <div class="carritoProduto w-50 d-flex align-items-center">
+                                    <input type="number" class="w-25 h-50 text-center" id="agregar"
+                                        placeholder="Cantidad">
+                                    <button type="submit">
+                                        Agregar producto
+                                    </button>
+                                    <input class="invisible" type="number" id="idpro" name="idpro">
+                                </div>
+                            </form>
                             <div class="DescripcionProducto w-100 mt-5">
-                                <p class="w-75 ">PlayStation (プレイステーション Pureisutēshon, oficialmente abreviada como PS1, PS o PSX) es la primera consola de videojuegos desarrollada, comercializada y descontinuada por Sony Computer Entertainment. Fue lanzado en Japón el 3 de diciembre de 1994, en América del Norte el 9 de septiembre de 1995, en Europa el 29 de septiembre de 1995 y en Australia el 15 de noviembre de 1995. Como consola de quinta generación, PlayStation compitió principalmente con Nintendo 64 y el Sega Saturn</p>
+                                <p class="w-75 " id="detalle_descripcion">PlayStation (プレイステーション Pureisutēshon,
+                                    oficialmente abreviada como PS1, PS o PSX) es la primera consola de videojuegos
+                                    desarrollada, comercializada y descontinuada por Sony Computer Entertainment. Fue
+                                    lanzado en Japón el 3 de diciembre de 1994, en América del Norte el 9 de septiembre
+                                    de 1995, en Europa el 29 de septiembre de 1995 y en Australia el 15 de noviembre de
+                                    1995. Como consola de quinta generación, PlayStation compitió principalmente con
+                                    Nintendo 64 y el Sega Saturn</p>
                             </div>
                         </div>
                     </div>
@@ -86,12 +101,14 @@
             </div>
         </div>
     </main>
-    <footer class="bg-dark">
 
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="../../resources/js/sweetalert2.all.min.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/public/account.js"></script>
+    <script src="../../controllers/public/detalles.js"></script>
 </body>
 
-</html> 
+</html>

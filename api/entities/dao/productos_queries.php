@@ -76,7 +76,16 @@ class ProductoQueries
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)
-        INNER JOIN condicion_productos USING(id_condicion_producto)
+        WHERE id_producto = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readOneDel()
+    {
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
+        FROM productos
+        INNER JOIN modelos USING(id_modelo)
         WHERE id_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
