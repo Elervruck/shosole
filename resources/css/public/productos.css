@@ -40,8 +40,9 @@ footer {
 }
 
 .card {
- width: 175px;
- height: 350px;
+ width: 20%;
+ margin: 10px;
+ height: 400px;
  padding: .8em;
  background: #f5f5f5;
  position: relative;
