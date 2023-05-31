@@ -21,9 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
             <div class="card g-col-6">
-            <div class="card-img">
-                <img src="${SERVER_URL}images/productos/${row.imagen_producto}" alt="" class="w-100 h-100">
-            </div>
+|            </div>
             <div class="card-info">
                 <p class="text-title"${row.nombre_producto}> </p>
                 <p class="text-body">Product description and details</p>

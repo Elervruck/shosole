@@ -16,7 +16,7 @@ const JSON = await dataFetch(PROD_API, 'readOneDel', FORM);
 //Comporbar si se da una respuesta con resultados positivos, sino es el caso mostrara mensaje de excepción
 if (JSON.status) {
     //Vista de la información que se coloca para que se pueda ver en la página web en base al producto seleccionado
-    document.getElementById('imagen').src = SERVER_URL.concat('imagenes/productos', JSON.dataset.imagen_producto);
+    document.getElementById('imagen').src = SERVER_URL.concat('images/productos/', JSON.dataset.imagen_producto);
     document.getElementById('condicion').textContent = JSON.dataset.condicion_producto;
     document.getElementById('detalle_descripcion').textContent = JSON.dataset.descripcion_producto;
     document.getElementById('nombreproducto').textContent = JSON.dataset.nombre_producto;
