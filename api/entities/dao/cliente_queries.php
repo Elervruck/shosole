@@ -42,7 +42,7 @@ class ClientesQueries
                 INNER JOIN estado_clientes USING(id_estado_cliente)
                 INNER JOIN generos  USING (id_genero)
                 WHERE nombre_cliente ILIKE ? OR apellido_cliente ILIKE ? OR dui_cliente ILIKE ? OR correo_cliente ILIKE ? OR telefono_cliente ILIKE ? OR nacimiento_cliente::text ILIKE ? OR usuario_cliente ILIKE ? OR estado_cliente ILIKE ? OR genero ILIKE ?';
-        $params = array("%$value%" , "%$value%" , "%$value%" , "%$value%" ,  "%$value%" , "%$value%" , "%$value%" , "%$value%" , "%$value%");
+        $params = array("%$value%" , "%$value%" , "%$value%" , "%$value %" ,  "%$value%" , "%$value%" , "%$value%" , "%$value%" , "%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -79,7 +79,9 @@ class ClientesQueries
         ORDER BY id_estado_cliente';
         return Database::getRows($sql);
     }
-
+    /*
+    * Método para traer todos los registros de la tabla usuarios
+    */
     public function readAll()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, direccion_cliente, clave_cliente, estado_cliente, genero_clientes, foto_cliente, usuario_cliente, nacimiento_cliente
@@ -87,7 +89,9 @@ class ClientesQueries
         INNER JOIN generos  USING (id_genero)';
         return Database::getRows($sql);
     }
-
+    /*
+    * Método para traer un registro de la base de datos
+    */
     public function readOne()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, id_estado_cliente, id_genero, usuario_cliente, foto_cliente
@@ -97,7 +101,9 @@ class ClientesQueries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+    /*
+    * Método para actuazalizar un registro 
+    */
     public function updateRow($current_image)
     {
         ($this->foto_cliente) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->foto_cliente = $current_image;

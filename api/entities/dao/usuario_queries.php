@@ -6,11 +6,10 @@ require_once('../../helpers/database.php');
 class UsuarioQueries
 {
     /*
-    *  Métodos para gestionar la cuenta del usuario. password_verify
+    *   Método para verificar el alias de los usuarios
+    *   Parámetros: $alias (nombre del usuario que se desea consultar)
+    *   Retorno: booleano (true si el usuario es correcto o false en caso contrario).
     */
-
-
-
     public function checkUser($alias)
     {
         $sql = 'SELECT id_usuario FROM usuarios WHERE alias_usuario = ?';
@@ -23,7 +22,11 @@ class UsuarioQueries
             return false;
         }
     }
-
+    /*
+    *  Métodos para gestionar la cuenta del usuario. password_verify
+    *  Parámetros: $password(contraseña del usuario que se desea verificar)
+    *  Retorno: booleano (true si la contraseña es correcta o false en caso contrario) 
+    */
     public function checkPassword($password)
     {
         $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
@@ -36,13 +39,15 @@ class UsuarioQueries
         }
     }
 
+    /*
+
     public function changePassword()
     {
         $sql = 'UPDATE usuarios SET clave_usuario = ? WHERE id_usuario = ?';
         $params = array($this->clave_usuario, $_SESSION['id_usuario']);
         return Database::executeRow($sql, $params);
     }
-
+    */
     public function readProfile()
     {
         $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
@@ -64,6 +69,10 @@ class UsuarioQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+
+    /*
+    * Método para buscar por medio de datos de un usuario
+    */
     public function searchRows($value)
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, genero, cargo, estado_usuario, foto_usuario
@@ -75,7 +84,9 @@ class UsuarioQueries
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
-
+    /*
+    * Método para crear un usuario
+    */
     public function createRow()
     {
         $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, foto_usuario, id_cargo, id_genero, id_estado_usuario)
@@ -83,7 +94,7 @@ class UsuarioQueries
         $params = array($this->nombres_usuario, $this->apellidos_usuario, $this->correo_usuario, $this->alias_usuario, $this->clave_usuario, $this->foto_usuario, $this->id_cargo, $this->id_genero, $this->id_estado);
         return Database::executeRow($sql, $params);
     }
-
+    /*
     public function readAllGenero()
     {
         $sql = 'SELECT id_genero, genero
@@ -91,9 +102,9 @@ class UsuarioQueries
         ORDER BY id_genero';
         return Database::getRows($sql);
     }
+    */
 
-
-
+    /*
     public function readAllEstado()
     {
         $sql = 'SELECT id_estado_usuario, estado_usuario
@@ -101,7 +112,10 @@ class UsuarioQueries
         ORDER BY id_estado_usuario';
         return Database::getRows($sql);
     }
-
+    */
+    /*
+    * Método para traer los registros de la base de datos.
+    */
     public function readAll()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario
@@ -112,7 +126,9 @@ class UsuarioQueries
 
         return Database::getRows($sql);
     }
-
+    /*
+    * Método para traer un registro de la base de datos.
+    */
     public function readOne()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario, id_genero, id_cargo, id_estado_usuario
@@ -124,7 +140,9 @@ class UsuarioQueries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+    /*
+    * Método para actuazalizar un registro 
+    */
     public function updateRow($current_image)
     {
         ($this->foto_usuario) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->foto_usuario = $current_image;
@@ -143,7 +161,9 @@ class UsuarioQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-    //Seleccionar el pirmer usuario y que por ende no pueda eliminarlo
+    /*
+    * Método para evitar que el primer usuario no puede ser eliminado
+    */
     public function firstuser()
     {
         $sql = 'SELECT id_usuario
