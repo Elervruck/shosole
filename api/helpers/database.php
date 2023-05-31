@@ -85,7 +85,7 @@ class Database
                 //self::$error = 'El nombre de un campo desconocido';
                 break;
             case '23505':
-                self::$error = 'No puedes ingrear el mismo registro de nuevo';
+                self::$error = 'No puedes ingresar un dato unico';
                 break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
