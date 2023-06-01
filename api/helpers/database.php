@@ -111,11 +111,6 @@ class Database
         return self::$error;
     }   
 }
-
-     
-        //$sql = 'Select * from usuarios';
-        //Database::executeRow($sql, null);
-
     
 
    
