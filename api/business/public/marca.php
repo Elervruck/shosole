@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
     
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            
+        // Se mandar a llamar todos los registros de marcas  
             case 'readAll':
                     if ($result['dataset'] = $marca->readMarca()) {
                     $result['status'] = 1;

@@ -8,7 +8,8 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se compara la acción a realizar según la petición del controlador.
-    switch ($_GET['action']) {
+    switch ($_GET['action']) {            
+        //Se compara si hay existencia de registros de la tabla productos
         case 'readAllProductos':
             
             if ($result['dataset'] = $producto->readAllProductos()) {

@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
-            
+            // Se verifica si el cliente tiene un producto en el carrito, caso contrario tiene que agregar un producto
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';

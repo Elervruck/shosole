@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             
-    // S   
+    //Se crea una acción para que el cliente pueda crear un valoración de un comentario  
             case 'createValoComentario':
                 $_POST = Validator::validateForm($_POST);
                 if (!$valo->setIdDetallePedido($_POST['iddetallepedido'])) {
@@ -29,7 +29,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
+                //Se crea una acción para que el cliente pueda crear un valoración de un comentario      
                 case 'validarComentarios':
                     if (!$valo->setIdDetallePedido($_POST['id_detpedido'])) {
                        $result['exception'] = 'VerCompra incorrecto';
