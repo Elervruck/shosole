@@ -15,13 +15,13 @@ const FOOTER = document.querySelector('footer');
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     // const JSON = await dataFetch(USER_API, 'getUser');
-
+    
     const JSON = await dataFetch(USER_API, 'getUser');
-
+      
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
-        url = `historialcompra.html?id=${JSON.id}&username=${JSON.username}`;
-        NAV.innerHTML = `
+      url = `historialcompra.html?id=${JSON.id}&username=${JSON.username}`;
+    NAV.innerHTML = `
         <div class="container">
         <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i> <strong>Shosole</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,18 +30,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto ">
+            <ul class="navbar-na
+            v ms-auto ">
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="productos.html">Productos</a>
+                    <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="#">Offers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="nosotros.html">Nosotros</a>
+                    <a class="nav-link mx-2 text-uppercase" href="productos.html">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="pedidos.html">Pedidos</a>
+                    <a class="nav-link mx-2 text-uppercase" href="#">Catalog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="carrito.html">Carrito</a>
+                    <a class="nav-link mx-2 text-uppercase" href="#">Services</a>
                 </li>
                 
             </ul>
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     </div>
     `;
     } else {
-        NAV.innerHTML = `
+    NAV.innerHTML = `
             <div class="container">
             <a class="navbar-brand" href="#"><i class="fa-solid fa-shop me-2"></i> <strong>Shosole</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -84,21 +85,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto ">
-            <li class="nav-item">
-                <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="productos.html">Productos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mx-2 text-uppercase" href="nosotros.html">Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mx-2 text-uppercase" href="pedidos.html">Pedidos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mx-2 text-uppercase" href="carrito.html">Carrito</a>
-            </li>
-            
-        </ul>
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="#">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 text-uppercase" href="productos.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 text-uppercase" href="#">Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 text-uppercase" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                       
+                    </li>
+                </ul>
                 <ul class="navbar-nav ms-auto d-flex ">
                     <li>
                         <a href="carrito.html">
@@ -114,9 +117,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
     `;
     }
-
+    
     FOOTER.innerHTML = `
       
     `;
-
-});
+    
+    });
