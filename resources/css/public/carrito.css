@@ -20,8 +20,15 @@ main {
 main {
     height: auto !important;
     min-height: 84vh;
-    display: flex;
     background-color: #E4E1E6;
+}
+
+.cart-table{
+    min-height: 60vh;
+}
+
+.opciones-cart{
+    min-height: 24vh;
 }
 
 .filters-mobile {

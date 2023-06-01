@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/pedidos.php');
+require_once('../../entities/dto/pedido.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -14,22 +14,7 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'createDetail':
-                $_POST = Validator::validateForm($_POST);
-                if (!$pedido->startOrder()) {
-                    $result['exception'] = 'Ocurrió un problema al obtener el pedido';
-                } elseif (!$pedido->setProducto($_POST['id_producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
-                    $result['exception'] = 'Cantidad incorrecta';
-                } elseif ($pedido->createDetail()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Producto agregado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            // Se compara la acción de leer la orden del cliente
+            
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';
@@ -40,39 +25,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No tiene productos en el carrito';
-                }
-                break;
-            // Se compara la acción de actualizar la orden del cliente
-            case 'updateDetail':
-                $_POST = Validator::validateForm($_POST);
-                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
-                    $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
-                    $result['exception'] = 'Cantidad incorrecta';
-                } elseif ($pedido->updateDetail()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Cantidad modificada correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al modificar la cantidad';
-                }
-                break;
-            // Se compara la acción de eliminar el detalle si el cliente lo hace
-            case 'deleteDetail':
-                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
-                    $result['exception'] = 'Detalle incorrecto';
-                } elseif ($pedido->deleteDetail()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Producto removido correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al remover el producto';
-                }
-                break;
-            case 'finishOrder':
-                if ($pedido->finishOrder()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Pedido finalizado correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al finalizar el pedido';
                 }
                 break;
             default:

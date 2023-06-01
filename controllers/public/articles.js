@@ -21,18 +21,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
             <div class="card g-col-6">
-|            </div>
+                <div class="card-img">
+                    <img src="${SERVER_URL}images/productos/${row.imagen_producto}" alt="" class="w-100 h-100">
+                </div>
             <div class="card-info">
                 <p class="text-title"${row.nombre_producto}> </p>
                 <p class="text-body">Product description and details</p>
+                <a href="detalle_productos.html?id=${row.id_producto}" class="bg-info">Agregar a carrito</a>
             </div>
             <div class="card-footer">
                 <span class="text-title">$${row.precio_producto}</span>
                 <div class="card-button">
-                   <a href="detalle_productos.html?id=${row.id_producto}">Ver detalles</a>
+                   <button id=${row.id_producto}" class="bg-dark">Ver detalles</button>
                 </div>
             </div>
         </div>
+            
             `;
         });
         // Se asigna como título la categoría de los productos.

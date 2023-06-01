@@ -13,7 +13,8 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light h-100 shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i> <strong>Shosole</strong></a>
+                <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i>
+                    <strong>Shosole</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -22,7 +23,8 @@
                 <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto ">
                         <li class="nav-item">
-                            <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="index.html">Inicio</a>
+                            <a class="nav-link mx-2 text-uppercase active" aria-current="page"
+                                href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-2 text-uppercase" href="productos.html">Productos</a>
@@ -52,66 +54,47 @@
     </header>
 
     <main>
-        <div class="container container-cart d-flex justify-content-center align-items-center h-auto">
-            <div class="master-container col-xl-6 col-10 h-75 d-flex flex-column my-2">
-                <div class="card-cart w-100 rounded-3 overflow-auto flex-column overflow-auto">
-                    <div class="cart-product h-75  border border-secondary mt-1 mb-1">
+        <section class="cart-table w-100">
+            <table class="table-secondary w-100">
+                <thead>
+                    <tr>
+                        <th class="text-center">PRODUCTO</th>
+                        <th class="text-center">PRECIO (US$)</th>
+                        <th class="text-center">CANTIDAD</th>
+                        <th class="text-center">SUBTOTAL (US$)</th>
+                        <th class="text-center">ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-rows"></tbody>
+            </table>
+        </section>
+        <section class="opciones-cart">
 
+        </section>
+        <div id="item-modal" class="modal">
+            <div class="modal-content">
+                <!-- Título para la caja de diálogo -->
+                <h4 class="center-align">Cambiar cantidad</h4>
+                <!-- Formulario para cambiar la cantidad de producto -->
+                <form class="row" method="post" id="item-form">
+                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                    <input type="number" id="id_detalle" name="id_detalle" class="hide">
+                    <div class="input-field col s12 m4 offset-m4">
+                        <i class="material-icons prefix">list</i>
+                        <input type="number" id="cantidad" name="cantidad" min="1" class="validate" required>
+                        <label for="cantidad">Cantidad</label>
                     </div>
-                    <div class="cart-product h-75 border border-secondary mt-1 mb-1">
-
+                    <div class="col s12 center-align">
+                        <!-- Enlace para cerrar el componente Modal -->
+                        <a class="btn waves-effect grey tooltipped modal-close" data-tooltip="Cancelar">
+                            <i class="material-icons">cancel</i>
+                        </a>
+                        <!-- Botón para enviar el formulario -->
+                        <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Guardar">
+                            <i class="material-icons">save</i>
+                        </button>
                     </div>
-                    <div class="cart-product h-75  border border-secondary mt-1 mb-1">
-
-                    </div>
-                    <div class="cart-product h-75 border border-secondary mt-1 mb-1">
-
-                    </div>
-                    <div class="cart-product h-75 border border-secondary mt-1 mb-1">
-
-                    </div>
-                </div>
-                
-                <div class="checkout w-100 rounded-3">
-                    <div class="header-checkout border-bottom">
-                        <label for="" class="ms-3">Pagar</label>
-                    </div>
-                    <div class="body-chockout ">
-                        <div class="subtotal w-100 d-flex ">
-                            <span class="w-75">Tu subtotal:</span>
-                            <span class="w-25 text-end me-2">789.99$</span>
-                        </div>
-                        <div class="discount w-100 d-flex my-2">
-                            <span class="w-75">Tu descuento es:</span>
-                            <span class="w-25 text-end me-2">25.00$</span>
-                        </div>
-                        <div class="shippiong-fees w-100 d-flex my-2">
-                            <span class="w-75">Gasto de envio:</span>
-                            <span class="w-25 text-end me-2">15.00$</span>
-                        </div>
-                    </div>
-                    <div class="footer-checkout w-100 d-flex">
-                        <div class="price-cart w-50 h-100 d-flex align-items-center">
-                            <h3 class="price-finalr">700.99$</h3>
-                        </div>
-                        <div class="checkout w-50 h-100 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary">Pagar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-cupouns rounded-3 w-100">
-                    <div class="header-coupons w-100 h-25 ">
-                        <label for="" class="ms-3">Aplicar cupon</label>
-                    </div>
-                    <div class="input-group-append coupon-cart w-100 h-75 d-flex justify-content-center align-items-center">
-                        <input type="text" class="form-control input-coupon h-50 w-75" placeholder="Aplicar cupon aqui"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-aply" type="button">Aplicar</button>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>
@@ -121,6 +104,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="../../controllers/public/carrito.js"></script>
 </body>
 
 </html>
