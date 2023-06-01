@@ -33,7 +33,7 @@ class Database
     *   Retorno: numérico entero (último valor de la llave primaria si la sentencia se ejecuta satisfactoriamente o 0 en caso contrario).
     */
 
-        public static function getLasRow($query, $values)
+        public static function getLastRow($query, $values)
         {
             if (self::executeRow($query, $values)) {
                 $id = self::$connection->lastInsertId();
