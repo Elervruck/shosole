@@ -39,6 +39,15 @@ class MarcaQueries
         return Database::getRows($sql);
     }
 
+    
+    public function readMarca()
+    {
+        $sql = 'SELECT id_marca, marca, imagen_marca FROM marcas
+                ORDER BY id_marca ';
+        return Database::getRows($sql);
+    }
+    
+
     public function readOne()
     {
         $sql = 'SELECT id_marca, marca, imagen_marca
