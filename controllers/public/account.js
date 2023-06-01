@@ -119,7 +119,64 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     FOOTER.innerHTML = `
-      
+      <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>Shosole
+                            </h6>
+                            <p>
+                                Tienda de videoconsolas
+                            </p>
+                        </div>
+
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Servicios
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Productos</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Nosotros</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Pedidos</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Carrito</a>
+                            </p>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Creado por
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Ellervruck</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Alfredinho</a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p><i class="fas fa-home me-3"></i>San Salvador, El Salvador</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                shosole@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> +503 2257 7777</p>
+                            <p><i class="fas fa-print me-3"></i> +503 2232 9398</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2023 Copyright shosole:
+                <a class="text-reset fw-bold" href="">Shosole.com</a>
+            </div>
     `;
-    
-    });
+});
