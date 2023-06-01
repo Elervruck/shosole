@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             
-                
+    // S   
             case 'createValoComentario':
                 $_POST = Validator::validateForm($_POST);
                 if (!$valo->setIdDetallePedido($_POST['iddetallepedido'])) {
@@ -39,7 +39,6 @@ if (isset($_GET['action'])) {
                        $result['exception'] = Database::getException();
                    } 
                    break;
-
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
