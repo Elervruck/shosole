@@ -8,57 +8,7 @@ class PedidoQueries
     */
 
     
-    public function searchRows($value)
-    {
-        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
-        FROM pedidos
-        INNER JOIN clientes USING(id_cliente)
-        WHERE nombre_cliente ILIKE ? OR CAST(fecha_pedido AS VARCHAR)
-        ILIKE ? OR direccion_pedido ILIKE ?';
-        $params = array("%$value%", "%$value%", "%$value%");
-        return Database::getRows($sql, $params);
-    }
-
-    public function readAll()
-    {
-        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
-        FROM pedidos
-        INNER JOIN clientes USING(id_cliente)';
-        return Database::getRows($sql);
-    }
-
-    public function readOne(){
-        $sql='SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente, id_cliente
-        FROM pedidos
-        INNER JOIN clientes USING(id_cliente)
-        WHERE id_pedido=?';
-        $params = array($this->id);
-        return Database::getRow($sql, $params);
-    }
-        
-    public function deleteRow(){
-        $sql='DELETE FROM pedidos 
-              WHERE id_pedido = ?';
-        $params=array($this->id);
-        return Database:: executeRow($sql, $params);
-    } 
-
-    public function createRow()
-    {
-        $sql = 'INSERT INTO pedidos(estado_pedido, fecha_pedido, direccion_pedido, id_cliente)
-            VALUES (?, ?, ?, ?)';
-        $params = array($this->estado_pedido, $this->fecha_pedido, $this->direccion_pedido, $this->cliente);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function updateRow()
-    {
-        $sql = 'UPDATE pedidos
-                SET estado_pedido = ?, fecha_pedido = ?, direccion_pedido = ?, id_cliente = ?
-                WHERE id_pedido = ?';
-        $params = array($this->estado_pedido, $this->fecha_pedido, $this-> direccion_pedido, $this-> cliente, $this->id);
-        return Database::executeRow($sql, $params);
-    }
+   
 
     public function readAllDetalle()
     {
@@ -71,10 +21,6 @@ class PedidoQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
-
-
-
-
 
       // Método para verificar si existe un pedido en proceso para seguir comprando, de lo contrario se crea uno.
       public function startOrder()

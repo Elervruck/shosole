@@ -37,14 +37,6 @@ async function readOrderDetail() {
                     <td>${row.precio_producto}</td>
                     <td>${row.cantidad_producto}</td>
                     <td>${subtotal.toFixed(2)}</td>
-                    <td>
-                        <a onclick="openUpdate(${row.id_detalle}, ${row.cantidad_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Cambiar">
-                            <i class="material-icons">exposure</i>
-                        </a>
-                        <a onclick="openDelete(${row.id_detalle})" class="btn waves-effect red tooltipped" data-tooltip="Remover">
-                            <i class="material-icons">remove_shopping_cart</i>
-                        </a>
-                    </td>
                 </tr>
             `;
         });

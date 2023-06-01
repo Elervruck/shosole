@@ -14,7 +14,28 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
+<<<<<<< Updated upstream
             // Se verifica si el cliente tiene un producto en el carrito, caso contrario tiene que agregar un producto
+=======
+            
+            case 'createDetail':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->startOrder()) {
+                    $result['exception'] = 'Ocurrió un problema al obtener el pedido';
+                } elseif (!$pedido->setProducto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif ($pedido->createDetail()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto agregado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+
+
+>>>>>>> Stashed changes
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';

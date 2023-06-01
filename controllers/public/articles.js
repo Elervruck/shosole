@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             PRODUCTOS.innerHTML += `
             <div class="card g-col-6">
                 <div class="card-img">
-                    <img src="${SERVER_URL}images/productos/${row.imagen_producto}" alt="" class="w-100 h-100">
+                    <img src="${SERVER_URL}images/productos/${row.imagen_producto}" alt="holaaaaaaaa        " class="w-100 h-100">
                 </div>
             <div class="card-info">
                 <p class="text-title"${row.nombre_producto}> </p>
@@ -32,7 +32,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="card-footer">
                 <span class="text-title">$${row.precio_producto}</span>
                 <div class="card-button">
-                   <button id=${row.id_producto}" class="bg-dark">Ver detalles</button>
+                <a href="detalle_productos.html?id=${row.id_producto}">
+                   <button id=${row.id_producto}" class="">Ver detalles</button>
+                   </a>
                 </div>
             </div>
         </div>
