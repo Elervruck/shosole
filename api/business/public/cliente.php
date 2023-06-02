@@ -8,16 +8,17 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $cliente = new Clientes;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null);
+    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'id'=>0);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['usuario'])) {
+                if (isset($_SESSION['usuario_cliente'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['usuario'];
+                    $result['username'] = $_SESSION['usuario_cliente'];
+                    $result['id']=$_SESSION['id_cliente'];
                 } else {
                     $result['exception'] = 'El usuario es indefinido';
                 }
@@ -34,8 +35,8 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
     } else {
+        // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
         switch ($_GET['action']) {
-            // Se compara si el cliente no tiene una cuenta
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
                 $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
@@ -74,12 +75,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif ($cliente->crearCuenta()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Tú cuenta ha sido registrada correctamente';
+                    $result['message'] = 'Cuenta registrada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                // Se compara las credenciales del cliente para ingresar
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$cliente->checkUser($_POST['usuario'])) {
@@ -90,6 +90,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $cliente->getId();
+                    $_SESSION['usuario_cliente'] = $cliente->getUsuario();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

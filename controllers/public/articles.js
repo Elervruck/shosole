@@ -9,9 +9,9 @@ const PRODUCTOS = document.getElementById('productos');
 document.addEventListener('DOMContentLoaded', async () => {
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
-    FORM.append('id_producto', PARAMS.get('id'));
+    FORM.append('id_marca', PARAMS.get('id'));
     // Petición para solicitar los productos de seleccionada.
-    const JSON = await dataFetch(PRODUCTO_API, 'readAllProductos', FORM);
+    const JSON = await dataFetch(PRODUCTO_API, 'readProductosMarca', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se inicializa el contenedor de productos.
@@ -21,24 +21,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
             <div class="card g-col-6">
-                <div class="card-img">
-                    <img src="${SERVER_URL}images/productos/${row.imagen_producto}" alt="holaaaaaaaa        " class="w-100 h-100">
-                </div>
+            <div class="card-img">
+                <img src=""${SERVER_URL}images/productos/${row.imagen_producto}" alt="" class="w-100 h-100">
+            </div>
             <div class="card-info">
-                <p class="text-title"${row.nombre_producto}> </p>
-                <p class="text-body">Product description and details</p>
-                <a href="detalle_productos.html?id=${row.id_producto}" class="bg-info">Agregar a carrito</a>
+                <p class="text-title">${row.nombre_producto}</p>
+                <p class="text-body">${row.descripcion_producto}</p>
             </div>
             <div class="card-footer">
                 <span class="text-title">$${row.precio_producto}</span>
                 <div class="card-button">
-                <a href="detalle_productos.html?id=${row.id_producto}">
-                   <button id=${row.id_producto}" class="">Ver detalles</button>
-                   </a>
+                <a href="detalle_productos.html?id=${row.id_producto}">Ver</a>
                 </div>
             </div>
         </div>
-            
             `;
         });
         // Se asigna como título la categoría de los productos.

@@ -2,7 +2,8 @@ body{
     height: 100vh;
 }
 
-header{
+
+nav{
     height:  8% !important;
 }
 
@@ -11,7 +12,7 @@ main{
 }
 
 footer{
-    height: auto !important;
+    height: 12% !important;
 }
 
 main {

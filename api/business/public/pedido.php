@@ -14,8 +14,8 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
+
             case 'createDetail':
-                $_POST = Validator::validateForm($_POST);
                 if (!$pedido->startOrder()) {
                     $result['exception'] = Database::getException();
                 } elseif (!$pedido->setProducto($_POST['idpro'])) {
@@ -29,19 +29,82 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';
                 } elseif ($result['dataset'] = $pedido->readOrderDetail()) {
                     $result['status'] = 1;
-                    $_SESSION['id_pedido'] = $pedido->getIdPedido();
+                    $_SESSION['id_pedido'] = $pedido->getId();
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+
+
+            case 'updateDetail':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setIddetalle($_POST['id_detalle'])) {
+                    $result['exception'] = 'Detalle incorrecto';
+                } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif ($pedido->updateDetail()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cantidad modificada correctamente';
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al modificar la cantidad';
+                }
+                break;
+
+            case 'deleteDetail':
+                if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
+                    $result['exception'] = 'Detalle incorrecto';
+                } elseif ($pedido->deleteDetail()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto removido correctamente';
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al remover el producto';
+                }
+                break;
+
+            case 'finishOrder':
+                if ($pedido->finishOrder()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Pedido finalizado correctamente';
+                } else {
+                    $result['exception'] = 'Ocurrió un problema al finalizar el pedido';
+                }
+            break;
+
+
+             case 'cargarHistorial':
+                    if (!$pedido->setId($_POST['id_pedido'])) {
+                        $result['exception'] = 'Cliente incorrecto';
+                    } elseif ($result['dataset'] = $pedido->cargarHistorial()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Historial inexistente';
+                    }
+             break;
+
+             case 'cargarVerCompra':
+                if (!$pedido->setId($_POST['id_pedido'])) {
+                   $result['exception'] = 'VerCompra incorrecto';
+               } elseif ($result['dataset'] = $pedido->readVerCompra()) {
+                   $result['status'] = 1;
+               } elseif (Database::getException()) {
+                   $result['exception'] = Database::getException();
+               } else {
+                   $result['exception'] = 'VerCompra inexistente';
+               }
+               break;
+            
             default:
+            
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
     } else {

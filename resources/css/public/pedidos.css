@@ -1,27 +1,12 @@
 
-body{
-  height: 100vh;
-}
-
-header{
-  height:  8% !important;
-}
-
-main{
-  height: 90% !important;
-}
-
-footer{
-  height: 12% !important;
-}
 
 main {
-  height: auto  !important;
-  min-height: 80vh;
-  margin: 0% !important;
-  background-color: #c5b7d3;
-}   
+    height: auto  !important;
+    min-height: 80vh;
+    margin: 0% !important;
+    background-color: #c5b7d3;
 
+}   
 
 .pedido{
     background-color: #f2ebf8;

@@ -12,6 +12,7 @@ class Valoracion extends ValoracionQueries
     protected $estado_comentario = null;
     protected $fecha = null;
     protected $id_detalle_pedido = null;
+   
 
     public function setId($value)
     {
@@ -23,6 +24,8 @@ class Valoracion extends ValoracionQueries
         }
     }
 
+    
+
     public function setIdDetallePedido($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -32,6 +35,8 @@ class Valoracion extends ValoracionQueries
             return false;
         }
     }
+
+    
 
     public function setEstado($value)
     {

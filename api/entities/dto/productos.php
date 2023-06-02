@@ -15,7 +15,6 @@ class Producto extends ProductoQueries
     protected $usuario = null;
     protected $existencia_producto = null;
     protected $precio_producto = null;
-
     protected $ruta = '../../../images/productos/';
 
 

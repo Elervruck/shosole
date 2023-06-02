@@ -4,32 +4,63 @@ require_once('../../entities/dao/pedidos_queries.php');
 
 class Pedido extends PedidoQueries
 {
-    protected $id_pedido = null; // detalle pedido
-    protected $id_detalle_pedido = null; // detalle pedidos
-    protected $cliente = null; // pedidos
-    protected $producto = null; // detalle pedidos
-    protected $cantidad = null; // detalle pedidos
-    protected $precio = null; // detalle pedidos
-    protected $estado = null; // pedido Valor por defecto en la base de datos: Pendiente
+    protected $id = null;
+    protected $estado_pedido = null;
+    protected $fecha_pedido = null;
+    protected $direccion_pedido = null;
+    protected $cliente = null;
+    protected $iddetalle = null;
+    protected $producto = null;
+    protected $cantidad = null;
 
-    public function setIdPedido($value)
+    public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id_pedido = $value;
+            $this->id = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdDetalle($value)
+    public function setIddetalle($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->id_detalle_pedido = $value;
+        if(Validator::validateNaturalNumber($value)){
+            $this->iddetalle = $value;
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    public function setEstadoPedido($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->estado_pedido = $value;
             return true;
         } else {
             return false;
         }
+    }
+
+    public function setFechaPedido($value)
+    {
+        if (Validator::validateDate($value)) {
+            $this->fecha_pedido = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDireccionPedido($value)
+    {
+        if (Validator::validateString($value, 1, 200)) {
+            $this->direccion_pedido = $value;
+            return true;
+        } else {
+            return false;
+        } 
     }
 
     public function setCliente($value)
@@ -62,33 +93,34 @@ class Pedido extends PedidoQueries
         }
     }
 
-    public function setPrecio($value)
+
+    public function getId()
     {
-        if (Validator::validateMoney($value)) {
-            $this->precio = $value;
-            return true;
-        } else {
-            return false;
-        }
+        return $this->id;
     }
 
-    public function setEstado($value)
+    public function getEstadoPedido()
     {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->estado = $value;
-            return true;
-        } else {
-            return false;
-        }
+        return $this->estado_pedido;
     }
 
-    /*
-    *   Métodos para obtener valores de los atributos.
-    */
-    
-    public function getIdPedido()
+    public function getDireccionPedido()
     {
-        return $this->id_pedido;
+        return $this->direccion_pedido;
+    }
+
+    public function getFechaPedido()
+    {
+        return $this->fecha_pedido;
+    }
+
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+    public function getIddetalle()
+    {
+        return $this->iddetalle;
     }
  
 }

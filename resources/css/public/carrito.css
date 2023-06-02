@@ -1,34 +1,12 @@
-body{
-    height: 100vh;
+nav {
+    background-color: #4E0F8B !important;
 }
-
-header{
-    height:  8% !important;
-}
-
-footer{
-    height: 12% !important;
-}
-
-main {
-    height: auto  !important;
-    min-height: 80vh;
-    margin: 0% !important;
-    background-color: #c5b7d3;
-}   
 
 main {
     height: auto !important;
     min-height: 84vh;
+    display: flex;
     background-color: #E4E1E6;
-}
-
-.cart-table{
-    min-height: 60vh;
-}
-
-.opciones-cart{
-    min-height: 24vh;
 }
 
 .filters-mobile {

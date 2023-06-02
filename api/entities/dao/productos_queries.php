@@ -24,19 +24,15 @@ class ProductoQueries
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)';
-        
         return Database::getRows($sql);
     }
 
     public function readAllProductos()
     {
-        $sql = "SELECT id_producto, nombre_producto,condicion_producto, imagen_producto, estado_producto, precio_producto
+        $sql = "SELECT id_producto, nombre_producto,condicion_producto, imagen_producto, estado_producto
         FROM productos
         WHERE estado_producto = 'true'";
-
         return Database::getRows($sql);
-
-
     }
     
 
@@ -76,16 +72,7 @@ class ProductoQueries
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)
-        WHERE id_producto = ?';
-        $params = array($this->id);
-        return Database::getRow($sql, $params);
-    }
-
-    public function readOneDel()
-    {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
-        FROM productos
-        INNER JOIN modelos USING(id_modelo)
+        INNER JOIN condicion_productos USING(id_condicion_producto)
         WHERE id_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -121,4 +108,41 @@ class ProductoQueries
         return Database::executeRow($sql, $params);
     }
 
+   
+    public function readProductosMarca()
+    {
+        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto 
+        from productos
+        INNER JOIN modelos USING(id_modelo)
+        INNER JOIN marcas USING(id_marca)
+        where id_marca = ? AND estado_producto = true
+        order by nombre_producto';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
+
+    public function readOneDel()
+    {
+        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
+        FROM productos
+        INNER JOIN modelos USING(id_modelo)
+        WHERE id_producto = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+        //CARGAR LOS COMENTARIOS DE UN DETALLE DEL PRODUCTO//
+        public function cargarComentarios(){
+
+            $sql="SELECT b.comentario_producto, b.fecha_comentario, b.calificacion_producto, e.nombre_cliente, c.nombre_producto, b.id_valoracion, c.id_producto, b.estado_comentario
+            from valoraciones b 
+            INNER JOIN detalle_pedidos a using (id_detalle_pedido)
+            INNER JOIN pedidos d using (id_pedido)
+            INNER JOIN clientes e using (id_cliente)
+            INNER JOIN productos c using (id_producto) 
+            where id_producto = ? and estado_comentario = 'true'";
+             $params = array($this->id);
+             return Database::getRows($sql, $params);
+         }
+        
 }

@@ -8,7 +8,57 @@ class PedidoQueries
     */
 
     
-   
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        FROM pedidos
+        INNER JOIN clientes USING(id_cliente)
+        WHERE nombre_cliente ILIKE ? OR CAST(fecha_pedido AS VARCHAR)
+        ILIKE ? OR direccion_pedido ILIKE ?';
+        $params = array("%$value%", "%$value%", "%$value%");
+        return Database::getRows($sql, $params);
+    }
+
+    public function readAll()
+    {
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        FROM pedidos
+        INNER JOIN clientes USING(id_cliente)';
+        return Database::getRows($sql);
+    }
+
+    public function readOne(){
+        $sql='SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente, id_cliente
+        FROM pedidos
+        INNER JOIN clientes USING(id_cliente)
+        WHERE id_pedido=?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+        
+    public function deleteRow(){
+        $sql='DELETE FROM pedidos 
+              WHERE id_pedido = ?';
+        $params=array($this->id);
+        return Database:: executeRow($sql, $params);
+    } 
+
+    public function createRow()
+    {
+        $sql = 'INSERT INTO pedidos(estado_pedido, fecha_pedido, direccion_pedido, id_cliente)
+            VALUES (?, ?, ?, ?)';
+        $params = array($this->estado_pedido, $this->fecha_pedido, $this->direccion_pedido, $this->cliente);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateRow()
+    {
+        $sql = 'UPDATE pedidos
+                SET estado_pedido = ?, fecha_pedido = ?, direccion_pedido = ?, id_cliente = ?
+                WHERE id_pedido = ?';
+        $params = array($this->estado_pedido, $this->fecha_pedido, $this-> direccion_pedido, $this-> cliente, $this->id);
+        return Database::executeRow($sql, $params);
+    }
 
     public function readAllDetalle()
     {
@@ -22,12 +72,16 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 
-      // Método para verificar si existe un pedido en proceso para seguir comprando, de lo contrario se crea uno.
+
+
+
+
+      // Método que verifica si existen pedidos si no crean uno
       public function startOrder()
       {
           $sql = "SELECT id_pedido
                   FROM pedidos
-                  WHERE estados_pedidos = 'Pendiente' AND id_cliente = ?";
+                  WHERE estados_pedido = 'En proceso' AND id_cliente = ?";
           $params = array($_SESSION['id_cliente']);
           
           if ($data = Database::getRow($sql, $params)) {
@@ -59,7 +113,7 @@ class PedidoQueries
     }
 
 
-      // Método para obtener los productos que se encuentran en el carrito de compras.
+      // Método que carga los productos que se encuentran en el carrito.
       public function readOrderDetail()
       {
           $sql = 'SELECT id_detalle_pedido, nombre_producto, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto
@@ -72,21 +126,38 @@ class PedidoQueries
           return Database::getRows($sql, $params);
       }
 
+//Metodo para finalizar mi compra 
+      public function finishOrder()
 
-    //   public function finishOrder()
-    //   {
-    //       // Se establece la zona horaria local para obtener la fecha del servidor.
-    //       date_default_timezone_set('America/El_Salvador');
-    //       $date = date('Y-m-d');
+      {
+          date_default_timezone_set('America/El_Salvador');
+          $date = date('Y-m-d');
   
-    //       $this->estado_pedido = 'Entregado' ;
+          $this->estado_pedido = 'Entregado' ;
 
-    //       $sql = 'UPDATE pedidos
-    //               SET estados_pedidos = ?, fecha_pedido = ?
-    //               WHERE id_pedido = ?';
-    //       $params = array($this->estado_pedido, $date, $_SESSION['id_pedido']);
-    //       return Database::executeRow($sql, $params);
-    //   }
+          $sql = 'UPDATE pedidos
+                  SET estados_pedido = ?, fecha_pedido = ?
+                  WHERE id_pedido = ?';
+          $params = array($this->estado_pedido, $date, $_SESSION['id_pedido']);
+          return Database::executeRow($sql, $params);
+      }
+
+      public function updateDetail()
+      {
+          $sql = 'UPDATE detalle_pedidos
+                  SET cantidad_producto = ?
+                  WHERE id_detalle_pedido = ? AND id_pedido = ?';
+          $params = array($this->cantidad, $this->iddetalle, $_SESSION['id_pedido']);
+          return Database::executeRow($sql, $params);
+      }
+
+      public function deleteDetail()
+    {
+        $sql = 'DELETE FROM detalle_pedidos
+                WHERE id_detalle_pedido = ? AND id_pedido = ?';
+        $params = array($this->iddetalle, $_SESSION['id_pedido']);
+        return Database::executeRow($sql, $params);
+    }
 
 
 //Método para cargar los pedidos del historial de compra

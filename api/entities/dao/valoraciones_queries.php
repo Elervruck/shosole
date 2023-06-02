@@ -62,8 +62,7 @@ class ValoracionQueries
         return Database::getRow($sql, $params);
      }
 
-   
-    
+
      
 
 }
