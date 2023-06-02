@@ -69,7 +69,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif ($pedido->RestInventory() && $pedido->deleteDetail()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto agregado correctamente';
+                    $result['message'] = 'El producto del carrito ha sido eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
