@@ -112,15 +112,30 @@ class PedidoQueries
         return Database::executeRow($sql, $params);
     }
 
+    //metodo para modificar las existencias del inventario
+    public function ModInventory()
+    {
+        $sql = 'UPDATE productos set existencia_producto = (existencia_producto-?)where id_producto = ?';
+        $params = array($this->cantidad, $this->producto);
+        return Database::executeRow($sql, $params);
+    }
+        //metodo para modificar las existencias del inventario (parametro)
+    public function ModInventoryParam($cantidad)
+    {
+        $sql = 'UPDATE productos set existencia_producto = (existencia_producto-?)where id_producto = ?';
+        $params = array($cantidad, $this->producto);
+        return Database::executeRow($sql, $params);
+    }
+
 
       // Método que carga los productos que se encuentran en el carrito.
       public function readOrderDetail()
       {
-          $sql = 'SELECT id_detalle_pedido, nombre_producto, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto
+          $sql = 'SELECT id_detalle_pedido, id_producto, nombre_producto, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto
           from pedidos
           INNER JOIN detalle_pedidos USING(id_pedido) 
           INNER JOIN productos USING(id_producto) 
-          where id_pedido = ?
+		  where id_pedido = ?
           order by id_detalle_pedido, nombre_producto, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto';
           $params = array($this->id);
           return Database::getRows($sql, $params);
@@ -158,6 +173,14 @@ class PedidoQueries
         $params = array($this->iddetalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
+
+        //metodo para restaurar las existencias del inventario
+        public function RestInventory()
+        {
+            $sql = 'UPDATE productos set existencia_producto = (existencia_producto+?)where id_producto = ?';
+            $params = array($this->cantidad, $this->producto);
+            return Database::executeRow($sql, $params);
+        }
 
 
 //Método para cargar los pedidos del historial de compra

@@ -14,7 +14,6 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
-
             case 'createDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = Database::getException();
@@ -22,7 +21,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
-                } elseif ($pedido->createDetail()) {
+                } elseif ($pedido->ModInventory() && $pedido->createDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto agregado correctamente';
                 } else {
@@ -30,6 +29,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+            
             case 'readOrderDetail':
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Debe agregar un producto al carrito';
@@ -50,6 +50,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
+                } elseif (!$pedido->ModInventoryParam($_POST['id_producto'])) {
+                    $result['exception'] = 'Error modificando el inventario';
                 } elseif ($pedido->updateDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cantidad modificada correctamente';
@@ -61,12 +63,25 @@ if (isset($_GET['action'])) {
             case 'deleteDetail':
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
+                } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif (!$pedido->setProducto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif ($pedido->RestInventory() && $pedido->deleteDetail()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto agregado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                //------------
+                /*if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
+                    $result['exception'] = 'Detalle incorrecto';
                 } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto removido correctamente';
                 } else {
                     $result['exception'] = 'Ocurrió un problema al remover el producto';
-                }
+                }*/
                 break;
 
             case 'finishOrder':

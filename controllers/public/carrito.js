@@ -10,6 +10,8 @@ const OPTIONS = {
 }
 const ITEM_MODAL = new bootstrap.Modal(document.getElementById('item-modal'));
 
+let cantidadM = null;
+let productoM = null
 
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar los productos del carrito de compras.
@@ -40,10 +42,10 @@ async function readOrderDetail() {
                     <td>${row.cantidad_producto}</td>
                     <td>${subtotal.toFixed(2)}</td>
                     <td>
-                    <a onclick="openUpdate(${row.id_detalle_pedido}, ${row.cantidad_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Cambiar">
+                    <a onclick="openUpdate(${row.id_detalle_pedido}, ${row.cantidad_producto}, ${row.id_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Cambiar">
                         <i class="material-icons">exposure</i>
                     </a>
-                    <a onclick="openDelete(${row.id_detalle_pedido})" class="btn waves-effect red tooltipped" data-tooltip="Remover">
+                    <a onclick="openDelete(${row.id_detalle_pedido}, ${row.cantidad_producto}, ${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Remover">
                         <i class="material-icons">remove_shopping_cart</i>
                     </a>
                 </td>
@@ -63,6 +65,19 @@ ITEM_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(ITEM_FORM);
+    //obteniendo el valor de la cantidad a modificar
+    mod = document.getElementById('cantidad').value;
+    debugger
+    if(mod > cantidadM){
+        debugger
+        mod = Number(cantidadM) + Number(mod);
+        FORM.append('cantidad_cambio', mod);
+    }else if(mod < cantidadM){
+        debugger
+        mod = Number(cantidadM) - Number(mod);
+        FORM.append('cantidad_cambio', mod*-1);
+    }
+    FORM.append('id_producto', productoM);
     // Petición para actualizar la cantidad de producto.
     const JSON = await dataFetch(PEDIDO_API, 'updateDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -80,12 +95,15 @@ ITEM_FORM.addEventListener('submit', async (event) => {
 
 
 
-function openUpdate(id, quantity) {
+function openUpdate(id, quantity, producto) {
     // Se abre la caja de diálogo que contiene el formulario.
     ITEM_MODAL.show();
     // Se inicializan los campos del formulario con los datos del registro seleccionado.
     document.getElementById('id_detalle').value = id;
     document.getElementById('cantidad').value = quantity;
+    cantidadM = quantity;
+    productoM = producto;
+   //
    
 }
 
@@ -107,7 +125,7 @@ async function finishOrder() {
 }
 
 
-async function openDelete(id) {
+async function openDelete(id, cantidad, producto) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
     // Se verifica la respuesta del mensaje.
@@ -115,6 +133,8 @@ async function openDelete(id) {
         // Se define un objeto con los datos del producto seleccionado.
         const FORM = new FormData();
         FORM.append('id_detalle', id);
+        FORM.append('cantidad', cantidad);
+        FORM.append('id_producto', producto);
         // Petición para eliminar un producto del carrito de compras.
         const JSON = await dataFetch(PEDIDO_API, 'deleteDetail', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
