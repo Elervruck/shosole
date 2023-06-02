@@ -1,4 +1,4 @@
-<?php
+0<?php
 require_once('../../entities/dto/productos.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
