@@ -15,10 +15,9 @@ class Producto extends ProductoQueries
     protected $usuario = null;
     protected $existencia_producto = null;
     protected $precio_producto = null;
-
     protected $ruta = '../../../images/productos/';
 
-
+    //Metodo para validar id
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -29,6 +28,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar valor del id
     public function setIdValo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -49,6 +49,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar imagen
     public function setImagen($file)
     {
         if (Validator::validateImageFile($file, 500, 500)) {
@@ -59,6 +60,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar descripcion
     public function setDescripcion($value)
     {
         if (Validator::validateString($value, 1, 250)) {
@@ -69,6 +71,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar estado de productos
     public function setEstadoProductos($value)
     {
         if (Validator::validateBoolean($value)) {
@@ -78,7 +81,8 @@ class Producto extends ProductoQueries
             return false;
         }
     }
-    
+
+    //Metodo para validar modelo
     public function setModelo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -89,6 +93,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar condicion
     public function setCondicion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -99,6 +104,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar usuario
     public function setUsuario($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -109,6 +115,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar existencias
     public function setExistencia($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -119,6 +126,7 @@ class Producto extends ProductoQueries
         }
     }
 
+    //Metodo para validar precio
     public function setPrecio($value)
     {
         if (Validator::validateMoney($value)) {
