@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dashboard/dao/marca_queries.php');
+require_once('../../entities/dao/marca_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
@@ -14,6 +14,7 @@ class Marca extends MarcaQueries
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
+   //Metodo para validar id
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -24,6 +25,7 @@ class Marca extends MarcaQueries
         }
     }
 
+    //Metodo para validar marca
     public function setMarca($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
@@ -34,6 +36,7 @@ class Marca extends MarcaQueries
         }
     }
 
+    //Metodo para validar imagen
     public function setImagen($value)
     {
         if (Validator::validateImageFile($value, 1000, 1000)) {

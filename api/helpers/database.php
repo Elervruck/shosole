@@ -2,21 +2,27 @@
 header('Access-Control-Allow-Origin: *');
 require_once('config.php');
 
+/*
+*   Clase para realizar las operaciones en la base de datos.
+*/
 class Database
 {
-   
+    // Propiedades de la clase para manejar las acciones respectivas.
     private static $connection = null;
     private static $statement = null;
     private static $error = null;
 
+    /*
+    *   Método para ejecutar las sentencias SQL.
+    *   Parámetros: $query (sentencia SQL) y $values (arreglo con los valores para la sentencia SQL).
+    *   Retorno: booleano (true si la sentencia se ejecuta satisfactoriamente o false en caso contrario).
+    */
     public static function executeRow($query, $values)
     {
         try {
-            //Conexión de la clase PDO se encarga de mantener la conexión a la base de datos.
+            // Se crea la conexión mediante la clase PDO con el controlador de PostgreSQL.
             self::$connection = new PDO('pgsql:host=' . SERVER . ';dbname=' . DATABASE . ';port=5432', USERNAME, PASSWORD);
-            //Prueba para verificar si la conexión a la base de datos tuvo exitos.
-            //print('Conectado');
-            // Se prepara la se//ntencia SQL.
+            // Se prepara la sentencia SQL.
             self::$statement = self::$connection->prepare($query);
             // Se ejecuta la sentencia preparada y se retorna el resultado.
             return self::$statement->execute($values);
@@ -24,26 +30,30 @@ class Database
             // Se obtiene el código y el mensaje de la excepción para establecer un error personalizado.
             self::setException($error->getCode(), $error->getMessage());
             return false;
-            }
-        }   
+        }
+    }
 
-          /*
+    /*
     *   Método para obtener el valor de la llave primaria del último registro insertado.
     *   Parámetros: $query (sentencia SQL) y $values (arreglo con los valores para la sentencia SQL).
     *   Retorno: numérico entero (último valor de la llave primaria si la sentencia se ejecuta satisfactoriamente o 0 en caso contrario).
     */
-
-        public static function getLasRow($query, $values)
-        {
-            if (self::executeRow($query, $values)) {
-                $id = self::$connection->lastInsertId();
-            } else {
-                $id = 0;
-            }
-            return $id;
+    public static function getLastRow($query, $values)
+    {
+        if (self::executeRow($query, $values)) {
+            $id = self::$connection->lastInsertId();
+        } else {
+            $id = 0;
         }
+        return $id;
+    }
 
-        public static function getRow($query, $values = null)
+    /*
+    *   Método para obtener un registro de una sentencia SQL tipo SELECT.
+    *   Parámetros: $query (sentencia SQL) y $values (arreglo opcional con los valores para la sentencia SQL).
+    *   Retorno: arreglo asociativo del registro si la sentencia SQL se ejecuta satisfactoriamente o false en caso contrario.
+    */
+    public static function getRow($query, $values = null)
     {
         if (self::executeRow($query, $values)) {
             return self::$statement->fetch(PDO::FETCH_ASSOC);
@@ -52,7 +62,6 @@ class Database
         }
     }
 
-    
     /*
     *   Método para obtener todos los registros de una sentencia SQL tipo SELECT.
     *   Parámetros: $query (sentencia SQL) y $values (arreglo opcional con los valores para la sentencia SQL).
@@ -79,25 +88,25 @@ class Database
         // Se compara el código del error para establecer un error personalizado.
         switch ($code) {
             case '7':
-                //self::$error = 'Hubo un problema para conectar con el servidor';
+                self::$error = 'Existe un problema al conectar con el servidor';
                 break;
             case '42703':
-                //self::$error = 'El nombre de un campo desconocido';
+                self::$error = 'Nombre de campo desconocido';
                 break;
             case '23505':
-                self::$error = 'No puedes ingrear el mismo registro de nuevo';
+                self::$error = 'Violación de unicidad';
                 break;
             case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
                 break;
             case '23503':
-                //self::$error = 'Violación de llave foránea';
+                self::$error = 'Violación de llave foránea';
                 break;
-                case '23514':
-                self::$error = 'No puedes poner un dato de esa manera';
-                break;
+            case '23514':
+                    self::$error = 'Debes de poner un número mayor a 0';
+                    break;
             default:
-                //self::$error = $message;
+                // self::$error = 'Ocurrió un problema en la base de datos';
         }
     }
 
@@ -109,15 +118,5 @@ class Database
     public static function getException()
     {
         return self::$error;
-    }   
+    }
 }
-
-     
-        //$sql = 'Select * from usuarios';
-        //Database::executeRow($sql, null);
-
-    
-
-   
-    
-

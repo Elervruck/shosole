@@ -3,7 +3,7 @@
 */
 
 // Constante para establecer la ruta del servidor.
-const SERVER_URL = 'http://localhost/shosole/api/';
+const SERVER_URL = 'http://localhost/shosole(11)/api/';
 
 /*
 *   Función para mostrar un mensaje de confirmación. Requiere la librería sweetalert2 para funcionar.

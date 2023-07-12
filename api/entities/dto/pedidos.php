@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dashboard/dao/pedidos_queries.php');
+require_once('../../entities/dao/pedidos_queries.php');
 
 class Pedido extends PedidoQueries
 {
@@ -10,7 +10,11 @@ class Pedido extends PedidoQueries
     protected $direccion_pedido = null;
     protected $cliente = null;
     protected $iddetalle = null;
+    protected $producto = null;
+    protected $cantidad = null;
 
+
+    //Metodo para validar id
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -21,6 +25,7 @@ class Pedido extends PedidoQueries
         }
     }
 
+    //Metodo para validar detalle
     public function setIddetalle($value)
     {
         if(Validator::validateNaturalNumber($value)){
@@ -31,6 +36,7 @@ class Pedido extends PedidoQueries
         }
     }
 
+    //Metodo para validar estado del pedido
     public function setEstadoPedido($value)
     {
         if (Validator::validateBoolean($value)) {
@@ -41,6 +47,7 @@ class Pedido extends PedidoQueries
         }
     }
 
+    //Metodo para validar fehca de pedido
     public function setFechaPedido($value)
     {
         if (Validator::validateDate($value)) {
@@ -51,6 +58,7 @@ class Pedido extends PedidoQueries
         }
     }
 
+    //Metodo para validar direccion del pedido
     public function setDireccionPedido($value)
     {
         if (Validator::validateString($value, 1, 200)) {
@@ -61,10 +69,33 @@ class Pedido extends PedidoQueries
         } 
     }
 
+    //Metodo para validar cliente
     public function setCliente($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->cliente = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Metodo para validar producto
+    public function setProducto($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Metodo para validar cantidad
+    public function setCantidad($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->cantidad = $value;
             return true;
         } else {
             return false;

@@ -13,6 +13,8 @@ class MarcaQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+
+    //Metodo para buscar un registro
     public function searchRows($value)
     {
         $sql = 'SELECT id_marca, marca, imagen_marca
@@ -23,6 +25,7 @@ class MarcaQueries
         return Database::getRows($sql, $params);
     }
 
+    //Metodo para crear un registro
     public function createRow()
     {
         $sql = 'INSERT INTO marcas(marca, imagen_marca)
@@ -31,7 +34,7 @@ class MarcaQueries
         return Database::executeRow($sql, $params);
     }
 
-
+    //metodo para obtener todos los registros
     public function readAll()
     {
         $sql = 'SELECT id_marca, marca, imagen_marca
@@ -39,6 +42,15 @@ class MarcaQueries
         return Database::getRows($sql);
     }
 
+    //Metodo para leer una marca
+    public function readMarca()
+    {
+        $sql = 'SELECT id_marca, marca, imagen_marca FROM marcas
+                ORDER BY id_marca ';
+        return Database::getRows($sql);
+    }
+    
+    //Metodo para leer solo un registro de marca
     public function readOne()
     {
         $sql = 'SELECT id_marca, marca, imagen_marca
@@ -48,6 +60,7 @@ class MarcaQueries
         return Database::getRow($sql, $params);
     }
 
+    //Metodo para actualizar un registro de marca
     public function updateRow($current_image)
     {
         ($this->imagen_marca) ? Validator::deleteFile($this->getRutaImagen(), $current_image) : $this->imagen_marca = $current_image;
@@ -58,6 +71,7 @@ class MarcaQueries
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo para eliminar un registro de marca
     public function deleteRow()
     {
         $sql = 'DELETE FROM marcas
