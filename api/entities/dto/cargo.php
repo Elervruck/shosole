@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dashboard/dao/cargo_queries.php');
+require_once('../../entities/dao/cargo_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
