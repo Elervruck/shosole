@@ -1,0 +1,115 @@
+<!doctype html>
+<!-- Idioma del sitio-->
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Título del documento -->
+    <title>Modelos-Shosole</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Importación de archivos CSS -->
+    <link rel="stylesheet" href="../../resources/css/dashboard/modelos.scss">
+    <link rel="stylesheet" href="../../resources/css/icons.scss">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9049a2fb5d.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            
+        </nav>
+    </header>
+    <main>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3 mb-3 title color-tittle">
+                    <h1>Modelos</h1>
+                </div>
+                <div
+                    class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 buscador_modelo mb-3 search-container">
+                    <form class="d-flex" id="search-form">
+                        <div class="input-container">
+                            <input placeholder="Buscar por modelo" class="input" name="search" id="search" type="text">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <rect fill="white"></rect> <path d="M7.25007 2.38782C8.54878 2.0992 10.1243 2 12 2C13.8757 2 15.4512 2.0992 16.7499 2.38782C18.06 2.67897 19.1488 3.176 19.9864 4.01358C20.824 4.85116 21.321 5.94002 21.6122 7.25007C21.9008 8.54878 22 10.1243 22 12C22 13.8757 21.9008 15.4512 21.6122 16.7499C21.321 18.06 20.824 19.1488 19.9864 19.9864C19.1488 20.824 18.06 21.321 16.7499 21.6122C15.4512 21.9008 13.8757 22 12 22C10.1243 22 8.54878 21.9008 7.25007 21.6122C5.94002 21.321 4.85116 20.824 4.01358 19.9864C3.176 19.1488 2.67897 18.06 2.38782 16.7499C2.0992 15.4512 2 13.8757 2 12C2 10.1243 2.0992 8.54878 2.38782 7.25007C2.67897 5.94002 3.176 4.85116 4.01358 4.01358C4.85116 3.176 5.94002 2.67897 7.25007 2.38782ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg>
+                          </div>
+                    </form>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crear-modelo"
+                        onclick="openCreate()">
+                        Agregar modelo
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table table-striped table-hover">
+
+                    <!-- Contenido de la tabla de datos de un cliente-->
+                    <table class="table table-striped table-hover table-borderless table-fixed">
+                        <thead>
+                            <tr id="records"></tr>
+                            <tr>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-rows">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Contenido modal de clientes-->
+        <div class="modal modal-dialog modal-dialog-centered fade" id="crear-modelo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title color-tittle" id="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="save-modelo" class="row g-3">
+                            <input class="invisible" type="number" id="id" name="id">
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Nombre del Modelo</label>
+                                <input type="textex" class="form-control" name="nombre-m" id="nombre-m" required>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="inputState" class="form-label">Marcas</label>
+                                <select id="marca-m" name="marca-m" class="form-select" required>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar campos</button>
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </main>
+</body>
+<!-- Importación de archivos js-->
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../resources/js/sweetalert2.all.min.js "></script>
+<script src="../../controllers/dahsboard/account.js"></script>
+<script src="../../controllers/components.js"></script>
+<script src="../../controllers/dahsboard/modelos.js"></script>
+
+
+</html>
