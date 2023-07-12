@@ -1,18 +1,4 @@
 --------TABLAS--------
-create table estado_usuarios(
-	id_estado_usuario serial primary key not null,
-	estado_usuario character varying(30) not null
-);
----Si--	
-create table cargos(
-	id_cargo serial primary key not null,
-	cargo character varying(50) unique not null
-);
-
-create table generos(
-	id_genero serial primary key not null,
-	genero character varying (30) not null //cambiar los datos ('crear tipos de datos en PgAdmin 4')
-);
 
 
 ---Si--
