@@ -83,8 +83,9 @@ async function fillTable(form = null) {
                     <td>${row.nombre_usuario}</td>
                     <td>${row.nombre_producto}</td>
                     <td>
-                    <a onclick="openUpdate(${row.id_inventario_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
-                            <i class="material-icons">mode_edit</i>
+                    <a onclick="openDelete(${row.id_inventario_producto})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
+                            <i class="material-icons">delete</i>
+                            
                         </a>
                 
                         </td>
@@ -119,31 +120,25 @@ function openCreate() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openUpdate(id) {
-    // Se define una constante tipo objeto con los datos del registro seleccionado.
-    const FORM = new FormData();
-    FORM.append('id_inventario_producto', id);
-    // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(INVENTARIO_API, 'readOne', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.show();
-        // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar inventario';
-        
-        document.getElementById('id').value = JSON.dataset.id_inventario_producto;
-        document.getElementById('cantidad').value = JSON.dataset.cantidad;
-        document.getElementById('nacimiento-i').value = JSON.dataset.fecha;
-        document.getElementById('precio').value = JSON.dataset.precio;
-        //Se manda a traer la información de la tabla a los controles
-        fillSelect(PRO_API, 'readAll', 'productos','Elija un producto', JSON.dataset.id_producto);
-        fillSelect (USI_API, 'readAll', 'usuario-i','Elija un usuario', JSON.dataset.id_usuario);
-        
-
-
-    } else {
-        sweetAlert(2, JSON.exception, false);
+async function openDelete(id) {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea eliminar el inventario de este producto de forma permanente?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('id_inventario', id);
+        // Petición para eliminar el registro seleccionado.
+        const JSON = await dataFetch(INVENTARIO_API, 'delete', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            fillTable();
+            // Se muestra un mensaje de éxito.
+            sweetAlert(1, JSON.message, true);
+        } else {
+            sweetAlert(2, JSON.exception, false);
+        }
     }
 }
 

@@ -13,10 +13,11 @@ class UsuarioQueries
 
     public function checkUser($alias)
     {
-        $sql = 'SELECT id_usuario FROM usuarios WHERE alias_usuario = ?';
+        $sql = 'SELECT id_usuario, estado_usuarios FROM usuarios WHERE alias_usuario = ?';
         $params = array($alias);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_usuario'];
+            $this->estado = $data['estado_usuarios'];
             $this->alias = $alias;
             return true;
         } else {
@@ -104,7 +105,7 @@ class UsuarioQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, generos_usuarios, generos_usuarios, foto_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, generos_usuarios, generos_usuarios, foto_usuario, estado_usuarios
         FROM usuarios
         INNER JOIN cargos  USING (id_cargo)';
 

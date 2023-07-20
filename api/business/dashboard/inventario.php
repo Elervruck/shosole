@@ -57,30 +57,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'update':
-                    $_POST = Validator::validateForm($_POST);
-                    if (!$inventario->setId($_POST['id'])) {
-                        $result['exception'] = 'Inventario incorrecto'; 
+                case 'delete':
+                    if (!$inventario->setId($_POST['id_inventario'])) {
+                        $result['exception'] = 'Producto incorrecto';
                     } elseif (!$data = $inventario->readOne()) {
                         $result['exception'] = 'Inventario inexistente';
-                    } elseif (!$inventario->setPrecio($_POST['precio'])) {
-                        $result['exception'] = 'Precio incorrecto';  
-                    } elseif (!$inventario->setCantidad($_POST['cantidad'])) {
-                        $result['exception'] = 'Cantidad incorrecto';
-                    } elseif (!$inventario->setFecha($_POST['nacimiento-i'])) {
-                        $result['exception'] = 'Nacimiento incorrecto';
-                    } elseif (!$inventario->setUsuario($_POST['usuario-i'])) {
-                        $result['exception'] = 'Usuario incorrecto';
-                    } elseif (!$inventario->setProducto($_POST['productos'])) {
-                        $result['exception'] = 'Producto incorrecto';
-                    }  elseif ($inventario->updateRow()) {
+                    } elseif ($inventario->deleteRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Inventario modificada correctamente';
+                            $result['message'] = 'Inventario eliminado correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
                     break;
-                
+
             case 'readOne':
                 if (!$inventario->setId($_POST['id_inventario_producto'])) {
                     $result['exception'] = 'Inventario incorrecto';
