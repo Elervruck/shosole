@@ -167,7 +167,6 @@ async function openUpdate(id) {
         document.getElementById('precio').value = JSON.dataset.precio_producto;
         document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
         fillSelect(USUARIOP_API, 'readAll', 'usuario','Elija un usuario', JSON.dataset.id_usuario);
-        fillSelect(CONDICION_API, 'readAll', 'condicion', 'Elije una condición', JSON.dataset.id_condicion_producto);
         fillSelect(MODELO_API, 'readAll', 'modelo', 'Elije un módelo' ,JSON.dataset.id_modelo);
         if (JSON.dataset.estado_producto) {
             document.getElementById('estado').checked = true;
