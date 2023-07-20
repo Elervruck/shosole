@@ -16,8 +16,15 @@ class Clientes extends ClientesQueries
     protected $nacimiento_cliente = null;
     protected $direccion_cliente = null;
     protected $clave_cliente = null;
-    protected $estado_cliente = null;
-    protected $genero_cliente = null;
+    const GENERO = array(
+        array('Masculino', 'Masculino'),
+        array('Femenino','Femenino')
+    );
+    const ESTADO = array(
+        array('Activo', 'Activo'),
+        array('Inactivo','Inactivo'),
+        array('Desactivado','Desactivado')
+    );
     protected $foto_cliente = null;
     protected $usuario_cliente = null;
     protected $ruta_imagen = '../../../images/clientes/';
@@ -136,27 +143,6 @@ class Clientes extends ClientesQueries
         }
     }
 
-    //Metodo para validar estaodo del cliente
-    public function setEstadoCliente($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 10)) {
-            $this->estado_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //Metodo para validar genero
-    public function setGenero($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 10)) {
-            $this->id_genero = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
     //Metodo para validar usuario
     public function setUsuario($value)
     {
@@ -220,12 +206,10 @@ class Clientes extends ClientesQueries
 
     public function getEstadoCliente()
     {
-        return $this->estado_cliente;
     }
 
     public function getGenero()
     {
-        return $this->id_genero;
     }
 
     public function getUsuario()
@@ -243,7 +227,6 @@ class Clientes extends ClientesQueries
     public function getEstado()
     {
 
-        return $this->estado_cliente;
     }
 
     public function getRutaImagen()

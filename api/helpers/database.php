@@ -90,15 +90,15 @@ class Database
             case '7':
                 self::$error = 'Existe un problema al conectar con el servidor';
                 break;
-            case '42703':
+            /*case '42703':
                 self::$error = 'Nombre de campo desconocido';
-                break;
+                break;*/
             case '23505':
                 self::$error = 'Violación de unicidad';
                 break;
-            case '42P01':
+           /* case '42P01':
                 self::$error = 'Nombre de tabla desconocido';
-                break;
+                break;*/
             case '23503':
                 self::$error = 'Violación de llave foránea';
                 break;

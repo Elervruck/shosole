@@ -97,17 +97,6 @@ class Producto extends ProductoQueries
         }
     }
 
-    //Metodo para validar condicion
-    public function setCondicion($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->condicion = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     //Metodo para validar usuario
     public function setUsuario($value)
     {
@@ -191,7 +180,6 @@ class Producto extends ProductoQueries
 
     public function getCondicion()
     {
-        return $this->condicion;
     }
 
     public function getUsuario()
