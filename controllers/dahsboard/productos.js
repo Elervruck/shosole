@@ -1,6 +1,5 @@
 const PRODUCTO_API = 'business/dashboard/productos.php';
 const USUARIOP_API = 'business/dashboard/usuario.php';
-const CONDICION_API = 'business/dashboard/condicion.php';
 const MODELO_API = 'business/dashboard/modelo.php';
 
 //Constante para cambiarle el titulo a el modal
@@ -64,7 +63,7 @@ function openCreate() {
     SAVE_MODAL.show();
     SAVE_FORM.reset();
     fillSelect(USUARIOP_API, 'readAll', 'usuario', 'Seleccione un usuario');
-    fillSelect(CONDICION_API, 'readAll', 'condicion', 'Seleccione una condicion');
+    fillSelect(PRODUCTO_API, 'readCondicion', 'condicion', 'Seleccione una condicion');
     fillSelect(MODELO_API, 'readAll', 'modelo', 'Seleccione un modelo');
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear producto';

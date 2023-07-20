@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dashboard/dto/productos.php');
+require_once('../../entities/dto/productos.php');
 
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
@@ -23,6 +23,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 } 
                 break;
+
+                case 'readCondicion':
+                    if ($result['dataset'] = $producto::CONDICION) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay condiciones que esten registradas';
+                    } 
+                    break;
             
              case 'readAllValoracion':
                 if (!$producto->setId($_POST['id_producto'])) {

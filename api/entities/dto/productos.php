@@ -11,7 +11,11 @@ class Producto extends ProductoQueries
     protected $descripp = null;
     protected $modelo = null;
     protected $estadop = null;
-    protected $condicion = null;
+    const CONDICION = array(
+        array('Nuevo', 'Nuevo'),
+        array('Usado','Usado'),
+        array('Reacondicionado','Reacondicionado')
+    );
     protected $usuario = null;
     protected $existencia_producto = null;
     protected $precio_producto = null;
