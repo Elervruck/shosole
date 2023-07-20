@@ -86,10 +86,10 @@ async function fillTable(form = null) {
                     <td>${row.nombre_usuario}</td>
                     <td>${row.apellido_usuario}</td>
                     <td>${row.alias_usuario}</td>
-                    <td>${row.genero}</td>
+                    <td>${row.generos_usuarios}</td>
                     <td>${row.cargo}</td>
                     <td>${row.correo_usuario}</td>
-                    <td>${row.estado_usuario}</td>
+                    <td>${row.estado_usuarios}</td>
                         ${imagen}
 
                      <td>

@@ -15,7 +15,7 @@ class Usuario extends UsuarioQueries
     protected $clave_usuario = null;
     protected $foto_usuario = null;
     protected $id_genero = null;
-    protected $id_estado = null;
+    protected $estado = null;
     protected $id_cargo = null;
     protected $ruta_imagen = '../../../images/usuario/';
 
@@ -107,8 +107,8 @@ class Usuario extends UsuarioQueries
 
     public function setEstado($value)
     {
-        if (Validator::validateAlphabetic($value, 1,10)) {
-            $this->id_estado = $value;
+        if (Validator::validateAlphabetic($value, 1, 10)) {
+            $this->estado = $value;
             return true;
         }else {
             return false;
@@ -174,6 +174,6 @@ class Usuario extends UsuarioQueries
 
     public function getEstado(){
 
-        return $this->id_estado;
+        return $this->estado;
     }
 }

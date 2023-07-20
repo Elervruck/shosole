@@ -44,7 +44,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen' . count($result['dataset']) . 'coincidencias';
                 } elseif (Database::getException()) {
-                    $result['exception'] = databaseL::getException();
+                    $result['exception'] = database::getException();
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
