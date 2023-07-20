@@ -97,7 +97,7 @@ class Usuario extends UsuarioQueries
 
     public function setGenero($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 10)) {
             $this->id_genero = $value;
             return true;
         } else {
@@ -107,7 +107,7 @@ class Usuario extends UsuarioQueries
 
     public function setEstado($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1,10)) {
             $this->id_estado = $value;
             return true;
         }else {

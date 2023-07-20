@@ -269,11 +269,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif ($_POST['rescon_primer'] != $_POST['contra_primer']) {
                     $result['exception'] = 'Claves diferentes';
-                } elseif (!isset($_POST['genero'])) {
-                    $result['exception'] = 'Seleccione un género';
                 } elseif (!$usuario->setGenero($_POST['genero'])) {
                     $result['exception'] = 'Género incorrecto';
-                } elseif (!$usuario->setEstado(1)) {
+                } elseif (!$usuario->setEstado('Activo')) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!$usuario->setCargo(1)) {
                     $result['exception'] = 'Cargo incorrecto';

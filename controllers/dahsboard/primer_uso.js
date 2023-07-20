@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         // Se muestra el formulario para registrar el primer usuario.
         //Método para buscar y llenar un SELECT
-        fillSelect('business/dashboard/usuario.php', 'readAllGenero', 'genero', 'Seleccione un género');
         sweetAlert(4, JSON.exception, true);
     }
 });

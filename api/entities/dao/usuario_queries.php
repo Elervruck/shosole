@@ -78,7 +78,7 @@ class UsuarioQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, foto_usuario, id_cargo, id_genero, id_estado_usuario)
+        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, foto_usuario, id_cargo, generos_usuarios, estado_usuarios)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombres_usuario, $this->apellidos_usuario, $this->correo_usuario, $this->alias_usuario, $this->clave_usuario, $this->foto_usuario, $this->id_cargo, $this->id_genero, $this->id_estado);
         return Database::executeRow($sql, $params);
@@ -104,11 +104,9 @@ class UsuarioQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, generos_usuarios, generos_usuarios, foto_usuario
         FROM usuarios
-        INNER JOIN estado_usuarios USING(id_estado_usuario)
-        INNER JOIN cargos  USING (id_cargo)
-        INNER JOIN generos  USING (id_genero)';
+        INNER JOIN cargos  USING (id_cargo)';
 
         return Database::getRows($sql);
     }
