@@ -29,10 +29,11 @@ if (isset($_GET['action'])) {
                         $result['status'] = 1;
                     } else {
                         $result['exception'] = 'No hay condiciones que esten registradas';
+                
                     } 
                     break;
             
-             case 'readAllValoracion':
+            case 'readAllValoracion':
                 if (!$producto->setId($_POST['id_producto'])) {
 
                    $result['exception'] = 'Valoracion incorrecta';
