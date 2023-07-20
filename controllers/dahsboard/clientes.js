@@ -91,7 +91,7 @@ async function fillTable(form = null) {
                     <td>${row.nacimiento_cliente}</td>
                     <td>${row.direccion_cliente}</td>
                     <td>${row.estado_cliente}</td>
-                    <td>${row.genero}</td>
+                    <td>${row.genero_clientes}</td>
                         ${imagen}
                         <td>${row.usuario_cliente}</td>
 

@@ -83,16 +83,14 @@ class ClientesQueries
     public function readAll()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, direccion_cliente, clave_cliente, estado_cliente, genero_clientes, foto_cliente, usuario_cliente, nacimiento_cliente
-        FROM clientes
-        INNER JOIN generos  USING (id_genero)';
+        FROM clientes';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero, id_estado_cliente, id_genero, usuario_cliente, foto_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, dui_cliente, correo_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente, estado_cliente, genero_clientes, usuario_cliente, foto_cliente
                 FROM clientes
-                INNER JOIN generos  USING (id_genero) 
                 WHERE id_cliente = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);

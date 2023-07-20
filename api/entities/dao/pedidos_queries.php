@@ -22,7 +22,7 @@ class PedidoQueries
     //Metodo para obtener todos los registros de pedidos
     public function readAll()
     {
-        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        $sql = 'SELECT id_pedido, estados_pedido, fecha_pedido, direccion_pedido, nombre_cliente
         FROM pedidos
         INNER JOIN clientes USING(id_cliente)';
         return Database::getRows($sql);
