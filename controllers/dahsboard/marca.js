@@ -77,8 +77,8 @@ async function fillTable(form = null) {
                 <tr>
                     <td>${row.marca}</td>
                     <td><img src="${SERVER_URL}images/marcas/${row.imagen_marca}" class="materialboxed" height="100"></td>                                     
-                     <td>
-                     <a onclick="openUpdate(${row.id_marca})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                    <td>
+                    <a onclick="openUpdate(${row.id_marca})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         <a onclick="openDelete(${row.id_marca})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
@@ -114,7 +114,7 @@ function openCreate() {
 }
 
 /*
-  Función asíncrona para preparar el formulario al momento de actualizar un registro.
+Función asíncrona para preparar el formulario al momento de actualizar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
@@ -167,4 +167,12 @@ async function openDelete(id) {
             sweetAlert(2, JSON.exception, false);
         }
     }
+    
+}
+
+function openCreate(){
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL (`${SERVER_URL}reports/dashboard/marcas.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
 }

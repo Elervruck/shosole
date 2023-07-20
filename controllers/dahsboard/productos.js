@@ -148,7 +148,6 @@ async function openUpdate(id) {
     // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id', id);
-    console.log(id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
 
