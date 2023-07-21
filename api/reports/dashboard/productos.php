@@ -33,8 +33,25 @@ if($dataModelo = $modelo->readAll()){
             
             if($dataProductos = $producto->productosModelo()){
                 
+                foreach($dataProductos as $rowProducto) {
+                    ($rowProducto['estadop']) ? $estado = 'Activo' : $estado = 'Inactivo';
+
+                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombrep']),1,0);
+
+                    $pdf->cell(30,10,$rowProducto['precio_producto'],1,0);
+
+                    $pdf->cell(30, 10, $estado, 1, 1);
+                }
+            } else {
+                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para el modelo'), 1, 1);
             }
+        } else {
+            $pdf->cell(0, 10, $pdf->encodeString('modelo incorrecta o inexistente'), 1, 1);
         }
     }
+} else {
+    $pdf->cell(0, 10, $pdf->encodeString('No hay modelo para mostrar'), 1, 1);
 }
+// Se llama implícitamente al método footer() y se envía el documento al navegador web.
+$pdf->output('I', 'productos.pdf');
 

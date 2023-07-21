@@ -251,3 +251,10 @@ async function openDeleteValo(id) {
         }
     }
 }
+
+function openReport() {
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/productos.php`)
+
+    window.open(PATH.href);
+
+}
