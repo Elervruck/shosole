@@ -20,12 +20,12 @@ class Usuario extends UsuarioQueries
     );
 
     const ESTADO = array(
-        array('Activo', 'Activo');
-        array('Inactivo', 'Inactivo');
+        array('Activo', 'Activo'),
+        array('Inactivo', 'Inactivo'),
         array('Desactivado', 'Desactivado')
-    )
+    );
     protected $id_cargo = null;
-    protected $ruta_imagen = '../../../images/usuario/';
+    protected $ruta_imagen = '../../images/usuario/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
