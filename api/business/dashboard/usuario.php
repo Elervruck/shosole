@@ -94,16 +94,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'readAllEstado':
-                if ($result['dataset'] = $usuario->readAllEstado()) {
+            
+
+            case 'readGenero':
+                if ($result['dataset'] = $usuario::GENERO) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay generos que esten registradas';
                 }
                 break;
+
+            case 'readEstado':
+                if ($result['dataset'] = ) {
+
+                } else {
+                    
+                }
+                break;
+            
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -298,7 +306,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['alias'])) {
                     $result['exception'] = 'Alias incorrecto';
-                } elseif (!$usuario->getEstado() != 'Activo') {
+                } elseif ($usuario->getEstado() != 'Activo') {
                     $result['exception'] = 'Tú cuenta no está activa';
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;

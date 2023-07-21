@@ -14,8 +14,16 @@ class Usuario extends UsuarioQueries
     protected $alias_usuario = null;
     protected $clave_usuario = null;
     protected $foto_usuario = null;
-    protected $id_genero = null;
-    protected $estado = null;
+    const GENERO = array(
+        array('Femenino', 'Femenino'),
+        array('Masculino', 'Masculino')
+    );
+
+    const ESTADO = array(
+        array('Activo', 'Activo');
+        array('Inactivo', 'Inactivo');
+        array('Desactivado', 'Desactivado')
+    )
     protected $id_cargo = null;
     protected $ruta_imagen = '../../../images/usuario/';
 
