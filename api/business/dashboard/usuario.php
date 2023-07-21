@@ -105,10 +105,10 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readEstado':
-                if ($result['dataset'] = ) {
-
+                if ($result['dataset'] = $usuario::ESTADO) {
+                    $result['status'] = 1;
                 } else {
-                    
+                    $result['exception'] = 'No hay estados que esten registradas';
                 }
                 break;
             
