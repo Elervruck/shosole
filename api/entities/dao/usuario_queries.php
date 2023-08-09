@@ -156,4 +156,15 @@ class UsuarioQueries
             return false;
         }
     }
+
+    public function usuariosCargo()
+    {
+        $sql = "SELECT nombre_usuario, apellido_usuario, generos_usuarios, estado_usuarios
+                FROM usuarios
+                INNER JOIN cargos USING(id_cargo)
+                WHERE id_cargo = ?
+                ORDER BY nombre_usuario";
+        $params = array($this->id_cargo);
+        return Database::getRows($sql, $params); 
+    }
 }

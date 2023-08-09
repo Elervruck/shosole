@@ -199,3 +199,5 @@ async function openDelete(id) {
         }
     }
 }
+
+function openReport

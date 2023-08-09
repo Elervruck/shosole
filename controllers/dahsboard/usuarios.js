@@ -189,3 +189,9 @@ async function openDelete(id) {
         }
     }
 }
+
+function openReport() {
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuarios.php`);
+
+    window.open(PATH.href);
+}
