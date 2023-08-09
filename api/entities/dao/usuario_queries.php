@@ -114,12 +114,10 @@ class UsuarioQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, cargo, genero, estado_usuario, foto_usuario, id_genero, id_cargo, id_estado_usuario
+        $sql = 'SELECT generos_usuarios, estado_usuarios, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, foto_usuario, cargos.cargo
                 FROM usuarios
-                INNER JOIN estado_usuarios USING(id_estado_usuario)
-                INNER JOIN cargos  USING (id_cargo)
-                INNER JOIN generos  USING (id_genero) 
-                WHERE id_usuario = ?';
+                INNER JOIN cargos ON usuarios.id_cargo = cargos.id_cargo
+                WHERE id_usuario = ?;';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }

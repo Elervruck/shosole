@@ -93,14 +93,16 @@ async function fillTable(form = null) {
                         ${imagen}
 
                     <td>
-                    <a onclick="openUpdate(${row.id_usuario})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                        <a onclick="openUpdate(${row.id_usuario})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         <a onclick="openDelete(${row.id_usuario})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
                             <i class="material-icons">delete</i>
-                            
                         </a>
-                        </td>
+                        <a onclick="openReport(${row.id_usuario})" class="btn amber tooltipped" data-tooltip="Reporte">
+                            <i class="material-icons">assignment</i>
+                        </a>
+                    </td>
                 </tr>
             `;
         });
@@ -190,8 +192,8 @@ async function openDelete(id) {
     }
 }
 
-function openReport() {
-    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuarios.php`);
-
+function openReport(id) {
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuarios_productos.php`);
+    PATH.searchParams.append('id_usuario', id);
     window.open(PATH.href);
 }

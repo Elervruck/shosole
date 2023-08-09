@@ -161,4 +161,16 @@ class ProductoQueries
         $params = array ($this->modelo);
         return Database::getRows($sql, $params);
     }
+
+
+    public function productoUsuario()
+    {
+        $sql = 'SELECT nombre_producto, precio_producto, condicion_producto, estado_producto, existencia_producto
+                FROM productos
+                INNER JOIN usuarios USING(id_usuario)
+                WHERE id_usuario = ?
+                ORDER BY nombre_producto';
+        $params = array ($this->usuario);
+        return Database::getRows($sql, $params);
+    }
 }
