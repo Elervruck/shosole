@@ -12,8 +12,13 @@ class Valoracion extends ValoracionQueries
     protected $estado_comentario = null;
     protected $fecha = null;
     protected $id_detalle_pedido = null;
+<<<<<<< HEAD
 
     //Metodo para validar id
+=======
+   
+
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -24,7 +29,12 @@ class Valoracion extends ValoracionQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar detalle del pedido
+=======
+    
+
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setIdDetallePedido($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -35,7 +45,12 @@ class Valoracion extends ValoracionQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar nombre
+=======
+    
+
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setEstado($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
@@ -46,7 +61,10 @@ class Valoracion extends ValoracionQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar calificacion del producto
+=======
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setCalificacion($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
@@ -57,7 +75,10 @@ class Valoracion extends ValoracionQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar comentarios
+=======
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setComentario($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {

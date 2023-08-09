@@ -80,7 +80,10 @@ class Pedido extends PedidoQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar producto
+=======
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setProducto($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -91,7 +94,10 @@ class Pedido extends PedidoQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar cantidad
+=======
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function setCantidad($value)
     {
         if (Validator::validateNaturalNumber($value)) {

@@ -12,6 +12,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['id_cliente'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+<<<<<<< HEAD
             case 'createValoComentario':
                 // Validar y limpiar los datos recibidos por POST
                 $_POST = Validator::validateForm($_POST);
@@ -29,10 +30,26 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion agregado correctamente';
                 // Capturar y manejar la excepción de la base de datos en caso de error
+=======
+            
+                
+            case 'createValoComentario':
+                $_POST = Validator::validateForm($_POST);
+                if (!$valo->setIdDetallePedido($_POST['iddetallepedido'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$valo->setComentario($_POST['comentario'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif (!$valo->setCalificacion($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif ($valo->createValoComentario()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Valoracion agregado correctamente';
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+<<<<<<< HEAD
             case 'validarComentarios':
                 // Verificar si el ID del detalle del pedido es incorrecto
                 if (!$valo->setIdDetallePedido($_POST['id_detpedido'])) {
@@ -45,6 +62,22 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+=======
+
+                case 'validarComentarios':
+                    if (!$valo->setIdDetallePedido($_POST['id_detpedido'])) {
+                       $result['exception'] = 'VerCompra incorrecto';
+                   } elseif ($result['dataset'] = $valo->validarComentario()) {
+                       $result['status'] = 1;
+                   } else  {
+                       $result['exception'] = Database::getException();
+                   } 
+                break;
+
+               
+                   
+
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
@@ -57,4 +90,8 @@ if (isset($_GET['action'])) {
     }
 } else {
     print(json_encode('Recurso no disponible'));
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468

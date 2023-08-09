@@ -7,7 +7,11 @@ class PedidoQueries
     *   Métodos para realizar las operaciones de buscar(search) de pedido
     */
 
+<<<<<<< HEAD
     //Metodo para buscar un pedido
+=======
+    
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function searchRows($value)
     {
         $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
@@ -84,6 +88,7 @@ class PedidoQueries
 
 
 
+<<<<<<< HEAD
     // Método que verifica si existen pedidos si no crean uno
     public function startOrder()
     {
@@ -111,6 +116,35 @@ class PedidoQueries
 
 
 
+=======
+      // Método que verifica si existen pedidos si no crean uno
+      public function startOrder()
+      {
+          $sql = "SELECT id_pedido
+                  FROM pedidos
+                  WHERE estados_pedido = 'En proceso' AND id_cliente = ?";
+          $params = array($_SESSION['id_cliente']);
+          
+          if ($data = Database::getRow($sql, $params)) {
+              $this->id = $data['id_pedido'];
+              return true;
+          } else {
+              $sql = 'INSERT INTO pedidos(direccion_pedido, id_cliente)
+                      VALUES((SELECT direccion_cliente FROM clientes WHERE id_cliente = ?), ?)';
+              $params = array($_SESSION['id_cliente'], $_SESSION['id_cliente']);
+              // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
+              if ($this->id = Database::getLastRow($sql, $params)) {
+                  return true;
+              } else {
+                  return false;
+              }
+          }
+      }
+
+
+
+    
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     // Método para agregar un producto al carrito de compras.
     public function createDetail()
     {
@@ -127,6 +161,7 @@ class PedidoQueries
         $params = array($this->cantidad, $this->producto);
         return Database::executeRow($sql, $params);
     }
+<<<<<<< HEAD
     //metodo para modificar las existencias del inventario (parametro)
     public function ModInventoryParam($producto, $diferencia, $aumento)
     {
@@ -136,10 +171,18 @@ class PedidoQueries
             $sql = 'UPDATE productos set existencia_producto = (existencia_producto + ?) where id_producto = ?';
         }
         $params = array($diferencia, $producto);
+=======
+        //metodo para modificar las existencias del inventario (parametro)
+    public function ModInventoryParam($cantidad)
+    {
+        $sql = 'UPDATE productos set existencia_producto = (existencia_producto-?)where id_producto = ?';
+        $params = array($cantidad, $this->producto);
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
         return Database::executeRow($sql, $params);
     }
 
 
+<<<<<<< HEAD
     // Método que carga los productos que se encuentran en el carrito.
     public function readOrderDetail()
     {
@@ -181,6 +224,47 @@ class PedidoQueries
 
     //Metodo para eliminar un detalle pedido
     public function deleteDetail()
+=======
+      // Método que carga los productos que se encuentran en el carrito.
+      public function readOrderDetail()
+      {
+          $sql = 'SELECT id_detalle_pedido, id_producto, nombre_producto, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto
+          from pedidos
+          INNER JOIN detalle_pedidos USING(id_pedido) 
+          INNER JOIN productos USING(id_producto) 
+		  where id_pedido = ?
+          order by id_detalle_pedido, nombre_producto, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto';
+          $params = array($this->id);
+          return Database::getRows($sql, $params);
+      }
+
+//Metodo para finalizar mi compra 
+      public function finishOrder()
+
+      {
+          date_default_timezone_set('America/El_Salvador');
+          $date = date('Y-m-d');
+  
+          $this->estado_pedido = 'Entregado' ;
+
+          $sql = 'UPDATE pedidos
+                  SET estados_pedido = ?, fecha_pedido = ?
+                  WHERE id_pedido = ?';
+          $params = array($this->estado_pedido, $date, $_SESSION['id_pedido']);
+          return Database::executeRow($sql, $params);
+      }
+
+      public function updateDetail()
+      {
+          $sql = 'UPDATE detalle_pedidos
+                  SET cantidad_producto = ?
+                  WHERE id_detalle_pedido = ? AND id_pedido = ?';
+          $params = array($this->cantidad, $this->iddetalle, $_SESSION['id_pedido']);
+          return Database::executeRow($sql, $params);
+      }
+
+      public function deleteDetail()
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     {
         $sql = 'DELETE FROM detalle_pedidos
                 WHERE id_detalle_pedido = ? AND id_pedido = ?';
@@ -188,6 +272,7 @@ class PedidoQueries
         return Database::executeRow($sql, $params);
     }
 
+<<<<<<< HEAD
     //metodo para restaurar las existencias del inventario
     public function RestInventory()
     {
@@ -198,17 +283,37 @@ class PedidoQueries
 
 
     //Método para cargar los pedidos del historial de compra
+=======
+        //metodo para restaurar las existencias del inventario
+        public function RestInventory()
+        {
+            $sql = 'UPDATE productos set existencia_producto = (existencia_producto+?)where id_producto = ?';
+            $params = array($this->cantidad, $this->producto);
+            return Database::executeRow($sql, $params);
+        }
+
+
+//Método para cargar los pedidos del historial de compra
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function cargarHistorial()
     {
         $sql = 'SELECT id_pedido, estados_pedido, fecha_pedido, direccion_pedido
         FROM pedidos
         INNER JOIN clientes USING(id_cliente)
         where id_cliente = ?';
+<<<<<<< HEAD
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 
     //Metodo para ver los productos de cada pedido del cliente en sesion
+=======
+       $params = array($this->id);
+       return Database::getRows($sql, $params);
+    }
+
+//Metodo para ver los productos de cada pedido del cliente en sesion
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function readVerCompra()
     {
         $sql = 'SELECT id_pedido, id_detalle_pedido, nombre_producto, detalle_pedidos.id_detalle_pedido, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto, productos.descripcion_producto, productos.imagen_producto, productos.condicion_producto, pedidos.estados_pedido 
@@ -219,4 +324,14 @@ class PedidoQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+<<<<<<< HEAD
+=======
+
+
+    
+ 
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
 }
+
+
+

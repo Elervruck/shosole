@@ -112,7 +112,11 @@ class ProductoQueries
         return Database::executeRow($sql, $params);
     }
 
+<<<<<<< HEAD
     //Obtiene una lista de productos de una marca específica desde la base de datos.
+=======
+   
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function readProductosMarca()
     {
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto 
@@ -125,7 +129,10 @@ class ProductoQueries
         return Database::getRows($sql, $params);
     }
 
+<<<<<<< HEAD
     //Obtiene los detalles de un producto específico para eliminarlo.
+=======
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     public function readOneDel()
     {
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
@@ -136,18 +143,33 @@ class ProductoQueries
         return Database::getRow($sql, $params);
     }
 
+<<<<<<< HEAD
     //CARGAR LOS COMENTARIOS DE UN DETALLE DEL PRODUCTO//
     public function cargarComentarios()
     {
 
         $sql = "SELECT b.comentario_producto, b.fecha_comentario, b.calificacion_producto, e.nombre_cliente, c.nombre_producto, b.id_valoracion, c.id_producto, b.estado_comentario
+=======
+        //CARGAR LOS COMENTARIOS DE UN DETALLE DEL PRODUCTO//
+        public function cargarComentarios(){
+
+            $sql="SELECT b.comentario_producto, b.fecha_comentario, b.calificacion_producto, e.nombre_cliente, c.nombre_producto, b.id_valoracion, c.id_producto, b.estado_comentario
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
             from valoraciones b 
             INNER JOIN detalle_pedidos a using (id_detalle_pedido)
             INNER JOIN pedidos d using (id_pedido)
             INNER JOIN clientes e using (id_cliente)
             INNER JOIN productos c using (id_producto) 
             where id_producto = ? and estado_comentario = 'true'";
+<<<<<<< HEAD
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 }
+=======
+             $params = array($this->id);
+             return Database::getRows($sql, $params);
+         }
+        
+}
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468

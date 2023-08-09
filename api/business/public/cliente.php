@@ -8,18 +8,29 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $cliente = new Clientes;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
+<<<<<<< HEAD
     $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'id' => 0);
+=======
+    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null, 'id'=>0);
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['id_cliente'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
+<<<<<<< HEAD
                 // Verificar si el usuario está definido en la sesión
                 if (isset($_SESSION['usuario_cliente'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['usuario_cliente'];
                     $result['id'] = $_SESSION['id_cliente'];
+=======
+                if (isset($_SESSION['usuario_cliente'])) {
+                    $result['status'] = 1;
+                    $result['username'] = $_SESSION['usuario_cliente'];
+                    $result['id']=$_SESSION['id_cliente'];
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
                 } else {
                     // Establecer excepción si el usuario no está definido en la sesión
                     $result['exception'] = 'El usuario es indefinido';
@@ -108,7 +119,10 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_cliente'] = $cliente->getId();
                     $_SESSION['usuario_cliente'] = $cliente->getUsuario();
+<<<<<<< HEAD
                 // En caso de que la contraseña sea incorrecta
+=======
+>>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
