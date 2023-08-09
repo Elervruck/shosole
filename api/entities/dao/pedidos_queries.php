@@ -219,4 +219,17 @@ class PedidoQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+
+    public function pedidosClientes()
+    {
+        $sql = 'SELECT fecha_pedido, direccion_pedido, estados_pedido
+                FROM pedidos
+                INNER JOIN clientes USING(id_cliente)
+                WHERE id_cliente = ?
+                ORDER BY fecha_pedido';
+        $params = array($this->cliente);
+        return Database::getRows($sql, $params);
+    }
+
+
 }
