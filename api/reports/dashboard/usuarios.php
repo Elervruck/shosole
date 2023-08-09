@@ -5,7 +5,7 @@ require_once('../../entities/dto/cargo.php');
 require_once('../../entities/dto/usuario.php');
 
 $pdf = new Report;
-$pdf->startReport('Usuarios por estado');
+$pdf->startReport('Datos importantes de los usuarios');
 $cargo = new Cargo;
 
 if ($dataCargos = $cargo->readAll()) {
@@ -13,10 +13,11 @@ if ($dataCargos = $cargo->readAll()) {
     $pdf->setFillColor(175);
     $pdf->setFont('Times', 'B', 11);
 
-    $pdf->cell(63, 10, 'Nombre', 1, 0, 'C', 1);
-    $pdf->cell(63, 10, 'Apellidos', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'genero', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
+    $pdf->cell(40, 10, 'Nombre', 1, 0, 'C', 1);
+    $pdf->cell(40, 10, 'Apellido', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Alias', 1, 0, 'C', 1);
+    $pdf->cell(35, 10, 'genero', 1, 0, 'C', 1);
+    $pdf->cell(35, 10, 'Estado', 1, 1, 'C', 1);
 
     
     $pdf->setFillColor(225);
@@ -28,13 +29,14 @@ if ($dataCargos = $cargo->readAll()) {
         $usuario = new Usuario;
 
         if ($usuario->setCargo($rowCargo['id_cargo'])) {
-            if ($dataUsuarios = $usuario->usuariosCargo()) {
+            if ($dataUsuarios = $usuario->usuariosReport()) {
                 foreach ($dataUsuarios as $rowUsuario) {
 
-                    $pdf->cell(63, 10, $rowUsuario['nombre_usuario'], 1, 0);
-                    $pdf->cell(63, 10, $rowUsuario['apellido_usuario'], 1,0);
-                    $pdf->cell(30, 10, $rowUsuario['generos_usuarios'], 1, 0);
-                    $pdf->cell(30, 10, $rowUsuario['estado_usuarios'], 1, 0);
+                    $pdf->cell(40, 10, $rowUsuario['nombre_usuario'], 1, 0);
+                    $pdf->cell(40, 10, $rowUsuario['apellido_usuario'], 1,0);
+                    $pdf->cell(30, 10, $rowUsuario['alias_usuario'], 1, 0);
+                    $pdf->cell(35, 10, $rowUsuario['generos_usuarios'], 1, 0);
+                    $pdf->cell(35, 10, $rowUsuario['estado_usuarios'], 1, 1);
 
                 }
             } 

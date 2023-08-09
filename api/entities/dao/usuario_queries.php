@@ -156,6 +156,18 @@ class UsuarioQueries
             return false;
         }
     }
+    
+
+    public function usuariosReport()
+    {
+        $sql = 'SELECT nombre_usuario, apellido_usuario, alias_usuario, generos_usuarios, estado_usuarios
+                FROM usuarios
+                INNER JOIN cargos USING(id_cargo)
+                WHERE id_cargo = ?
+                ORDER BY nombre_usuario';
+        $params = array($this->id_cargo);
+        return Database::getRows($sql, $params);
+    }
 
     public function usuariosCargo()
     {
@@ -166,5 +178,16 @@ class UsuarioQueries
                 ORDER BY nombre_usuario";
         $params = array($this->id_cargo);
         return Database::getRows($sql, $params); 
+    }
+
+    public function usuariosCargos()
+    {
+        $sql = 'SELECT nombre_usuario, apellido_usuario, alias_usuario, generos_usuarios
+                FROM usuarios
+                INNER JOIN cargos USING(id_cargo)
+                WHERE id_cargo = ?
+                ORDER BY nombre_usuario';
+        $params = array($this->id_cargo);
+        return Database::getRows($sql, $params);
     }
 }

@@ -106,10 +106,10 @@ async function fillTable(form = null) {
                         <i class="material-icons">delete</i>
                     </a>
                     <a onclick="fillTableValoracion(${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Valoracion">
-                    <i class="material-icons">reviews</i>
+                        <i class="material-icons">reviews</i>
                     </a>
                     <a class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
-                    <i class="material-icons">assignment</i>
+                        <i class="material-icons">assignment</i>
                     </a>
                 </td>
             </tr>
