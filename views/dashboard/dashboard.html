@@ -19,40 +19,31 @@
 
         </nav>
     </header>
-    <main style="padding-top: 100px;">
+    <main style="padding-top: 70px;">
         <div class="container-fluid row">
-            
-                <!-- Se muestran gráficos de acuerdo con algunos datos disponibles en la base de datos -->
-                    <div class="col-4  l4 graficaBarra">
-                        <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
-                        <canvas id="chart1"></canvas>
-                    </div>
-                    <div class="col-4 s12 m6 l4 graficaPastel">
-                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
-                        <canvas id="chart2"></canvas>
-                    </div>
-              
+            <!-- Se muestran gráficos de acuerdo con algunos datos disponibles en la base de datos -->
+            <div class="col-sm-12 col-md-6 col-lg-4 grafico">
+                <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
+                <canvas id="chart1"></canvas>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 grafico">
+                <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                <canvas id="chart2"></canvas>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 grafico">
+                <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                <canvas id="chart3"></canvas>
+            </div>
 
-                    <div class="col-4 m6 l4 graficaTres">
-                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
-                        <canvas id="chart3"></canvas>
-                    </div>
-    
-                    <div class="col-6 m6 l4 graficaCuatro">
-                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
-                        <canvas id="chart4"></canvas>
-                    </div>
-    
-            
-                    <div class="col-6 m6 l4 graficaCinco">
-                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
-                        <canvas id="chart5"></canvas>
-                    </div>
-
-        
+            <div class="col-sm-12 col-md-6 col-lg-4 grafico">
+                <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                <canvas id="chart4"></canvas>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 grafico">
+                <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                <canvas id="chart5"></canvas>
+            </div>
         </div>
-
-
     </main>
     <!---Importar libreria  para la  generacion de los gráficos -->
     <script src="../../resources/js/chart.umd.min.js"></script>
