@@ -4,8 +4,7 @@ require_once('../../helpers/report.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
-// Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
-
+// Se verifica si existe un valor para el cargo, de lo contrario se muestra un mensaje.
 if (isset($_GET['id_cargo'])) {
     // Se incluyen las clases para la transferencia y acceso a datos.
     require_once('../../entities/dto/cargo.php');
@@ -13,9 +12,9 @@ if (isset($_GET['id_cargo'])) {
     // Se instancian las entidades correspondientes.
     $cargo = new Cargo;
     $usuario = new Usuario;
-    // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
+    // Se establece el valor del cargo, de lo contrario se muestra un mensaje.
     if ($cargo->setId($_GET['id_cargo']) && $usuario->setCargo($_GET['id_cargo'])) {
-        // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.        
+        // Se verifica si el cargo existe, de lo contrario se muestra un mensaje.        
         if ($rowCargo = $cargo->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
             $pdf->startReport('Usuarios por cargo '. $rowCargo['cargo']);
@@ -30,7 +29,7 @@ if (isset($_GET['id_cargo'])) {
                 $pdf->cell(60, 10, 'Apellido', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Alias', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Genero', 1, 1, 'C', 1);
-                // Se establece la fuente para los datos de los productos.
+                // Se establece la fuente para los datos de los usuarios.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
                 foreach ($dataUsuarios as $rowUsuario ){
