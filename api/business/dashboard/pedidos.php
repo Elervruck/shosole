@@ -16,12 +16,12 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay datos registrados';
-                }
+                } 
                 break;
 
             case 'readOne':
@@ -35,31 +35,31 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Pedido inexistente';
                 }
                 break;
-
-            case 'readAllDetalle':
-                if (!$pedido->setId($_POST['id_pedido'])) {
-
-                    $result['exception'] = 'Valoracion incorrecta';
-                } elseif ($result['dataset'] = $pedido->readAllDetalle()) {
-
-                    $result['status'] = 1;
-
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-                } elseif (Database::getException()) {
-
-                    $result['exception'] = Database::getException();
-                } else {
-
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
+                
+                case 'readAllDetalle':
+                    if (!$pedido->setId($_POST['id_pedido'])) {
+    
+                        $result['exception'] = 'Valoracion incorrecta';
+                    } elseif ($result['dataset'] = $pedido->readAllDetalle()) {
+    
+                        $result['status'] = 1;
+    
+                        $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                    } elseif (Database::getException()) {
+    
+                        $result['exception'] = Database::getException();
+                    } else {
+    
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;    
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
                 } elseif ($result['dataset'] = $pedido->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
+                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -69,13 +69,13 @@ if (isset($_GET['action'])) {
 
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedido->setEstadoPedido(isset($_POST['estado']) ? 1 : 0)) {
+                if(!$pedido->setEstadoPedido(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!$pedido->setFechaPedido($_POST['fecha'])) {
                     $result['exception'] = 'Fecha del pedido incorrecto';
-                } elseif (!$pedido->setDireccionPedido($_POST['direccion'])) {
+                }   elseif (!$pedido->setDireccionPedido($_POST['direccion'])) {
                     $result['exception'] = 'Dirección del pedido incorrecto';
-                } elseif (!$pedido->setCliente($_POST['cliente'])) {
+                }   elseif (!$pedido->setCliente($_POST['cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
                 } elseif ($pedido->createRow()) {
                     $result['status'] = 1;
@@ -84,21 +84,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
+           
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setId($_POST['id'])) {
                     $result['exception'] = 'Pedido incorrecto';
+
                 } elseif (!$data = $pedido->readOne()) {
                     $result['exception'] = 'Pedido inexistente';
-                } elseif (!$pedido->setEstadoPedido(isset($_POST['estado']) ? 1 : 0)) {
+
+                } elseif (!$pedido->setEstadoPedido(isset($_POST['estado']) ? 1 : 0))  {
                     $result['exception'] = 'Estado del pedido incorrecto';
+                    
                 } elseif (!$pedido->setFechaPedido($_POST['fecha'])) {
                     $result['exception'] = 'Fecha del pedido incorrecto';
+                    
                 } elseif (!$pedido->setDireccionPedido($_POST['direccion'])) {
                     $result['exception'] = 'Dirección del pedido incorrecto';
-                } elseif (!$pedido->setCliente($_POST['cliente'])) {
+
+                }elseif (!$pedido->setCliente($_POST['cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
+
                 } elseif ($pedido->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido modificado correctamente';
@@ -106,7 +112,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
+                
             case 'delete':
                 if (!$pedido->setId($_POST['id_pedido'])) {
                     $result['exception'] = 'Pedido incorrecto';
@@ -114,27 +120,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Pedido inexistente';
                 } elseif ($pedido->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido eliminado correctamente';
+                        $result['message'] = 'Pedido eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
 
-            case 'obtenerFechasPedidos':
-                if ($result['dataset'] = $pedido->obtenerFechasPedidos()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
-                }
-                break;
-
-            case 'obtenerPedidosEstado':
-                if ($result['dataset'] = $pedido->obtenerPedidosEstado()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
-                }
-                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

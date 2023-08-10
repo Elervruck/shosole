@@ -14,15 +14,6 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-
-            case 'usuariosCargoGrafica':
-                if ($result['dataset'] = $usuario->usuariosCargoGrafica()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
-                }
-                break;  
-                
             case 'getUser':
                 if (isset($_SESSION['id_usuario'])) {
                     $result['status'] = 1;
@@ -311,9 +302,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
-            
-            
             case 'login':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['alias'])) {
@@ -329,7 +317,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Clave incorrecta';
                 }
                 break;
-
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }

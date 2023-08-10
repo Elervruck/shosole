@@ -220,6 +220,14 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 
+<<<<<<< HEAD
+    public function fechasderealizaciondeordenes(){
+
+        $sql='SELECT fecha_pedido from pedidos
+        where id_cliente=(select id_cliente from clientes order by id_cliente limit 1 offset 4)';
+         return Database::getRows($sql);
+    }
+=======
     public function pedidosClientes()
     {
         $sql = 'SELECT fecha_pedido, direccion_pedido, estados_pedido
@@ -231,20 +239,6 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 
-    public function obtenerFechasPedidos()
-    {
-        $sql = 'SELECT fecha_pedido
-                FROM pedidos
-                ORDER BY fecha_pedido';
-        return Database::getRows($sql);
-    }
 
-    public function obtenerPedidosEstado()
-    {
-        $sql = 'SELECT estados_pedido, count(id_pedido) cantidad
-                FROM pedidos
-                GROUP BY estados_pedido
-                ORDER BY cantidad DESC';
-        return Database::getRows($sql);
-    }
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 }

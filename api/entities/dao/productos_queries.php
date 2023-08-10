@@ -150,6 +150,23 @@ class ProductoQueries
         return Database::getRows($sql, $params);
     }
 
+<<<<<<< HEAD
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function porcentajeProductosModelo()
+    {
+        $sql = 'SELECT modelo, ROUND(
+            (COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM productos)), 2
+                                              ) porcentaje FROM productos
+                                  INNER JOIN modelos USING(id_modelo)
+                                  GROUP BY modelo ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+
+    
+
+=======
 
     public function productosModelo() 
     {
@@ -173,13 +190,5 @@ class ProductoQueries
         $params = array ($this->usuario);
         return Database::getRows($sql, $params);
     }
-
-    public function cantidadProductosModelo()
-    {
-        $sql = 'SELECT modelo, COUNT(id_producto) cantidad
-                FROM productos
-                INNER JOIN modelos USING(id_modelo)
-                GROUP BY modelo ORDER BY cantidad DESC';
-        return Database::getRows($sql);
-    }
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 }

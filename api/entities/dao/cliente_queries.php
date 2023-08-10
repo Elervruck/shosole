@@ -114,15 +114,11 @@ class ClientesQueries
         return Database::executeRow($sql, $params);
     }
 
-    
-    public function cantidadPedidosCliente()
+    //metodo para generar grafico//
+    public function ordenesporcliente()
     {
-        $sql = 'SELECT usuario_cliente, COUNT(id_pedido) pedidos
-                FROM clientes
-                INNER JOIN pedidos USING(id_cliente)
-                GROUP BY usuario_cliente
-                ORDER BY pedidos DESC LIMIT 5';
+        $sql = 'SELECT  from clientes 
+        where id_cliente = SELECT id_cliente FROM pedido Order by id_pedido limit 1 offset 3';
         return Database::getRows($sql);
     }
-
 }

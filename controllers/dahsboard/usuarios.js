@@ -197,8 +197,3 @@ function openReport(id) {
     PATH.searchParams.append('id_usuario', id);
     window.open(PATH.href);
 }
-
-function openReportUser() {
-    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuarios.php`);
-    window.open(PATH.href);
-}

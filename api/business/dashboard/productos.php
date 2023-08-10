@@ -183,15 +183,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
-            case 'cantidadProductosModelo':
-                    if ($result['dataset'] = $producto->cantidadProductosModelo()) {
+                case 'porcentajeProductosModelo':
+                    if ($result['dataset'] = $producto->porcentajeProductosModelo()) {
                         $result['status'] = 1;
                     } else {
                         $result['exception'] = 'No hay datos disponibles';
                     }
-                break;
-                
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
