@@ -10,6 +10,9 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
     switch ($_GET['action']) {
         case 'readAll':
@@ -34,6 +37,7 @@ if (isset($_GET['action'])) {
 } else {
     print(json_encode('Recurso no disponible'));
 }
+<<<<<<< HEAD
 =======
     
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
@@ -61,3 +65,5 @@ if (isset($_GET['action'])) {
     print(json_encode('Recurso no disponible'));
 }
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b

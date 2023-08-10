@@ -66,6 +66,7 @@ ITEM_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(ITEM_FORM);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     //obteniendo el valor de la cantidad a modificar
     mod = document.getElementById('cantidad').value;
@@ -81,6 +82,8 @@ ITEM_FORM.addEventListener('submit', async (event) => {
     }
     FORM.append('id_producto', productoM);
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Petición para actualizar la cantidad de producto.
     const JSON = await dataFetch(PEDIDO_API, 'updateDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -104,6 +107,7 @@ function openUpdate(id, quantity, producto) {
     // Se inicializan los campos del formulario con los datos del registro seleccionado.
     document.getElementById('id_detalle').value = id;
 <<<<<<< HEAD
+<<<<<<< HEAD
     document.getElementById('cantidad_actual').value = quantity;
     document.getElementById('cantidad_nueva').value = quantity;
     document.getElementById('id_producto').value = producto;
@@ -114,6 +118,11 @@ function openUpdate(id, quantity, producto) {
    //
    
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    document.getElementById('cantidad_actual').value = quantity;
+    document.getElementById('cantidad_nueva').value = quantity;
+    document.getElementById('id_producto').value = producto;
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 }
 
 

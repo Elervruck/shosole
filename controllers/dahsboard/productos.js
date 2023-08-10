@@ -1,6 +1,5 @@
 const PRODUCTO_API = 'business/dashboard/productos.php';
 const USUARIOP_API = 'business/dashboard/usuario.php';
-const CONDICION_API = 'business/dashboard/condicion.php';
 const MODELO_API = 'business/dashboard/modelo.php';
 
 //Constante para cambiarle el titulo a el modal
@@ -64,7 +63,7 @@ function openCreate() {
     SAVE_MODAL.show();
     SAVE_FORM.reset();
     fillSelect(USUARIOP_API, 'readAll', 'usuario', 'Seleccione un usuario');
-    fillSelect(CONDICION_API, 'readAll', 'condicion', 'Seleccione una condicion');
+    fillSelect(PRODUCTO_API, 'readCondicion', 'condicion', 'Seleccione una condicion');
     fillSelect(MODELO_API, 'readAll', 'modelo', 'Seleccione un modelo');
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear producto';
@@ -107,10 +106,10 @@ async function fillTable(form = null) {
                         <i class="material-icons">delete</i>
                     </a>
                     <a onclick="fillTableValoracion(${row.id_producto})" class="btn waves-effect red tooltipped" data-tooltip="Valoracion">
-                    <i class="material-icons">reviews</i>
+                        <i class="material-icons">reviews</i>
                     </a>
                     <a class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
-                    <i class="material-icons">assignment</i>
+                        <i class="material-icons">assignment</i>
                     </a>
                 </td>
             </tr>
@@ -149,7 +148,6 @@ async function openUpdate(id) {
     // Se define un objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id', id);
-    console.log(id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
 
@@ -169,7 +167,6 @@ async function openUpdate(id) {
         document.getElementById('precio').value = JSON.dataset.precio_producto;
         document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
         fillSelect(USUARIOP_API, 'readAll', 'usuario','Elija un usuario', JSON.dataset.id_usuario);
-        fillSelect(CONDICION_API, 'readAll', 'condicion', 'Elije una condición', JSON.dataset.id_condicion_producto);
         fillSelect(MODELO_API, 'readAll', 'modelo', 'Elije un módelo' ,JSON.dataset.id_modelo);
         if (JSON.dataset.estado_producto) {
             document.getElementById('estado').checked = true;
@@ -253,4 +250,11 @@ async function openDeleteValo(id) {
             sweetAlert(2, JSON.exception, false);
         }
     }
+}
+
+function openReport() {
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/productos.php`)
+
+    window.open(PATH.href);
+
 }

@@ -10,17 +10,23 @@ if (isset($_GET['action'])) {
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         case 'readProductosMarca':
             // Verificar si el ID de la marca es incorrecto
             if (!$producto->setId($_POST['id_marca'])) {
                 $result['exception'] = 'Marca incorrecta';
                 // Leer los productos de la marca y asignar el conjunto de datos al resultado
+<<<<<<< HEAD
 =======
         
         case 'readProductosMarca':
             if (!$producto->setId($_POST['id_marca'])) {
                 $result['exception'] = 'Marca incorrecta';
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             } elseif ($result['dataset'] = $producto->readProductosMarca()) {
                 $result['status'] = 1;
                 // Manejar excepciones de la base de datos en caso de error
@@ -48,6 +54,9 @@ if (isset($_GET['action'])) {
             }
             break;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         case 'readOneDel':
             // Verificar si el ID del producto es incorrecto
             if (!$producto->setId($_POST['id_producto'])) {
@@ -78,6 +87,7 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No se pueden cargar comentarios inexistentes';
             }
             break;
+<<<<<<< HEAD
 =======
 
         case 'readOneDel':
@@ -104,6 +114,8 @@ if (isset($_GET['action'])) {
                    }
                    break;
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         default:
             $result['exception'] = 'Acción no disponible';
     }

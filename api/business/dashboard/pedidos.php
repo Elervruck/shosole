@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dashboard/dto/pedidos.php');
+require_once('../../entities/dto/pedidos.php');
 
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.

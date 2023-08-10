@@ -13,6 +13,9 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             case 'createValoComentario':
                 // Validar y limpiar los datos recibidos por POST
                 $_POST = Validator::validateForm($_POST);
@@ -30,6 +33,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion agregado correctamente';
                 // Capturar y manejar la excepción de la base de datos en caso de error
+<<<<<<< HEAD
 =======
             
                 
@@ -45,11 +49,16 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion agregado correctamente';
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             case 'validarComentarios':
                 // Verificar si el ID del detalle del pedido es incorrecto
                 if (!$valo->setIdDetallePedido($_POST['id_detpedido'])) {
@@ -62,6 +71,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+<<<<<<< HEAD
 =======
 
                 case 'validarComentarios':
@@ -78,6 +88,8 @@ if (isset($_GET['action'])) {
                    
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
@@ -91,7 +103,11 @@ if (isset($_GET['action'])) {
 } else {
     print(json_encode('Recurso no disponible'));
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+}
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b

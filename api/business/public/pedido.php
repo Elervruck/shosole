@@ -16,23 +16,33 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'createDetail':
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 // Inicia el pedido y maneja excepciones en caso de error
                 if (!$pedido->startOrder()) {
                     $result['exception'] = Database::getException();
                     // Verifica si el producto es incorrecto
+<<<<<<< HEAD
 =======
                 if (!$pedido->startOrder()) {
                     $result['exception'] = Database::getException();
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } elseif (!$pedido->setProducto($_POST['idpro'])) {
                     $result['exception'] = 'Producto incorrecto';
                     // Verifica si la cantidad es incorrecta
                 } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
 <<<<<<< HEAD
+<<<<<<< HEAD
                     // Modifica el inventario y crea el detalle del pedido correctamente
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                    // Modifica el inventario y crea el detalle del pedido correctamente
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } elseif ($pedido->ModInventory() && $pedido->createDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto agregado correctamente';
@@ -52,9 +62,13 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $_SESSION['id_pedido'] = $pedido->getId();
 <<<<<<< HEAD
+<<<<<<< HEAD
                     // Maneja excepciones de la base de datos en caso de error
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                    // Maneja excepciones de la base de datos en caso de error
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                     // Muestra un mensaje de error si no hay productos en el carrito
@@ -68,20 +82,28 @@ if (isset($_GET['action'])) {
                 // Validar y limpiar los datos recibidos en $_POST
                 $_POST = Validator::validateForm($_POST);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // Verificar si el id de detalle es incorrecto
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                // Verificar si el id de detalle es incorrecto
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 if (!$pedido->setIddetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
                     // Verificar si la cantidad es incorrecta
                 } elseif (!$pedido->setCantidad($_POST['cantidad_nueva'])) {
                     $result['exception'] = 'Cantidad incorrecta';
 <<<<<<< HEAD
+<<<<<<< HEAD
                     // Actualizar el detalle del pedido correctamente
 =======
                 } elseif (!$pedido->ModInventoryParam($_POST['id_producto'])) {
                     $result['exception'] = 'Error modificando el inventario';
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                    // Actualizar el detalle del pedido correctamente
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } elseif ($pedido->updateDetail()) {
                     if ($_POST['cantidad_nueva'] > $_POST['cantidad_actual']) {
                         $diferencia = $_POST['cantidad_nueva'] - $_POST['cantidad_actual'];
@@ -108,6 +130,9 @@ if (isset($_GET['action'])) {
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                     // Verificar si la cantidad es incorrecta
                 } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
@@ -119,6 +144,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto agregado correctamente';
                     // Manejar cualquier otra excepción de la base de datos
+<<<<<<< HEAD
 =======
                 } elseif (!$pedido->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
@@ -128,6 +154,8 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'El producto del carrito ha sido eliminado correctamente';
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -179,6 +207,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'VerCompra inexistente';
                 }
                 break;
+<<<<<<< HEAD
 =======
             break;
 
@@ -208,6 +237,8 @@ if (isset($_GET['action'])) {
                break;
             
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             default:
             
                 $result['exception'] = 'Acción no disponible dentro de la sesión';

@@ -76,7 +76,6 @@ class ProductoQueries
         FROM productos
         INNER JOIN usuarios USING(id_usuario)
         INNER JOIN modelos USING(id_modelo)
-        INNER JOIN condicion_productos USING(id_condicion_producto)
         WHERE id_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -113,10 +112,14 @@ class ProductoQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Obtiene una lista de productos de una marca específica desde la base de datos.
 =======
    
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Obtiene una lista de productos de una marca específica desde la base de datos.
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function readProductosMarca()
     {
         $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto 
@@ -130,9 +133,13 @@ class ProductoQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Obtiene los detalles de un producto específico para eliminarlo.
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Obtiene los detalles de un producto específico para eliminarlo.
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function readOneDel()
     {
         $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, imagen_producto, modelo, condicion_producto, estado_producto, existencia_producto, precio_producto
@@ -144,23 +151,30 @@ class ProductoQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     //CARGAR LOS COMENTARIOS DE UN DETALLE DEL PRODUCTO//
     public function cargarComentarios()
     {
 
         $sql = "SELECT b.comentario_producto, b.fecha_comentario, b.calificacion_producto, e.nombre_cliente, c.nombre_producto, b.id_valoracion, c.id_producto, b.estado_comentario
+<<<<<<< HEAD
 =======
         //CARGAR LOS COMENTARIOS DE UN DETALLE DEL PRODUCTO//
         public function cargarComentarios(){
 
             $sql="SELECT b.comentario_producto, b.fecha_comentario, b.calificacion_producto, e.nombre_cliente, c.nombre_producto, b.id_valoracion, c.id_producto, b.estado_comentario
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             from valoraciones b 
             INNER JOIN detalle_pedidos a using (id_detalle_pedido)
             INNER JOIN pedidos d using (id_pedido)
             INNER JOIN clientes e using (id_cliente)
             INNER JOIN productos c using (id_producto) 
             where id_producto = ? and estado_comentario = 'true'";
+<<<<<<< HEAD
 <<<<<<< HEAD
         $params = array($this->id);
         return Database::getRows($sql, $params);
@@ -173,3 +187,33 @@ class ProductoQueries
         
 }
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
+
+
+    public function productosModelo() 
+    {
+        $sql = 'SELECT nombre_producto, precio_producto, condicion_producto, estado_producto, existencia_producto
+                FROM productos
+                INNER JOIN modelos USING(id_modelo)
+                WHERE id_modelo = ?
+                ORDER BY nombre_producto';
+        $params = array ($this->modelo);
+        return Database::getRows($sql, $params);
+    }
+
+
+    public function productoUsuario()
+    {
+        $sql = 'SELECT nombre_producto, precio_producto, condicion_producto, estado_producto, existencia_producto
+                FROM productos
+                INNER JOIN usuarios USING(id_usuario)
+                WHERE id_usuario = ?
+                ORDER BY nombre_producto';
+        $params = array ($this->usuario);
+        return Database::getRows($sql, $params);
+    }
+}
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b

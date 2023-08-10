@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dashboard/dao/usuario_queries.php');
+require_once('../../entities/dao/usuario_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
@@ -14,10 +14,18 @@ class Usuario extends UsuarioQueries
     protected $alias_usuario = null;
     protected $clave_usuario = null;
     protected $foto_usuario = null;
-    protected $id_genero = null;
-    protected $id_estado = null;
+    const GENERO = array(
+        array('Femenino', 'Femenino'),
+        array('Masculino', 'Masculino')
+    );
+
+    const ESTADO = array(
+        array('Activo', 'Activo'),
+        array('Inactivo', 'Inactivo'),
+        array('Desactivado', 'Desactivado')
+    );
     protected $id_cargo = null;
-    protected $ruta_imagen = '../../../images/usuario/';
+    protected $ruta_imagen = '../../images/usuario/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -97,7 +105,7 @@ class Usuario extends UsuarioQueries
 
     public function setGenero($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 10)) {
             $this->id_genero = $value;
             return true;
         } else {
@@ -107,8 +115,8 @@ class Usuario extends UsuarioQueries
 
     public function setEstado($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->id_estado = $value;
+        if (Validator::validateAlphabetic($value, 1, 10)) {
+            $this->estado = $value;
             return true;
         }else {
             return false;
@@ -174,6 +182,6 @@ class Usuario extends UsuarioQueries
 
     public function getEstado(){
 
-        return $this->id_estado;
+        return $this->estado;
     }
 }

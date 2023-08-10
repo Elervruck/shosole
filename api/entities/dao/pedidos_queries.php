@@ -8,10 +8,14 @@ class PedidoQueries
     */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para buscar un pedido
 =======
     
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para buscar un pedido
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function searchRows($value)
     {
         $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
@@ -26,7 +30,7 @@ class PedidoQueries
     //Metodo para obtener todos los registros de pedidos
     public function readAll()
     {
-        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        $sql = 'SELECT id_pedido, estados_pedido, fecha_pedido, direccion_pedido, nombre_cliente
         FROM pedidos
         INNER JOIN clientes USING(id_cliente)';
         return Database::getRows($sql);
@@ -89,6 +93,9 @@ class PedidoQueries
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Método que verifica si existen pedidos si no crean uno
     public function startOrder()
     {
@@ -116,6 +123,7 @@ class PedidoQueries
 
 
 
+<<<<<<< HEAD
 =======
       // Método que verifica si existen pedidos si no crean uno
       public function startOrder()
@@ -145,6 +153,8 @@ class PedidoQueries
 
     
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Método para agregar un producto al carrito de compras.
     public function createDetail()
     {
@@ -162,6 +172,9 @@ class PedidoQueries
         return Database::executeRow($sql, $params);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     //metodo para modificar las existencias del inventario (parametro)
     public function ModInventoryParam($producto, $diferencia, $aumento)
     {
@@ -171,6 +184,7 @@ class PedidoQueries
             $sql = 'UPDATE productos set existencia_producto = (existencia_producto + ?) where id_producto = ?';
         }
         $params = array($diferencia, $producto);
+<<<<<<< HEAD
 =======
         //metodo para modificar las existencias del inventario (parametro)
     public function ModInventoryParam($cantidad)
@@ -178,11 +192,16 @@ class PedidoQueries
         $sql = 'UPDATE productos set existencia_producto = (existencia_producto-?)where id_producto = ?';
         $params = array($cantidad, $this->producto);
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         return Database::executeRow($sql, $params);
     }
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Método que carga los productos que se encuentran en el carrito.
     public function readOrderDetail()
     {
@@ -224,6 +243,7 @@ class PedidoQueries
 
     //Metodo para eliminar un detalle pedido
     public function deleteDetail()
+<<<<<<< HEAD
 =======
       // Método que carga los productos que se encuentran en el carrito.
       public function readOrderDetail()
@@ -265,6 +285,8 @@ class PedidoQueries
 
       public function deleteDetail()
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     {
         $sql = 'DELETE FROM detalle_pedidos
                 WHERE id_detalle_pedido = ? AND id_pedido = ?';
@@ -273,6 +295,9 @@ class PedidoQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     //metodo para restaurar las existencias del inventario
     public function RestInventory()
     {
@@ -283,6 +308,7 @@ class PedidoQueries
 
 
     //Método para cargar los pedidos del historial de compra
+<<<<<<< HEAD
 =======
         //metodo para restaurar las existencias del inventario
         public function RestInventory()
@@ -295,6 +321,8 @@ class PedidoQueries
 
 //Método para cargar los pedidos del historial de compra
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function cargarHistorial()
     {
         $sql = 'SELECT id_pedido, estados_pedido, fecha_pedido, direccion_pedido
@@ -302,11 +330,15 @@ class PedidoQueries
         INNER JOIN clientes USING(id_cliente)
         where id_cliente = ?';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 
     //Metodo para ver los productos de cada pedido del cliente en sesion
+<<<<<<< HEAD
 =======
        $params = array($this->id);
        return Database::getRows($sql, $params);
@@ -314,6 +346,8 @@ class PedidoQueries
 
 //Metodo para ver los productos de cada pedido del cliente en sesion
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function readVerCompra()
     {
         $sql = 'SELECT id_pedido, id_detalle_pedido, nombre_producto, detalle_pedidos.id_detalle_pedido, detalle_pedidos.precio_total, detalle_pedidos.cantidad_producto, productos.descripcion_producto, productos.imagen_producto, productos.condicion_producto, pedidos.estados_pedido 
@@ -325,12 +359,28 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
     
  
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+
+    public function pedidosClientes()
+    {
+        $sql = 'SELECT fecha_pedido, direccion_pedido, estados_pedido
+                FROM pedidos
+                INNER JOIN clientes USING(id_cliente)
+                WHERE id_cliente = ?
+                ORDER BY fecha_pedido';
+        $params = array($this->cliente);
+        return Database::getRows($sql, $params);
+    }
+
+
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 }
 
 

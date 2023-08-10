@@ -28,7 +28,15 @@ class InventarioQueries
         $sql = 'INSERT INTO inventario_productos(cantidad, precio, fecha, id_usuario, id_producto)
                 VALUES(?, ?, ?, ?, ?)';
         $params = array($this->cantidad, $this->precio, $this->fecha, $this->id_usuario, $this->id_producto);
-        return Database::executeRow($sql, $params);
+        if (Database::executeRow($sql, $params)) {
+            $sql = 'UPDATE productos
+                    SET existencia_producto = existencia_producto + ?
+                    WHERE id_producto = ?';
+            $params = array($this->cantidad, $this->id_producto);
+            return Database::executeRow($sql, $params);
+        } else {
+            return false;
+        }
     }
 
 

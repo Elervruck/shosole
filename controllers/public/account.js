@@ -11,9 +11,12 @@ const USER_API = 'business/public/cliente.php';
 const NAV = document.querySelector('nav');
 const FOOTER = document.querySelector('footer');
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
@@ -21,16 +24,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     const JSON = await dataFetch(USER_API, 'getUser');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
     url = `historialcompra.html?id=${JSON.id}&username=${JSON.username}`;
+<<<<<<< HEAD
 =======
       
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
       url = `historialcompra.html?id=${JSON.id}&username=${JSON.username}`;
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     NAV.innerHTML = `
         <div class="container">
         <a class="navbar-brand" href="index.html"><i class="fa-solid fa-shop me-2"></i> <strong>Shosole</strong></a>
@@ -56,9 +65,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 
             </ul>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             <ul class="navbar-nav ms-auto d-flex ">
                 <li>
                     <a href="carrito.html">
@@ -67,14 +79,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </a>
                 </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="../../resources/img/hongo_mario.jpg" alt="" class="rounded-circle ms-4"
+<<<<<<< HEAD
 <<<<<<< HEAD
                             height="30" alt="Black and White Portrait of a Man" loading="lazy">
                             Mi perfil
@@ -82,6 +98,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                              height="30" alt="Black and White Portrait of a Man" loading="lazy">
                              Mi perfil
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                            height="30" alt="Black and White Portrait of a Man" loading="lazy">
+                            Mi perfil
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                             <li><a class="dropdown-item" href="perfil.html">Mi cuenta</a></li>
@@ -97,9 +117,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Se establece el nav del encabezado.
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    // Se establece el nav del encabezado.
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     NAV.innerHTML = `
             <div class="container">
             <a class="navbar-brand" href="#"><i class="fa-solid fa-shop me-2"></i> <strong>Shosole</strong></a>
@@ -123,11 +147,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <a class="nav-link mx-2 text-uppercase" href="#">Services</a>
                     </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <li class="nav-item">     
 =======
                     <li class="nav-item">
                        
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                    <li class="nav-item">     
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto d-flex ">
@@ -140,15 +168,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <li class="nav-item">
                         <a class="nav-link mx-2 text-uppercase" href="login.html">Iniciar sesión</a>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     </li>
 =======
                      </li>
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+                    </li>
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 </ul>
             </div>
         </div>
     `;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     // Se establece el pie del encabezado.
     FOOTER.innerHTML = ` 
@@ -157,6 +190,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     FOOTER.innerHTML = `
       
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    // Se establece el pie del encabezado.
+    FOOTER.innerHTML = ` 
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     `;
     
     });

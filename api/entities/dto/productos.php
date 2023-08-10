@@ -11,7 +11,11 @@ class Producto extends ProductoQueries
     protected $descripp = null;
     protected $modelo = null;
     protected $estadop = null;
-    protected $condicion = null;
+    const CONDICION = array(
+        array('Nuevo', 'Nuevo'),
+        array('Usado','Usado'),
+        array('Reacondicionado','Reacondicionado')
+    );
     protected $usuario = null;
     protected $existencia_producto = null;
     protected $precio_producto = null;
@@ -93,6 +97,7 @@ class Producto extends ProductoQueries
         }
     }
 
+<<<<<<< HEAD
     //Metodo para validar condicion
     public function setCondicion($value)
     {
@@ -104,6 +109,8 @@ class Producto extends ProductoQueries
         }
     }
 
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     //Metodo para validar usuario
     public function setUsuario($value)
     {
@@ -187,7 +194,6 @@ class Producto extends ProductoQueries
 
     public function getCondicion()
     {
-        return $this->condicion;
     }
 
     public function getUsuario()

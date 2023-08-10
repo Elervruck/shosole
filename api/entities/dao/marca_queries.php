@@ -43,10 +43,14 @@ class MarcaQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para leer una marca
 =======
     
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para leer una marca
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function readMarca()
     {
         $sql = 'SELECT id_marca, marca, imagen_marca FROM marcas
@@ -55,10 +59,14 @@ class MarcaQueries
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para leer solo un registro de marca
 =======
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para leer solo un registro de marca
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function readOne()
     {
         $sql = 'SELECT id_marca, marca, imagen_marca

@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dashboard/dto/usuario.php');
+require_once('../../entities/dto/usuario.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -94,16 +94,24 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'readAllEstado':
-                if ($result['dataset'] = $usuario->readAllEstado()) {
+            
+
+            case 'readGenero':
+                if ($result['dataset'] = $usuario::GENERO) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay generos que esten registradas';
                 }
                 break;
+
+            case 'readEstado':
+                if ($result['dataset'] = $usuario::ESTADO) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay estados que esten registradas';
+                }
+                break;
+            
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -269,11 +277,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif ($_POST['rescon_primer'] != $_POST['contra_primer']) {
                     $result['exception'] = 'Claves diferentes';
-                } elseif (!isset($_POST['genero'])) {
-                    $result['exception'] = 'Seleccione un género';
                 } elseif (!$usuario->setGenero($_POST['genero'])) {
                     $result['exception'] = 'Género incorrecto';
-                } elseif (!$usuario->setEstado(1)) {
+                } elseif (!$usuario->setEstado('Activo')) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!$usuario->setCargo(1)) {
                     $result['exception'] = 'Cargo incorrecto';
@@ -300,6 +306,8 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->checkUser($_POST['alias'])) {
                     $result['exception'] = 'Alias incorrecto';
+                } elseif ($usuario->getEstado() != 'Activo') {
+                    $result['exception'] = 'Tú cuenta no está activa';
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';

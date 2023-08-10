@@ -13,12 +13,17 @@ class Valoracion extends ValoracionQueries
     protected $fecha = null;
     protected $id_detalle_pedido = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     //Metodo para validar id
 =======
    
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+
+    //Metodo para validar id
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -30,11 +35,15 @@ class Valoracion extends ValoracionQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para validar detalle del pedido
 =======
     
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para validar detalle del pedido
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function setIdDetallePedido($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -46,11 +55,15 @@ class Valoracion extends ValoracionQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para validar nombre
 =======
     
 
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para validar nombre
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function setEstado($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
@@ -62,9 +75,13 @@ class Valoracion extends ValoracionQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para validar calificacion del producto
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para validar calificacion del producto
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function setCalificacion($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
@@ -76,9 +93,13 @@ class Valoracion extends ValoracionQueries
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Metodo para validar comentarios
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    //Metodo para validar comentarios
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     public function setComentario($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {

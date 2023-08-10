@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Constante para completar la ruta de la API.
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+// Constante para completar la ruta de la API.
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 const PEDIDO_API= 'business/public/pedido.php';
 
 const PARAMS = new URLSearchParams(location.search);
@@ -21,10 +25,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         JSON.dataset.forEach(row => {
                  // Se crean y concatenan las tarjetas con los datos de cada producto.
 <<<<<<< HEAD
+<<<<<<< HEAD
             HISTORIAL.innerHTML += `
 =======
           HISTORIAL.innerHTML += `
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+            HISTORIAL.innerHTML += `
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             <div class="card-compra my-5 ">
                 <div class="content-compra">
                     <div class="title">${row.fecha_pedido}</div>

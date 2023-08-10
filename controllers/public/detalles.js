@@ -10,6 +10,9 @@ const VALORACION = document.getElementById('favorito');
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 document.addEventListener('DOMContentLoaded', async () => {
     //Constante del tipo objeto de los datos que se selecciona un producto
     const FORM = new FormData();
@@ -32,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         //Limpia el contenido cuando no hayan datos que se puedan mostrar
         document.getElementById('condetalle').innerHTML = '';
     }
+<<<<<<< HEAD
 =======
 document.addEventListener('DOMContentLoaded', async() => {
 //Constante del tipo objeto de los datos que se selecciona un producto
@@ -56,11 +60,14 @@ if (JSON.status) {
     document.getElementById('condetalle').innerHTML='';
 }
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 });
 
 
 
 //Método para uso del formulario cuando se quiera agreagr un producto
+<<<<<<< HEAD
 <<<<<<< HEAD
 COMPRAS.addEventListener('submit', async (event) => {
     //Evita cargar la página web después de enviar el formulario.
@@ -68,6 +75,10 @@ COMPRAS.addEventListener('submit', async (event) => {
 COMPRAS.addEventListener('submit', async (event)=> {
 //Evita cargar la página web después de enviar el formulario.
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+COMPRAS.addEventListener('submit', async (event) => {
+    //Evita cargar la página web después de enviar el formulario.
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     event.preventDefault();
     //Constante de tipo objeto que tiene los datos del formulario.
     const FORM = new FormData(COMPRAS);
@@ -77,6 +88,7 @@ COMPRAS.addEventListener('submit', async (event)=> {
     if (JSON.status) {
         sweetAlert(1, JSON.message, true, 'carrito.html');
 <<<<<<< HEAD
+<<<<<<< HEAD
     } else if (JSON.session) {
         sweetAlert(2, JSON.message, false);
     } else {
@@ -85,6 +97,11 @@ COMPRAS.addEventListener('submit', async (event)=> {
         sweetAlert(2, JSON.message, false);
     }else{
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    } else if (JSON.session) {
+        sweetAlert(2, JSON.message, false);
+    } else {
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         sweetAlert(3, JSON.message, true, 'login.html');
     }
 });
@@ -96,10 +113,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     FORM.append('id_producto', PARAMS.get('id'));
     // Petición para solicitar los productos de la categoría seleccionada.
 <<<<<<< HEAD
+<<<<<<< HEAD
     const JSON = await dataFetch(PROD_API, 'cargarComentarios', FORM);
 =======
     const JSON = await dataFetch(PROD_API, 'cargarComentarios',  FORM);
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+    const JSON = await dataFetch(PROD_API, 'cargarComentarios', FORM);
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se inicializa el contenedor de productos.
@@ -109,6 +130,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             VALORACION.innerHTML += `
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             <div  class="card col-12">
                     <div class="card-body">
                     <h5 class="card-title">nombre:${row.nombre_cliente}</h5>
@@ -120,6 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <h4 id="precios_libros"></h4>
                     </div>
                 </div>
+<<<<<<< HEAD
 =======
       <div  class="card col-12">
                      <div class="card-body">
@@ -134,15 +159,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                      </div>
                  </div>
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         `;
         });
         // Se asigna como título la categoría de los productos.
         TITULO.textContent = PARAMS.get('nombre');
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
      
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         TITULO.textContent = JSON.exception;

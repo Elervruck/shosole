@@ -75,32 +75,34 @@ async function fillTable(form = null) {
         JSON.dataset.forEach(row => {
             let imagen = '';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-            if(row.foto_usuario!=null){
-               imagen = `<td><img src="${SERVER_URL}images/usuario/${row.foto_usuario}" class="materialboxed" height="100"></td>`                    
+            if (row.foto_usuario != null) {
+                imagen = `<td><img src="${SERVER_URL}images/usuario/${row.foto_usuario}" class="materialboxed" height="100"></td>`
 
-            }else{
-               imagen = `<td><img src="../../resources/img/imagen_predeterminada.png" class="materialboxed" height="100"></td>`                    
+            } else {
+                imagen = `<td><img src="../../resources/img/imagen_predeterminada.png" class="materialboxed" height="100"></td>`
             }
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.nombre_usuario}</td>
                     <td>${row.apellido_usuario}</td>
                     <td>${row.alias_usuario}</td>
-                    <td>${row.genero}</td>
+                    <td>${row.generos_usuarios}</td>
                     <td>${row.cargo}</td>
                     <td>${row.correo_usuario}</td>
-                    <td>${row.estado_usuario}</td>
+                    <td>${row.estado_usuarios}</td>
                         ${imagen}
 
-                     <td>
-                     <a onclick="openUpdate(${row.id_usuario})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
+                    <td>
+                        <a onclick="openUpdate(${row.id_usuario})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </a>
                         <a onclick="openDelete(${row.id_usuario})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
                             <i class="material-icons">delete</i>
-                            
                         </a>
-                        </td>
+                        <a onclick="openReport(${row.id_usuario})" class="btn amber tooltipped" data-tooltip="Reporte">
+                            <i class="material-icons">assignment</i>
+                        </a>
+                    </td>
                 </tr>
             `;
         });
@@ -123,8 +125,8 @@ function openCreate() {
     MODAL_TITLE.textContent = 'Crear usuario';
     // cargar cmb
     fillSelect(CGO_API, 'readAll', 'cargo-u', 'Elija un cargo');
-    fillSelect(USUARIO_API, 'readAllGenero', 'genero-u', 'Elija un género');
-    fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Elija un estado');
+    fillSelect(USUARIO_API, 'readGenero', 'genero-u', 'Elija un género');
+    fillSelect(USUARIO_API, 'readEstado', 'estado-u', 'Elija un estado');
 
 }
 
@@ -145,16 +147,16 @@ async function openUpdate(id) {
         SAVE_MODAL.show();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar usuario';
-        
+
         document.getElementById('id').value = JSON.dataset.id_usuario;
         document.getElementById('nombre-u').value = JSON.dataset.nombre_usuario;
         document.getElementById('apellidos-u').value = JSON.dataset.apellido_usuario;
         document.getElementById('correo-u').value = JSON.dataset.correo_usuario;
         document.getElementById('alias-u').value = JSON.dataset.alias_usuario;
         //Se manda a traer la información de la tabla a los controles
-        fillSelect(CGO_API, 'readAll', 'cargo-u','Elija un cargo', JSON.dataset.id_cargo);
-        fillSelect (USUARIO_API, 'readAllGenero', 'genero-u','Elija un género', JSON.dataset.id_genero);
-        fillSelect (USUARIO_API, 'readAllEstado', 'estado-u', 'Elija un estado', JSON.dataset.id_estado_usuario);
+        fillSelect(CGO_API, 'readAll', 'cargo-u', 'Elija un cargo', JSON.dataset.id_cargo);
+        fillSelect(USUARIO_API, 'readAllGenero', 'genero-u', 'Elija un género', JSON.dataset.id_genero);
+        fillSelect(USUARIO_API, 'readAllEstado', 'estado-u', 'Elija un estado', JSON.dataset.id_estado_usuario);
         document.getElementById('im_u').required = false;
 
 
@@ -188,4 +190,10 @@ async function openDelete(id) {
             sweetAlert(2, JSON.exception, false);
         }
     }
+}
+
+function openReport(id) {
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuarios_productos.php`);
+    PATH.searchParams.append('id_usuario', id);
+    window.open(PATH.href);
 }

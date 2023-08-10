@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Constante para completar la ruta de la API.
 =======
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+// Constante para completar la ruta de la API.
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 const PEDIDO_API = 'business/public/pedido.php';
 const VALO_API = 'business/public/valoracion.php';
 const PARAMS = new URLSearchParams(location.search);
@@ -9,18 +13,27 @@ const PARAMS = new URLSearchParams(location.search);
 
 const VERCOMPRA = document.getElementById('vercompra');
 <<<<<<< HEAD
+<<<<<<< HEAD
 //Constante para guardar el formulario
 const SAVE_FORM = document.getElementById('save-form');
 //Constante para guardar el modal
 =======
 const SAVE_FORM = document.getElementById('save-form');
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+//Constante para guardar el formulario
+const SAVE_FORM = document.getElementById('save-form');
+//Constante para guardar el modal
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 const SAVE_MODAL = new bootstrap.Modal(document.getElementById('agregarvalo'));
 
 
 
 document.addEventListener('DOMContentLoaded', async () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
     FORM.append('id_pedido', PARAMS.get('id'));
@@ -42,6 +55,7 @@ async function ProductosCompra(form) {
                 if (JSONVALO.dataset === false) {
 
                     VERCOMPRA.innerHTML += `
+<<<<<<< HEAD
 =======
 // Se define un objeto con los datos de la categoría seleccionada.
 const FORM = new FormData();
@@ -65,6 +79,8 @@ ProductosCompra(FORM);
 
         VERCOMPRA.innerHTML += `
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         <div class="card">
         <div class="infos">
             <div class="image"><img src="${SERVER_URL}imagenes/productos/${row.imagen_producto}"></div>
@@ -96,12 +112,16 @@ ProductosCompra(FORM);
         </div>
         <button class="request" type="button" data-bs-target="#agregarvalo"  onclick="openCreate(${row.id_pedido}, ${row.id_detalle_pedido})">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             Comentar
             </button>
         </div>
         `;
                 } else {
                     VERCOMPRA.innerHTML += `
+<<<<<<< HEAD
 =======
               Comentar
             </button>
@@ -113,6 +133,8 @@ ProductosCompra(FORM);
     }else{
         VERCOMPRA.innerHTML += `
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         <div class="card">
         <div class="infos">
             <div class="image"><img src="${SERVER_URL}imagenes/productos/${row.imagen_producto}"></div>
@@ -144,6 +166,9 @@ ProductosCompra(FORM);
         </div>
         <button class="request" type="button">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             Comentado
             </button>
         </div>
@@ -152,6 +177,7 @@ ProductosCompra(FORM);
             }
             else {
                 VERCOMPRA.innerHTML += `
+<<<<<<< HEAD
 =======
               Comentado
             </button>
@@ -166,6 +192,8 @@ ProductosCompra(FORM);
     else {
         VERCOMPRA.innerHTML += `
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
         <div class="card">
             <div class="infos">
                 <div class="image"><img src="${SERVER_URL}imagenes/productos/${row.imagen_producto}"></div>
@@ -198,6 +226,9 @@ ProductosCompra(FORM);
         </div>
         `;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
             }
         })
     }
@@ -220,6 +251,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     } else {
         sweetAlert(2, JSON.exception, false);
     }
+<<<<<<< HEAD
 =======
     }
     })
@@ -244,6 +276,8 @@ sweetAlert(1, JSON.message, true);
 sweetAlert(2, JSON.exception, false);
 }
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 });
 
 function openCreate(id_pedido, id_detalle_pedido) {
@@ -252,10 +286,15 @@ function openCreate(id_pedido, id_detalle_pedido) {
     document.getElementById('id').value = id_pedido;
     document.getElementById('iddetallepedido').value = id_detalle_pedido;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 }
 =======
     
     }
 >>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
+=======
+
+}
+>>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
 

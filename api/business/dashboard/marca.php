@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dashboard/dto/marca.php');
+require_once('../../entities/dto/marca.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
