@@ -1,0 +1,36 @@
+header{
+    height: 5vh;
+}
+
+
+
+main {
+    height: auto  !important;
+    min-height: 85vh;
+}   
+
+section{
+    
+}
+
+
+  footer {
+      height: 10vh;
+  }
+
+a {
+    font-size:14px;
+    font-weight:700
+  }
+  .superNav {
+    font-size:13px;
+  }
+  .form-control {
+    outline:none !important;
+    box-shadow: none !important;
+  }
+  @media screen and (max-width:540px){
+    .centerOnMobile {
+      text-align:center
+    }
+  }
