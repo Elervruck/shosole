@@ -188,4 +188,14 @@ class UsuarioQueries
         $params = array($this->id_cargo);
         return Database::getRows($sql, $params);
     }
+
+    public function usuariosCargosGrafica()
+    {
+        $sql = 'SELECT cargo, ROUND((COUNT(id_usuario) * 100.0 / (SELECT COUNT(id_usuario) FROM usuarios)), 2) porcentaje 
+                FROM usuarios
+                INNER JOIN cargos USING(id_cargo)
+                GROUP BY cargo ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+    
 }

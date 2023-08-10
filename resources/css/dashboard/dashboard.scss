@@ -5,11 +5,17 @@ header {
     width: 100%;
 }
 
+
 nav {
     height: 50px;
     background-color: #4E0F8B;
     display: flex;
     justify-content: end;
+}
+
+.chart, .chart2, .char3{
+
+    margin-top: 100px !important;
 }
 
 ul {
@@ -34,68 +40,6 @@ a {
     margin: 0%;
 }
 
-.datos{
-    background: #4E0F8B;
-    margin-top: 5% !important;
-    height: 640px;
-}
-
-.lateral-izquierdo {
-    height: 640px;
-    border-radius: 20px;
-    margin-top: 21% !important;
-    margin-left: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.crud-Usuario {
-    background: #4E0F8B;
-    height: 50% !important;
-    border: 1px solid black;
-}
-
-.crud-productos {
-    background: #4E0F8B;
-    height: 50% !important;
-    border: 1px solid black;
-}
-
-.numeros {
-    margin-top: 15px;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.Baneados{
-    display: flex;
-    height: 100%;
-    width: 24%;
-    background-color: #F15A59;
-}
-
-.Nuevos{
-    display: flex;
-    height: 100%;
-    width: 24%;
-    background-color: #C9DBB2;
-}
-
-.Vendidos{
-    display: flex;
-    height: 100%;
-    width: 24%;
-    background-color: #A5C0DD;
-}
-
-.Agregados{
-    display: flex;
-    height: 100%;
-    width: 24%;
-    background-color: #F3E99F;
-}
 
 .icon{
     height: 100%;
@@ -110,7 +54,25 @@ a {
     width: 70%;
 }
 
+.graficaBarra{
+    border: 1px solid black;
+}
 
+.graficaPastel{
+    border: 1px solid black;
+}
+
+.graficaTres{
+    border: 1px solid black;
+}
+
+.graficaCuatro{
+    border: 1px solid black;
+}
+
+.graficaCinco{
+    border: 1px solid black;
+}
 
 h3{
     margin-top: 10px;
@@ -128,79 +90,7 @@ h3{
 }
 
 
-.graficas {
-    margin-top: 20px;
-    height: 250px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-}
-
-.grafica-linea {
-    height: 100%;
-    width: 65%;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-}
-
-.graficaImagen_linea, .graficaImagen_barra, .calendarioimg, .maya, .listaTareas, .pedidos, .logoDash{
-    width: 100%;
-    height: 100%;
-}
-
-
-
-.grafica-circular {
-    height: 100%;
-    width: 32%;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-}
-
-.tareas-linea {
-    margin-top: 20px;
-    height: 200px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-p {
-    font-size: 10px;
-}
-
-.tareas {
-    height: 190px;
-    width: 32%;
-    margin-left: 5px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-
-}
-
-.espacio {
-    height: 190px;
-    width: 32%;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-
-}
-
-.calendario {
-    height: 190px;
-    width: 32%;
-    margin-right: 5px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-}
 
 
 .site-footer {
@@ -868,11 +758,6 @@ p {
 }
 
 /*Primer uso*/
-
-
-body {
-    background: #000000;
-}
 
 .color-back {
     background: #4E0F8B;

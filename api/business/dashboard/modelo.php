@@ -96,6 +96,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
+            case 'porcentajeModeloConsolas':
+
+                if ($result['dataset'] = $modelo->porcentajeModeloMarcas()){
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+
+                break;
             
             default:
                 $result['exception'] = 'No hay datos registrados';

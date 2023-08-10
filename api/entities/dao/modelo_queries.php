@@ -64,4 +64,14 @@ class ModeloQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function porcentajeModeloMarcas()
+    {
+        $sql = 'SELECT modelos, ROUND((COUNT(id_modelo) * 100.0 / (SELECT COUNT(id_modelo) FROM modelos)), 2) porcentaje 
+                FROM modelos
+                INNER JOIN marcas USING(id_marca)
+                GROUP BY modelos ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+
 }

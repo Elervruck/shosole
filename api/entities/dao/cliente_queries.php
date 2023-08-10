@@ -113,4 +113,16 @@ class ClientesQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+
+    public function cantidadPedidosTotal()
+    {
+        $sql = 'SELECT c.id_cliente, c.nombre_cliente, COUNT(p.id_pedido) AS total_pedidos
+                FROM clientes c
+                LEFT JOIN pedidos p ON c.id_cliente = p.id_cliente
+                GROUP BY c.id_cliente, c.nombre_cliente
+                ORDER BY total_pedidos DESC';
+        return Database::getRows($sql);
+    }
+
 }

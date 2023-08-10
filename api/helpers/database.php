@@ -89,12 +89,6 @@ class Database
         switch ($code) {
             case '7':
                 self::$error = 'Existe un problema al conectar con el servidor';
-<<<<<<< HEAD
-                break;
-            case '42703':
-                self::$error = 'Nombre de campo desconocido';
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 break;
             /*case '42703':
                 self::$error = 'Nombre de campo desconocido';

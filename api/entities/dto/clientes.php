@@ -143,30 +143,6 @@ class Clientes extends ClientesQueries
         }
     }
 
-<<<<<<< HEAD
-    //Metodo para validar estaodo del cliente
-    public function setEstadoCliente($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 10)) {
-            $this->estado_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    //Metodo para validar genero
-    public function setGenero($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 10)) {
-            $this->id_genero = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     //Metodo para validar usuario
     public function setUsuario($value)
     {
@@ -230,18 +206,10 @@ class Clientes extends ClientesQueries
 
     public function getEstadoCliente()
     {
-<<<<<<< HEAD
-        return $this->estado_cliente;
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     }
 
     public function getGenero()
     {
-<<<<<<< HEAD
-        return $this->id_genero;
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     }
 
     public function getUsuario()
@@ -259,10 +227,6 @@ class Clientes extends ClientesQueries
     public function getEstado()
     {
 
-<<<<<<< HEAD
-        return $this->estado_cliente;
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
     }
 
     public function getRutaImagen()

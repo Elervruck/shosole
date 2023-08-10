@@ -14,6 +14,10 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+
+            
+
+
             case 'readProfile':
                 if ($result['dataset'] = $cliente->readProfile()) {
                     $result['status'] = 1;
@@ -192,10 +196,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            case 'clientesMasPedidos':
+                if($result['dataset'] = $cliente->cantidadPedidosTotal()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;    
+            
 
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
+        
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
         header('content-type: application/json; charset=utf-8');
