@@ -208,82 +208,47 @@ function pieGraph(canvas, legends, values, title) {
         }
     });
 }
-/*
-*   Función para generar un gráfico de lineas
-*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
-*   Retorno: ninguno.
-*/
-function lineGraph(canvas, legends, values, title) {
-    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
-    let colors = [];
-    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
-    values.forEach(() => {
-        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
-    });
-    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
-    const context = document.getElementById(canvas).getContext('2d');
-    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-    const chart = new Chart(context, {
+
+function lineGraph(canvas, labels, datasets, title, xAxisLabel, yAxisLabel) {
+    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
+    const CONTEXT = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería Chart.js para funcionar.
+    const CHART = new Chart(CONTEXT, {
         type: 'line',
         data: {
-            labels: legends,
-            datasets: [{
-                data: values,
-                backgroundColor: colors
-            }]
+            labels: labels,
+            datasets: datasets
         },
         options: {
+            aspectRatio: 1,
             plugins: {
                 title: {
                     display: true,
                     text: title
                 }
-            }
-        }
-    });
-}
-/*
-*   Función para generar un gráfico de dona.
-*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
-*   Retorno: ninguno.
-*/
-
-    function doughnutGraph(canvas, legends, values, title) {
-        // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
-        let colors = [];
-        // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
-        values.forEach(() => {
-            colors.push('#' + (Math.random().toString(16)).substring(2, 8));
-        });
-        // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
-        const context = document.getElementById(canvas).getContext('2d');
-        // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-        const chart = new Chart(context, {
-            type: 'doughnut',
-            data: {
-                labels: legends,
-                datasets: [{
-                    data: values,
-                    backgroundColor: colors
-                }]
             },
-            options: {
-                plugins: {
+            scales: {
+                x: {
                     title: {
                         display: true,
-                        text: title
+                        text: xAxisLabel
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: yAxisLabel
                     }
                 }
             }
-        });
-
+        }
+    });
 }
-/*
-*   Función para generar un gráfico de area polar
-*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
-*   Retorno: ninguno.
-*/
-function polarAreaGraph(canvas, legends, values, title) {
+
+
+
+
+function doughnutGraph(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
@@ -294,7 +259,7 @@ function polarAreaGraph(canvas, legends, values, title) {
     const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
     const chart = new Chart(context, {
-        type: 'polarArea',
+        type: 'doughnut',
         data: {
             labels: legends,
             datasets: [{
@@ -311,9 +276,7 @@ function polarAreaGraph(canvas, legends, values, title) {
             }
         }
     });
-
 }
-
 
 
 /*
@@ -336,7 +299,6 @@ async function logOut() {
         }
     }
 }
-
 
 /*
 *   Función asíncrona para intercambiar datos con el servidor.
