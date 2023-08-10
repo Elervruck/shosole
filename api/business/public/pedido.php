@@ -15,21 +15,14 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             case 'createDetail':
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
+
                 // Inicia el pedido y maneja excepciones en caso de error
                 if (!$pedido->startOrder()) {
                     $result['exception'] = Database::getException();
                     // Verifica si el producto es incorrecto
-<<<<<<< HEAD
-=======
+
                 if (!$pedido->startOrder()) {
                     $result['exception'] = Database::getException();
->>>>>>> 0b7af83c867e0e03db9984dde0ab5ae203cd0468
-=======
->>>>>>> f74978697aaa965424c41fc70fb9e5c335b8738b
                 } elseif (!$pedido->setProducto($_POST['idpro'])) {
                     $result['exception'] = 'Producto incorrecto';
                     // Verifica si la cantidad es incorrecta
