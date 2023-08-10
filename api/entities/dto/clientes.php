@@ -16,6 +16,7 @@ class Clientes extends ClientesQueries
     protected $nacimiento_cliente = null;
     protected $direccion_cliente = null;
     protected $clave_cliente = null;
+    protected $estado_cliente = null;
     const GENERO = array(
         array('Masculino', 'Masculino'),
         array('Femenino','Femenino')
@@ -226,7 +227,7 @@ class Clientes extends ClientesQueries
 
     public function getEstado()
     {
-
+        return $this->estado_cliente;
     }
 
     public function getRutaImagen()

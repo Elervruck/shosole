@@ -111,6 +111,7 @@ if (isset($_GET['action'])) {
                 // Finalizar el pedido correctamente
                 if ($pedido->finishOrder()) {
                     $result['status'] = 1;
+                    $result['dataset'] = $_SESSION['id_pedido'];
                     $result['message'] = 'Pedido finalizado correctamente';
                     // Manejar cualquier otro problema al finalizar el pedido
                 } else {

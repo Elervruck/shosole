@@ -54,7 +54,7 @@ async function readOrderDetail() {
         });
         // Se muestra el total a pagar con dos decimales.
         document.getElementById('pago').textContent = total.toFixed(2);
-        
+
     } else {
         sweetAlert(4, JSON.exception, false, 'index.html');
     }
@@ -102,6 +102,9 @@ async function finishOrder() {
         const JSON = await dataFetch(PEDIDO_API, 'finishOrder');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
+            const PATH = new URL(`${SERVER_URL}reports/public/factura.php`);
+            PATH.searchParams.append('id_pedido', JSON.dataset);
+            window.open(PATH.href);
             sweetAlert(1, JSON.message, true, 'index.html');
         } else {
             sweetAlert(2, JSON.exception, false);

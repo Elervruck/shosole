@@ -31,7 +31,7 @@ class PedidoQueries
     //Metodo para obtener un registo de pedidos
     public function readOne()
     {
-        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente, id_cliente
+        $sql = 'SELECT id_pedido, estados_pedido, fecha_pedido, direccion_pedido, nombre_cliente, id_cliente
         FROM pedidos
         INNER JOIN clientes USING(id_cliente)
         WHERE id_pedido=?';
@@ -70,7 +70,7 @@ class PedidoQueries
     //Metodo para leer todos los registros de la tabla detalle pedido
     public function readAllDetalle()
     {
-        $sql = 'SELECT d.id_detalle_pedido, cli.nombre_cliente, pro.nombre_producto, d.cantidad_producto, d.precio_producto
+        $sql = 'SELECT d.id_detalle_pedido, cli.nombre_cliente, pro.nombre_producto, d.cantidad_producto, d.precio_total
         from detalle_pedidos d
         inner join productos pro USING (id_producto)
         inner join pedidos ped USING (id_pedido)
@@ -155,7 +155,6 @@ class PedidoQueries
 
     //Metodo para finalizar mi compra 
     public function finishOrder()
-
     {
         date_default_timezone_set('America/El_Salvador');
         $date = date('Y-m-d');
