@@ -15,8 +15,8 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
 
-            case 'usuariosCargosGrafica':
-                if ($result['dataset'] = $usuario->usuariosCargosGrafica()) {
+            case 'usuariosCargoGrafica':
+                if ($result['dataset'] = $usuario->usuariosCargoGrafica()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';

@@ -189,7 +189,7 @@ class UsuarioQueries
         return Database::getRows($sql, $params);
     }
 
-    public function usuariosCargosGrafica()
+    public function usuariosCargoGrafica()
     {
         $sql = 'SELECT cargo, ROUND((COUNT(id_usuario) * 100.0 / (SELECT COUNT(id_usuario) FROM usuarios)), 2) porcentaje 
                 FROM usuarios

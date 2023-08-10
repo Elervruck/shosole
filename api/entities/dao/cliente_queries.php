@@ -114,14 +114,14 @@ class ClientesQueries
         return Database::executeRow($sql, $params);
     }
 
-
-    public function cantidadPedidosTotal()
+    
+    public function cantidadPedidosCliente()
     {
-        $sql = 'SELECT c.id_cliente, c.nombre_cliente, COUNT(p.id_pedido) AS total_pedidos
-                FROM clientes c
-                LEFT JOIN pedidos p ON c.id_cliente = p.id_cliente
-                GROUP BY c.id_cliente, c.nombre_cliente
-                ORDER BY total_pedidos DESC';
+        $sql = 'SELECT usuario_cliente, COUNT(id_pedido) pedidos
+                FROM clientes
+                INNER JOIN pedidos USING(id_cliente)
+                GROUP BY usuario_cliente
+                ORDER BY pedidos DESC LIMIT 5';
         return Database::getRows($sql);
     }
 

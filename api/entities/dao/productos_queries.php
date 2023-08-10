@@ -176,10 +176,10 @@ class ProductoQueries
 
     public function cantidadProductosModelo()
     {
-        $sql = 'SELECT modelo, COUNT(id_producto) existencia_producto
+        $sql = 'SELECT modelo, COUNT(id_producto) cantidad
                 FROM productos
                 INNER JOIN modelos USING(id_modelo)
-                GROUP BY modelo ORDER BY existencia_producto DESC';
+                GROUP BY modelo ORDER BY cantidad DESC';
         return Database::getRows($sql);
     }
 }

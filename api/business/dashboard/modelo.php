@@ -97,9 +97,8 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'porcentajeModeloConsolas':
-
-                if ($result['dataset'] = $modelo->porcentajeModeloMarcas()){
+            case 'porcentajeModelosMarca':
+                if ($result['dataset'] = $modelo->porcentajeModelosMarca()){
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';

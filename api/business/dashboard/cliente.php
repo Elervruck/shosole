@@ -196,8 +196,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'clientesMasPedidos':
-                if($result['dataset'] = $cliente->cantidadPedidosTotal()) {
+            case 'graficoPedidosCliente':
+                if($result['dataset'] = $cliente->cantidadPedidosCliente()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
