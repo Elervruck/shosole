@@ -113,4 +113,16 @@ class ClientesQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    
+    public function cantidadPedidosCliente()
+    {
+        $sql = 'SELECT usuario_cliente, COUNT(id_pedido) pedidos
+                FROM clientes
+                INNER JOIN pedidos USING(id_cliente)
+                GROUP BY usuario_cliente
+                ORDER BY pedidos DESC LIMIT 5';
+        return Database::getRows($sql);
+    }
+
 }

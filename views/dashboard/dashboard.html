@@ -12,107 +12,53 @@
 
 <body>
 
-	<!--Header de la pagina-->
+    <!--Header de la pagina-->
     <header>
         <!--Menu de navegacion-->
         <nav>
-            
+
         </nav>
     </header>
-    <main>
+    <main style="padding-top: 100px;">
         <div class="container-fluid row">
-            <div class="col-9 datos">
-                <div class="numeros">
-                    <div class="Baneados">
-                        <div class="icon">
-                            <i class="fa-sharp fa-solid fa-check icon-dash"></i>
-                        </div>
-                        <div class="info_dash">
-                            <h3>USUARIOS BANEADOS</h3>
-                            <div class="clock">
-                                <span id="hours">00</span>
-                                <span>:</span>
-                                <span id="minutes">00</span>
-                                <span>:</span>
-                                <span id="seconds">00</span>
-                              </div>
-                            <p class="cantidad">14</p>
-                        </div>
+            
+                <!-- Se muestran gráficos de acuerdo con algunos datos disponibles en la base de datos -->
+                    <div class="col-4  l4 graficaBarra">
+                        <!-- Se muestra un gráfico de barra con la cantidad de productos por categoría -->
+                        <canvas id="chart1"></canvas>
                     </div>
-                    <div class="Nuevos">
-                        <div class="icon">
-                            <i class="fa-sharp fa-solid fa-check icon-dash"></i>
-                        </div>
-                        <div class="info_dash">
-                            <h3>USUARIOS NUEVOS</h3>
-                            <p class="cantidad">45</p>
-                        </div>
+                    <div class="col-4 s12 m6 l4 graficaPastel">
+                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                        <canvas id="chart2"></canvas>
                     </div>
-                    <div class="Vendidos">
-                        <div class="icon">
-                            <i class="fa-sharp fa-solid fa-check icon-dash"></i>
-                        </div>
-                        <div class="info_dash">
-                            <h3>PRODUCTOS VENDIDOS</h3>
-                            <p class="cantidad">67</p>
-                        </div>
-                    </div>
-                    <div class="Agregados">
-                        <div class="icon">
-                            <i class="fa-sharp fa-solid fa-check icon-dash"></i>
-                        </div>
-                        <div class="info_dash">
-                            <h3>PRODUCTOS AGREGADOS</h3>
-                            <p class="cantidad">25</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="graficas">
-                    <div class="grafica-linea">
-                        <img class="graficaImagen_linea" src="../../resources/img/grafica.png" alt="">
-                    </div>
-                    <div class="grafica-circular">
-                        <img class="graficaImagen_barra" src="../../resources/img/barra.gif" alt="">
-                    </div>
-                </div>
-                <div class="tareas-linea">
-                    <div class="tareas">
-                        <img class="listaTareas" src="../../resources/img/lista de tareas.avif" alt="">
-                    </div>
-                    <div class="espacio">
-                        <img class="maya" src="../../resources/img/maya.jpg" alt="">
-                    </div>
-                    <div class="calendario">
-                        <img class="calendarioimg" src="../../resources/img/calendario.png" alt="">
-                    </div>
-                </div>
-            </div>
+              
 
-            <div class="col-3 parte-izquierda">
-                <div class="lateral-izquierdo">
-                    <div class="crud-Usuario">
-                        <img class="pedidos" src="../../resources/img/pedidos.jpg" alt="">
+                    <div class="col-4 m6 l4 graficaTres">
+                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                        <canvas id="chart3"></canvas>
                     </div>
-                    <br>
-                    <div class="crud-productos">
-                        <img class="logoDash" src="../../resources/img/logo_login.png" alt="">
+    
+                    <div class="col-6 m6 l4 graficaCuatro">
+                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                        <canvas id="chart4"></canvas>
                     </div>
-                </div>
-            </div>
+    
+            
+                    <div class="col-6 m6 l4 graficaCinco">
+                        <!-- Se muestra un gráfico de pastel con el porcentaje de productos por categoría -->
+                        <canvas id="chart5"></canvas>
+                    </div>
 
-            <div class="col-12">
-                <div class="acciones-crud">
-                    <div class="crud-de-usuarios">
-                        <img class="pedidos" src="../../resources/img/pedidos.jpg" alt="">
-                    </div>
-                    <br>
-                    <div class="crud-de-productos">
-                        <img class="logoDash" src="../../resources/img/logo_login.png" alt="">
-                    </div>
-                </div>
-            </div>
+        
         </div>
+
+
     </main>
+    <!---Importar libreria  para la  generacion de los gráficos -->
+    <script src="../../resources/js/chart.umd.min.js"></script>
+    </main>
+
+    <!--- Pie del documento-->
     <footer class="site-footer">
         <div class="container">
             <div class="row">
@@ -133,10 +79,11 @@
         <hr>
         </div>
     </footer>
+    <!-- Importación de archivos JavaScript -->
+    <script src="../../controllers/components.js"></script>
     <script src="https://kit.fontawesome.com/9049a2fb5d.js" crossorigin="anonymous"></script>
     <script src="../../controllers/dahsboard/account.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert2.all.min.js "></script>
-    <script src="../../controllers/components.js"></script>
     <script src="../../controllers/dahsboard/dashboard.js"></script>
 
 </body>

@@ -37,7 +37,7 @@ if(isset($_GET['id_modelo'])) {
                     $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['condicion_producto'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['estado_producto'], 1, 0);
-                    $pdf->cell(20, 10, $rowProducto['existencia_producto'], 1, 0);
+                    $pdf->cell(20, 10, $rowProducto['existencia_producto'], 1, 1);
                 }
 
             } else {

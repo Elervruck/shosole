@@ -231,5 +231,20 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 
+    public function obtenerFechasPedidos()
+    {
+        $sql = 'SELECT fecha_pedido
+                FROM pedidos
+                ORDER BY fecha_pedido';
+        return Database::getRows($sql);
+    }
 
+    public function obtenerPedidosEstado()
+    {
+        $sql = 'SELECT estados_pedido, count(id_pedido) cantidad
+                FROM pedidos
+                GROUP BY estados_pedido
+                ORDER BY cantidad DESC';
+        return Database::getRows($sql);
+    }
 }

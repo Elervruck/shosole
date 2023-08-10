@@ -209,6 +209,76 @@ function pieGraph(canvas, legends, values, title) {
     });
 }
 
+function lineGraph(canvas, labels, datasets, title, xAxisLabel, yAxisLabel) {
+    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
+    const CONTEXT = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería Chart.js para funcionar.
+    const CHART = new Chart(CONTEXT, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            aspectRatio: 1,
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: xAxisLabel
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: yAxisLabel
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+
+function doughnutGraph(canvas, legends, values, title) {
+    // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
+    let colors = [];
+    // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
+    values.forEach(() => {
+        colors.push('#' + (Math.random().toString(16)).substring(2, 8));
+    });
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
+    // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
+    const chart = new Chart(context, {
+        type: 'doughnut',
+        data: {
+            labels: legends,
+            datasets: [{
+                data: values,
+                backgroundColor: colors
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
+        }
+    });
+}
+
+
 /*
 *   Función asíncrona para cerrar la sesión del usuario.
 *   Parámetros: ninguno.

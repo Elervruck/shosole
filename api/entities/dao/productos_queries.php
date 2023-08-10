@@ -173,4 +173,13 @@ class ProductoQueries
         $params = array ($this->usuario);
         return Database::getRows($sql, $params);
     }
+
+    public function cantidadProductosModelo()
+    {
+        $sql = 'SELECT modelo, COUNT(id_producto) cantidad
+                FROM productos
+                INNER JOIN modelos USING(id_modelo)
+                GROUP BY modelo ORDER BY cantidad DESC';
+        return Database::getRows($sql);
+    }
 }
