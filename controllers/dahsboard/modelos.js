@@ -147,10 +147,10 @@ async function openDelete(id) {
 }
 
 function openReport(id) {
-    
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/dashboard/productos_modelos.php`);
-
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
     PATH.searchParams.append('id_modelo', id);
-
+    // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }

@@ -1,0 +1,16 @@
+ESTANADRES DE PHP
+
+1-no se necesita cerrar la etiqueta <?php
+2-variables en minusculas
+3-constantes en mayusculas
+4-funciones en camelcase
+
+
+ESTANDARES DE JS
+
+1-funciones en camelcase
+2-variables en minusculas
+3-constantes en mayusculas
+
+
+
