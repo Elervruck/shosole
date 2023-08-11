@@ -42,7 +42,7 @@ if (isset($_GET['id_usuario'])) {
                     // Se imprime la existencia del producto.
                     $pdf->cell(30, 10, $rowProducto['existencia_producto'], 1, 0);
                     // Se imprime la condicion del producto.
-                    $pdf->cell(30, 10, $rowProducto['condicion_producto'], 1, 1);
+                    $pdf->cell(30, 10,$pdf->encodeString( $rowProducto['condición_producto']), 1, 1);
                 }
             }else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos por el usuario'), 1, 1);

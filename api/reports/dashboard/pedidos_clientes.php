@@ -35,7 +35,7 @@ if (isset($_GET['id_cliente'])) {
                     // Se imprime la fecha del pedido en una celda.
                     $pdf->cell(55, 10, $pdf->encodeString($rowPedidos['fecha_pedido']), 1, 0,);
                     // Se imprime la dirección del pedido en una celda.
-                    $pdf->cell(90, 10, $rowPedidos['direccion_pedido'], 1, 0);
+                    $pdf->cell(90, 10, $pdf->encodeString($rowPedidos['dirección_pedido']), 1, 0);
                     // Se imprime el estado del pedido en una celda y se agrega un salto de línea.
                     $pdf->cell(35, 10, $rowPedidos['estados_pedido'], 1, 1);
                 }

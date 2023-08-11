@@ -38,7 +38,7 @@ if(isset($_GET['id_modelo'])) {
                     // Se imprime el precio del producto.
                     $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
                     // Se imprime la condicion del producto.
-                    $pdf->cell(30, 10, $rowProducto['condicion_producto'], 1, 0);
+                    $pdf->cell(30, 10,$pdf->encodeString( $rowProducto['condicón_producto']), 1, 0);
                     // Se imprime el estado del producto.
                     $pdf->cell(30, 10, $rowProducto['estado_producto'], 1, 0);
                     // Se imprime la existencia del producto.
