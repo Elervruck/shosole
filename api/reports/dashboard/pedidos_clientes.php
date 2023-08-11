@@ -26,7 +26,7 @@ if (isset($_GET['id_cliente'])) {
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
                 $pdf->cell(55, 10, 'Fecha', 1, 0, 'C', 1);
-                $pdf->cell(90, 10, 'Dirección', 1, 0, 'C', 1);
+                $pdf->cell(90, 10, $pdf->encodeString('Dirección'), 1, 0, 'C', 1);
                 $pdf->cell(35, 10, 'Estado', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los pedidos.
                 $pdf->setFont('Times', '', 11);
