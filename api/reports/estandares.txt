@@ -11,6 +11,7 @@ ESTANDARES DE JS
 1-funciones en camelcase
 2-variables en minusculas
 3-constantes en mayusculas
-
+4-manejo del evento DOM
+5-modal de bootstrap
 
 
