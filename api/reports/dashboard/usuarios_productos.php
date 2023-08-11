@@ -28,23 +28,28 @@ if (isset($_GET['id_usuario'])) {
                 $pdf->cell(30, 10, 'Estado', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Precio', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Existencia', 1, 0, 'C', 1);
-                $pdf->cell(30, 10, 'Condicion', 1, 1, 'C', 1);
+                $pdf->cell(30, 10, 'Condición', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los productos.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
+                    // Se imprime el nombre del producto.
                     $pdf->cell(60, 10, $pdf->encodeString($rowProducto['nombre_producto']),1 ,0);
+                    // Se imprime el estado del producto.
                     $pdf->cell(30, 10, $rowProducto['estado_producto'], 1, 0);
+                    // Se imprime el precio del producto.
                     $pdf->cell(30, 10, $rowProducto['precio_producto'], 1, 0);
+                    // Se imprime la existencia del producto.
                     $pdf->cell(30, 10, $rowProducto['existencia_producto'], 1, 0);
+                    // Se imprime la condicion del producto.
                     $pdf->cell(30, 10, $rowProducto['condicion_producto'], 1, 1);
                 }
-
             }else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos por el usuario'), 1, 1);
             }
             $pdf->output('I', 'usuario.pdf');
         } else {
+            // Si no se encontró el usuario en la base de datos, se muestra un mensaje de error.            
             print('usuario inexistente');
         }
     } else {

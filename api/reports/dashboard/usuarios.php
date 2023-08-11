@@ -19,27 +19,34 @@ if ($dataCargos = $cargo->readAll()) {
     $pdf->cell(40, 10, 'Nombre', 1, 0, 'C', 1);
     $pdf->cell(40, 10, 'Apellido', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Alias', 1, 0, 'C', 1);
-    $pdf->cell(35, 10, 'genero', 1, 0, 'C', 1);
+    $pdf->cell(35, 10, 'género', 1, 0, 'C', 1);
     $pdf->cell(35, 10, 'Estado', 1, 1, 'C', 1);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFillColor(225);
     $pdf->setFont('Times', '', 11);
 // Se recorren los registros fila por fila.
     foreach ($dataCargos as $rowCargo) {
+        // Se crea una instancia de la clase Usuario
         $usuario = new Usuario;
+        // Se establece el cargo del usuario actual
         if ($usuario->setCargo($rowCargo['id_cargo'])) {
+            // Se obtienen los usuarios relacionados con el cargo
             if ($dataUsuarios = $usuario->usuariosReport()) {
                 foreach ($dataUsuarios as $rowUsuario) {
-
+                    // Muestra el nombre del usuario
                     $pdf->cell(40, 10, $rowUsuario['nombre_usuario'], 1, 0);
+                    // Muestra el apellido del usuario
                     $pdf->cell(40, 10, $rowUsuario['apellido_usuario'], 1,0);
+                    // Muestra el alias del usuario
                     $pdf->cell(30, 10, $rowUsuario['alias_usuario'], 1, 0);
+                    // Muestra el género del usuario
                     $pdf->cell(35, 10, $rowUsuario['generos_usuarios'], 1, 0);
+                    // Muestra el estado del usuario
                     $pdf->cell(35, 10, $rowUsuario['estado_usuarios'], 1, 1);
-
                 }
             } 
         } else {
+            // Mensaje si el cargo es incorrecto o inexistente
             $pdf->cell(0, 10, $pdf->encodeString('Cargo incorrecta o inexistente'), 1, 1);
         }
     }

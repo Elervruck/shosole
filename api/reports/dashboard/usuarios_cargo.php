@@ -28,14 +28,18 @@ if (isset($_GET['id_cargo'])) {
                 $pdf->cell(60, 10, 'nombre', 1, 0, 'C', 1);
                 $pdf->cell(60, 10, 'Apellido', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Alias', 1, 0, 'C', 1);
-                $pdf->cell(30, 10, 'Genero', 1, 1, 'C', 1);
+                $pdf->cell(30, 10, 'Género', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los usuarios.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
                 foreach ($dataUsuarios as $rowUsuario ){
+                    // Se imprime el nombre del usuario.
                     $pdf->cell(60, 10, $pdf->encodeString($rowUsuario['nombre_usuario']), 1, 0);
+                    // Se imprime el apellido del usuario.
                     $pdf->cell(60, 10, $rowUsuario['apellido_usuario'], 1, 0);
+                    // Se imprime el alias del usuario.
                     $pdf->cell(30, 10, $rowUsuario['alias_usuario'], 1, 0);
+                    // Se imprime el genero del usuario.
                     $pdf->cell(30, 10, $rowUsuario['generos_usuarios'], 1, 1);
                 }
             } else {
@@ -43,6 +47,7 @@ if (isset($_GET['id_cargo'])) {
             }
             $pdf->output('I', 'cargos.pdf');
         } else {
+            // Si no se encontró el cargo en la base de datos, se muestra un mensaje de error.            
             print('cargo inexistente');
         }
     } else {

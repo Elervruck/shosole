@@ -26,14 +26,17 @@ if (isset($_GET['id_cliente'])) {
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
                 $pdf->cell(55, 10, 'Fecha', 1, 0, 'C', 1);
-                $pdf->cell(90, 10, 'Direccion', 1, 0, 'C', 1);
+                $pdf->cell(90, 10, 'Dirección', 1, 0, 'C', 1);
                 $pdf->cell(35, 10, 'Estado', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los pedidos.
                 $pdf->setFont('Times', '', 11);
                 // Se recorren los registros fila por fila.
                 foreach ($dataPedidos as $rowPedidos) {
+                    // Se imprime la fecha del pedido en una celda.
                     $pdf->cell(55, 10, $pdf->encodeString($rowPedidos['fecha_pedido']), 1, 0,);
+                    // Se imprime la dirección del pedido en una celda.
                     $pdf->cell(90, 10, $rowPedidos['direccion_pedido'], 1, 0);
+                    // Se imprime el estado del pedido en una celda y se agrega un salto de línea.
                     $pdf->cell(35, 10, $rowPedidos['estados_pedido'], 1, 1);
                 }
             } else {
@@ -42,6 +45,7 @@ if (isset($_GET['id_cliente'])) {
 
             $pdf->output('I', 'clientes.pdf');
        } else {
+            // Si no se encontró el cliente en la base de datos, se muestra un mensaje de error.
             print('Cliente incorrecto');     
        }
     } else {
